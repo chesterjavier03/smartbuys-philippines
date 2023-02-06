@@ -1,4 +1,4 @@
-import connectToDb from 'database/db';
+import db from 'database/db';
 import Product from 'models/product';
 import { toJson } from 'utils/functions';
 import Shop from './shop/index';
@@ -14,7 +14,7 @@ const Home = ({ products }) => {
 export default Home;
 
 export const getServerSideProps = async () => {
-  await connectToDb();
+  await db.connect();
   try {
     const products = await Product.find({}).lean();
 
@@ -23,6 +23,7 @@ export const getServerSideProps = async () => {
       itemCount: 0,
       subTotal: 0,
     }));
+    await db.disconnect();
     return { props: { products: toJson(items) } };
   } catch (error) {
     return { props: { products: [] } };

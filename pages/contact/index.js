@@ -4,13 +4,13 @@ import {
   Container,
   Divider,
   Grid,
+  Image,
   Spacer,
   Text,
 } from '@nextui-org/react';
 import FmdGoodIcon from '@mui/icons-material/FmdGood';
 import RingVolumeIcon from '@mui/icons-material/RingVolume';
 import MailIcon from '@mui/icons-material/Mail';
-import Image from 'next/image';
 import Link from 'next/link';
 import { useSelector } from 'react-redux';
 import { socialData } from 'database/data';
@@ -60,13 +60,15 @@ const Contact = () => {
           css={{ paddingTop: '1.5rem', margin: '0 auto' }}
         >
           {socialData.map((social) => (
-            <Grid key={social.name} xs={12} lg={3} xl={3} justify="center">
+            <Grid key={social.name} xs={3} lg={3} xl={3} justify="center">
               <Link href={social.link} target="_blank">
                 <Image
                   src={social.image}
                   alt={social.name}
                   height={100}
                   width={100}
+                  objectFit="cover"
+                  autoResize
                 />
               </Link>
             </Grid>

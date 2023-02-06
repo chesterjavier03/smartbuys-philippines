@@ -4,6 +4,7 @@ import userReducer from './reducers/user.reducer';
 import { persistReducer, persistStore } from 'redux-persist';
 import thunk from 'redux-thunk';
 import storage from 'redux-persist/lib/storage';
+import orderReducer from './reducers/order.reducer';
 
 // export const store = configureStore({
 //   reducer: {
@@ -19,6 +20,7 @@ import storage from 'redux-persist/lib/storage';
 const rootReducer = combineReducers({
   user: userReducer,
   notifications: notificationsReducer,
+  order: orderReducer,
 });
 
 const persistConfig = {

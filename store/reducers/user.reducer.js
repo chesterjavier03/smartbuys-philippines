@@ -105,7 +105,7 @@ export const userSlice = createSlice({
       state.cart.shippingAddress = action.payload.shipping;
     },
     savePaymentMethod: (state, action) => {
-      state.cart.paymentMethod = action.payload;
+      state.cart.paymentMethod = action.payload.paymentMethod;
     },
   },
   extraReducers: (builder) => {

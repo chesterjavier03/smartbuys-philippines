@@ -1,14 +1,14 @@
 import nextConnect from 'next-connect';
 import bcrypt from 'bcryptjs';
 import { isAuth, signToken } from 'utils/auth';
-import connectToDb from 'database/db';
+import db from 'database/db';
 import User from 'models/user';
 
 const handler = nextConnect();
 handler.use(isAuth);
 
 handler.put(async (req, res) => {
-  await connectToDb;
+  await db.connect();
   const user = await User.findById(req.user._id);
   user.name = req.body.name;
   user.email = req.body.email;
@@ -17,6 +17,7 @@ handler.put(async (req, res) => {
     : user.password;
   await user.save();
   const token = signToken(user);
+  await db.disconnect();
   res.send({
     token,
     _id: user._id,

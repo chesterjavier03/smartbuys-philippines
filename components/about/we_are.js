@@ -31,11 +31,11 @@ const WeAre = ({ darkMode }) => {
         <Divider color="error" css={{ height: '2px' }} />
       </Grid>
       <Spacer y={5} />
-      <Grid.Container justify="space-between">
+      <Grid.Container justify="space-between" gap={2}>
         {weAreProductList.map((productData) => (
           <Grid
             key={productData.name}
-            xs={2}
+            xs={4}
             sm={2}
             lg={2}
             md={2}

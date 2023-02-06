@@ -1,17 +1,46 @@
 import mongoose from 'mongoose';
 
-export default async function connectToDb() {
-  if (mongoose.connection.readyState >= 1) return;
-  mongoose.connect('mongodb://localhost/sbp', {
+const connection = {};
+
+const connect = async () => {
+  if (connection.isConnected) {
+    // console.log('already connected');
+    return;
+  }
+
+  if (mongoose.connections.length > 0) {
+    connection.isConnected = mongoose.connections[0].readyState;
+    if (connection.isConnected === 1) {
+      // console.log('Use previous connection.');
+      return;
+    }
+
+    await mongoose.disconnect();
+  }
+
+  const db = await mongoose.connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   });
-  var conn = mongoose.connection;
-  conn.on('connected', function () {
-    console.log('database is connected successfully');
-  });
-  conn.on('disconnected', function () {
-    console.log('database is disconnected successfully');
-  });
-  conn.on('error', console.error.bind(console, 'connection error:'));
-}
+  // console.log('new connection');
+  connection.isConnected = db.connections[0].readyState;
+};
+
+const disconnect = async () => {
+  if (connection.isConnected) {
+    if (process.env.NODE_ENV === 'production') {
+      await mongoose.disconnect();
+      connection.isConnected = false;
+    } else {
+      // console.log('not disconnected');
+    }
+  }
+};
+
+const convertDocToObj = (doc) => {
+  return JSON.parse(JSON.stringify(doc));
+};
+
+const db = { connect, disconnect, convertDocToObj };
+
+export default db;

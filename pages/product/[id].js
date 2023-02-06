@@ -25,7 +25,9 @@ const ProductDetails = ({ product }) => {
   ]);
   const { enqueueSnackbar } = useSnackbar();
   const [visible, setVisible] = useState(false);
+  
   const handler = () => setVisible(true);
+  
   const closeHandler = () => {
     setVisible(false);
   };
