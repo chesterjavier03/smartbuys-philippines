@@ -1,6 +1,6 @@
 import { Spacer, Grid, Text, Image } from '@nextui-org/react';
 
-const Intro = ({ darkMode }) => {
+const Intro = () => {
   return (
     <>
       <Spacer y={2} />
@@ -23,7 +23,7 @@ const Intro = ({ darkMode }) => {
             textAlign: 'center',
             lineHeight: '$sm',
           }}
-          color={darkMode ? 'white' : '$gray700'}
+          color={'$gray700'}
         >
           {`"SmartBuys Philippines is committed to provide Filipino Entrepreneurs like you with the best prices in wholesale clothing,
           home decor, and frozen food items for your own boutique or store. Every day is a bazaar, all year long!"`}

@@ -1,7 +1,7 @@
 import { Spacer, Text, Grid, Divider, Col, Card } from '@nextui-org/react';
 import { reviewList } from 'database/data';
 
-const Reviews = ({ darkMode }) => {
+const Reviews = () => {
   return (
     <>
       <Grid
@@ -19,7 +19,7 @@ const Reviews = ({ darkMode }) => {
             textAlign: 'center',
             lineHeight: '$sm',
           }}
-          color={darkMode ? 'primary' : '$gray800'}
+          color={'$gray800'}
         >
           Reviews
         </Text>

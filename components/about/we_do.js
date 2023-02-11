@@ -9,7 +9,7 @@ import {
 } from '@nextui-org/react';
 import { weDoProductList } from 'database/data';
 
-const WeDo = ({ darkMode }) => {
+const WeDo = () => {
   return (
     <>
       <Grid xs={12} justify="center">
@@ -22,7 +22,7 @@ const WeDo = ({ darkMode }) => {
             textAlign: 'center',
             lineHeight: '$sm',
           }}
-          color={darkMode ? 'primary' : '$gray800'}
+          color={'$gray800'}
         >
           We Do
         </Text>
@@ -78,6 +78,7 @@ const WeDo = ({ darkMode }) => {
                   borderColor: `${weDo.color}`,
                   borderWidth: 'medium',
                 }}
+                isHoverable
                 isPressable
                 variant="bordered"
               >
@@ -102,7 +103,7 @@ const WeDo = ({ darkMode }) => {
                   textAlign: 'center',
                   lineHeight: '$sm',
                 }}
-                color={darkMode ? 'white' : '$gray700'}
+                color={'$gray700'}
               >
                 {weDo.contentTitle}
               </Text>
@@ -117,7 +118,7 @@ const WeDo = ({ darkMode }) => {
                   lineHeight: '$sm',
                   justifyContent: 'center',
                 }}
-                color={darkMode ? 'white' : '$gray600'}
+                color={'$gray600'}
               >
                 {weDo.contentDetails}
               </Text>

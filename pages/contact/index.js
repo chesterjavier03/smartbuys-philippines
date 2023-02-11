@@ -12,11 +12,11 @@ import FmdGoodIcon from '@mui/icons-material/FmdGood';
 import RingVolumeIcon from '@mui/icons-material/RingVolume';
 import MailIcon from '@mui/icons-material/Mail';
 import Link from 'next/link';
-import { useSelector } from 'react-redux';
 import { socialData } from 'database/data';
+import { useEffect } from 'react';
 
 const Contact = () => {
-  const darkMode = useSelector((state) => state.user.darkMode);
+  useEffect(() => document.body?.scrollTo(0, 0), []);
   return (
     <>
       <Spacer y={2} />
@@ -45,7 +45,7 @@ const Contact = () => {
               textAlign: 'center',
               lineHeight: '$sm',
             }}
-            color={darkMode ? 'primary' : '$gray800'}
+            color={'$gray800'}
           >
             Follow Us
           </Text>
@@ -142,7 +142,7 @@ const Contact = () => {
                   textAlign: 'center',
                   lineHeight: '$sm',
                 }}
-                color={darkMode ? 'white' : '$gray700'}
+                color={'$gray700'}
               >
                 smartbuys@duck.com
               </Text>
@@ -169,7 +169,7 @@ const Contact = () => {
                   textAlign: 'center',
                   lineHeight: '$sm',
                 }}
-                color={darkMode ? 'white' : '$gray700'}
+                color={'$gray700'}
               >
                 09953005644
               </Text>
@@ -182,7 +182,7 @@ const Contact = () => {
                   textAlign: 'center',
                   lineHeight: '$sm',
                 }}
-                color={darkMode ? 'white' : '$gray700'}
+                color={'$gray700'}
               >
                 09497309994
               </Text>
@@ -209,7 +209,7 @@ const Contact = () => {
                   textAlign: 'center',
                   lineHeight: '$sm',
                 }}
-                color={darkMode ? 'white' : '$gray700'}
+                color={'$gray700'}
               >
                 Las Pinas City, PHILIPPINES
               </Text>

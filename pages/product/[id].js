@@ -2,17 +2,16 @@ import { Button, Card, Col, Grid, Row, Spacer, Text } from '@nextui-org/react';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import { moneyFormat, toJson } from 'utils/functions';
+import { moneyFormat } from 'utils/functions';
 import SizeSection from 'components/product/size_section';
 import QuantityButton from 'components/product/quantity_button';
 import { useSnackbar } from 'notistack';
 import { ShoppingCart } from '@mui/icons-material';
 import { useDispatch } from 'react-redux';
-import Product from 'models/product';
 import { cartAddItem } from 'store/reducers/user.reducer';
 import ModalProductImage from './component/modal.product.image';
 
-const ProductDetails = ({ product }) => {
+const ProductDetails = () => {
   const router = useRouter();
   const [itemCount, setItemCount] = useState(1);
   const dispatch = useDispatch();
@@ -25,9 +24,10 @@ const ProductDetails = ({ product }) => {
   ]);
   const { enqueueSnackbar } = useSnackbar();
   const [visible, setVisible] = useState(false);
-  
+
   const handler = () => setVisible(true);
-  
+  const product = JSON.parse(router.query.product);
+
   const closeHandler = () => {
     setVisible(false);
   };
@@ -420,15 +420,15 @@ const ProductDetails = ({ product }) => {
 
 export default ProductDetails;
 
-export const getServerSideProps = async ({ params }) => {
-  const product = await Product.findById(params.id).lean();
-  if (!product) {
-    return {
-      notFound: true,
-    };
-  }
+// export const getServerSideProps = async ({ params }) => {
+//   const product = await Product.findById(params.id).lean();
+//   if (!product) {
+//     return {
+//       notFound: true,
+//     };
+//   }
 
-  return {
-    props: { product: toJson(product) },
-  };
-};
+//   return {
+//     props: { product: toJson(product) },
+//   };
+// };

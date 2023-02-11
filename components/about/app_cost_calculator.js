@@ -8,7 +8,7 @@ import {
   Link,
 } from '@nextui-org/react';
 
-const AppCostCalculator = ({ darkMode }) => {
+const AppCostCalculator = () => {
   return (
     <>
       <Spacer y={5} />
@@ -27,7 +27,7 @@ const AppCostCalculator = ({ darkMode }) => {
             textAlign: 'center',
             lineHeight: '$sm',
           }}
-          color={darkMode ? 'primary' : '$gray800'}
+          color={'$gray800'}
         >
           App Cost Calculator
         </Text>
@@ -46,7 +46,7 @@ const AppCostCalculator = ({ darkMode }) => {
             textAlign: 'center',
             lineHeight: '$sm',
           }}
-          color={darkMode ? 'white' : '$gray700'}
+          color={'$gray700'}
         >
           {
             'Thinking of building a website or an app for your brand of business?'
@@ -63,7 +63,7 @@ const AppCostCalculator = ({ darkMode }) => {
             textAlign: 'center',
             lineHeight: '$sm',
           }}
-          color={darkMode ? 'white' : '$gray700'}
+          color={'$gray700'}
         >
           {
             'Use our app cost calculator to find out how much it will cost to build an app and how long it will take to launch it.'
@@ -80,7 +80,7 @@ const AppCostCalculator = ({ darkMode }) => {
             textAlign: 'center',
             lineHeight: '$sm',
           }}
-          color={darkMode ? 'white' : '$gray700'}
+          color={'$gray700'}
         >
           {
             'It is important to keep in mind that the technology you use to communicate with your customers will have a direct impact on their experience with your brand.'

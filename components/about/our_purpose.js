@@ -1,6 +1,6 @@
 import { Spacer, Grid, Text, Divider } from '@nextui-org/react';
 
-const OurPurpose = ({ darkMode }) => {
+const OurPurpose = () => {
   return (
     <>
       <Spacer y={5} />
@@ -19,7 +19,7 @@ const OurPurpose = ({ darkMode }) => {
             textAlign: 'center',
             lineHeight: '$sm',
           }}
-          color={darkMode ? 'primary' : '$gray800'}
+          color={'$gray800'}
         >
           Our Purpose
         </Text>
@@ -39,7 +39,7 @@ const OurPurpose = ({ darkMode }) => {
             textAlign: 'center',
             lineHeight: '$sm',
           }}
-          color={darkMode ? 'white' : '$gray700'}
+          color={'$gray700'}
         >
           {`"To Glorify God by being a faithful steward of all that is entrusted to us and to have a positive influence on all who came into contact
           with SmartBuys Philippines."`}

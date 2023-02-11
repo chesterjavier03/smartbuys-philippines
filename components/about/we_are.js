@@ -1,7 +1,7 @@
 import { Grid, Image, Spacer, Text, Divider } from '@nextui-org/react';
 import { weAreProductList } from 'database/data';
 
-const WeAre = ({ darkMode }) => {
+const WeAre = () => {
   return (
     <>
       <Spacer y={5} />
@@ -21,7 +21,7 @@ const WeAre = ({ darkMode }) => {
             textAlign: 'center',
             lineHeight: '$sm',
           }}
-          color={darkMode ? 'primary' : '$gray800'}
+          color={'$gray800'}
         >
           We Are
         </Text>

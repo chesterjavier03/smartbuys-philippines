@@ -10,11 +10,11 @@ const AdminLeftPanelMenu = () => {
   const menu = [
     {
       menuTab: 'User List',
-      url: '/admin/user-list',
+      url: '/admin/user/list',
       icon: (
         <GroupsIcon
           style={{
-            color: router.pathname === '/admin/user-list' ? 'White' : 'Red',
+            color: router.pathname === '/admin/user/list' ? 'White' : 'Red',
             fontSize: '2rem',
           }}
         />
@@ -22,11 +22,11 @@ const AdminLeftPanelMenu = () => {
     },
     {
       menuTab: 'Product List',
-      url: '/admin/product-list',
+      url: '/admin/product/list',
       icon: (
         <InventoryIcon
           style={{
-            color: router.pathname === '/admin/product-list' ? 'White' : 'Red',
+            color: router.pathname === '/admin/product/list' ? 'White' : 'Red',
             fontSize: '2rem',
           }}
         />

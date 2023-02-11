@@ -18,6 +18,16 @@ const OrderData = ({ order }) => {
     console.log('here ', order);
   }, []);
 
+  const handlePageRequest = (product) => {
+    router.push(
+      {
+        pathname: `/product/${product._id}`,
+        query: { product: JSON.stringify(product) },
+      },
+      `/product/${product._id}`
+    );
+  };
+
   return (
     <>
       <Row>
@@ -147,14 +157,15 @@ const OrderData = ({ order }) => {
                                         height={180}
                                         objectFit="cover"
                                         alt={item.product.name}
-                                        onClick={() =>
-                                          router.push(
-                                            `/product/${item.product._id}`,
-                                            undefined,
-                                            {
-                                              shallow: true,
-                                            }
-                                          )
+                                        onPress={
+                                          () => handlePageRequest(item.product)
+                                          // router.push(
+                                          //   `/product/${item.product._id}`,
+                                          //   undefined,
+                                          //   {
+                                          //     shallow: true,
+                                          //   }
+                                          // )
                                         }
                                       />
                                     </Card>

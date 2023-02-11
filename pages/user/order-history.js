@@ -24,7 +24,6 @@ const OrderHistory = ({ orders }) => {
     if (!userInfo) {
       router.push('/');
     }
-    console.log('here ', orders);
   }, []);
 
   return (
@@ -121,11 +120,13 @@ const OrderHistory = ({ orders }) => {
                                 alt={order.product.name}
                                 onClick={() =>
                                   router.push(
-                                    `/product/${order.product._id}`,
-                                    undefined,
                                     {
-                                      shallow: true,
-                                    }
+                                      pathname: `/product/${order.product._id}`,
+                                      query: {
+                                        product: JSON.stringify(order.product),
+                                      },
+                                    },
+                                    `/product/${order.product._id}`
                                   )
                                 }
                               />

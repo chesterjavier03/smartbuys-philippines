@@ -5,10 +5,10 @@ import OurPurpose from 'components/about/our_purpose';
 import Reviews from 'components/about/reviews';
 import WeAre from 'components/about/we_are';
 import WeDo from 'components/about/we_do';
-import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
 
 const About = () => {
-  const darkMode = useSelector((state) => state.user.darkMode);
+  useEffect(() => document.body?.scrollTo(0, 0), []);
   return (
     <Grid.Container
       alignContent="center"
@@ -16,12 +16,12 @@ const About = () => {
       align="center"
       justify="center"
     >
-      <Intro darkMode={darkMode} />
-      <WeAre darkMode={darkMode} />
-      <OurPurpose darkMode={darkMode} />
-      <WeDo darkMode={darkMode} />
-      <Reviews darkMode={darkMode} />
-      <AppCostCalculator darkMode={darkMode} />
+      <Intro />
+      <WeAre />
+      <OurPurpose />
+      <WeDo />
+      <Reviews />
+      <AppCostCalculator />
       <Spacer y={8} />
     </Grid.Container>
   );

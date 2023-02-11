@@ -1,4 +1,3 @@
-import { TextField } from '@mui/material';
 import {
   Button,
   Card,
@@ -6,7 +5,6 @@ import {
   Container,
   Grid,
   Loading,
-  Modal,
   Row,
   Spacer,
   Text,
@@ -16,10 +14,11 @@ import Product from 'models/product';
 import { useRouter } from 'next/router';
 import { useSnackbar } from 'notistack';
 import { useEffect, useState } from 'react';
-import { Controller, useForm } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { useSelector } from 'react-redux';
 import { toJson } from 'utils/functions';
-import AdminLeftPanelMenu from './component/admin.left.panel.menu';
+import AdminLeftPanelMenu from '../component/admin.left.panel.menu';
+import EditProductModal from './component/edit.product.modal';
 
 const ProductList = ({ products }) => {
   const router = useRouter();
@@ -33,11 +32,17 @@ const ProductList = ({ products }) => {
     setValue,
   } = useForm();
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+  const [imageSet, setImageSet] = useState('');
 
   const handler = (product) => {
     setVisible(true);
-    setValue('productName', product?.name);
-    setValue('productDescription', product?.email);
+    setValue('productName', product.name);
+    setValue('productDescription', product.description);
+    setValue('productCategory', product.category);
+    setValue('productImage', product.image);
+    setValue('productPrice', product.price);
+    setValue('productType', product.type);
+    setImageSet(product.image);
   };
 
   const closeHandler = () => {
@@ -154,7 +159,6 @@ const ProductList = ({ products }) => {
                         isHoverable
                         isPressable
                         variant="bordered"
-                        onPress={() => handler(product._id)}
                       >
                         <Card.Header
                           css={{ position: 'absolute', zIndex: 1, top: 5 }}
@@ -207,6 +211,7 @@ const ProductList = ({ products }) => {
                                 backgroundColor: '$blue600',
                                 color: 'White',
                               }}
+                              onPress={() => handler(product)}
                             >
                               Edit
                             </Button>
@@ -233,133 +238,17 @@ const ProductList = ({ products }) => {
                   ))}
               </Grid.Container>
             </Col>
-            <Modal
-              noPadding
-              blur
-              animated
-              autoMargin
-              open={visible}
-              onClose={closeHandler}
-            >
-              <Modal.Body>
-                <Card
-                  css={{
-                    borderColor: 'red',
-                    borderWidth: 'thin',
-                  }}
-                  variant="bordered"
-                  onPress={handler}
-                >
-                  <Card.Body css={{ p: 0 }} autoMargin>
-                    <form onSubmit={handleSubmit(submitHandler)}>
-                      <Card.Header>
-                        <Text h1 color={'Red'} css={{ margin: '0 auto' }}>
-                          User Details
-                        </Text>
-                      </Card.Header>
-                      <Card.Body>
-                        <Grid
-                          justify="center"
-                          css={{
-                            display: 'flex',
-                            width: '80%',
-                            margin: '0 auto',
-                          }}
-                        >
-                          <Controller
-                            name="name"
-                            control={control}
-                            render={({ field }) => (
-                              <TextField
-                                variant="outlined"
-                                disabled
-                                fullWidth
-                                id="name"
-                                label="Full Name"
-                                inputProps={{
-                                  type: 'text',
-                                  readOnly: true,
-                                }}
-                                error={Boolean(errors.name)}
-                                helperText={
-                                  errors.name
-                                    ? errors.name.type === 'minLength'
-                                      ? 'Full name length is more than 2'
-                                      : 'Full name is required'
-                                    : ''
-                                }
-                                {...field}
-                              ></TextField>
-                            )}
-                          />
-                        </Grid>
-                        <Spacer y={1} />
-                        <Grid
-                          justify="center"
-                          alignContent="center"
-                          alignItems="center"
-                          css={{
-                            display: 'flex',
-                            margin: '0 auto',
-                            width: '80%',
-                          }}
-                        >
-                          <Controller
-                            name="email"
-                            control={control}
-                            render={({ field }) => (
-                              <TextField
-                                variant="outlined"
-                                fullWidth
-                                disabled
-                                id="email"
-                                label="Email"
-                                inputProps={{
-                                  type: 'email',
-                                  readOnly: true,
-                                }}
-                                error={Boolean(errors.email)}
-                                helperText={
-                                  errors.email
-                                    ? errors.email.type === 'pattern'
-                                      ? 'Email is not valid'
-                                      : 'Email is required'
-                                    : ''
-                                }
-                                {...field}
-                              ></TextField>
-                            )}
-                          />
-                        </Grid>
-                      </Card.Body>
-                      <Card.Footer>
-                        <Grid.Container>
-                          <Grid lg={12} xs={12} sm={12} md={12} xl={12}>
-                            <Button
-                              variant="contained"
-                              fullWidth
-                              color="primary"
-                              size={'lg'}
-                              ripple
-                              animated
-                              type="submit"
-                              css={{
-                                margin: '0 auto',
-                                backgroundColor: 'Red',
-                                color: 'White',
-                              }}
-                            >
-                              Update
-                            </Button>
-                          </Grid>
-                        </Grid.Container>
-                      </Card.Footer>
-                      <Spacer y={1} />
-                    </form>
-                  </Card.Body>
-                </Card>
-              </Modal.Body>
-            </Modal>
+            <EditProductModal
+              visible={visible}
+              closeHandler={closeHandler}
+              handler={handler}
+              handleSubmit={handleSubmit(submitHandler)}
+              control={control}
+              errors={errors}
+              setValue={setValue}
+              imageSet={imageSet}
+              setImageSet={setImageSet}
+            />
           </>
         )}
       </Grid>

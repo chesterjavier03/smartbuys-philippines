@@ -26,7 +26,14 @@ const Shop = ({ products }) => {
   }, []);
 
   const handleItemDetails = (product) => {
-    router.push(`/product/${product._id}`);
+    // router.push(`/product/${product._id}`);
+    router.push(
+      {
+        pathname: `/product/${product._id}`,
+        query: { product: JSON.stringify(product) },
+      },
+      `/product/${product._id}`
+    );
   };
 
   const filterByType = async (type) => {
