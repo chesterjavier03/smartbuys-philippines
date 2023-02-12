@@ -247,7 +247,6 @@ const Filter = ({
       <Grid xs={12} lg={0} align="center" justify="center">
         <Divider css={{ backgroundColor: 'red' }} />
       </Grid>
-      <Spacer y={0.5} />
     </Grid.Container>
   );
 };

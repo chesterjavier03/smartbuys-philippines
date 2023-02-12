@@ -1,10 +1,4 @@
-import {
-  Box,
-  FormControl,
-  FormControlLabel,
-  Radio,
-  RadioGroup,
-} from '@mui/material';
+import { Box } from '@mui/material';
 import { Button, Card, Grid, Row, Spacer, Text } from '@nextui-org/react';
 import CheckoutWizard from 'components/checkoutwizard';
 import { useRouter } from 'next/router';
@@ -13,8 +7,6 @@ import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { savePaymentMethod } from 'store/reducers/user.reducer';
-import CheckIcon from '@mui/icons-material/Check';
-import TaskAltIcon from '@mui/icons-material/TaskAlt';
 
 const Payment = () => {
   const cartItems = useSelector((state) => state.user.cart.cartItems);

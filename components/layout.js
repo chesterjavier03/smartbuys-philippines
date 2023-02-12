@@ -130,7 +130,9 @@ const Layout = ({ title, description, children }) => {
         router.push('/user/shipping-address', undefined, { shallow: 'true' });
         return;
       case 'admin':
-        router.push('/admin/user/list', undefined, { shallow: 'true' });
+        userInfo.isAdmin
+          ? router.push('/admin/user/list', undefined, { shallow: 'true' })
+          : router.push('/', undefined, { shallow: 'true' });
         return;
       case 'shop':
         router.push('/', undefined, { shallow: 'true' });

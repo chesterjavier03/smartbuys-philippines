@@ -8,7 +8,7 @@ import { useEffect } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { signInUser } from 'store/actions/user.actions';
-import { clearNotification } from 'store/reducers/notifications.reducer';
+import { clearNotifications } from 'store/reducers/notifications.reducer';
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -42,7 +42,7 @@ const Login = () => {
     if (notifications && global.error) {
       const msg = global.msg ? global.msg : 'Error';
       enqueueSnackbar(`Success! ${msg}`, { variant: 'error' });
-      dispatch(clearNotification());
+      dispatch(clearNotifications());
     }
   }, [notifications]);
 

@@ -115,22 +115,24 @@ const LoggedInNav = ({ userInfo, handleSelected }) => {
           >
             Order History
           </Dropdown.Item>
-          <Dropdown.Item
-            color="success"
-            key="admin"
-            css={{
-              color: 'Gray',
-              fontWeight: '$semibold',
-              backgroundColor: 'transparent',
-              '&:hover': {
-                color: 'White',
-                backgroundColor: 'Red',
-                fontWeight: '$normal',
-              },
-            }}
-          >
-            Admin Dashboard
-          </Dropdown.Item>
+          {userInfo.isAdmin && (
+            <Dropdown.Item
+              color="success"
+              key="admin"
+              css={{
+                color: 'Gray',
+                fontWeight: '$semibold',
+                backgroundColor: 'transparent',
+                '&:hover': {
+                  color: 'White',
+                  backgroundColor: 'Red',
+                  fontWeight: '$normal',
+                },
+              }}
+            >
+              Admin Dashboard
+            </Dropdown.Item>
+          )}
           <Dropdown.Item
             key="logout"
             css={{

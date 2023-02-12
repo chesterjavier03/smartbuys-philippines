@@ -12,6 +12,7 @@ import {
   Text,
 } from '@nextui-org/react';
 import axios from 'axios';
+import db from 'database/db';
 import Product from 'models/product';
 import { useRouter } from 'next/router';
 import { useSnackbar } from 'notistack';
@@ -370,7 +371,9 @@ const ProductList = ({ products }) => {
 export default ProductList;
 
 export const getServerSideProps = async () => {
+  await db.connect();
   const productList = await Product.find({}).lean();
+  await db.disconnect();
 
   return { props: { products: toJson(productList) } };
 };

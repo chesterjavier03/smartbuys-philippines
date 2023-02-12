@@ -6,6 +6,7 @@ import { moneyFormat, toJson } from 'utils/functions';
 import Order from 'models/order';
 import { Box } from '@mui/material';
 import Image from 'next/image';
+import db from 'database/db';
 
 const OrderData = ({ order }) => {
   const router = useRouter();
@@ -254,9 +255,12 @@ const OrderData = ({ order }) => {
 export default OrderData;
 
 export const getServerSideProps = async ({ params }) => {
+  await db.connect();
   const order = await Order.findById(params.id)
     .populate({ path: 'orderItems', populate: 'product' })
     .lean();
+
+  await db.disconnect();
   if (!order) {
     return {
       notFound: true,

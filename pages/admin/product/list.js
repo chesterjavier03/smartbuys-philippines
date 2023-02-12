@@ -10,6 +10,8 @@ import {
   Text,
 } from '@nextui-org/react';
 import axios from 'axios';
+import Filter from 'components/filter';
+import db from 'database/db';
 import Product from 'models/product';
 import { useRouter } from 'next/router';
 import { useSnackbar } from 'notistack';
@@ -18,6 +20,7 @@ import { useForm } from 'react-hook-form';
 import { useSelector } from 'react-redux';
 import { toJson } from 'utils/functions';
 import AdminLeftPanelMenu from '../component/admin.left.panel.menu';
+import CreateProductModal from './component/create.product.modal';
 import EditProductModal from './component/edit.product.modal';
 
 const ProductList = ({ products }) => {
@@ -25,6 +28,7 @@ const ProductList = ({ products }) => {
   const userInfo = useSelector((state) => state.user.userInfo);
   const loading = useSelector((state) => state.user.loading);
   const [visible, setVisible] = useState(false);
+  const [newProductVisible, setNewProductVisible] = useState(false);
   const {
     handleSubmit,
     control,
@@ -33,6 +37,17 @@ const ProductList = ({ products }) => {
   } = useForm();
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
   const [imageSet, setImageSet] = useState('');
+  const [productList, setProductList] = useState([]);
+  const categoryList = ['Girls', 'Boys', 'Food'];
+  const typeList = ['Shirt', 'Jogger', 'Dress', 'Sando', 'Terno', 'Shorts'];
+  const [isPressed, setIsPressed] = useState(false);
+
+  useEffect(() => {
+    setProductList(products);
+    if (!userInfo) {
+      router.push('/', undefined, { shallow: 'true' });
+    }
+  }, []);
 
   const handler = (product) => {
     setVisible(true);
@@ -45,15 +60,18 @@ const ProductList = ({ products }) => {
     setImageSet(product.image);
   };
 
+  const newProductHandler = () => {
+    setNewProductVisible(true);
+    setImageSet(null);
+  };
+
+  const closeNewProductHandler = () => {
+    setNewProductVisible(false);
+  };
+
   const closeHandler = () => {
     setVisible(false);
   };
-
-  useEffect(() => {
-    if (!userInfo) {
-      router.push('/', undefined, { shallow: 'true' });
-    }
-  }, []);
 
   const submitHandler = async ({ email, isAdmin }) => {
     closeSnackbar();
@@ -73,10 +91,83 @@ const ProductList = ({ products }) => {
     }
   };
 
+  const filterByType = async (type) => {
+    axios
+      .get(`/api/products/filter/byType?type=${type}`)
+      .then((response) => {
+        setProductList(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+        setProductList([]);
+      });
+  };
+
+  const filterByCategory = async (category) => {
+    axios
+      .get(`/api/products/filter/byCategory?category=${category}`)
+      .then((response) => {
+        setProductList(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+        setProductList([]);
+      });
+  };
+
+  const fetchAll = async () => {
+    axios
+      .get('/api/products')
+      .then((response) => {
+        setProductList(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <Grid.Container gap={1}>
       <Grid lg={3} md={3} xl={3} sm={3} xs={12}>
-        <AdminLeftPanelMenu />
+        <Col>
+          <AdminLeftPanelMenu />
+          {router.pathname === '/admin/product/list' && (
+            <Grid.Container
+              xs={0}
+              lg={12}
+              md={12}
+              xl={12}
+              sm={12}
+              align="flex-start"
+              justify="flex-start"
+              alignContent="flex-start"
+              css={{
+                '@xs': {},
+              }}
+            >
+              <Card
+                css={{
+                  backgroundColor: '$backgroundAlpha',
+                  border: '1px solid red',
+                }}
+                isHoverable
+                variant="shadow"
+                borderWeight="bold"
+              >
+                <Filter
+                  darkMode={false}
+                  filterByCategory={filterByCategory}
+                  categoryList={categoryList}
+                  typeList={typeList}
+                  filterByType={filterByType}
+                  setIsPressed={setIsPressed}
+                  fetchAll={fetchAll}
+                  isPressed={isPressed}
+                />
+              </Card>
+            </Grid.Container>
+          )}
+        </Col>
       </Grid>
       <Grid xl={9} lg={9} md={9} xs={12} sm={9}>
         {loading ? (
@@ -97,7 +188,7 @@ const ProductList = ({ products }) => {
           </Grid.Container>
         ) : (
           <>
-            <Col css={{ paddingTop: '1.3rem' }}>
+            <Col css={{ paddingTop: '.5rem' }}>
               <Card
                 css={{
                   border: '1px solid red',
@@ -119,6 +210,7 @@ const ProductList = ({ products }) => {
                     color={'error'}
                     size={'lg'}
                     css={{ borderRadius: '$xs' }}
+                    onPress={newProductHandler}
                   >
                     Add New Product
                   </Button>
@@ -138,8 +230,8 @@ const ProductList = ({ products }) => {
                   },
                 }}
               >
-                {products &&
-                  products.map((product) => (
+                {productList &&
+                  productList.map((product) => (
                     <Grid
                       xs={6}
                       lg={3}
@@ -249,6 +341,17 @@ const ProductList = ({ products }) => {
               imageSet={imageSet}
               setImageSet={setImageSet}
             />
+            <CreateProductModal
+              newProductVisible={newProductVisible}
+              closeNewProductHandler={closeNewProductHandler}
+              newProductHandler={newProductHandler}
+              handleSubmit={handleSubmit(submitHandler)}
+              control={control}
+              errors={errors}
+              setValue={setValue}
+              imageSet={imageSet}
+              setImageSet={setImageSet}
+            />
           </>
         )}
       </Grid>
@@ -259,7 +362,9 @@ const ProductList = ({ products }) => {
 export default ProductList;
 
 export const getServerSideProps = async () => {
+  await db.connect();
   const productList = await Product.find({}).lean();
+  await db.disconnect();
 
   return { props: { products: toJson(productList) } };
 };

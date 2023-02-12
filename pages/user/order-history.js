@@ -9,6 +9,7 @@ import {
   Spacer,
   Text,
 } from '@nextui-org/react';
+import db from 'database/db';
 import Order from 'models/order';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
@@ -221,9 +222,12 @@ const OrderHistory = ({ orders }) => {
 export default OrderHistory;
 
 export const getServerSideProps = async () => {
+  await db.connect();
   const orderList = await Order.find({})
     .populate({ path: 'orderItems', populate: 'product' })
     .lean();
+
+  await db.disconnect();
 
   return { props: { orders: toJson(orderList) } };
 };

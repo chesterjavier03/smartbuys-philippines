@@ -13,6 +13,7 @@ import {
   Text,
 } from '@nextui-org/react';
 import axios from 'axios';
+import db from 'database/db';
 import User from 'models/user';
 import { useRouter } from 'next/router';
 import { useSnackbar } from 'notistack';
@@ -64,7 +65,7 @@ const UserList = ({ users }) => {
       });
       enqueueSnackbar('Profile successfully updated!', { variant: 'success' });
       setVisible(false);
-      router.push('/admin/user-list');
+      router.push('/admin/user/list', undefined, { shallow: 'true' });
     } catch (error) {
       enqueueSnackbar(error, { variant: 'error' });
     }
@@ -396,7 +397,9 @@ const UserList = ({ users }) => {
 export default UserList;
 
 export const getServerSideProps = async () => {
+  await db.connect();
   const userList = await User.find({}).lean();
+  await db.disconnect();
 
   return { props: { users: toJson(userList) } };
 };

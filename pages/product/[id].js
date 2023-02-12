@@ -155,7 +155,7 @@ const ProductDetails = () => {
           </Card>
         </Grid>
         <Grid xs={12} lg={5}>
-          <Grid.Container gap={1} alignContent="flex-start">
+          <Grid.Container gap={1} alignContent="space-around">
             <Grid xs={12} lg={12}>
               <Text
                 h1
@@ -196,74 +196,70 @@ const ProductDetails = () => {
                 {moneyFormat(product.price)}
               </Text>
             </Grid>
-            {product.category !== 'Food' && product.type !== 'Food' && (
-              <>
-                <Grid xs={12} sm={12} lg={12} md={12} xl={12}>
-                  <Row
-                    css={{
-                      justifyContent: 'space-between',
-                      justifyItems: 'center',
-                    }}
-                  >
-                    <Text
-                      h4
-                      css={{
-                        fontFamily: 'Ubuntu',
-                        fontWeight: '$normal',
-                        color: '$gray600',
-                      }}
-                    >
-                      Category:
-                    </Text>
-                    <Text
-                      h3
-                      css={{
-                        fontFamily: 'Ubuntu',
-                        fontWeight: '$medium',
-                        color: _colorSetByCategoryType(product.category),
-                      }}
-                      color="gray"
-                    >
-                      {product.category}
-                    </Text>
-                  </Row>
-                  <Spacer x={1} />
-                </Grid>
-                <Grid xs={12} sm={12} lg={12} md={12} xl={12}>
-                  <Row
-                    css={{
-                      justifyContent: 'space-between',
-                      justifyItems: 'center',
-                    }}
-                  >
-                    <Text
-                      h4
-                      css={{
-                        fontFamily: 'Ubuntu',
-                        fontWeight: '$normal',
-                        color: '$gray600',
-                        textAlign: 'center',
-                      }}
-                      color="gray"
-                    >
-                      Type:
-                    </Text>
-                    <Text
-                      h3
-                      css={{
-                        fontFamily: 'Ubuntu',
-                        fontWeight: '$medium',
-                        color: _colorSetByCategoryType(product.category),
-                      }}
-                      color="gray"
-                    >
-                      {product.type}
-                    </Text>
-                  </Row>
-                  <Spacer x={1} />
-                </Grid>
-              </>
-            )}
+            <Grid xs={12} sm={12} lg={12} md={12} xl={12}>
+              <Row
+                css={{
+                  justifyContent: 'space-between',
+                  justifyItems: 'center',
+                }}
+              >
+                <Text
+                  h4
+                  css={{
+                    fontFamily: 'Ubuntu',
+                    fontWeight: '$normal',
+                    color: '$gray600',
+                  }}
+                >
+                  Category:
+                </Text>
+                <Text
+                  h3
+                  css={{
+                    fontFamily: 'Ubuntu',
+                    fontWeight: '$medium',
+                    color: _colorSetByCategoryType(product.category),
+                  }}
+                  color="gray"
+                >
+                  {product.category}
+                </Text>
+              </Row>
+              <Spacer x={1} />
+            </Grid>
+            <Grid xs={12} sm={12} lg={12} md={12} xl={12}>
+              <Row
+                css={{
+                  justifyContent: 'space-between',
+                  justifyItems: 'center',
+                }}
+              >
+                <Text
+                  h4
+                  css={{
+                    fontFamily: 'Ubuntu',
+                    fontWeight: '$normal',
+                    color: '$gray600',
+                    textAlign: 'center',
+                  }}
+                  color="gray"
+                >
+                  Type:
+                </Text>
+                <Text
+                  h3
+                  css={{
+                    fontFamily: 'Ubuntu',
+                    fontWeight: '$medium',
+                    color: _colorSetByCategoryType(product.category),
+                  }}
+                  color="gray"
+                >
+                  {product.type}
+                </Text>
+              </Row>
+              <Spacer x={1} />
+            </Grid>
             {product.category !== 'Food' && (
               <SizeSection
                 setItemCount={setItemCount}

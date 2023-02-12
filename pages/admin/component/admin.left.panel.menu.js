@@ -4,9 +4,11 @@ import { useEffect } from 'react';
 import ViewListIcon from '@mui/icons-material/ViewList';
 import GroupsIcon from '@mui/icons-material/Groups';
 import InventoryIcon from '@mui/icons-material/Inventory';
+import { useSelector } from 'react-redux';
 
 const AdminLeftPanelMenu = () => {
   const router = useRouter();
+  const userInfo = useSelector((state) => state.user.userInfo);
   const menu = [
     {
       menuTab: 'User List',
@@ -52,10 +54,10 @@ const AdminLeftPanelMenu = () => {
       justify="flex-start"
       alignContent="flex-start"
       css={{
-        marginTop: '1.2rem',
+        marginTop: '.5rem',
         '@xs': {
-          marginTop: '1.2rem',
-          marginBottom: '1.2rem',
+          marginTop: '.5rem',
+          marginBottom: '.2rem',
         },
       }}
     >
@@ -80,9 +82,11 @@ const AdminLeftPanelMenu = () => {
               iconLeftCss={{
                 margin: '0 auto',
               }}
-              onPress={() =>
-                router.push(item.url, undefined, { shallow: 'true' })
-              }
+              onPress={() => {
+                userInfo.isAdmin
+                  ? router.push(item.url, undefined, { shallow: 'true' })
+                  : router.push('/', undefined, { shallow: 'true' });
+              }}
               css={{
                 backgroundColor:
                   router.pathname === item.url ? 'Red' : 'transparent',
