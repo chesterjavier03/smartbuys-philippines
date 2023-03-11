@@ -27,8 +27,25 @@ export const registerUser = createAsyncThunk(
     const { redirect } = router.query;
     try {
       const { data } = await axios.post('/api/users/register', values);
-      dispatch(successGlobal(`Welcome ${data.name}`));
+      dispatch(successGlobal(`User ${data.name} created!`));
       router.push(redirect || '/', undefined, { shallow: true });
+      return data;
+    } catch (error) {
+      dispatch(errorGlobal(error.response.data.message));
+      throw error;
+    }
+  }
+);
+
+export const fetchOrderList = createAsyncThunk(
+  'user/fetchOrderList',
+  async (userToken, { dispatch }) => {
+    try {
+      const { data } = await axios.get('/api/orders/history', {
+        headers: {
+          authorization: `Bearer ${userToken}`,
+        },
+      });
       return data;
     } catch (error) {
       dispatch(errorGlobal(error.response.data.message));

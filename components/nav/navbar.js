@@ -113,7 +113,7 @@ const NavBar = ({
               style={{
                 cursor: 'pointer',
                 color: 'white',
-                fontSize: '1.5rem',
+                fontSize: '2rem',
                 margin: '0 auto',
               }}
             />
@@ -149,6 +149,7 @@ const NavBar = ({
         isAuth={isAuth}
         handleSelected={handleSelected}
         userInfo={userInfo}
+        cartItems={cartItems}
       />
       <Navbar.Collapse>
         {collapseItems.map((item) => (
@@ -163,6 +164,10 @@ const NavBar = ({
                 minWidth: '100%',
               }}
               href={item.url}
+              onClick={() => {
+                document.body?.scrollTo(0, 0), [];
+                router.push(item.url, undefined, { shallow: true });
+              }}
             >
               {item.name}
             </Link>

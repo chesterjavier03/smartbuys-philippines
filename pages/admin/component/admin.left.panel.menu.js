@@ -36,11 +36,11 @@ const AdminLeftPanelMenu = () => {
     },
     {
       menuTab: 'Order History',
-      url: '/user/order-history',
+      url: '/admin/order-history',
       icon: (
         <ViewListIcon
           style={{
-            color: router.pathname === '/user/order-history' ? 'White' : 'Red',
+            color: router.pathname === 'admin/order-history' ? 'White' : 'Red',
             fontSize: '2rem',
           }}
         />

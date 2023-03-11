@@ -26,6 +26,7 @@ const EditProductModal = ({
   setValue,
   imageSet,
   setImageSet,
+  setImageFile,
 }) => {
   const { enqueueSnackbar } = useSnackbar();
   const [isLoading] = useState(false);
@@ -50,6 +51,7 @@ const EditProductModal = ({
     const bodyFormData = new FormData();
     bodyFormData.append('file', file);
     const result = await convertToBase64(file);
+    setImageFile(file);
     setImageSet(result.split(',')[1]);
     bodyFormData.append('base64', result.split(',')[1]);
     try {
@@ -70,16 +72,19 @@ const EditProductModal = ({
   };
   return (
     <Modal
-      width="55vw"
-      noPadding
       blur
-      animated
-      autoMargin
+      width="66vw"
+      fullWidth="true"
+      noPadding="true"
+      justify="center"
+      animated="true"
+      autoMargin="true"
       open={visible}
       onClose={closeHandler}
     >
       <Modal.Body>
         <Card
+          justify="center"
           css={{
             borderColor: 'red',
             borderWidth: 'thin',
@@ -96,7 +101,15 @@ const EditProductModal = ({
                 responsive
                 alignItems="center"
               >
-                <Text h1 color={'Red'} css={{ margin: '0 auto' }}>
+                <Text
+                  h1
+                  color={'Red'}
+                  css={{
+                    margin: '0 auto',
+                    fontSize: '2.5rem',
+                    '@xs': { fontSize: '3rem' },
+                  }}
+                >
                   Edit Product
                 </Text>
               </Container>

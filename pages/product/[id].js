@@ -76,6 +76,8 @@ const ProductDetails = () => {
       });
       // router.push('/cart', undefined, { shallow: true });
     }
+    setItemCount(1);
+    setSelectedSize(null);
   };
 
   if (!product) {
@@ -376,8 +378,8 @@ const ProductDetails = () => {
                 >
                   Add to Cart
                 </Button>
-                <Spacer x={0.5} />
-                <Button
+                {/* <Spacer x={0.5} /> */}
+                {/* <Button
                   auto
                   size="lg"
                   type="button"
@@ -396,7 +398,7 @@ const ProductDetails = () => {
                   }}
                 >
                   Buy Now
-                </Button>
+                </Button> */}
               </Row>
             </Grid>
           </Grid.Container>

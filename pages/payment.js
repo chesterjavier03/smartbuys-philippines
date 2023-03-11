@@ -54,16 +54,16 @@ const Payment = () => {
   return (
     <Card
       css={{
-        width: '100vw',
+        width: '100%',
         backgroundColor: '$backgroundAlpha',
         border: '1px solid red',
-        marginTop: '1.2rem',
-        marginBottom: '1.2rem',
+        marginTop: '1rem',
+        marginBottom: '1rem',
         '@xs': {
           marginTop: '1.2rem',
           marginRight: '.5rem',
           marginBottom: '1.2rem',
-          width: '100vw',
+          width: '100%',
         },
       }}
       isHoverable
@@ -80,41 +80,6 @@ const Payment = () => {
             </Text>
           </Card.Header>
           <Card.Body>
-            {/* <FormControl component="fieldset"> */}
-            {/* <Grid.Container gap={1} lg={12} xs={12}>
-                <Grid lg={6} xs={12} fullWidth>
-                  <Card
-                    css={{
-                      backgroundColor: '$backgroundAlpha',
-                      border: '1px solid red',
-                      '@xs': {},
-                    }}
-                    isHoverable
-                    variant="bordered"
-                    borderWeight="normal"
-                  >
-                    <Text h2 color="$blue500">
-                      PayPal
-                    </Text>
-                  </Card>
-                </Grid>
-                <Grid lg={6} xs={12} fullWidth>
-                  <Card
-                    css={{
-                      backgroundColor: '$backgroundAlpha',
-                      border: '1px solid red',
-                      '@xs': {},
-                    }}
-                    isHoverable
-                    variant="bordered"
-                    borderWeight="normal"
-                  >
-                    <Text h2 color="Orange">
-                      Cash
-                    </Text>
-                  </Card>
-                </Grid>
-              </Grid.Container> */}
             <Grid.Container gap={2} justify="center">
               <Grid xs={12} lg={3}>
                 <Card
@@ -127,7 +92,9 @@ const Payment = () => {
                     }`,
                     border: '1px solid red',
                     h: '20vh',
-                    '@xs': {},
+                    '@xs': {
+                      h: '20vh',
+                    },
                     justifyContent: 'center',
                   }}
                   isHoverable
@@ -152,7 +119,9 @@ const Payment = () => {
                     }`,
                     border: '1px solid red',
                     h: '20vh',
-                    '@xs': {},
+                    '@xs': {
+                      h: '20vh',
+                    },
                     justifyContent: 'center',
                   }}
                   isHoverable
@@ -174,32 +143,11 @@ const Payment = () => {
                 </Card>
               </Grid>
             </Grid.Container>
-
-            {/* <RadioGroup
-                aria-label="Payment Method"
-                name="paymentMethod"
-                value={paymentMethod}
-                onChange={(e) => setPaymentMethod(e.target.value)}
-              >
-                <FormControlLabel
-                  style={{ color: 'Black', fontSize: '2rem' }}
-                  label="PayPal"
-                  value="PayPal"
-                  control={<Radio />}
-                ></FormControlLabel>
-                <FormControlLabel
-                  style={{ color: 'Black', fontSize: '2rem' }}
-                  label="Cash"
-                  value="Cash"
-                  control={<Radio />}
-                ></FormControlLabel>
-              </RadioGroup> */}
-            {/* </FormControl> */}
           </Card.Body>
           <Card.Footer>
             <Grid lg={12} xs={12} justify="center">
               <Box>
-                <Row align="center">
+                <Row align="center" justify="center">
                   <Button
                     variant="contained"
                     fullWidth
@@ -211,6 +159,10 @@ const Payment = () => {
                       backgroundColor: 'Orange',
                       color: '$accents9',
                       border: '1px solid Brown',
+                      minWidth: '10.5rem',
+                      '@xs': {
+                        minWidth: '15rem',
+                      },
                     }}
                     onClick={() =>
                       router.push('/shipping', undefined, { shallow: 'true' })
@@ -232,6 +184,10 @@ const Payment = () => {
                       backgroundColor: 'Red',
                       color: 'White',
                       border: '1px solid Brown',
+                      minWidth: '10.5rem',
+                      '@xs': {
+                        minWidth: '15rem',
+                      },
                     }}
                     onClick={() => {
                       if (paymentMethod) {
@@ -245,7 +201,7 @@ const Payment = () => {
               </Box>
             </Grid>
           </Card.Footer>
-          <Spacer y={4} />
+          <Spacer y={2} />
         </form>
       </Grid>
     </Card>

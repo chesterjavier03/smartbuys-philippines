@@ -26,6 +26,7 @@ export const getServerSideProps = async () => {
     await db.disconnect();
     return { props: { products: toJson(items) } };
   } catch (error) {
+    await db.disconnect();
     return { props: { products: [] } };
   }
 };

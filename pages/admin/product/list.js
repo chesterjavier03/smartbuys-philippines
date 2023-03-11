@@ -9,48 +9,61 @@ import {
   Spacer,
   Text,
 } from '@nextui-org/react';
-import axios from 'axios';
 import Filter from 'components/filter';
-import db from 'database/db';
-import Product from 'models/product';
 import { useRouter } from 'next/router';
 import { useSnackbar } from 'notistack';
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { useSelector } from 'react-redux';
-import { toJson } from 'utils/functions';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  adminDeleteProduct,
+  adminFetchProductList,
+  adminFilterProductListByCategory,
+  adminFilterProductListByType,
+} from 'store/actions/admin.actions';
+import { createNewProduct, updateProduct } from 'store/actions/product.actions';
+import {
+  adminAddProduct,
+  adminRemoveProduct,
+} from 'store/reducers/admin.reducer';
 import AdminLeftPanelMenu from '../component/admin.left.panel.menu';
 import CreateProductModal from './component/create.product.modal';
 import EditProductModal from './component/edit.product.modal';
 
-const ProductList = ({ products }) => {
+const ProductList = () => {
   const router = useRouter();
+  const dispatch = useDispatch();
   const userInfo = useSelector((state) => state.user.userInfo);
-  const loading = useSelector((state) => state.user.loading);
+  const userToken = userInfo.token;
+  const adminLoading = useSelector((state) => state.admin.loading);
+  const productList = useSelector((state) => state.admin.products);
   const [visible, setVisible] = useState(false);
   const [newProductVisible, setNewProductVisible] = useState(false);
   const {
     handleSubmit,
     control,
     formState: { errors },
+    getValues,
     setValue,
+    reset,
   } = useForm();
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
   const [imageSet, setImageSet] = useState('');
-  const [productList, setProductList] = useState([]);
+  const [imageFile, setImageFile] = useState('');
   const categoryList = ['Girls', 'Boys', 'Food'];
   const typeList = ['Shirt', 'Jogger', 'Dress', 'Sando', 'Terno', 'Shorts'];
   const [isPressed, setIsPressed] = useState(false);
 
   useEffect(() => {
-    setProductList(products);
     if (!userInfo) {
       router.push('/', undefined, { shallow: 'true' });
     }
+    dispatch(adminFetchProductList(userToken));
   }, []);
 
   const handler = (product) => {
     setVisible(true);
+    setValue('productId', product._id);
     setValue('productName', product.name);
     setValue('productDescription', product.description);
     setValue('productCategory', product.category);
@@ -73,57 +86,73 @@ const ProductList = ({ products }) => {
     setVisible(false);
   };
 
-  const submitHandler = async ({ email, isAdmin }) => {
+  const submitCreateNewProductHandler = async () => {
     closeSnackbar();
     try {
-      const values = {
-        email,
-        isAdmin,
-      };
-      axios.put('/api/admin/update-product', values, {
-        headers: { authorization: `Bearer ${userInfo.token}` },
-      });
-      enqueueSnackbar('Product successfully updated!', { variant: 'success' });
+      const formData = new FormData();
+      formData.append('file', imageFile);
+      formData.append('name', getValues('newProductName'));
+      formData.append('category', getValues('newProductCategory'));
+      formData.append('type', getValues('newProductType'));
+      formData.append('price', getValues('newProductPrice'));
+      formData.append('description', getValues('newProductDescription'));
+      const userToken = userInfo.token;
+      dispatch(createNewProduct({ formData, userToken }));
+      dispatch(adminAddProduct(formData));
       setVisible(false);
-      router.push('/admin/product-list');
+      closeNewProductHandler();
+      reset();
+      router.push('/admin/product/list');
+    } catch (error) {
+      enqueueSnackbar(error, { variant: 'error' });
+    }
+  };
+
+  const submitEditProductHandler = async () => {
+    closeSnackbar();
+    try {
+      const formData = new FormData();
+      formData.append('_id', getValues('productId'));
+      if (imageFile.trim().length !== 0 || imageFile.trim() !== '') {
+        formData.append('file', imageFile);
+      }
+      formData.append('name', getValues('productName'));
+      formData.append('category', getValues('productCategory'));
+      formData.append('type', getValues('productType'));
+      formData.append('price', getValues('productPrice'));
+      formData.append('description', getValues('productDescription'));
+      const userToken = userInfo.token;
+      dispatch(updateProduct({ formData, userToken }));
+      setVisible(false);
+      closeNewProductHandler();
+      reset();
+      router.push('/admin/product/list');
+    } catch (error) {
+      enqueueSnackbar(error, { variant: 'error' });
+    }
+  };
+
+  const deleteProductHandler = async (product) => {
+    closeSnackbar();
+    try {
+      const productName = product.name;
+      dispatch(adminDeleteProduct({ productName, userToken }));
+      dispatch(adminRemoveProduct(product));
     } catch (error) {
       enqueueSnackbar(error, { variant: 'error' });
     }
   };
 
   const filterByType = async (type) => {
-    axios
-      .get(`/api/products/filter/byType?type=${type}`)
-      .then((response) => {
-        setProductList(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-        setProductList([]);
-      });
+    dispatch(adminFilterProductListByType({ type, userToken }));
   };
 
   const filterByCategory = async (category) => {
-    axios
-      .get(`/api/products/filter/byCategory?category=${category}`)
-      .then((response) => {
-        setProductList(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-        setProductList([]);
-      });
+    dispatch(adminFilterProductListByCategory({ category, userToken }));
   };
 
   const fetchAll = async () => {
-    axios
-      .get('/api/products')
-      .then((response) => {
-        setProductList(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    dispatch(adminFetchProductList(userToken));
   };
 
   return (
@@ -170,7 +199,7 @@ const ProductList = ({ products }) => {
         </Col>
       </Grid>
       <Grid xl={9} lg={9} md={9} xs={12} sm={9}>
-        {loading ? (
+        {adminLoading ? (
           <Grid.Container
             fluid="true"
             responsive="true"
@@ -320,6 +349,7 @@ const ProductList = ({ products }) => {
                                 backgroundColor: 'Red',
                                 color: 'White',
                               }}
+                              onPress={() => deleteProductHandler(product)}
                             >
                               Delete
                             </Button>
@@ -334,23 +364,25 @@ const ProductList = ({ products }) => {
               visible={visible}
               closeHandler={closeHandler}
               handler={handler}
-              handleSubmit={handleSubmit(submitHandler)}
+              handleSubmit={handleSubmit(submitEditProductHandler)}
               control={control}
               errors={errors}
               setValue={setValue}
               imageSet={imageSet}
               setImageSet={setImageSet}
+              setImageFile={setImageFile}
             />
             <CreateProductModal
               newProductVisible={newProductVisible}
               closeNewProductHandler={closeNewProductHandler}
               newProductHandler={newProductHandler}
-              handleSubmit={handleSubmit(submitHandler)}
+              handleSubmit={handleSubmit(submitCreateNewProductHandler)}
               control={control}
               errors={errors}
               setValue={setValue}
               imageSet={imageSet}
               setImageSet={setImageSet}
+              setImageFile={setImageFile}
             />
           </>
         )}
@@ -361,10 +393,10 @@ const ProductList = ({ products }) => {
 
 export default ProductList;
 
-export const getServerSideProps = async () => {
-  await db.connect();
-  const productList = await Product.find({}).lean();
-  await db.disconnect();
+// export const getServerSideProps = async () => {
+//   await db.connect();
+//   const productList = await Product.find({}).lean();
+//   await db.disconnect();
 
-  return { props: { products: toJson(productList) } };
-};
+//   return { props: { products: toJson(productList) } };
+// };

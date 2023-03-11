@@ -21,9 +21,11 @@ handler.post(async (req, res) => {
         isAdmin: user.isAdmin,
       });
     } else {
+      await db.disconnect();
       res.status(401).send({ message: 'Invalid email or password' });
     }
   } catch (error) {
+    await db.disconnect();
     res.status(400).json({ message: 'Try again later', error: error });
   }
 });

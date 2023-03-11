@@ -3,10 +3,11 @@ import {
   Text,
   Spacer,
   Divider,
-  Image,
   Button,
   Link,
+  Card,
 } from '@nextui-org/react';
+import { appCostCalculator } from 'database/data';
 
 const AppCostCalculator = () => {
   return (
@@ -89,36 +90,17 @@ const AppCostCalculator = () => {
       </Grid>
       <Spacer y={3} />
       <Grid.Container gap={1} justify="space-between">
-        <Grid xs={12} sm={4} lg={4} md={4} xl={4} justify="center">
-          <Image
-            showSkeleton
-            src="/static/devices/android.webp"
-            width="50%"
-            height="100%"
-            objectFit="contain"
-            alt="SmartBuys Philippines Android App"
-          />
-        </Grid>
-        <Grid xs={12} sm={4} lg={4} md={4} xl={4} justify="center">
-          <Image
-            showSkeleton
-            src="/static/devices/mac.webp"
-            width="100%"
-            height="100%"
-            objectFit="contain"
-            alt="SmartBuys Philippines Desktop App"
-          />
-        </Grid>
-        <Grid xs={12} sm={4} lg={4} md={4} xl={4} justify="center">
-          <Image
-            showSkeleton
-            src="/static/devices/ios.webp"
-            width="50%"
-            height="100%"
-            objectFit="contain"
-            alt="SmartBuys Philippines iOS"
-          />
-        </Grid>
+        {appCostCalculator.map((app) => (
+          <Grid key={app} xs={12} sm={4} lg={4} md={4} xl={4} justify="center">
+            <Card
+              isHoverable
+              css={{ backgroundColor: 'transparent', cursor: 'pointer' }}
+              variant="shadow"
+            >
+              {app.image}
+            </Card>
+          </Grid>
+        ))}
       </Grid.Container>
       <Spacer y={6.5} />
       <Grid xs={12} sm={12} lg={12} md={12} xl={12} justify="center">

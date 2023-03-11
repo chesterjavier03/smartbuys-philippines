@@ -51,25 +51,31 @@ const WeDo = () => {
           >
             <Col key={weDo.name}>
               <Spacer y={1} />
-              <Container
-                key={weDo.name}
-                css={{
-                  borderStyle: 'solid',
-                  borderRadius: '$rounded',
-                  borderColor: `${weDo.color}`,
-                  borderWidth: 'medium',
-                  height: '8rem',
-                  width: '8.5rem',
-                  position: 'relative',
-                }}
-                justify="center"
-                alignContent="center"
-                alignItems="center"
-                fluid
-                responsive
+              <Card
+                isHoverable
+                css={{ backgroundColor: 'transparent', cursor: 'pointer' }}
+                variant="shadow"
               >
-                {weDo.icon}
-              </Container>
+                <Container
+                  key={weDo.name}
+                  css={{
+                    borderStyle: 'solid',
+                    borderRadius: '$rounded',
+                    borderColor: `${weDo.color}`,
+                    borderWidth: 'medium',
+                    height: '8rem',
+                    width: '8.5rem',
+                    position: 'relative',
+                  }}
+                  justify="center"
+                  alignContent="center"
+                  alignItems="center"
+                  fluid
+                  responsive
+                >
+                  {weDo.icon}
+                </Container>
+              </Card>
               <Spacer y={1} />
               <Card
                 css={{

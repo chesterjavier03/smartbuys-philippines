@@ -124,7 +124,14 @@ const Layout = ({ title, description, children }) => {
         router.push('/user/profile', undefined, { shallow: 'true' });
         return;
       case 'order-history':
-        router.push('/user/order-history', undefined, { shallow: 'true' });
+        router.push(
+          {
+            pathname: '/user/order-history',
+            query: { email: JSON.stringify(userInfo.email) },
+          },
+          '/user/order-history'
+        );
+        // router.push('/user/order-history', undefined, { shallow: 'true' });
         return;
       case 'shipping-address':
         router.push('/user/shipping-address', undefined, { shallow: 'true' });

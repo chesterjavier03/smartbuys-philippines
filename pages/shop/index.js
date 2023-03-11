@@ -7,6 +7,7 @@ import { useSnackbar } from 'notistack';
 import Filter from 'components/filter';
 import { useDispatch, useSelector } from 'react-redux';
 import { cartAddItem } from 'store/reducers/user.reducer';
+import { moneyFormat } from 'utils/functions';
 
 const Shop = ({ products }) => {
   const router = useRouter();
@@ -227,7 +228,7 @@ const Shop = ({ products }) => {
                                 fontSize: '$xl',
                               }}
                             >
-                              ₱ {product.price}
+                              {moneyFormat(product.price)}
                             </Text>
                           </Col>
                           <Col span={2} css={{ cursor: 'pointer' }}>

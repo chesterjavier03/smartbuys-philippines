@@ -12,6 +12,7 @@ handler.get('/api/products/getAll', async (req, res) => {
     await db.disconnect();
     res.status(200).json(productList);
   } catch (error) {
+    await db.disconnect();
     res.status(400).json({ message: 'Try again later', error: error });
   }
 });
@@ -25,6 +26,7 @@ handler.get('/api/products/filter/byCategory', async (req, res) => {
     await db.disconnect();
     res.status(200).json(products);
   } catch (error) {
+    await db.disconnect();
     res.status(400).json({ message: 'Try again later', error: error });
   }
 });
@@ -36,6 +38,7 @@ handler.get('/api/products/filter/byType', async (req, res) => {
     await db.disconnect();
     res.status(200).json(products);
   } catch (error) {
+    await db.disconnect();
     res.status(400).json({ message: 'Try again later', error: error });
   }
 });
@@ -47,6 +50,7 @@ handler.get('/api/products/', async (req, res) => {
     await db.disconnect();
     res.status(200).json(product);
   } catch (error) {
+    await db.disconnect();
     res.status(400).json({ message: 'Try again later', error: error });
   }
 });

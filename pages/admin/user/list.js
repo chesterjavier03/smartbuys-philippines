@@ -1,4 +1,3 @@
-import { TextField } from '@mui/material';
 import {
   Button,
   Card,
@@ -6,29 +5,39 @@ import {
   Container,
   Grid,
   Loading,
-  Modal,
   Row,
   Spacer,
-  Switch,
   Text,
+  Tooltip,
 } from '@nextui-org/react';
 import axios from 'axios';
-import db from 'database/db';
-import User from 'models/user';
 import { useRouter } from 'next/router';
 import { useSnackbar } from 'notistack';
 import { useEffect, useState } from 'react';
-import { Controller, useForm } from 'react-hook-form';
-import { useSelector } from 'react-redux';
-import { toJson } from 'utils/functions';
+import { useForm } from 'react-hook-form';
+import { useDispatch, useSelector } from 'react-redux';
 import AdminLeftPanelMenu from '../component/admin.left.panel.menu';
+import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import EditUserModal from './component/edit-user';
+import CreateUserModal from './component/create-user';
+import {
+  errorGlobal,
+  successGlobal,
+} from 'store/reducers/notifications.reducer';
+import { adminFetchUserList } from 'store/actions/admin.actions';
+import { adminAddUser, adminRemoveUser } from 'store/reducers/admin.reducer';
 
-const UserList = ({ users }) => {
+const UserList = () => {
   const router = useRouter();
+  const dispatch = useDispatch();
   const userInfo = useSelector((state) => state.user.userInfo);
   const loading = useSelector((state) => state.user.loading);
-  const [visible, setVisible] = useState(false);
+  const userList = useSelector((state) => state.admin.users);
+  const [visibleEditUserModal, setVisibleEditUserModal] = useState(false);
+  const [visibleCreateUserModal, setVisibleCreateUserModal] = useState(false);
   const {
+    reset,
     handleSubmit,
     control,
     formState: { errors },
@@ -36,38 +45,96 @@ const UserList = ({ users }) => {
   } = useForm();
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
 
-  const handler = (user) => {
-    setVisible(true);
+  const editUserModalhandler = (user) => {
+    setVisibleEditUserModal(true);
     setValue('name', user?.name);
     setValue('email', user?.email);
     setValue('isAdmin', user?.isAdmin);
   };
 
-  const closeHandler = () => {
-    setVisible(false);
+  const createUserModalhandler = () => {
+    setVisibleCreateUserModal(true);
+  };
+
+  const closeEditUserModalHandler = () => {
+    setVisibleEditUserModal(false);
+  };
+
+  const closeCreateUserModalHandler = () => {
+    setVisibleCreateUserModal(false);
   };
 
   useEffect(() => {
     if (!userInfo) {
       router.push('/', undefined, { shallow: 'true' });
     }
+    dispatch(adminFetchUserList(userInfo.token));
   }, []);
 
-  const submitHandler = async ({ email, isAdmin }) => {
+  const editUserModalSubmitHandler = async ({ email, isAdmin }) => {
     closeSnackbar();
     try {
       const values = {
         email,
         isAdmin,
       };
-      axios.put('/api/admin/update-user', values, {
+      await axios.put('/api/admin/user/update-user', values, {
         headers: { authorization: `Bearer ${userInfo.token}` },
       });
       enqueueSnackbar('Profile successfully updated!', { variant: 'success' });
-      setVisible(false);
+      setVisibleEditUserModal(false);
       router.push('/admin/user/list', undefined, { shallow: 'true' });
     } catch (error) {
       enqueueSnackbar(error, { variant: 'error' });
+    }
+  };
+
+  const deleteUserHandler = async (user) => {
+    closeSnackbar();
+    try {
+      const { data } = await axios.delete(
+        `/api/admin/user/delete-user/${user.email}`,
+        {
+          headers: { authorization: `Bearer ${userInfo.token}` },
+        }
+      );
+      dispatch(successGlobal(data.message));
+      dispatch(adminRemoveUser(user));
+    } catch (error) {
+      enqueueSnackbar(error, { variant: 'error' });
+    }
+  };
+
+  const createUserModalSubmitHandler = async ({
+    newUserName,
+    newUserEmail,
+    newUserPassword,
+    newUserConfirmPassword,
+    newUserIsAdmin,
+  }) => {
+    closeSnackbar();
+    try {
+      if (newUserPassword !== newUserConfirmPassword) {
+        enqueueSnackbar("Password don't match", { variant: 'error' });
+        return;
+      }
+      const values = {
+        name: newUserName,
+        email: newUserEmail,
+        password: newUserPassword,
+        isAdmin: newUserIsAdmin,
+      };
+      const { data } = await axios.post('/api/admin/user/create-user', values, {
+        headers: { authorization: `Bearer ${userInfo.token}` },
+      });
+      dispatch(successGlobal(data.message));
+      dispatch(adminAddUser(values));
+      reset();
+      setVisibleCreateUserModal(false);
+    } catch (error) {
+      reset();
+      setVisibleCreateUserModal(false);
+      dispatch(errorGlobal(error.response.data.message));
     }
   };
 
@@ -118,6 +185,7 @@ const UserList = ({ users }) => {
                     color={'error'}
                     size={'lg'}
                     css={{ borderRadius: '$xs' }}
+                    onPress={() => createUserModalhandler()}
                   >
                     Create New User
                   </Button>
@@ -132,7 +200,7 @@ const UserList = ({ users }) => {
                   '@xs': { marginTop: '.5rem' },
                 }}
               >
-                {users.map((user) => (
+                {userList.map((user) => (
                   <>
                     <Grid
                       xs={6}
@@ -151,242 +219,104 @@ const UserList = ({ users }) => {
                         isHoverable
                         isPressable
                         variant="bordered"
-                        onPress={() => handler(user)}
+                        onPress={() => editUserModalhandler(user)}
                       >
                         <Card.Body
                           css={{
                             height: 'auto',
                             backgroundColor: '$backgroundAlpha',
                             justifyContent: 'center',
+                            align: 'center',
                           }}
                         >
-                          <Row>
-                            <Col align="center">
-                              <Text
-                                h3
-                                css={{
-                                  color: '$gray600',
-                                  fontWeight: '$bold',
-                                }}
-                              >
-                                {user.name}
-                              </Text>
-                              <Text
-                                h4
-                                css={{
-                                  color: '$blue500',
-                                }}
-                              >
-                                {user.email}
-                              </Text>
-                            </Col>
-                          </Row>
+                          <Grid justify="center" align="center">
+                            <Text
+                              css={{
+                                color: '$gray600',
+                                fontWeight: '$bold',
+                                width: user.name > 10 ? '80vw' : 'fit-content',
+                                fontSize: user.name.length > 15 ? '$lg' : '$xl',
+                              }}
+                            >
+                              {user.name}
+                            </Text>
+                          </Grid>
+                          <Grid justify="center" align="center">
+                            <Text
+                              h5
+                              css={{
+                                color: '$blue500',
+                              }}
+                            >
+                              {user.email}
+                            </Text>
+                          </Grid>
+                          <Grid justify="center" align="center">
+                            <Tooltip
+                              content={user.isAdmin ? 'Admin' : 'User'}
+                              color={user.isAdmin ? 'warning' : 'success'}
+                            >
+                              {user.isAdmin ? (
+                                <AdminPanelSettingsIcon
+                                  style={{ color: 'orange', fontSize: '2rem' }}
+                                />
+                              ) : (
+                                <AccountCircleIcon
+                                  style={{
+                                    color: 'LimeGreen',
+                                    fontSize: '2rem',
+                                  }}
+                                />
+                              )}
+                            </Tooltip>
+                          </Grid>
                         </Card.Body>
                         <Card.Footer
                           isBlurred
                           css={{
                             // position: 'absolute',
-                            // bgBlur: 'rgba(0,0,0,0.5)',
+                            bgBlur: 'rgba(0,0,0,0.3)',
                             // borderTop:
-                            //   '$borderWeights$light solid rgba(255, 255, 255, 0.2)',
+                            // '$borderWeights$light solid rgba(255, 255, 255, 0.2)',
                             bottom: 0,
                             zIndex: 1,
                           }}
                         >
                           <Row align="center" justify="center">
-                            <Button auto shadow size="md" color="error">
+                            <Button
+                              auto
+                              size="md"
+                              color="error"
+                              onPress={() => deleteUserHandler(user)}
+                            >
                               Delete
                             </Button>
                           </Row>
                         </Card.Footer>
                       </Card>
                     </Grid>
-                    <Modal
-                      noPadding
-                      blur
-                      animated
-                      autoMargin
-                      open={visible}
-                      onClose={closeHandler}
-                    >
-                      <Modal.Body>
-                        <Card
-                          css={{
-                            borderColor: 'red',
-                            borderWidth: 'thin',
-                          }}
-                          variant="bordered"
-                          onPress={handler}
-                        >
-                          <Card.Body css={{ p: 0 }} autoMargin>
-                            <form onSubmit={handleSubmit(submitHandler)}>
-                              <Card.Header>
-                                <Text
-                                  h1
-                                  color={'Red'}
-                                  css={{ margin: '0 auto' }}
-                                >
-                                  User Details
-                                </Text>
-                              </Card.Header>
-                              <Card.Body>
-                                <Grid
-                                  justify="center"
-                                  css={{
-                                    display: 'flex',
-                                    width: '80%',
-                                    margin: '0 auto',
-                                  }}
-                                >
-                                  <Controller
-                                    name="name"
-                                    control={control}
-                                    render={({ field }) => (
-                                      <TextField
-                                        variant="outlined"
-                                        disabled
-                                        fullWidth
-                                        id="name"
-                                        label="Full Name"
-                                        inputProps={{
-                                          type: 'text',
-                                          readOnly: true,
-                                        }}
-                                        error={Boolean(errors.name)}
-                                        helperText={
-                                          errors.name
-                                            ? errors.name.type === 'minLength'
-                                              ? 'Full name length is more than 2'
-                                              : 'Full name is required'
-                                            : ''
-                                        }
-                                        {...field}
-                                      ></TextField>
-                                    )}
-                                  />
-                                </Grid>
-                                <Spacer y={1} />
-                                <Grid
-                                  justify="center"
-                                  alignContent="center"
-                                  alignItems="center"
-                                  css={{
-                                    display: 'flex',
-                                    margin: '0 auto',
-                                    width: '80%',
-                                  }}
-                                >
-                                  <Controller
-                                    name="email"
-                                    control={control}
-                                    render={({ field }) => (
-                                      <TextField
-                                        variant="outlined"
-                                        fullWidth
-                                        disabled
-                                        id="email"
-                                        label="Email"
-                                        inputProps={{
-                                          type: 'email',
-                                          readOnly: true,
-                                        }}
-                                        error={Boolean(errors.email)}
-                                        helperText={
-                                          errors.email
-                                            ? errors.email.type === 'pattern'
-                                              ? 'Email is not valid'
-                                              : 'Email is required'
-                                            : ''
-                                        }
-                                        {...field}
-                                      ></TextField>
-                                    )}
-                                  />
-                                </Grid>
-                                <Spacer y={1} />
-                                <Grid
-                                  justify="center"
-                                  about="center"
-                                  alignContent="center"
-                                  alignItems="center"
-                                  css={{
-                                    display: 'flex',
-                                    margin: '0 auto',
-                                    width: '80%',
-                                  }}
-                                >
-                                  <Controller
-                                    name="isAdmin"
-                                    control={control}
-                                    render={({
-                                      field: { onChange, value },
-                                    }) => (
-                                      <>
-                                        <Row align="center" justify="center">
-                                          <Switch
-                                            id="isAdmin"
-                                            size="xl"
-                                            css={{
-                                              color: '$accents9',
-                                              '& .nextui-c-itiWTf-bDUxer-checked-true':
-                                                {
-                                                  background:
-                                                    'rgb(255,0,0,1) !important',
-                                                },
-                                            }}
-                                            checked={value}
-                                            onChange={(e) =>
-                                              onChange(e.target.checked)
-                                            }
-                                          />
-                                          <Spacer x={0.5} />
-                                          <Text
-                                            h4
-                                            css={{
-                                              marginTop: '$6',
-                                              color: '$accents7',
-                                            }}
-                                          >
-                                            isAdmin
-                                          </Text>
-                                        </Row>
-                                      </>
-                                    )}
-                                  />
-                                </Grid>
-                              </Card.Body>
-                              <Card.Footer>
-                                <Grid.Container>
-                                  <Grid lg={12} xs={12} sm={12} md={12} xl={12}>
-                                    <Button
-                                      variant="contained"
-                                      fullWidth
-                                      color="primary"
-                                      size={'lg'}
-                                      ripple
-                                      animated
-                                      type="submit"
-                                      css={{
-                                        margin: '0 auto',
-                                        backgroundColor: 'Red',
-                                        color: 'White',
-                                      }}
-                                    >
-                                      Update
-                                    </Button>
-                                  </Grid>
-                                </Grid.Container>
-                              </Card.Footer>
-                              <Spacer y={1} />
-                            </form>
-                          </Card.Body>
-                        </Card>
-                      </Modal.Body>
-                    </Modal>
                   </>
                 ))}
               </Grid.Container>
             </Col>
+            <CreateUserModal
+              visible={visibleCreateUserModal}
+              closeHandler={closeCreateUserModalHandler}
+              handler={createUserModalhandler}
+              handleSubmit={handleSubmit}
+              submitHandler={createUserModalSubmitHandler}
+              control={control}
+              errors={errors}
+            />
+            <EditUserModal
+              visible={visibleEditUserModal}
+              closeHandler={closeEditUserModalHandler}
+              handler={editUserModalhandler}
+              handleSubmit={handleSubmit}
+              submitHandler={editUserModalSubmitHandler}
+              control={control}
+              errors={errors}
+            />
           </>
         )}
       </Grid>
@@ -396,10 +326,10 @@ const UserList = ({ users }) => {
 
 export default UserList;
 
-export const getServerSideProps = async () => {
-  await db.connect();
-  const userList = await User.find({}).lean();
-  await db.disconnect();
+// export const getServerSideProps = async () => {
+//   await db.connect();
+//   const userList = await User.find({}).lean();
+//   await db.disconnect();
 
-  return { props: { users: toJson(userList) } };
-};
+//   return { props: { users: toJson(userList) } };
+// };

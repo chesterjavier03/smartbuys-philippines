@@ -96,6 +96,10 @@ body::after {
   color:green !important;
 }
 
+/* .nextui-backdrop-layer {
+  background: rgba(0, 0, 0, 0.65) !important;
+} */
+
 :root {
   --max-width: 1100px;
   --border-radius: 12px;

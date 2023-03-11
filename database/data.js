@@ -3,6 +3,7 @@ import FastfoodIcon from '@mui/icons-material/Fastfood';
 import HomeIcon from '@mui/icons-material/Home';
 import DeveloperModeIcon from '@mui/icons-material/DeveloperMode';
 import bcrypt from 'bcryptjs';
+import { Image } from '@nextui-org/react';
 
 export const socialData = [
   {
@@ -178,16 +179,68 @@ export const reviewList = [
 export const userSeed = {
   users: [
     {
-      name: 'John',
-      email: 'admin@example.com',
-      password: bcrypt.hashSync('123456'),
+      name: 'SmartBuys Philippines',
+      email: process.env.SUPER_ROOT_USERNAME,
+      password: bcrypt.hashSync(process.env.SUPER_ROOT_PASSWORD || ''),
       isAdmin: true,
     },
     {
-      name: 'Jane',
-      email: 'user@example.com',
-      password: bcrypt.hashSync('123456'),
+      name: 'SmartBuys Philippines Admin',
+      email: process.env.SUPER_ADMIN_USERNAME,
+      password: bcrypt.hashSync(process.env.SUPER_ADMIN_PASSWORD || ''),
       isAdmin: false,
     },
   ],
 };
+
+export const productSeed = {
+  products: [
+    {
+      name: 'Disney Elsa Anna',
+      price: 189,
+      description: 'Disney Elsa Anna Frozen',
+      image: '',
+      category: 'Girls',
+      type: 'Terno',
+    },
+  ],
+};
+
+export const appCostCalculator = [
+  {
+    image: (
+      <Image
+        showSkeleton
+        src="/static/devices/android.webp"
+        width="50%"
+        height="100%"
+        objectFit="contain"
+        alt="SmartBuys Philippines Android App"
+      />
+    ),
+  },
+  {
+    image: (
+      <Image
+        showSkeleton
+        src="/static/devices/mac.webp"
+        width="100%"
+        height="100%"
+        objectFit="contain"
+        alt="SmartBuys Philippines Desktop App"
+      />
+    ),
+  },
+  {
+    image: (
+      <Image
+        showSkeleton
+        src="/static/devices/ios.webp"
+        width="50%"
+        height="100%"
+        objectFit="contain"
+        alt="SmartBuys Philippines iOS"
+      />
+    ),
+  },
+];

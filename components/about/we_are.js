@@ -1,4 +1,4 @@
-import { Grid, Image, Spacer, Text, Divider } from '@nextui-org/react';
+import { Grid, Spacer, Text, Divider, Card } from '@nextui-org/react';
 import { weAreProductList } from 'database/data';
 
 const WeAre = () => {
@@ -42,14 +42,20 @@ const WeAre = () => {
             xl={2}
             align="center"
           >
-            <Image
-              priority="true"
-              src={productData.image}
-              width={productData.width}
-              height={productData.height}
-              objectFit="contain"
-              alt={productData.description}
-            />
+            <Card
+              isHoverable
+              css={{ backgroundColor: 'transparent', cursor: 'pointer' }}
+              variant="shadow"
+            >
+              <Card.Image
+                priority="true"
+                src={productData.image}
+                width={productData.width}
+                height={productData.height}
+                objectFit="contain"
+                alt={productData.description}
+              />
+            </Card>
           </Grid>
         ))}
       </Grid.Container>

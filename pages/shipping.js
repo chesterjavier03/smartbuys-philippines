@@ -61,7 +61,7 @@ const Shipping = () => {
   return (
     <Card
       css={{
-        width: '100vw',
+        width: '100%',
         backgroundColor: '$backgroundAlpha',
         border: '1px solid red',
         marginTop: '1.2rem',
@@ -70,7 +70,7 @@ const Shipping = () => {
           marginTop: '1.2rem',
           marginRight: '.5rem',
           marginBottom: '1.2rem',
-          width: '100vw',
+          width: '100%',
         },
       }}
       isHoverable
@@ -93,7 +93,7 @@ const Shipping = () => {
               about="center"
               alignContent="center"
               alignItems="center"
-              css={{ display: 'flex', margin: '0 auto', width: '100vw' }}
+              css={{ display: 'flex', margin: '0 auto', width: '100%' }}
             >
               <Controller
                 name="fullName"
@@ -129,7 +129,7 @@ const Shipping = () => {
               about="center"
               alignContent="center"
               alignItems="center"
-              css={{ display: 'flex', margin: '0 auto', width: '100vw' }}
+              css={{ display: 'flex', margin: '0 auto', width: '100%' }}
             >
               <Controller
                 name="address"
@@ -165,7 +165,7 @@ const Shipping = () => {
               about="center"
               alignContent="center"
               alignItems="center"
-              css={{ display: 'flex', margin: '0 auto', width: '100vw' }}
+              css={{ display: 'flex', margin: '0 auto', width: '100%' }}
             >
               <Controller
                 name="city"
@@ -201,7 +201,7 @@ const Shipping = () => {
               about="center"
               alignContent="center"
               alignItems="center"
-              css={{ display: 'flex', margin: '0 auto', width: '100vw' }}
+              css={{ display: 'flex', margin: '0 auto', width: '100%' }}
             >
               <Controller
                 name="postalCode"
@@ -237,7 +237,7 @@ const Shipping = () => {
               about="center"
               alignContent="center"
               alignItems="center"
-              css={{ display: 'flex', margin: '0 auto', width: '100vw' }}
+              css={{ display: 'flex', margin: '0 auto', width: '100%' }}
             >
               <Controller
                 name="country"
@@ -268,7 +268,7 @@ const Shipping = () => {
             </Grid>
           </Card.Body>
           <Card.Footer>
-            <Grid.Container>
+            <Grid.Container justify="center">
               <Grid lg={12}>
                 <Button
                   variant="contained"

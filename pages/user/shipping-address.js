@@ -86,12 +86,12 @@ const ShippingAddress = () => {
             </Card.Header>
             <Card.Body>
               <Grid
-                lg={8}
                 justify="center"
-                about="center"
-                alignContent="center"
-                alignItems="center"
-                css={{ display: 'flex', margin: '0 auto', width: '100vw' }}
+                css={{
+                  display: 'flex',
+                  width: '80%',
+                  margin: '0 auto',
+                }}
               >
                 <Controller
                   name="fullName"
@@ -122,12 +122,12 @@ const ShippingAddress = () => {
               </Grid>
               <Spacer y={1} />
               <Grid
-                lg={8}
                 justify="center"
-                about="center"
-                alignContent="center"
-                alignItems="center"
-                css={{ display: 'flex', margin: '0 auto', width: '100vw' }}
+                css={{
+                  display: 'flex',
+                  width: '80%',
+                  margin: '0 auto',
+                }}
               >
                 <Controller
                   name="address"
@@ -158,12 +158,12 @@ const ShippingAddress = () => {
               </Grid>
               <Spacer y={1} />
               <Grid
-                lg={8}
                 justify="center"
-                about="center"
-                alignContent="center"
-                alignItems="center"
-                css={{ display: 'flex', margin: '0 auto', width: '100vw' }}
+                css={{
+                  display: 'flex',
+                  width: '80%',
+                  margin: '0 auto',
+                }}
               >
                 <Controller
                   name="city"
@@ -194,12 +194,12 @@ const ShippingAddress = () => {
               </Grid>
               <Spacer y={1} />
               <Grid
-                lg={8}
                 justify="center"
-                about="center"
-                alignContent="center"
-                alignItems="center"
-                css={{ display: 'flex', margin: '0 auto', width: '100vw' }}
+                css={{
+                  display: 'flex',
+                  width: '80%',
+                  margin: '0 auto',
+                }}
               >
                 <Controller
                   name="postalCode"
@@ -230,12 +230,12 @@ const ShippingAddress = () => {
               </Grid>
               <Spacer y={1} />
               <Grid
-                lg={8}
                 justify="center"
-                about="center"
-                alignContent="center"
-                alignItems="center"
-                css={{ display: 'flex', margin: '0 auto', width: '100vw' }}
+                css={{
+                  display: 'flex',
+                  width: '80%',
+                  margin: '0 auto',
+                }}
               >
                 <Controller
                   name="country"

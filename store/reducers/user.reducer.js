@@ -1,6 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchOrderList } from 'store/actions/cart.actions';
-import { registerUser, signInUser } from 'store/actions/user.actions';
+import {
+  registerUser,
+  signInUser,
+  fetchOrderList,
+} from 'store/actions/user.actions';
 
 const DEFAULT_STATE = {
   loading: false,
@@ -12,6 +15,7 @@ const DEFAULT_STATE = {
     paymentMethod: '',
   },
   auth: false,
+  orders: [],
 };
 
 export const userSlice = createSlice({
@@ -29,6 +33,7 @@ export const userSlice = createSlice({
       state.cart.paymentMethod = DEFAULT_STATE.cart.paymentMethod;
       state.cart.shippingAddress = DEFAULT_STATE.cart.shippingAddress;
       state.auth = DEFAULT_STATE.auth;
+      state.admin = null;
     },
     updateDarkMode: (state, action) => {
       state.darkMode = action.payload;

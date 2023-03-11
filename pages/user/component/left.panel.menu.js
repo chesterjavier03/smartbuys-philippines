@@ -4,9 +4,12 @@ import { useEffect } from 'react';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import ViewListIcon from '@mui/icons-material/ViewList';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
+import { useSelector } from 'react-redux';
 
 const LeftPanelMenu = () => {
   const router = useRouter();
+  const userInfo = useSelector((state) => state.user.userInfo);
+
   const menu = [
     {
       menuTab: 'Profile',
@@ -81,9 +84,17 @@ const LeftPanelMenu = () => {
               iconLeftCss={{
                 margin: '0 auto',
               }}
-              onPress={() =>
-                router.push(item.url, undefined, { shallow: 'true' })
-              }
+              onPress={() => {
+                item.url === '/user/order-history'
+                  ? router.push(
+                      {
+                        pathname: '/user/order-history',
+                        query: { email: JSON.stringify(userInfo.email) },
+                      },
+                      '/user/order-history'
+                    )
+                  : router.push(item.url, undefined, { shallow: 'true' });
+              }}
               css={{
                 backgroundColor:
                   router.pathname === item.url ? 'Red' : 'transparent',

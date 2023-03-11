@@ -24,8 +24,9 @@ const CreateProductModal = ({
   errors,
   imageSet,
   setImageSet,
+  setImageFile,
 }) => {
-  const { enqueueSnackbar } = useSnackbar();
+  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
   const [isLoading] = useState(false);
 
   useEffect(() => {}, []);
@@ -48,9 +49,29 @@ const CreateProductModal = ({
     const bodyFormData = new FormData();
     bodyFormData.append('file', file);
     const result = await convertToBase64(file);
+    setImageFile(file);
     setImageSet(result.split(',')[1]);
     bodyFormData.append('base64', result.split(',')[1]);
     try {
+      closeSnackbar();
+      // const values = {
+      //   name,
+      //   category: req.body.category,
+      //   type: req.body.type,
+      //   image: req.body.image,
+      //   price: req.body.price,
+      //   description: req.body.description,
+      //   name,
+      //   email,
+      //   password,
+      // };
+      // dispatch(craeteNewProduct({ values, router }));
+      // await axios.post('/api/admin/create-product', bodyFormData, {
+      //   headers: {
+      //     'Content-Type': 'multipart/form-data',
+      //     authorization: `Bearer ${userInfo.token}`,
+      //   },
+      // });
       // dispatch({ type: 'UPLOAD_REQUEST' });
       // await axios.post('/api/admin/upload', bodyFormData, {
       //   headers: {
@@ -68,9 +89,9 @@ const CreateProductModal = ({
   };
   return (
     <Modal
+      blur
       width="55vw"
       noPadding
-      blur
       animated
       autoMargin
       open={newProductVisible}

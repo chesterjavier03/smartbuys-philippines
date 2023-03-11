@@ -11,6 +11,7 @@ handler.get(async (req, res) => {
     await db.disconnect();
     res.status(200).json(product);
   } catch (error) {
+    await db.disconnect();
     res.status(400).json({ message: 'Try again later', error: error });
   }
 });

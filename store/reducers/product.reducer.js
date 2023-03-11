@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 import { fetchOrderList } from 'store/actions/cart.actions';
-import { registerUser, signInUser } from 'store/actions/user.actions';
+import { createNewProduct, updateProduct } from 'store/actions/product.actions';
 
 const DEFAULT_STATE = {
   loading: false,
@@ -12,9 +12,9 @@ export const productSlice = createSlice({
   name: 'product',
   initialState: DEFAULT_STATE,
   reducers: {
-    updateProduct: (state, action) => {
-      state.products = action.payload;
-    },
+    // updateProduct: (state, action) => {
+    //   state.products = action.payload;
+    // },
     deleteProduct: (state, action) => {
       const productList = state.products.filter(
         (item) => item._id !== action.payload._id
@@ -34,26 +34,26 @@ export const productSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(signInUser.pending, (state) => {
+      .addCase(createNewProduct.pending, (state) => {
         state.loading = true;
       })
-      .addCase(signInUser.fulfilled, (state, action) => {
+      .addCase(createNewProduct.fulfilled, (state, action) => {
         state.loading = false;
-        state.userInfo = action.payload;
+        state.products = action.payload;
         state.auth = true;
       })
-      .addCase(signInUser.rejected, (state) => {
+      .addCase(createNewProduct.rejected, (state) => {
         state.loading = false;
       })
-      .addCase(registerUser.pending, (state) => {
+      .addCase(updateProduct.pending, (state) => {
         state.loading = true;
       })
-      .addCase(registerUser.fulfilled, (state, action) => {
+      .addCase(updateProduct.fulfilled, (state, action) => {
         state.loading = false;
-        state.userInfo = action.payload;
+        state.products = action.payload;
         state.auth = true;
       })
-      .addCase(registerUser.rejected, (state) => {
+      .addCase(updateProduct.rejected, (state) => {
         state.loading = false;
       })
       .addCase(fetchOrderList.pending, (state) => {
@@ -70,7 +70,7 @@ export const productSlice = createSlice({
 });
 
 export const {
-  updateProduct,
+  // updateProduct
   deleteProduct,
   createProduct,
   cartClear,

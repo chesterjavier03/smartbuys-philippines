@@ -9,22 +9,25 @@ import {
   Spacer,
   Text,
 } from '@nextui-org/react';
-import db from 'database/db';
-import Order from 'models/order';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import { moneyFormat, toJson } from 'utils/functions';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchOrderList } from 'store/actions/user.actions';
+import { convertBufferToImage, moneyFormat } from 'utils/functions';
 import LeftPanelMenu from './component/left.panel.menu';
 
-const OrderHistory = ({ orders }) => {
+const OrderHistory = () => {
   const router = useRouter();
+  const dispatch = useDispatch();
   const userInfo = useSelector((state) => state.user.userInfo);
+  const orderList = useSelector((state) => state.user.orders);
 
   useEffect(() => {
     if (!userInfo) {
       router.push('/');
     }
+    const userToken = userInfo.token;
+    dispatch(fetchOrderList(userToken));
   }, []);
 
   return (
@@ -67,9 +70,65 @@ const OrderHistory = ({ orders }) => {
               },
             }}
           >
+            {orderList.length === 0 && (
+              <Box
+                display="flex"
+                justifyContent="center"
+                alignItems="center"
+                minHeight="100%"
+                minWidth="100%"
+              >
+                <Grid justify="center" align="center">
+                  <Spacer y={0.4} />
+                  <Text
+                    h1
+                    css={{
+                      textAlign: 'center',
+                      letterSpacing: '$widest',
+                      color: 'rgb(206, 209, 212, .9)',
+                      fontSize: '1.3rem',
+                      '@xs': {
+                        fontSize: '2rem',
+                      },
+                    }}
+                  >
+                    You have not purchased anything yet....
+                  </Text>
+                  <Spacer y={0.4} />
+                  <Text
+                    h1
+                    css={{
+                      color: 'DarkOrange',
+                      textAlign: 'center',
+                      letterSpacing: '$widest',
+                      fontSize: '2.5rem',
+                      '@xs': {
+                        fontSize: '3rem',
+                      },
+                    }}
+                  ></Text>
+                  <Spacer y={0.4} />
+                  <Text
+                    h1
+                    color="error"
+                    css={{
+                      textAlign: 'center',
+                      letterSpacing: '$widest',
+                      color: 'rgb(206, 209, 212, .9)',
+                      fontSize: '1.3rem',
+                      '@xs': {
+                        fontSize: '2rem',
+                      },
+                    }}
+                  >
+                    Don&apos;t miss out on our daily sulit offers!
+                  </Text>
+                </Grid>
+              </Box>
+            )}
             <Col align="start" justify="flex-start">
-              {orders.map((item) =>
-                item.orderItems.map((order) => (
+              {orderList.map((order) =>
+                order.orderItems.map((item) => (
                   <>
                     <Card
                       css={{
@@ -112,22 +171,22 @@ const OrderHistory = ({ orders }) => {
                                 priority
                                 src={
                                   `data:image/webp;base64, ` +
-                                  order.product.image
+                                  convertBufferToImage(item.product.image)
                                 }
                                 autoResize
                                 width={120}
                                 height={180}
                                 objectFit="cover"
-                                alt={order.product.name}
+                                alt={item.product.name}
                                 onClick={() =>
                                   router.push(
                                     {
-                                      pathname: `/product/${order.product._id}`,
+                                      pathname: `/product/${item.product._id}`,
                                       query: {
-                                        product: JSON.stringify(order.product),
+                                        product: JSON.stringify(item.product),
                                       },
                                     },
-                                    `/product/${order.product._id}`
+                                    `/product/${item.product._id}`
                                   )
                                 }
                               />
@@ -153,7 +212,7 @@ const OrderHistory = ({ orders }) => {
                               }}
                               color="gray"
                             >
-                              {order.product.name}
+                              {item.product.name}
                             </Text>
                             <Text
                               h4
@@ -167,15 +226,15 @@ const OrderHistory = ({ orders }) => {
                                 },
                               }}
                             >
-                              {order.product.description}
+                              {item.product.description}
                             </Text>
-                            {order.product.category !== 'Food' && (
+                            {item.product.category !== 'Food' && (
                               <Text
                                 h5
                                 color={
-                                  order.selectedSize === 'large'
+                                  item.selectedSize === 'large'
                                     ? 'warning'
-                                    : order.selectedSize === 'medium'
+                                    : item.selectedSize === 'medium'
                                     ? 'error'
                                     : 'success'
                                 }
@@ -186,21 +245,21 @@ const OrderHistory = ({ orders }) => {
                                   },
                                 }}
                               >
-                                {`${order.selectedSize}`.toUpperCase()}
+                                {`${item.selectedSize}`.toUpperCase()}
                               </Text>
                             )}
                             <Text h4 color="orange">
-                              {moneyFormat(order.product.price)}
+                              {moneyFormat(item.product.price)}
                             </Text>
                           </Grid>
                         </Row>
                         <Row justify="space-around">
                           <Text h3 color="red">
-                            {order.itemCount} pcs
+                            {item.itemCount} pcs
                           </Text>
                           <Text h3 color="orange">
                             ₱
-                            {order.subTotal
+                            {item.subTotal
                               .toFixed(0)
                               .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')}
                           </Text>
@@ -221,13 +280,20 @@ const OrderHistory = ({ orders }) => {
 
 export default OrderHistory;
 
-export const getServerSideProps = async () => {
-  await db.connect();
-  const orderList = await Order.find({})
-    .populate({ path: 'orderItems', populate: 'product' })
-    .lean();
+// export const getServerSideProps = async (context) => {
+//   await db.connect();
+//   if (context.query.email) {
+//     const user = await User.findOne({
+//       email: JSON.parse(context.query.email),
+//     }).lean();
+//     const orderList = await Order.find({ user: user })
+//       .populate({ path: 'orderItems', populate: 'product' })
+//       .populate({ path: 'user', model: User })
+//       .lean();
 
-  await db.disconnect();
+//     await db.disconnect();
 
-  return { props: { orders: toJson(orderList) } };
-};
+//     return { props: { orders: toJson(orderList) } };
+//   }
+//   return { props: { orders: [] } };
+// };

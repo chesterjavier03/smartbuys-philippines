@@ -58,7 +58,7 @@ const ProductList = ({ products }) => {
         email,
         isAdmin,
       };
-      axios.put('/api/admin/update-product', values, {
+      axios.put('/api/admin/product/update-product', values, {
         headers: { authorization: `Bearer ${userInfo.token}` },
       });
       enqueueSnackbar('Product successfully updated!', { variant: 'success' });

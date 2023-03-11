@@ -1,7 +1,18 @@
-import { Avatar, Dropdown, Grid, Navbar, Text } from '@nextui-org/react';
+import {
+  Avatar,
+  Badge,
+  Dropdown,
+  Grid,
+  Link,
+  Navbar,
+  Text,
+} from '@nextui-org/react';
 import MenuIcon from '@mui/icons-material/Menu';
+import ShoppingCart from '@mui/icons-material/ShoppingCart';
+import { useRouter } from 'next/router';
 
-const MobileViewNav = ({ isAuth, handleSelected, userInfo }) => {
+const MobileViewNav = ({ isAuth, handleSelected, userInfo, cartItems }) => {
+  const router = useRouter();
   return (
     <Navbar.Content
       showIn="xs"
@@ -14,7 +25,11 @@ const MobileViewNav = ({ isAuth, handleSelected, userInfo }) => {
     >
       {!isAuth && (
         <Navbar.Item>
-          <Dropdown placement="bottom-left" type="menu">
+          <Dropdown
+            placement="bottom-left"
+            type="menu"
+            onOpenChange={() => document.body?.scrollTo(0, 0)}
+          >
             <Dropdown.Trigger>
               <MenuIcon
                 style={{
@@ -96,7 +111,7 @@ const MobileViewNav = ({ isAuth, handleSelected, userInfo }) => {
               >
                 Contact
               </Dropdown.Item>
-              <Dropdown.Item
+              {/* <Dropdown.Item
                 key="cart"
                 css={{
                   color: 'Gray',
@@ -110,7 +125,7 @@ const MobileViewNav = ({ isAuth, handleSelected, userInfo }) => {
                 }}
               >
                 Cart
-              </Dropdown.Item>
+              </Dropdown.Item> */}
               <Dropdown.Item
                 withDivider
                 key="login"
@@ -272,9 +287,8 @@ const MobileViewNav = ({ isAuth, handleSelected, userInfo }) => {
               >
                 Profile
               </Dropdown.Item>
-              <Dropdown.Item
-                key="shipping-address"
-                color="success"
+              {/* <Dropdown.Item
+                key="cart"
                 css={{
                   color: 'Gray',
                   fontWeight: '$semibold',
@@ -286,40 +300,26 @@ const MobileViewNav = ({ isAuth, handleSelected, userInfo }) => {
                   },
                 }}
               >
-                Shipping Address
-              </Dropdown.Item>
-              <Dropdown.Item
-                key="order-history"
-                color="success"
-                css={{
-                  color: 'Gray',
-                  fontWeight: '$semibold',
-                  backgroundColor: 'transparent',
-                  '&:hover': {
-                    color: 'White',
-                    backgroundColor: 'Red',
-                    fontWeight: '$normal',
-                  },
-                }}
-              >
-                Order History
-              </Dropdown.Item>
-              <Dropdown.Item
-                color="success"
-                key="admin"
-                css={{
-                  color: 'Gray',
-                  fontWeight: '$semibold',
-                  backgroundColor: 'transparent',
-                  '&:hover': {
-                    color: 'White',
-                    backgroundColor: 'Red',
-                    fontWeight: '$normal',
-                  },
-                }}
-              >
-                Admin Dashboard
-              </Dropdown.Item>
+                Cart
+              </Dropdown.Item> */}
+              {userInfo.isAdmin && (
+                <Dropdown.Item
+                  color="success"
+                  key="admin"
+                  css={{
+                    color: 'Gray',
+                    fontWeight: '$semibold',
+                    backgroundColor: 'transparent',
+                    '&:hover': {
+                      color: 'White',
+                      backgroundColor: 'Red',
+                      fontWeight: '$normal',
+                    },
+                  }}
+                >
+                  Admin Dashboard
+                </Dropdown.Item>
+              )}
               <Dropdown.Item
                 key="logout"
                 css={{
@@ -341,6 +341,23 @@ const MobileViewNav = ({ isAuth, handleSelected, userInfo }) => {
           </Dropdown>
         </Grid>
       )}
+      <Link onPress={() => router.push('/cart', undefined, { shallow: true })}>
+        <Badge
+          color="success"
+          content={cartItems.length}
+          isInvisible={cartItems.length === 0}
+        >
+          <ShoppingCart
+            style={{
+              cursor: 'pointer',
+              color: 'white',
+              fontSize: '2rem',
+              margin: '0 auto',
+            }}
+          />
+        </Badge>
+      </Link>
+      <Link />
     </Navbar.Content>
   );
 };

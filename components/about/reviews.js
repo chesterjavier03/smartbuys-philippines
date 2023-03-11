@@ -48,6 +48,7 @@ const Reviews = () => {
                   borderColor: `gold`,
                   borderWidth: 'medium',
                 }}
+                isHoverable
                 isPressable
                 variant="bordered"
               >

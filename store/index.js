@@ -3,8 +3,10 @@ import notificationsReducer from './reducers/notifications.reducer';
 import userReducer from './reducers/user.reducer';
 import { persistReducer, persistStore } from 'redux-persist';
 import thunk from 'redux-thunk';
-import storage from 'redux-persist/lib/storage';
 import orderReducer from './reducers/order.reducer';
+import storage from 'redux-persist/lib/storage';
+import productReducer from './reducers/product.reducer';
+import adminReducer from './reducers/admin.reducer';
 
 // export const store = configureStore({
 //   reducer: {
@@ -21,10 +23,12 @@ const rootReducer = combineReducers({
   user: userReducer,
   notifications: notificationsReducer,
   order: orderReducer,
+  product: productReducer,
+  admin: adminReducer,
 });
 
 const persistConfig = {
-  key: 'root',
+  key: 'smartbuys_root',
   storage,
 };
 

@@ -3,7 +3,7 @@ import Layout from 'components/layout';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { SnackbarProvider } from 'notistack';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import { persistor, store } from '../store/index';
@@ -14,18 +14,47 @@ const App = ({ Component, pageProps }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [showChild, setShowChild] = useState(false);
 
+  const handleCompleteStart = useCallback(() => {
+    setIsLoading(true);
+  }, [setIsLoading]);
+
+  const handleCompleteEnd = useCallback(() => {
+    setIsLoading(false);
+  }, [setIsLoading]);
+
   useEffect(() => {
     setShowChild(true);
-    const handleComplete = () => {
-      setIsLoading(false);
-    };
-    router.events.on('routeChangeComplete', handleComplete);
-    router.events.on('routeChangeError', handleComplete);
+    // router.events.on('routeChangeStart', handleCompleteStart);
+    router.events.on('routeChangeComplete', handleCompleteEnd);
+    router.events.on('routeChangeError', handleCompleteEnd);
+
     return () => {
-      router.events.off('routeChangeComplete', handleComplete);
-      router.events.off('routeChangeError', handleComplete);
+      // router.events.off('routeChangeStart', handleCompleteStart);
+      router.events.off('routeChangeComplete', handleCompleteEnd);
+      router.events.off('routeChangeError', handleCompleteEnd);
     };
-  }, [router]);
+  }, [handleCompleteStart, handleCompleteEnd, router.events]);
+
+  // useEffect(() => {
+  //   setShowChild(true);
+
+  //   const handleComplete = useCallback(() => {
+  //     setIsLoading(false);
+  //   ), };
+
+  //   const handleStart = () => {
+  //     setIsLoading(true);
+  //   };
+
+  //   router.events.on('routeChangeStart', handleStart);
+  //   router.events.on('routeChangeComplete', handleComplete);
+  //   router.events.on('routeChangeError', handleComplete);
+  //   return () => {
+  //     router.events.off('routeChangeStart', handleStart);
+  //     router.events.off('routeChangeComplete', handleComplete);
+  //     router.events.off('routeChangeError', handleComplete);
+  //   };
+  // }, [router]);
 
   if (!showChild) {
     return null;
@@ -42,7 +71,7 @@ const App = ({ Component, pageProps }) => {
         }}
       >
         <Grid>
-          <Loading type="default" size="xl" color={'error'} />
+          <Loading type="points" size="xl" color={'error'} />
         </Grid>
       </Grid.Container>
     );
