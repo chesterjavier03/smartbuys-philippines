@@ -1,4 +1,3 @@
-/** @type {import('next').NextConfig} */
 const nextConfig = {
   swcMinify: true,
   reactStrictMode: true,
@@ -9,6 +8,9 @@ const nextConfig = {
     formats: ['image/webp'],
     minimumCacheTTL: 60,
     domains: ['maps.google.com'],
+  },
+  api: {
+    responseLimit: '8mb',
   },
   experimental: {
     largePageDataBytes: 128 * 100000,
