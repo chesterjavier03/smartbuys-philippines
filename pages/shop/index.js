@@ -23,7 +23,7 @@ const Shop = ({ products }) => {
 
   useEffect(() => {
     setProductList(products);
-  }, []);
+  }, [products]);
 
   const handleItemDetails = (product) => {
     router.push(
