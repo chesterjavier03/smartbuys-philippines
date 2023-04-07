@@ -1,4 +1,12 @@
-import { Spacer, Text, Grid, Divider, Col, Card } from '@nextui-org/react';
+import {
+  Spacer,
+  Text,
+  Grid,
+  Divider,
+  Col,
+  Card,
+  Image,
+} from '@nextui-org/react';
 import { reviewList } from 'database/data';
 
 const Reviews = () => {
@@ -53,7 +61,7 @@ const Reviews = () => {
                 variant="bordered"
               >
                 <Card.Body css={{ p: 0 }}>
-                  <Card.Image
+                  <Image
                     showSkeleton
                     src={review.image}
                     width="100%"

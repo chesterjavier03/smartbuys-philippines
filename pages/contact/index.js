@@ -166,8 +166,7 @@ const Contact = () => {
         <Grid.Container gap={2} justify="space-around" align="center">
           <Grid>
             <Card
-              isHoverable
-              variant="shadow"
+              variant="flat"
               css={{
                 alignItems: 'center !important',
                 backgroundColor: 'transparent',
@@ -199,8 +198,7 @@ const Contact = () => {
           </Grid>
           <Grid>
             <Card
-              isHoverable
-              variant="shadow"
+              variant="flat"
               css={{
                 alignItems: 'center !important',
                 backgroundColor: 'transparent',
@@ -244,8 +242,7 @@ const Contact = () => {
           </Grid>
           <Grid>
             <Card
-              isHoverable
-              variant="shadow"
+              variant="flat"
               css={{
                 alignItems: 'center !important',
                 backgroundColor: 'transparent',

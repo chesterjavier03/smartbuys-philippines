@@ -6,6 +6,7 @@ import {
   Card,
   Text,
   Divider,
+  Image,
 } from '@nextui-org/react';
 import { weDoProductList } from 'database/data';
 
@@ -52,9 +53,8 @@ const WeDo = () => {
             <Col key={weDo.name}>
               <Spacer y={1} />
               <Card
-                isHoverable
                 css={{ backgroundColor: 'transparent', cursor: 'pointer' }}
-                variant="shadow"
+                variant="flat"
               >
                 <Container
                   key={weDo.name}
@@ -89,7 +89,7 @@ const WeDo = () => {
                 variant="bordered"
               >
                 <Card.Body css={{ p: 0 }}>
-                  <Card.Image
+                  <Image
                     showSkeleton
                     src={weDo.image}
                     width="100%"

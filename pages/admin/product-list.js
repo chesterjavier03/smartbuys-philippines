@@ -5,6 +5,7 @@ import {
   Col,
   Container,
   Grid,
+  Image,
   Loading,
   Modal,
   Row,
@@ -171,7 +172,7 @@ const ProductList = ({ products }) => {
                         <Card.Body
                           css={{ p: 0, backgroundColor: 'transparent' }}
                         >
-                          <Card.Image
+                          <Image
                             maxDelay="1000"
                             src={`data:image/webp;base64, ` + product.image}
                             width="100%"

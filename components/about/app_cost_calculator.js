@@ -93,9 +93,8 @@ const AppCostCalculator = () => {
         {appCostCalculator.map((app) => (
           <Grid key={app} xs={12} sm={4} lg={4} md={4} xl={4} justify="center">
             <Card
-              isHoverable
               css={{ backgroundColor: 'transparent', cursor: 'pointer' }}
-              variant="shadow"
+              variant="flat"
             >
               {app.image}
             </Card>

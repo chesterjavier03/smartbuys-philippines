@@ -1,4 +1,13 @@
-import { Button, Card, Col, Grid, Row, Spacer, Text } from '@nextui-org/react';
+import {
+  Button,
+  Card,
+  Col,
+  Grid,
+  Image,
+  Row,
+  Spacer,
+  Text,
+} from '@nextui-org/react';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
@@ -145,7 +154,7 @@ const ProductDetails = () => {
               </Col>
             </Card.Header>
             <Card.Body css={{ p: 0 }}>
-              <Card.Image
+              <Image
                 priority
                 src={`data:image/webp;base64, ` + product.image}
                 height="100%"
