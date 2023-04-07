@@ -24,7 +24,6 @@ const connect = async () => {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   });
-  // console.log('new connection');
   connection.isConnected = db.connections[0].readyState;
 };
 
