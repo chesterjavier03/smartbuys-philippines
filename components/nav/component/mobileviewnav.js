@@ -107,21 +107,6 @@ const MobileViewNav = ({ isAuth, handleSelected, userInfo, cartItems }) => {
               >
                 Contact
               </Dropdown.Item>
-              {/* <Dropdown.Item
-                key="cart"
-                css={{
-                  color: 'Gray',
-                  fontWeight: '$semibold',
-                  backgroundColor: 'transparent',
-                  '&:hover': {
-                    color: 'White',
-                    backgroundColor: 'Red',
-                    fontWeight: '$normal',
-                  },
-                }}
-              >
-                Cart
-              </Dropdown.Item> */}
               <Dropdown.Item
                 withDivider
                 key="login"
@@ -154,11 +139,6 @@ const MobileViewNav = ({ isAuth, handleSelected, userInfo, cartItems }) => {
                 zoomed
                 as="button"
                 size="md"
-                // icon={
-                //   <AccountCircleIcon
-                //     style={{ color: 'Red', fontSize: '2rem' }}
-                //   />
-                // }
                 name={userInfo.name}
                 css={{
                   $$nextUiA: {
@@ -283,21 +263,6 @@ const MobileViewNav = ({ isAuth, handleSelected, userInfo, cartItems }) => {
               >
                 Profile
               </Dropdown.Item>
-              {/* <Dropdown.Item
-                key="cart"
-                css={{
-                  color: 'Gray',
-                  fontWeight: '$semibold',
-                  backgroundColor: 'transparent',
-                  '&:hover': {
-                    color: 'White',
-                    backgroundColor: 'Red',
-                    fontWeight: '$normal',
-                  },
-                }}
-              >
-                Cart
-              </Dropdown.Item> */}
               {userInfo.isAdmin && (
                 <Dropdown.Item
                   color="success"

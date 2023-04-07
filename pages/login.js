@@ -31,7 +31,6 @@ const Login = () => {
       password,
     };
     dispatch(signInUser({ values, router }));
-    // router.push(redirect || '/', undefined, { shallow: true });
   };
 
   useEffect(() => {

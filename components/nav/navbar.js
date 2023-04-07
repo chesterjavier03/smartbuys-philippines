@@ -20,7 +20,6 @@ const NavBar = ({
       variant="floating"
       css={{ zIndex: 201 }}
     >
-      {/* <Navbar.Toggle showIn="xs" aria-label="toggle navigation" css={{}} /> */}
       <Navbar.Brand
         css={{
           '@xs': {

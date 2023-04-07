@@ -13,11 +13,6 @@ const LoggedInNav = ({ userInfo, handleSelected }) => {
             zoomed
             as="button"
             size="md"
-            // icon={
-            //   <AccountCircleIcon
-            //     style={{ color: 'Red', fontSize: '2rem' }}
-            //   />
-            // }
             name={userInfo.name}
             css={{
               $$nextUiA: {
