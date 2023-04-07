@@ -2,8 +2,8 @@ import { Badge, Image, Navbar, Spacer } from '@nextui-org/react';
 import Link from 'next/link';
 import ShoppingCart from '@mui/icons-material/ShoppingCart';
 import { Divider } from '@mui/material';
-import LoggedInNav from './component/loggedinnav';
 import MobileViewNav from './component/mobileviewnav';
+import LoggedInNav from './component/loggedinNav';
 
 const NavBar = ({
   handleSelected,
