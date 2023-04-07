@@ -4,6 +4,12 @@ import nextConnect from 'next-connect';
 
 const handler = nextConnect();
 
+export const config = {
+  api: {
+    responseLimit: false,
+  },
+};
+
 handler.get(async (req, res) => {
   try {
     await db.connect();
