@@ -9,9 +9,6 @@ const nextConfig = {
     minimumCacheTTL: 60,
     domains: ['maps.google.com'],
   },
-  api: {
-    responseLimit: '8mb',
-  },
   experimental: {
     largePageDataBytes: 128 * 100000,
   },
