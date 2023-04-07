@@ -22,12 +22,10 @@ const Shop = ({ products }) => {
   const { enqueueSnackbar } = useSnackbar();
 
   useEffect(() => {
-    // setTimeout(() => setIsLoading(false), 10);
     setProductList(products);
   }, []);
 
   const handleItemDetails = (product) => {
-    // router.push(`/product/${product._id}`);
     router.push(
       {
         pathname: `/product/${product._id}`,
