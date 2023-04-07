@@ -10,9 +10,7 @@ import LeftPanelMenu from './component/left.panel.menu';
 
 const ShippingAddress = () => {
   const userInfo = useSelector((state) => state.user.userInfo);
-  const shippingAddress = useSelector(
-    (state) => state.user.cart.shippingAddress
-  );
+  const shippingAddress = useSelector((state) => state.user.shipping);
   const router = useRouter();
   const dispatch = useDispatch();
   const {

@@ -14,7 +14,7 @@ handler.use(isAuth).get(async (req, res) => {
       .populate({ path: 'user', model: User })
       .lean();
     await db.disconnect();
-    res.status(200).json(orderList);
+    res.status(200).json(orderList.length > 0 ? orderList : []);
   } catch (error) {
     await db.disconnect();
     res.status(400).json({ message: 'Try again later', error: error });

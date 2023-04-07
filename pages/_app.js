@@ -86,7 +86,10 @@ const App = ({ Component, pageProps }) => {
         <Provider store={store}>
           <PersistGate loading={null} persistor={persistor}>
             <Head>
-              <title>SmartBuys Philippines</title>
+              <title>
+                SmartBuys Philippines | Every Smart Filipino Home Essential.
+                Bodega Sale Everyday, All Year Round!
+              </title>
               <meta
                 name="title"
                 content="SmartBuys Philippines | Every Smart Filipino Home Essential. Bodega Sale Everyday, All Year Round!"

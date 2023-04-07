@@ -12,9 +12,8 @@ import TotalDetails from './component/total-details';
 
 const PlaceOrder = () => {
   const router = useRouter();
-  const { shippingAddress, paymentMethod, cartItems } = useSelector(
-    (state) => state.user.cart
-  );
+  const { paymentMethod, cartItems } = useSelector((state) => state.user.cart);
+  const shippingAddress = useSelector((state) => state.user.shipping);
   const userInfo = useSelector((state) => state.user.userInfo);
   const round2 = (num) => Math.round(num * 100 + Number.EPSILON) / 100;
   const itemsPrice = cartItems.reduce((a, v) => (a = a + v.subTotal), 0);

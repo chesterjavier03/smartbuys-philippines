@@ -15,6 +15,7 @@ handler.post(async (req, res) => {
   const newOrder = new Order({
     ...req.body,
     user: req.user._id,
+    shipping: req.body.shippingAddress._id,
   });
   const order = await newOrder.save();
   await db.disconnect();

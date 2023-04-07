@@ -6,13 +6,11 @@ import { useSnackbar } from 'notistack';
 import { useEffect } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
-import { saveShippingAddress } from 'store/reducers/user.reducer';
+import { saveShippingToUser } from 'store/actions/user.actions';
 
 const Shipping = () => {
   const userInfo = useSelector((state) => state.user.userInfo);
-  const shippingAddress = useSelector(
-    (state) => state.user.cart.shippingAddress
-  );
+  const shippingAddress = useSelector((state) => state.user.shipping);
   const router = useRouter();
   const dispatch = useDispatch();
   const {
@@ -33,14 +31,16 @@ const Shipping = () => {
   }) => {
     closeSnackbar();
     try {
-      const shipping = {
+      const shippingAddress = {
         fullName,
         address,
         city,
         postalCode,
         country,
       };
-      dispatch(saveShippingAddress({ shipping, router }));
+      const userToken = userInfo.token;
+      dispatch(saveShippingToUser({ userToken, shippingAddress }));
+      // dispatch(saveShippingAddress({ shipping, router }));
       router.push('/payment', undefined, { shallow: true });
     } catch (error) {
       enqueueSnackbar(error, { variant: 'error' });

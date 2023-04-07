@@ -98,6 +98,7 @@ const Shop = ({ products }) => {
   return (
     <>
       <Grid.Container
+        wrap="wrap"
         css={{
           overflow: 'hidden',
           display: 'flex',

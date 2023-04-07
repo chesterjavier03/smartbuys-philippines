@@ -4,7 +4,6 @@ import {
   NextUIProvider,
   Loading,
 } from '@nextui-org/react';
-import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
@@ -40,7 +39,7 @@ const collapseItems = [
   },
 ];
 
-const Layout = ({ title, description, children }) => {
+const Layout = ({ children }) => {
   const router = useRouter();
   const dispatch = useDispatch();
   const darkMode = useSelector((state) => state.user.darkMode);
@@ -169,12 +168,6 @@ const Layout = ({ title, description, children }) => {
   }
   return (
     <>
-      <Head>
-        <title>
-          {title ? `${title} - SmartBuys Philippines` : 'SmartBuys Philippines'}
-        </title>
-        {description && <meta name="description" content={description} />}
-      </Head>
       <NextUIProvider theme={theme}>
         <NavBar
           handleSelected={handleSelected}

@@ -72,35 +72,33 @@ const Filter = ({
           <Grid.Container gap={0.5} justify="center">
             {categoryList.map((category) => (
               <Grid xs={3} sm={2} md={3} xl={5} lg={5} key={category}>
-                <Col>
-                  <Button
-                    color={'error'}
-                    css={{
-                      cursor: 'pointer',
-                      zIndex: 0,
-                      '&:hover': {
-                        transform: 'translateY(-5px)',
-                        '&:after': {
-                          transform: 'scaleX(1.5) scaleY(1.6)',
-                          opacity: 0,
-                        },
+                <Button
+                  color={'error'}
+                  css={{
+                    cursor: 'pointer',
+                    zIndex: 0,
+                    '&:hover': {
+                      transform: 'translateY(-5px)',
+                      '&:after': {
+                        transform: 'scaleX(1.5) scaleY(1.6)',
+                        opacity: 0,
                       },
-                    }}
-                    auto
-                    key={category}
-                    onPress={() => filterByCategory(category)}
+                    },
+                  }}
+                  auto
+                  key={category}
+                  onPress={() => filterByCategory(category)}
+                >
+                  <Text
+                    h5
+                    color="white"
+                    weight="semibold"
+                    size="$md"
+                    css={{ margin: '0 auto' }}
                   >
-                    <Text
-                      h5
-                      color="white"
-                      weight="semibold"
-                      size="$md"
-                      css={{ margin: '0 auto' }}
-                    >
-                      {category}
-                    </Text>
-                  </Button>
-                </Col>
+                    {category}
+                  </Text>
+                </Button>
               </Grid>
             ))}
           </Grid.Container>

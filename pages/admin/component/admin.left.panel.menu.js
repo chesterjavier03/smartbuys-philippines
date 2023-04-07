@@ -40,7 +40,7 @@ const AdminLeftPanelMenu = () => {
       icon: (
         <ViewListIcon
           style={{
-            color: router.pathname === 'admin/order-history' ? 'White' : 'Red',
+            color: router.pathname === '/admin/order-history' ? 'White' : 'Red',
             fontSize: '2rem',
           }}
         />

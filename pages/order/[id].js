@@ -67,20 +67,6 @@ const OrderData = ({ order }) => {
                     <Grid xs={0} lg={1}>
                       <Spacer x={1} />
                     </Grid>
-                    <Grid lg={3} xs={12}>
-                      <Text h4 color="gray">
-                        Shipping Address
-                      </Text>
-                    </Grid>
-                    <Grid lg={5} xs={12}>
-                      <Text h4 color="$gray600">
-                        {order.shippingAddress?.fullName},{' '}
-                        {order.shippingAddress?.address},{' '}
-                        {order.shippingAddress?.city},{' '}
-                        {order.shippingAddress?.postalCode},{' '}
-                        {order.shippingAddress?.country}
-                      </Text>
-                    </Grid>
                   </Row>
                   <Row align="center" justify="flex-start">
                     <Grid xs={0} lg={1}>

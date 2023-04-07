@@ -25,12 +25,8 @@ const MobileViewNav = ({ isAuth, handleSelected, userInfo, cartItems }) => {
     >
       {!isAuth && (
         <Navbar.Item>
-          <Dropdown
-            placement="bottom-left"
-            type="menu"
-            onOpenChange={() => document.body?.scrollTo(0, 0)}
-          >
-            <Dropdown.Trigger>
+          <Dropdown placement="bottom-left" type="menu">
+            <Dropdown.Trigger onPress={() => document.body?.scrollTo(0, 0)}>
               <MenuIcon
                 style={{
                   width: '2rem',
@@ -149,7 +145,7 @@ const MobileViewNav = ({ isAuth, handleSelected, userInfo, cartItems }) => {
       {isAuth && (
         <Grid>
           <Dropdown placement="bottom-left" type="menu">
-            <Dropdown.Trigger>
+            <Dropdown.Trigger onPress={() => document.body?.scrollTo(0, 0)}>
               <Avatar
                 text={userInfo?.name ? userInfo.name : ''}
                 textColor="default"

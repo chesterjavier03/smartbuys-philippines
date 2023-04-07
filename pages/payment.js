@@ -10,9 +10,7 @@ import { savePaymentMethod } from 'store/reducers/user.reducer';
 
 const Payment = () => {
   const cartItems = useSelector((state) => state.user.cart.cartItems);
-  const shippingAddress = useSelector(
-    (state) => state.user.cart.shippingAddress
-  );
+  const shippingAddress = useSelector((state) => state.user.shipping);
   const userInfo = useSelector((state) => state.user.userInfo);
   const userPaymentMethod = useSelector(
     (state) => state.user.cart.paymentMethod

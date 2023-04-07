@@ -12,6 +12,8 @@ export const signInUser = createAsyncThunk(
     try {
       const { data } = await axios.post('/api/users/login', values);
       dispatch(successGlobal(`Welcome ${data.name}`));
+      const userToken = data.token;
+      dispatch(fetchUserShippingAddress(userToken));
       router.push(redirect || '/', undefined, { shallow: true });
       return data;
     } catch (error) {
@@ -42,6 +44,44 @@ export const fetchOrderList = createAsyncThunk(
   async (userToken, { dispatch }) => {
     try {
       const { data } = await axios.get('/api/orders/history', {
+        headers: {
+          authorization: `Bearer ${userToken}`,
+        },
+      });
+      return data;
+    } catch (error) {
+      dispatch(errorGlobal(error.response.data.message));
+      throw error;
+    }
+  }
+);
+
+export const saveShippingToUser = createAsyncThunk(
+  'user/saveShipping',
+  async (requestData, { dispatch }) => {
+    try {
+      const { data } = await axios.post(
+        '/api/shipping/create',
+        requestData.shippingAddress,
+        {
+          headers: {
+            authorization: `Bearer ${requestData.userToken}`,
+          },
+        }
+      );
+      return data;
+    } catch (error) {
+      dispatch(errorGlobal(error.response.data.message));
+      throw error;
+    }
+  }
+);
+
+export const fetchUserShippingAddress = createAsyncThunk(
+  'user/fetchUserShipping',
+  async (userToken, { dispatch }) => {
+    try {
+      const { data } = await axios.get('/api/shipping/address', {
         headers: {
           authorization: `Bearer ${userToken}`,
         },

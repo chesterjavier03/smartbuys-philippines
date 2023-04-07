@@ -3,6 +3,8 @@ import {
   registerUser,
   signInUser,
   fetchOrderList,
+  saveShippingToUser,
+  fetchUserShippingAddress,
 } from 'store/actions/user.actions';
 
 const DEFAULT_STATE = {
@@ -16,6 +18,7 @@ const DEFAULT_STATE = {
   },
   auth: false,
   orders: [],
+  shipping: {},
 };
 
 export const userSlice = createSlice({
@@ -34,6 +37,8 @@ export const userSlice = createSlice({
       state.cart.shippingAddress = DEFAULT_STATE.cart.shippingAddress;
       state.auth = DEFAULT_STATE.auth;
       state.admin = null;
+      state.orders = DEFAULT_STATE.orders;
+      state.shipping = DEFAULT_STATE.shipping;
     },
     updateDarkMode: (state, action) => {
       state.darkMode = action.payload;
@@ -145,6 +150,26 @@ export const userSlice = createSlice({
         state.orders = action.payload;
       })
       .addCase(fetchOrderList.rejected, (state) => {
+        state.loading = false;
+      })
+      .addCase(saveShippingToUser.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(saveShippingToUser.fulfilled, (state, action) => {
+        state.loading = false;
+        state.shipping = action.payload;
+      })
+      .addCase(saveShippingToUser.rejected, (state) => {
+        state.loading = false;
+      })
+      .addCase(fetchUserShippingAddress.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(fetchUserShippingAddress.fulfilled, (state, action) => {
+        state.loading = false;
+        state.shipping = action.payload;
+      })
+      .addCase(fetchUserShippingAddress.rejected, (state) => {
         state.loading = false;
       });
   },

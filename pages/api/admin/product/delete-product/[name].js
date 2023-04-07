@@ -11,10 +11,10 @@ handler.use(isAuth, isAdmin).delete(async (req, res) => {
   if (product) {
     await product.remove();
     await db.disconnect();
-    res.send({ message: 'Product deleted' });
+    res.status(200).json({ message: 'Product deleted' });
   } else {
     await db.disconnect();
-    res.status(404).send({ message: 'Product not found' });
+    res.status(404).json({ message: 'Product not found' });
   }
 });
 

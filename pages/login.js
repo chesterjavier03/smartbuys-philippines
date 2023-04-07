@@ -44,7 +44,7 @@ const Login = () => {
       enqueueSnackbar(`Success! ${msg}`, { variant: 'error' });
       dispatch(clearNotifications());
     }
-  }, [notifications]);
+  }, []);
 
   return (
     <>

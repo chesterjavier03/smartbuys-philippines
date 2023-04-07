@@ -6,7 +6,7 @@ export const moneyFormat = (amount) => {
   return !amount
     ? 0
     : '₱ ' +
-        parseInt(amount)
+        Math.ceil(amount, Math.pow(10, 1))
           .toFixed(0)
           .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
 };
@@ -34,4 +34,12 @@ export const convertToBase64 = (file) => {
 
 export const convertBufferToImage = (image) => {
   return Buffer.from(image, 'binary').toString('base64');
+};
+
+export const formatDate = (date) => {
+  return new Date(date).toLocaleDateString('en-US', {
+    day: 'numeric',
+    month: 'short',
+    year: 'numeric',
+  });
 };
