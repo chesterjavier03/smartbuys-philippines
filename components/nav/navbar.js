@@ -15,29 +15,15 @@ const NavBar = ({
 }) => {
   return (
     <Navbar
-      fluid
-      responsive
       variant="floating"
       maxWidth="lg"
       isBordered={true}
       css={{
         zIndex: 999,
-        background: 'transparent !important',
-        borderColor: 'red !important',
-        borderWidth: '2px !important',
         cursor: 'pointer',
       }}
     >
-      <Navbar.Brand
-        css={{
-          '@xs': {
-            w: '12%',
-          },
-        }}
-        href="/"
-        as={Link}
-        shallow
-      >
+      <Navbar.Brand href="/" as={Link} shallow>
         <Image
           priority
           src="/static/smartbuys.webp"
