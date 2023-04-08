@@ -1,4 +1,4 @@
-import { Card, Modal } from '@nextui-org/react';
+import { Card, Image, Modal } from '@nextui-org/react';
 
 const ModalProductImage = ({ visible, closeHandler, handler, product }) => {
   return (
@@ -7,26 +7,26 @@ const ModalProductImage = ({ visible, closeHandler, handler, product }) => {
       blur
       animated
       autoMargin
+      objectFit="cover"
       open={visible}
       onClose={closeHandler}
+      css={{ w: 'fit-content', h: 'fit-content' }}
     >
       <Modal.Body>
         <Card
+          objectFit="cover"
           css={{
             borderColor: 'red',
-            borderWidth: 'medium',
           }}
           variant="bordered"
           onPress={handler}
         >
-          <Card.Body css={{ p: 0 }} autoMargin>
-            <Card.Image
-              src={`data:image/webp;base64, ` + product.image}
-              autoResize
-              objectFit="cover"
-              alt={product.name}
-            />
-          </Card.Body>
+          <Image
+            src={`data:image/webp;base64, ` + product.image}
+            autoResize
+            objectFit="cover"
+            alt={product.name}
+          />
         </Card>
       </Modal.Body>
     </Modal>
