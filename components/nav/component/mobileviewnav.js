@@ -3,6 +3,7 @@ import {
   Badge,
   Dropdown,
   Grid,
+  Image,
   Link,
   Navbar,
   Text,
@@ -106,6 +107,66 @@ const MobileViewNav = ({ isAuth, handleSelected, userInfo, cartItems }) => {
                 }}
               >
                 Contact
+              </Dropdown.Item>
+              <Dropdown.Item
+                key="contact"
+                css={{
+                  color: 'white',
+                  fontWeight: '$semibold',
+                  backgroundColor: 'transparent',
+                  '&:hover': {
+                    color: 'black',
+                    backgroundColor: '#05ebb8',
+                    fontWeight: '$normal',
+                  },
+                }}
+              >
+                <Link
+                  shallow
+                  href="https://firebasestorage.googleapis.com/v0/b/smartbuys-88b18.appspot.com/o/apk%2Fsmartbuys.apk?alt=media&token=7503dfcc-f37b-47f9-bea0-4634d48d310a"
+                  target="_blank"
+                >
+                  <Image
+                    src="/static/GooglePlay.webp"
+                    alt="Google Play"
+                    autoResize
+                    objectFit="contain"
+                    css={{
+                      width: '40%',
+                    }}
+                    containerCss={{
+                      width: '100%',
+                    }}
+                    onClick={() => console.log('here clicked')}
+                  />
+                </Link>
+              </Dropdown.Item>
+              <Dropdown.Item
+                key="contact"
+                css={{
+                  color: 'white',
+                  fontWeight: '$semibold',
+                  backgroundColor: 'transparent',
+                  '&:hover': {
+                    color: 'black',
+                    backgroundColor: '#05ebb8',
+                    fontWeight: '$normal',
+                  },
+                }}
+              >
+                <Image
+                  autoResize
+                  objectFit="fill"
+                  src="/static/AppStore.webp"
+                  alt="App Store"
+                  css={{
+                    width: '40%',
+                  }}
+                  containerCss={{
+                    width: '100%',
+                  }}
+                  onClick={() => console.log('here clicked')}
+                />
               </Dropdown.Item>
               <Dropdown.Item
                 withDivider
@@ -281,6 +342,60 @@ const MobileViewNav = ({ isAuth, handleSelected, userInfo, cartItems }) => {
                   Admin Dashboard
                 </Dropdown.Item>
               )}
+              <Dropdown.Item
+                key="contact"
+                css={{
+                  color: 'white',
+                  fontWeight: '$semibold',
+                  backgroundColor: 'transparent',
+                  '&:hover': {
+                    color: 'black',
+                    backgroundColor: '#05ebb8',
+                    fontWeight: '$normal',
+                  },
+                }}
+              >
+                <Image
+                  src="/static/GooglePlay.webp"
+                  alt="Google Play"
+                  autoResize
+                  objectFit="contain"
+                  css={{
+                    width: '40%',
+                  }}
+                  containerCss={{
+                    width: '100%',
+                  }}
+                  onClick={() => console.log('here clicked')}
+                />
+              </Dropdown.Item>
+              <Dropdown.Item
+                key="contact"
+                css={{
+                  color: 'white',
+                  fontWeight: '$semibold',
+                  backgroundColor: 'transparent',
+                  '&:hover': {
+                    color: 'black',
+                    backgroundColor: '#05ebb8',
+                    fontWeight: '$normal',
+                  },
+                }}
+              >
+                <Image
+                  autoResize
+                  objectFit="fill"
+                  src="/static/AppStore.webp"
+                  alt="App Store"
+                  css={{
+                    width: '40%',
+                  }}
+                  containerCss={{
+                    width: '100%',
+                  }}
+                  onClick={() => console.log('here clicked')}
+                />
+              </Dropdown.Item>
               <Dropdown.Item
                 key="logout"
                 css={{
