@@ -129,14 +129,20 @@ const NavBar = ({
           css={{ cursor: 'pointer' }}
         />
         <Spacer x={0.5} />
-        <Image
-          src="/static/AppStore.webp"
-          alt="Google Play"
-          width={100}
-          height={100}
-          objectFit="contain"
-          css={{ cursor: 'pointer' }}
-        />
+        <Link
+          shallow
+          href="https://firebasestorage.googleapis.com/v0/b/smartbuys-88b18.appspot.com/o/apk%2Fsmartbuys.apk?alt=media&token=7503dfcc-f37b-47f9-bea0-4634d48d310a"
+          target="_blank"
+        >
+          <Image
+            src="/static/AppStore.webp"
+            alt="Google Play"
+            width={100}
+            height={100}
+            objectFit="contain"
+            css={{ cursor: 'pointer' }}
+          />
+        </Link>
       </Navbar.Content>
       <MobileViewNav
         isAuth={isAuth}
