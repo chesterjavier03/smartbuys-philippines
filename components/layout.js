@@ -11,6 +11,8 @@ import { signOutUser } from 'store/reducers/user.reducer';
 import { useSnackbar } from 'notistack';
 import { clearNotifications } from 'store/reducers/notifications.reducer';
 import NavBar from './nav/navbar';
+import { signOutAdminUser } from 'store/reducers/admin.reducer';
+import { signOutUserProduct } from 'store/reducers/product.reducer';
 
 const collapseItems = [
   {
@@ -116,6 +118,8 @@ const Layout = ({ children }) => {
     switch (value) {
       case 'logout':
         dispatch(signOutUser());
+        dispatch(signOutAdminUser());
+        dispatch(signOutUserProduct());
         enqueueSnackbar('Logout successful', { variant: 'success' });
         router.push('/');
         return;

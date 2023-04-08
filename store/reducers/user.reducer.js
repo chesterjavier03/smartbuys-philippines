@@ -29,16 +29,15 @@ export const userSlice = createSlice({
       state.userInfo = action.payload;
     },
     signOutUser: (state) => {
-      state.userInfo = DEFAULT_STATE.userInfo;
-      state.cart.cartItems = DEFAULT_STATE.cart.cartItems;
-      state.darkMode = DEFAULT_STATE.darkMode;
-      state.loading = DEFAULT_STATE.loading;
-      state.cart.paymentMethod = DEFAULT_STATE.cart.paymentMethod;
-      state.cart.shippingAddress = DEFAULT_STATE.cart.shippingAddress;
-      state.auth = DEFAULT_STATE.auth;
-      state.admin = null;
-      state.orders = DEFAULT_STATE.orders;
-      state.shipping = DEFAULT_STATE.shipping;
+      state.userInfo = null;
+      state.cart.cartItems = [];
+      state.darkMode = false;
+      state.loading = false;
+      state.cart.paymentMethod = '';
+      state.cart.shippingAddress = {};
+      state.auth = false;
+      state.orders = [];
+      state.shipping = {};
     },
     updateDarkMode: (state, action) => {
       state.darkMode = action.payload;

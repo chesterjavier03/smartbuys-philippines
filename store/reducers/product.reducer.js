@@ -12,6 +12,10 @@ export const productSlice = createSlice({
   name: 'product',
   initialState: DEFAULT_STATE,
   reducers: {
+    signOutUserProduct: (state) => {
+      state.products = [];
+      state.loading = false;
+    },
     // updateProduct: (state, action) => {
     //   state.products = action.payload;
     // },
@@ -78,5 +82,6 @@ export const {
   savePaymentMethod,
   saveShippingAddress,
   updateDarkMode,
+  signOutUserProduct,
 } = productSlice.actions;
 export default productSlice.reducer;

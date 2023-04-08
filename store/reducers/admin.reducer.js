@@ -19,6 +19,12 @@ export const adminSlice = createSlice({
   name: 'admin',
   initialState: DEFAULT_STATE,
   reducers: {
+    signOutAdminUser: (state) => {
+      state.loading = false;
+      state.users = [];
+      state.orders = [];
+      state.products = [];
+    },
     adminUpdateUser: (state, action) => {
       const updateUser = action.payload;
       const userList = state.users.map((user) =>
@@ -196,5 +202,6 @@ export const {
   adminUpdateOrder,
   adminAddOrder,
   adminRemoveOrder,
+  signOutAdminUser,
 } = adminSlice.actions;
 export default adminSlice.reducer;
