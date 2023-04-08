@@ -178,7 +178,8 @@ const Layout = ({ children }) => {
           collapseItems={collapseItems}
         />
         <Container
-          gap={2}
+          lg
+          gap={1}
           as="main"
           display="flex"
           fluid

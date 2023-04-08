@@ -2,12 +2,13 @@ import db from 'database/db';
 import Product from 'models/product';
 import { toJson } from 'utils/functions';
 import Shop from './shop/index';
+import { Container } from '@nextui-org/react';
 
 const Home = ({ products }) => {
   return (
-    <>
+    <Container lg>
       <Shop products={products}></Shop>
-    </>
+    </Container>
   );
 };
 

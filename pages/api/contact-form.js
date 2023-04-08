@@ -1,97 +1,64 @@
-import axios from 'axios';
+import path from 'path';
 
 const nodemailer = require('nodemailer');
+const ejs = require('ejs');
 
-
-// Config
 const mailConfig = {
   host: 'smtp.gmail.com',
-  port: 465, // or 587
-  secure: true, // true for 465, false for other ports
+  port: 465,
+  secure: true,
   auth: {
-    user: process.env.NEXT_PUBLIC_GMAIL_USER, // your gmail account
-    pass: process.env.NEXT_PUBLIC_GMAIL_PASS, // your gmail app password
+    user: process.env.NEXT_PUBLIC_GMAIL_USER,
+    pass: process.env.NEXT_PUBLIC_GMAIL_PASS,
   },
 };
 
 const adminEmail = 'SmartBuys Philippines <smartbuysphil@gmail.com>';
-
-// Function for grabbing template files
-async function getPubFile(file) {
-  const res = await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}${file}`);
-  return res.data;
-}
 
 export default async function handler(req, res) {
   sendEmails(req, res);
 }
 
 async function sendEmails(req, res) {
-  // Create our Nodemailer transport handler
   let transporter = nodemailer.createTransport(mailConfig);
+  const jsonDirectory = path.join(process.cwd(), 'public/email-templates');
+  ejs.renderFile(
+    jsonDirectory + '/message.ejs',
+    constructEjsData(req),
+    callback(transporter, res, 'chesterjavier03@duck.com')
+  );
+}
 
-  // Fetch our template files
-  const template = await getPubFile('/email-templates/template.html');
-  const custHtml = await getPubFile('/email-templates/customer.html');
-  const adminHtml = await getPubFile('/email-templates/admin.html');
-  const custTxt = await getPubFile('/email-templates/customer.txt');
-  const adminTxt = await getPubFile('/email-templates/admin.txt');
+const constructEjsData = (req) => {
+  return {
+    fullName: req.body.name,
+    email: req.body.email,
+    message: req.body.message,
+    mobile: req.body.mobile,
+  };
+};
 
-  // Format our recipient email address
-  const recipEmail = `${req.body.name} <${req.body.email}>`;
+const callback = (transporter, res, email) => {
+  return function (err, data) {
+    if (err) {
+      console.log(err);
+    } else {
+      mailSender(transporter, adminEmail, email, data, res);
+    }
+  };
+};
 
-  // Format our customer-bound email from received form data
-  let sendHtml = template
-    .replace('%BODY%', custHtml)
-    .replace('%NAME%', req.body.name)
-    .replace('%EMAIL%', req.body.email)
-    .replace('%MESSAGE%', req.body.message);
-
-  let sendTxt = custTxt
-    .replace('%NAME%', req.body.name)
-    .replace('%EMAIL%', req.body.email)
-    .replace('%MOBILE%', req.body.mobile)
-    .replace('%MESSAGE%', req.body.message);
-
-  // Send our customer-bound email
-  let info = await transporter.sendMail({
+const mailSender = async (transporter, adminEmail, toEmail, data, res) => {
+  let result = await transporter.sendMail({
     from: adminEmail,
-    to: recipEmail, // list of receivers
-    subject: 'Message Received ✔', // Subject line
-    text: sendTxt, // plain text body
-    html: sendHtml, // html body
+    to: toEmail,
+    subject: 'New Message From SmartBuys Philippines Website ✔',
+    html: data,
   });
 
-  if (!info.messageId) {
-    res.status(200).json({ status: 0, message: 'Failed to send message!' });
-    return false;
-  }
-
-  sendHtml = template
-    .replace('%BODY%', adminHtml)
-    .replace('%NAME%', req.body.name)
-    .replace('%EMAIL%', req.body.email)
-    .replace('%MESSAGE%', req.body.message);
-
-  sendTxt = adminTxt
-    .replace('%NAME%', req.body.name)
-    .replace('%EMAIL%', req.body.email)
-    .replace('%MOBILE%', req.body.mobile)
-    .replace('%MESSAGE%', req.body.message);
-
-  info = await transporter.sendMail({
-    from: recipEmail,
-    to: adminEmail, // list of receivers
-    subject: req.body.subject
-      ? req.body.subject
-      : 'New Order From SmartBuys Philippines Website ✔', // Subject line
-    text: sendTxt, // plain text body
-    html: sendHtml, // html body
-  });
-
-  if (info.messageId) {
+  if (result.messageId) {
     res.status(200).json({ status: 1 });
   } else {
     res.status(200).json({ status: 0, message: 'Failed to send message!' });
   }
-}
+};

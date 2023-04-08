@@ -17,6 +17,7 @@ import { useEffect, useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import axios from 'axios';
 import { TextField } from '@mui/material';
+import { MuiTelInput, matchIsValidTel } from 'mui-tel-input';
 
 const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -360,27 +361,21 @@ const Contact = () => {
                 <Controller
                   name="mobile"
                   control={control}
-                  defaultValue=""
-                  rules={{
-                    required: true,
-                  }}
-                  render={({ field }) => (
-                    <TextField
-                      variant="outlined"
-                      fullWidth
+                  rules={{ validate: matchIsValidTel }}
+                  render={({ field, fieldState }) => (
+                    <MuiTelInput
+                      forceCallingCode="true"
+                      defaultCountry="PH"
                       id="mobile"
                       label="Mobile"
-                      placeholder="e.g. 09xxxxxxxxx"
-                      inputProps={{ type: 'text', minLength: 11 }}
-                      error={Boolean(errors.email)}
-                      helperText={
-                        errors.mobile
-                          ? errors.mobile.type === 'minLength'
-                            ? 'Mobile is not valid'
-                            : 'Mobile is required'
-                          : ''
-                      }
+                      disableDropdown
+                      focusOnSelectCountry="true"
                       {...field}
+                      flagSize="sm"
+                      helperText={
+                        fieldState.invalid ? 'Mobile Number is invalid' : ''
+                      }
+                      error={fieldState.invalid}
                     />
                   )}
                 />

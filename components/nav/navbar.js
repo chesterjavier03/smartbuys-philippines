@@ -15,10 +15,18 @@ const NavBar = ({
 }) => {
   return (
     <Navbar
-      isBordered={true}
-      maxWidth="fluid"
+      fluid
+      responsive
       variant="floating"
-      css={{ zIndex: 201 }}
+      maxWidth="lg"
+      isBordered={true}
+      css={{
+        zIndex: 999,
+        background: 'transparent !important',
+        borderColor: 'red !important',
+        borderWidth: '2px !important',
+        cursor: 'pointer',
+      }}
     >
       <Navbar.Brand
         css={{
