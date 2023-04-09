@@ -319,7 +319,7 @@ export const productList = [
     description: 'Barbie Heart',
     price: ternoPrice,
     image:
-      'https://firebasestorage.googleapis.com/v0/b/smartbuys-88b18.appspot.com/o/disney%2FD7.webp?alt=media&token=d443ee93-3274-46e8-9f80-5ed27da64ebd',
+      'https://firebasestorage.googleapis.com/v0/b/smartbuys-88b18.appspot.com/o/disney%2FD8.webp?alt=media&token=cf088189-5c6c-4449-9003-0a0e378b1ad0',
     category: 'Girls',
     type: 'Terno',
   },
@@ -849,7 +849,7 @@ export const productList = [
     description: 'Nike Michael Jordan 23',
     price: shirtPrice,
     image:
-      'https://firebasestorage.googleapis.com/v0/b/smartbuys-88b18.appspot.com/o/jordan%2FJ36.webp?alt=media&token=5036f1f0-61f0-4d00-9e34-43c05da0e431',
+      'https://firebasestorage.googleapis.com/v0/b/smartbuys-88b18.appspot.com/o/jordan%2FJ39.webp?alt=media&token=85d44c74-19ce-468b-941d-1600b5690b30',
     category: 'Boys',
     type: 'Shirt',
   },
@@ -929,7 +929,7 @@ export const productList = [
     description: 'Nike Jordan Blue',
     price: shortsPrice,
     image:
-      'https://firebasestorage.googleapis.com/v0/b/smartbuys-88b18.appspot.com/o/shorts%2FS5.webp?alt=media&token=31feefbf-936d-4ce5-88e8-7f5a1fb6dcfa',
+      'https://firebasestorage.googleapis.com/v0/b/smartbuys-88b18.appspot.com/o/shorts%2FS6.webp?alt=media&token=90e32a03-c143-4ab1-879d-9e48df6bd4a1',
     category: 'Boys',
     type: 'Shorts',
   },
@@ -959,7 +959,7 @@ export const productList = [
     description: 'Nike Jordan Blue',
     price: shortsPrice,
     image:
-      'https://firebasestorage.googleapis.com/v0/b/smartbuys-88b18.appspot.com/o/shorts%2FS8.webp?alt=media&token=3bd98d94-8296-4457-a725-bcbe34f18264',
+      'https://firebasestorage.googleapis.com/v0/b/smartbuys-88b18.appspot.com/o/shorts%2FS9.webp?alt=media&token=cab71361-68d2-4d53-8212-58e993ac1287',
     category: 'Boys',
     type: 'Shorts',
   },
