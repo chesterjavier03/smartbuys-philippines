@@ -168,6 +168,7 @@ const Shop = ({ products }) => {
                         h: '380px',
                         borderColor: 'red',
                         borderWidth: 'thin',
+                        borderRadius: '$sm',
                       }}
                       isHoverable
                       isPressable
@@ -214,8 +215,12 @@ const Shop = ({ products }) => {
                             <Text
                               css={{
                                 color: '$white',
-                                fontWeight: '$normal',
                                 fontSize: '$lg',
+                                whiteSpace: 'nowrap',
+                                w: '150px',
+                                '@xs': { w: '190px' },
+                                overflow: 'hidden',
+                                textOverflow: 'ellipsis',
                               }}
                             >
                               {product.name}
