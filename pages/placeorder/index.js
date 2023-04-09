@@ -167,8 +167,7 @@ const PlaceOrder = () => {
                         <Text h4 color="$gray600">
                           {shippingAddress?.fullName},{' '}
                           {shippingAddress?.address}, {shippingAddress?.city},{' '}
-                          {shippingAddress?.postalCode},{' '}
-                          {shippingAddress?.country}
+                          {shippingAddress?.mobile}
                         </Text>
                       </Grid>
                     </Row>

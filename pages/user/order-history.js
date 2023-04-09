@@ -31,7 +31,6 @@ const OrderHistory = ({ orders }) => {
   const loading = useSelector((state) => state.user.loading);
 
   useEffect(() => {
-    console.log('here ', orders);
     if (!userInfo) {
       router.push('/');
     }
@@ -94,7 +93,7 @@ const OrderHistory = ({ orders }) => {
                 },
               }}
             >
-              {orders == null && orders.length == 0 ? (
+              {orders && orders.length === 0 ? (
                 <Box
                   display="flex"
                   justifyContent="center"
@@ -153,7 +152,7 @@ const OrderHistory = ({ orders }) => {
                 <Col align="start" justify="flex-start">
                   <Collapse.Group splitted>
                     {orders &&
-                      orders.orderItems.map((order) => (
+                      orders.map((order) => (
                         <>
                           <Collapse
                             bordered
@@ -257,7 +256,7 @@ const OrderHistory = ({ orders }) => {
                             }}
                           >
                             {order &&
-                              order.map((item) => (
+                              order.orderItems.map((item) => (
                                 <>
                                   <Spacer y={0.1} />
                                   <Card

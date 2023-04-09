@@ -41,7 +41,7 @@ const Shop = () => {
       .get(`/api/products/filter/byType?type=${type}`)
       .then((response) => {
         setIsLoading(false);
-        setProductList(response.data.documents);
+        setProductList(response.data);
       })
       .catch((error) => {
         setIsLoading(false);
@@ -56,7 +56,7 @@ const Shop = () => {
       .get(`/api/products/filter/byCategory?category=${category}`)
       .then((response) => {
         setIsLoading(false);
-        setProductList(response.data.documents);
+        setProductList(response.data);
       })
       .catch((error) => {
         setIsLoading(false);
@@ -71,7 +71,7 @@ const Shop = () => {
       .get('/api/products')
       .then((response) => {
         setIsLoading(false);
-        setProductList(response.data.documents);
+        setProductList(response.data);
       })
       .catch(function (error) {
         console.log(error);
@@ -192,12 +192,13 @@ const Shop = () => {
                       >
                         <Card.Image
                           maxDelay="1000"
-                          src={
-                            `data:image/webp;base64, ` +
-                            Buffer.from(product.image.Data, 'base64').toString(
-                              'base64'
-                            )
-                          }
+                          src={`data:image/webp;base64, ` + product.image}
+                          // src={
+                          //   `data:image/webp;base64, ` +
+                          //   Buffer.from(product.image.Data, 'base64').toString(
+                          //     'base64'
+                          //   )
+                          // }
                           width="100%"
                           height="100%"
                           objectFit="cover"
