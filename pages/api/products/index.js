@@ -6,7 +6,7 @@ const handler = nextConnect();
 
 export const config = {
   api: {
-    responseLimit: '200mb',
+    responseLimit: '1000mb',
   },
 };
 
