@@ -1,12 +1,14 @@
-import { TextField } from '@mui/material';
+import { MenuItem, TextField } from '@mui/material';
 import { Button, Card, Grid, Spacer, Text } from '@nextui-org/react';
 import CheckoutWizard from 'components/checkoutwizard';
+import { MuiTelInput, matchIsValidTel } from 'mui-tel-input';
 import { useRouter } from 'next/router';
 import { useSnackbar } from 'notistack';
 import { useEffect } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { saveShippingToUser } from 'store/actions/user.actions';
+import { saveShippingAddress } from 'store/reducers/user.reducer';
 
 const Shipping = () => {
   const userInfo = useSelector((state) => state.user.userInfo);
@@ -22,26 +24,43 @@ const Shipping = () => {
 
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
 
-  const submitHandler = async ({
-    fullName,
-    address,
-    city,
-    postalCode,
-    country,
-  }) => {
+  const supportedCity = [
+    {
+      value: 'Las Pinas',
+      label: 'Las Pinas',
+    },
+    {
+      value: 'Muntinlupa',
+      label: 'Muntinlupa',
+    },
+    {
+      value: 'Paranaque',
+      label: 'Paranaque',
+    },
+    {
+      value: 'Cavite',
+      label: 'Cavite',
+    },
+    {
+      value: 'Laguna',
+      label: 'Laguna',
+    },
+  ];
+
+  const submitHandler = async ({ fullName, address, city, mobile }) => {
     closeSnackbar();
     try {
       const shippingAddress = {
         fullName,
         address,
         city,
-        postalCode,
-        country,
+        mobile,
       };
       const userToken = userInfo.token;
       dispatch(saveShippingToUser({ userToken, shippingAddress }));
-      // dispatch(saveShippingAddress({ shipping, router }));
-      router.push('/payment', undefined, { shallow: true });
+      dispatch(saveShippingAddress({ shippingAddress, router }));
+      // router.push('/payment', undefined, { shallow: true });
+      router.push('/placeorder', undefined, { shallow: true });
     } catch (error) {
       enqueueSnackbar(error, { variant: 'error' });
     }
@@ -54,9 +73,16 @@ const Shipping = () => {
     setValue('fullName', shippingAddress?.fullName);
     setValue('address', shippingAddress?.address);
     setValue('city', shippingAddress?.city);
-    setValue('postalCode', shippingAddress?.postalCode);
-    setValue('country', shippingAddress?.country);
-  }, []);
+    setValue('mobile', shippingAddress?.mobile);
+  }, [
+    router,
+    setValue,
+    shippingAddress?.address,
+    shippingAddress?.city,
+    shippingAddress?.fullName,
+    shippingAddress?.mobile,
+    userInfo,
+  ]);
 
   return (
     <Card
@@ -118,9 +144,36 @@ const Shipping = () => {
                         : ''
                     }
                     {...field}
-                  ></TextField>
+                  />
                 )}
-              ></Controller>
+              />
+            </Grid>
+            <Spacer y={1} />
+            <Grid
+              lg={8}
+              css={{ display: 'flex', margin: '0 auto', width: '100%' }}
+            >
+              <Controller
+                name="mobile"
+                control={control}
+                rules={{ validate: matchIsValidTel }}
+                render={({ field, fieldState }) => (
+                  <MuiTelInput
+                    forceCallingCode="true"
+                    defaultCountry="PH"
+                    id="mobile"
+                    label="Mobile"
+                    disableDropdown
+                    focusOnSelectCountry="true"
+                    {...field}
+                    flagSize="sm"
+                    helperText={
+                      fieldState.invalid ? 'Mobile Number is invalid' : ''
+                    }
+                    error={fieldState.invalid}
+                  />
+                )}
+              />
             </Grid>
             <Spacer y={1} />
             <Grid
@@ -154,17 +207,13 @@ const Shipping = () => {
                         : ''
                     }
                     {...field}
-                  ></TextField>
+                  />
                 )}
-              ></Controller>
+              />
             </Grid>
             <Spacer y={1} />
             <Grid
               lg={8}
-              justify="center"
-              about="center"
-              alignContent="center"
-              alignItems="center"
               css={{ display: 'flex', margin: '0 auto', width: '100%' }}
             >
               <Controller
@@ -177,6 +226,7 @@ const Shipping = () => {
                 }}
                 render={({ field }) => (
                   <TextField
+                    select
                     variant="outlined"
                     fullWidth
                     id="city"
@@ -190,81 +240,15 @@ const Shipping = () => {
                         : ''
                     }
                     {...field}
-                  ></TextField>
+                  >
+                    {supportedCity.map((option) => (
+                      <MenuItem key={option.value} value={option.value}>
+                        {option.label}
+                      </MenuItem>
+                    ))}
+                  </TextField>
                 )}
-              ></Controller>
-            </Grid>
-            <Spacer y={1} />
-            <Grid
-              lg={8}
-              justify="center"
-              about="center"
-              alignContent="center"
-              alignItems="center"
-              css={{ display: 'flex', margin: '0 auto', width: '100%' }}
-            >
-              <Controller
-                name="postalCode"
-                control={control}
-                defaultValue=""
-                rules={{
-                  required: true,
-                  minLength: 6,
-                }}
-                render={({ field }) => (
-                  <TextField
-                    variant="outlined"
-                    fullWidth
-                    id="postalCode"
-                    label="Postal"
-                    error={Boolean(errors.postalCode)}
-                    helperText={
-                      errors.postalCode
-                        ? errors.postalCode.type === 'minLength'
-                          ? 'Postal length is more than 5'
-                          : 'Postal is required'
-                        : ''
-                    }
-                    {...field}
-                  ></TextField>
-                )}
-              ></Controller>
-            </Grid>
-            <Spacer y={1} />
-            <Grid
-              lg={8}
-              justify="center"
-              about="center"
-              alignContent="center"
-              alignItems="center"
-              css={{ display: 'flex', margin: '0 auto', width: '100%' }}
-            >
-              <Controller
-                name="country"
-                control={control}
-                defaultValue=""
-                rules={{
-                  required: true,
-                  minLength: 6,
-                }}
-                render={({ field }) => (
-                  <TextField
-                    variant="outlined"
-                    fullWidth
-                    id="country"
-                    label="Country"
-                    error={Boolean(errors.country)}
-                    helperText={
-                      errors.confirmPassword
-                        ? errors.country.type === 'minLength'
-                          ? 'Country length is more than 5'
-                          : 'Country is required'
-                        : ''
-                    }
-                    {...field}
-                  ></TextField>
-                )}
-              ></Controller>
+              />
             </Grid>
           </Card.Body>
           <Card.Footer>

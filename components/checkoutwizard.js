@@ -7,13 +7,11 @@ const CheckoutWizard = ({ activeStep = 0 }) => {
       alternativeLabel
       style={{ marginTop: '2rem' }}
     >
-      {['Login', 'Shipping Address', 'Payment Method', 'Place Order'].map(
-        (step) => (
-          <Step key={step}>
-            <StepLabel>{step}</StepLabel>
-          </Step>
-        )
-      )}
+      {['Login', 'Shipping Address', 'Place Order'].map((step) => (
+        <Step key={step}>
+          <StepLabel>{step}</StepLabel>
+        </Step>
+      ))}
     </Stepper>
   );
 };

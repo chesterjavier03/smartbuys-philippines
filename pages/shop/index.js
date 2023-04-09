@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { cartAddItem } from 'store/reducers/user.reducer';
 import { moneyFormat } from 'utils/functions';
 
-const Shop = ({ products }) => {
+const Shop = () => {
   const router = useRouter();
   const dispatch = useDispatch();
   const darkMode = useSelector((state) => state.user.darkMode);
@@ -22,8 +22,8 @@ const Shop = ({ products }) => {
   const { enqueueSnackbar } = useSnackbar();
 
   useEffect(() => {
-    setProductList(products);
-  }, [products]);
+    fetchAll();
+  }, []);
 
   const handleItemDetails = (product) => {
     router.push(
@@ -41,7 +41,7 @@ const Shop = ({ products }) => {
       .get(`/api/products/filter/byType?type=${type}`)
       .then((response) => {
         setIsLoading(false);
-        setProductList(response.data);
+        setProductList(response.data.documents);
       })
       .catch((error) => {
         setIsLoading(false);
@@ -56,7 +56,7 @@ const Shop = ({ products }) => {
       .get(`/api/products/filter/byCategory?category=${category}`)
       .then((response) => {
         setIsLoading(false);
-        setProductList(response.data);
+        setProductList(response.data.documents);
       })
       .catch((error) => {
         setIsLoading(false);
@@ -71,10 +71,9 @@ const Shop = ({ products }) => {
       .get('/api/products')
       .then((response) => {
         setIsLoading(false);
-        setProductList(response.data);
+        setProductList(response.data.documents);
       })
-      .catch((error) => {
-        setIsLoading(false);
+      .catch(function (error) {
         console.log(error);
       });
   };
@@ -193,7 +192,12 @@ const Shop = ({ products }) => {
                       >
                         <Card.Image
                           maxDelay="1000"
-                          src={`data:image/webp;base64, ` + product.image}
+                          src={
+                            `data:image/webp;base64, ` +
+                            Buffer.from(product.image.Data, 'base64').toString(
+                              'base64'
+                            )
+                          }
                           width="100%"
                           height="100%"
                           objectFit="cover"

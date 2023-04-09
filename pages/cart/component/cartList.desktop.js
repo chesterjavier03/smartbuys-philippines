@@ -49,29 +49,36 @@ const CartListDesktop = ({
                 borderColor: 'red',
                 borderWidth: 'thin',
                 borderRadius: '$xs',
+                w: 'fit-content',
               }}
               isPressable
               variant="bordered"
             >
               <Image
                 priority
-                src={`data:image/webp;base64, ` + item.product.image}
+                // src={`data:image/webp;base64, ` + item.product.image}
+                src={
+                  `data:image/webp;base64, ` +
+                  Buffer.from(item.product.image.Data, 'base64').toString(
+                    'base64'
+                  )
+                }
                 autoResize
                 width={120}
                 height={180}
                 objectFit="cover"
                 alt={item.product.name}
-                onClick={() =>
-                  router.push(`/product/${item.product._id}`, undefined, {
-                    shallow: true,
-                  })
-                }
+                // onClick={() =>
+                // router.push(`/product/${item.product._id}`, undefined, {
+                //   shallow: true,
+                // })
+                // }
               />
             </Card>
           </Grid>
           <Spacer x={0.5} />
           <Grid>
-            <Text h3 color="gray">
+            <Text h3 color="gray" css={{ w: '16vw' }}>
               {item.product.name}
             </Text>
             <Text

@@ -44,7 +44,13 @@ const OrderList = ({ cartItems, router }) => {
                   >
                     <Image
                       priority
-                      src={`data:image/webp;base64, ` + item.product.image}
+                      // src={`data:image/webp;base64, ` + item.product.image}
+                      src={
+                        `data:image/webp;base64, ` +
+                        Buffer.from(item.product.image.Data, 'base64').toString(
+                          'base64'
+                        )
+                      }
                       autoResize
                       width={120}
                       height={180}

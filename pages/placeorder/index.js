@@ -26,9 +26,9 @@ const PlaceOrder = () => {
   const [orderList, setOrderList] = useState([]);
 
   useEffect(() => {
-    if (!paymentMethod) {
-      router.push('/payment', undefined, { shallow: 'true' });
-    }
+    // if (!paymentMethod) {
+    //   router.push('/payment', undefined, { shallow: 'true' });
+    // }
     if (cartItems.length === 0) {
       router.push('/cart', undefined, { shallow: 'true' });
     }
