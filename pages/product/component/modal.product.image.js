@@ -22,7 +22,8 @@ const ModalProductImage = ({ visible, closeHandler, handler, product }) => {
           onPress={handler}
         >
           <Image
-            src={`data:image/webp;base64, ` + product.image}
+            // src={`data:image/webp;base64, ` + product.image}
+            src={product.image}
             // src={
             //   `data:image/webp;base64, ` +
             //   Buffer.from(product.image.Data, 'base64').toString('base64')

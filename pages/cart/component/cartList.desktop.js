@@ -18,7 +18,6 @@ const CartListDesktop = ({
   _incrementItem,
   _decrementItem,
   _removeItem,
-  router,
 }) => {
   return (
     <Card
@@ -56,7 +55,8 @@ const CartListDesktop = ({
             >
               <Image
                 priority
-                src={`data:image/webp;base64, ` + item.product.image}
+                // src={`data:image/webp;base64, ` + item.product.image}
+                src={item.product.image}
                 // src={
                 //   `data:image/webp;base64, ` +
                 //   Buffer.from(item.product.image.Data, 'base64').toString(
@@ -69,9 +69,9 @@ const CartListDesktop = ({
                 objectFit="cover"
                 alt={item.product.name}
                 // onClick={() =>
-                // router.push(`/product/${item.product._id}`, undefined, {
-                //   shallow: true,
-                // })
+                //   router.push(`/product/${item.product._id}`, undefined, {
+                //     shallow: true,
+                //   })
                 // }
               />
             </Card>

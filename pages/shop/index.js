@@ -1,5 +1,4 @@
 import { Card, Col, Grid, Loading, Row, Text } from '@nextui-org/react';
-import axios from 'axios';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
@@ -8,13 +7,14 @@ import Filter from 'components/filter';
 import { useDispatch, useSelector } from 'react-redux';
 import { cartAddItem } from 'store/reducers/user.reducer';
 import { moneyFormat } from 'utils/functions';
+import { productList as products } from 'database/data';
 
 const Shop = () => {
   const router = useRouter();
   const dispatch = useDispatch();
   const darkMode = useSelector((state) => state.user.darkMode);
   const loading = useSelector((state) => state.user.loading);
-  const [productList, setProductList] = useState([]);
+  const [productList, setProductList] = useState(products);
   const [isLoading, setIsLoading] = useState(loading);
   const [isPressed, setIsPressed] = useState(false);
   const categoryList = ['Girls', 'Boys', 'Food'];
@@ -37,45 +37,73 @@ const Shop = () => {
 
   const filterByType = async (type) => {
     setIsLoading(true);
-    axios
-      .get(`/api/products/filter/byType?type=${type}`)
-      .then((response) => {
-        setIsLoading(false);
-        setProductList(response.data);
-      })
-      .catch((error) => {
-        setIsLoading(false);
-        console.log(error);
-        setProductList([]);
-      });
+    await fetchAll();
+    setIsLoading(true);
+    setTimeout(function () {
+      setProductList(products);
+      let filtered = products;
+      const result = filtered.filter((item) =>
+        item.type === type ? true : false
+      );
+      setIsLoading(false);
+      setProductList(result);
+    }, 1000);
+    // axios
+    //   .get(`/api/products/filter/byType?type=${type}`)
+    //   .then((response) => {
+    //     setIsLoading(false);
+    //     setProductList(response.data);
+    //   })
+    //   .catch((error) => {
+    //     setIsLoading(false);
+    //     console.log(error);
+    //     setProductList([]);
+    //   });
   };
 
   const filterByCategory = async (category) => {
+    // setTimeout(function () {
+    // setProductList(products);
+    // }, 2000);
+    await fetchAll();
     setIsLoading(true);
-    axios
-      .get(`/api/products/filter/byCategory?category=${category}`)
-      .then((response) => {
-        setIsLoading(false);
-        setProductList(response.data);
-      })
-      .catch((error) => {
-        setIsLoading(false);
-        console.log(error);
-        setProductList([]);
-      });
+    setTimeout(function () {
+      setProductList(products);
+      let filtered = products;
+      const result = filtered.filter((item) =>
+        item.category === category ? true : false
+      );
+      setIsLoading(false);
+      setProductList(result);
+    }, 1000);
+    // axios
+    //   .get(`/api/products/filter/byCategory?category=${category}`)
+    //   .then((response) => {
+    //     setIsLoading(false);
+    //     setProductList(response.data);
+    //   })
+    //   .catch((error) => {
+    //     setIsLoading(false);
+    //     console.log(error);
+    //     setProductList([]);
+    //   });
   };
 
   const fetchAll = async () => {
     setIsLoading(true);
-    axios
-      .get('/api/products')
-      .then((response) => {
-        setIsLoading(false);
-        setProductList(response.data);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+    setTimeout(function () {
+      setIsLoading(false);
+      setProductList(products);
+    }, 1000);
+    // axios
+    //   .get('/api/products')
+    //   .then((response) => {
+    //     setIsLoading(false);
+    //     setProductList(products);
+    //   })
+    //   .catch(function (error) {
+    //     console.log(error);
+    //   });
   };
 
   const _addToCart = async (product) => {
@@ -192,7 +220,8 @@ const Shop = () => {
                       >
                         <Card.Image
                           maxDelay="1000"
-                          src={`data:image/webp;base64, ` + product.image}
+                          // src={`data:image/webp;base64, ` + product.image}
+                          src={product.image}
                           // src={
                           //   `data:image/webp;base64, ` +
                           //   Buffer.from(product.image.Data, 'base64').toString(
@@ -237,7 +266,7 @@ const Shop = () => {
                                 textOverflow: 'ellipsis',
                               }}
                             >
-                              {product.name}
+                              {product.description}
                             </Text>
                             <Text
                               css={{

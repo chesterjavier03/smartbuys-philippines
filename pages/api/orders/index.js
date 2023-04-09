@@ -11,14 +11,19 @@ const handler = nextConnect({
 handler.use(isAuth);
 
 handler.post(async (req, res) => {
-  await db.connect();
-  const newOrder = new Order({
-    ...req.body,
-    user: req.user._id,
-    shipping: req.body.shippingAddress._id,
-  });
-  const order = await newOrder.save();
-  await db.disconnect();
-  res.status(200).send(order);
+  try {
+    await db.connect();
+    const newOrder = new Order({
+      ...req.body,
+      user: req.user._id,
+      shipping: req.body.shippingAddress._id,
+    });
+    const order = await newOrder.save();
+    await db.disconnect();
+    res.status(200).send(order);
+  } catch (err) {
+    console.log('ERROR: ', err);
+    return res.status(err.status || 500).end(err.message);
+  }
 });
 export default handler;

@@ -156,7 +156,8 @@ const ProductDetails = () => {
             <Card.Body css={{ p: 0 }}>
               <Image
                 priority
-                src={`data:image/webp;base64, ` + product.image}
+                // src={`data:image/webp;base64, ` + product.image}
+                src={product.image}
                 // src={
                 //   `data:image/webp;base64, ` +
                 //   Buffer.from(product.image.Data, 'base64').toString('base64')

@@ -43,28 +43,28 @@ const PlaceOrder = () => {
     try {
       setIsLoading(true);
 
-      const { data } = await axios.post(
-        '/api/orders',
-        {
-          orderItems: orderList,
-          shippingAddress,
-          paymentMethod,
-          itemsPrice,
-          shippingPrice,
-          taxPrice,
-          totalPrice,
-        },
-        {
-          headers: {
-            authorization: `Bearer ${userInfo.token}`,
-          },
-        }
-      );
+      // const { data } = await axios.post(
+      //   '/api/orders',
+      //   {
+      //     orderItems: orderList,
+      //     shippingAddress,
+      //     paymentMethod,
+      //     itemsPrice,
+      //     shippingPrice,
+      //     taxPrice,
+      //     totalPrice,
+      //   },
+      //   {
+      //     headers: {
+      //       authorization: `Bearer ${userInfo.token}`,
+      //     },
+      //   }
+      // );
       dispatch(cartClear());
       setIsLoading(false);
-      submitOrders(data);
-      router.push(`/order/${data._id}`, undefined, { shallow: 'true' });
-      // router.push('/', undefined, { shallow: 'true' });
+      submitOrders(orderList);
+      // router.push(`/order/${data._id}`, undefined, { shallow: 'true' });
+      router.push('/', undefined, { shallow: 'true' });
     } catch (error) {
       setIsLoading(false);
       enqueueSnackbar(`[ERROR] ${error.response.data.message}`, {

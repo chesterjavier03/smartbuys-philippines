@@ -14,7 +14,7 @@ const DEFAULT_STATE = {
   cart: {
     cartItems: [],
     shippingAddress: {},
-    paymentMethod: 'cash',
+    paymentMethod: '',
   },
   auth: false,
   orders: [],

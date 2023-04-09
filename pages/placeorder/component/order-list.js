@@ -44,7 +44,8 @@ const OrderList = ({ cartItems, router }) => {
                   >
                     <Image
                       priority
-                      src={`data:image/webp;base64, ` + item.product.image}
+                      // src={`data:image/webp;base64, ` + item.product.image}
+                      src={item.product.image}
                       // src={
                       //   `data:image/webp;base64, ` +
                       //   Buffer.from(item.product.image.Data, 'base64').toString(

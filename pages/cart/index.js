@@ -115,7 +115,7 @@ const Cart = () => {
                           _decrementItem={_decrementItem}
                           _incrementItem={_incrementItem}
                           _removeItem={_removeItem}
-                          router={router}
+                          // router={router}
                         />
                       </Grid>
                       <Grid xl={0} lg={0} md={0} xs={12} sm={0} key={item}>
@@ -124,7 +124,7 @@ const Cart = () => {
                           _incrementItem={_incrementItem}
                           _decrementItem={_decrementItem}
                           _removeItem={_removeItem}
-                          router={router}
+                          // router={router}
                         />
                       </Grid>
                     </>

@@ -174,7 +174,8 @@ const ProductList = ({ products }) => {
                         >
                           <Image
                             maxDelay="1000"
-                            src={`data:image/webp;base64, ` + product.image}
+                            // src={`data:image/webp;base64, ` + product.image}
+                            src={product.image}
                             width="100%"
                             height="100%"
                             objectFit="cover"

@@ -11,7 +11,7 @@ const CartListMobile = ({
   _decrementItem,
   _incrementItem,
   _removeItem,
-  router,
+  // router,
 }) => {
   return (
     <Card
@@ -48,7 +48,8 @@ const CartListMobile = ({
             >
               <Image
                 priority
-                src={`data:image/webp;base64, ` + item.product.image}
+                // src={`data:image/webp;base64, ` + item.product.image}
+                src={item.product.image}
                 // src={
                 //   `data:image/webp;base64, ` +
                 //   Buffer.from(item.product.image.Data, 'base64').toString(
@@ -60,11 +61,11 @@ const CartListMobile = ({
                 height={90}
                 objectFit="cover"
                 alt={item.product.name}
-                onClick={() =>
-                  router.push(`/product/${item.product._id}`, undefined, {
-                    shallow: true,
-                  })
-                }
+                // onClick={() =>
+                //   router.push(`/product/${item.product._id}`, undefined, {
+                //     shallow: true,
+                //   })
+                // }
               />
             </Card>
           </Grid>
