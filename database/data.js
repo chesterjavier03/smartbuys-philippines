@@ -258,7 +258,8 @@ export const productList = [
     name: 'Disney Elsa Anna',
     description: 'Disney Elsa Anna Frozen',
     price: ternoPrice,
-    image: '/static/shop/disney/D1.webp',
+    image:
+      'https://firebasestorage.googleapis.com/v0/b/smartbuys-88b18.appspot.com/o/disney%2FD1.webp?alt=media&token=f85c7048-cdb9-47e8-a9b9-265eda5ea56e',
     category: 'Girls',
     type: 'Terno',
   },
@@ -267,7 +268,8 @@ export const productList = [
     name: 'Disney Believe',
     description: 'Disney Paw Patrol Believe',
     price: ternoPrice,
-    image: '/static/shop/disney/D2.webp',
+    image:
+      'https://firebasestorage.googleapis.com/v0/b/smartbuys-88b18.appspot.com/o/disney%2FD2.webp?alt=media&token=0c1eddbe-ba09-44f2-9900-cc05b63e43e8',
     category: 'Girls',
     type: 'Terno',
   },
@@ -276,7 +278,8 @@ export const productList = [
     name: 'Disney Happy',
     description: 'Disney Happy Together',
     price: ternoPrice,
-    image: '/static/shop/disney/D3.webp',
+    image:
+      'https://firebasestorage.googleapis.com/v0/b/smartbuys-88b18.appspot.com/o/disney%2FD3.webp?alt=media&token=19c53637-5a55-40e0-bf3a-2d968e65fa81',
     category: 'Girls',
     type: 'Terno',
   },
@@ -285,7 +288,8 @@ export const productList = [
     name: 'Disney Unicorn',
     description: 'Disney Minnie Unicorn Rainbow',
     price: ternoPrice,
-    image: '/static/shop/disney/D4.webp',
+    image:
+      'https://firebasestorage.googleapis.com/v0/b/smartbuys-88b18.appspot.com/o/disney%2FD4.webp?alt=media&token=b83f3099-43de-4b85-8ead-f291ead8a94a',
     category: 'Girls',
     type: 'Terno',
   },
@@ -294,7 +298,8 @@ export const productList = [
     name: 'Pony Unicorn',
     description: 'My Little Pony Unicorn',
     price: ternoPrice,
-    image: '/static/shop/disney/D5.webp',
+    image:
+      'https://firebasestorage.googleapis.com/v0/b/smartbuys-88b18.appspot.com/o/disney%2FD5.webp?alt=media&token=4ed434d4-a35f-48d8-bb4a-87e6f98fb1e2',
     category: 'Girls',
     type: 'Terno',
   },
@@ -312,7 +317,8 @@ export const productList = [
     name: 'Barbie Heart',
     description: 'Barbie Heart',
     price: ternoPrice,
-    image: '/static/shop/disney/D8.webp',
+    image:
+      'https://firebasestorage.googleapis.com/v0/b/smartbuys-88b18.appspot.com/o/disney%2FD7.webp?alt=media&token=d443ee93-3274-46e8-9f80-5ed27da64ebd',
     category: 'Girls',
     type: 'Terno',
   },
@@ -321,7 +327,8 @@ export const productList = [
     name: 'Unicorn Magic',
     description: 'Disney Unicorn Magic',
     price: ternoPrice,
-    image: '/static/shop/disney/D9.webp',
+    image:
+      'https://firebasestorage.googleapis.com/v0/b/smartbuys-88b18.appspot.com/o/disney%2FD9.webp?alt=media&token=6bc4d76b-655b-419e-8793-3f369c49f589',
     category: 'Girls',
     type: 'Terno',
   },
@@ -330,7 +337,8 @@ export const productList = [
     name: 'Disney Belle',
     description: 'Disney Princess Belle',
     price: ternoPrice,
-    image: '/static/shop/disney/D10.webp',
+    image:
+      'https://firebasestorage.googleapis.com/v0/b/smartbuys-88b18.appspot.com/o/disney%2FD10.webp?alt=media&token=b8df504b-c17c-41a3-b84d-29f8266a97a3',
     category: 'Girls',
     type: 'Terno',
   },
@@ -339,7 +347,8 @@ export const productList = [
     name: 'Disney Minnie',
     description: 'Disney Minnie',
     price: ternoPrice,
-    image: '/static/shop/disney/D11.webp',
+    image:
+      'https://firebasestorage.googleapis.com/v0/b/smartbuys-88b18.appspot.com/o/disney%2FD11.webp?alt=media&token=48d7e664-f12a-460c-9a1a-6eff33fe49d7',
     category: 'Girls',
     type: 'Terno',
   },
@@ -348,7 +357,8 @@ export const productList = [
     name: 'Disney Little Mermaid',
     description: 'My Little Mermaid',
     price: ternoPrice,
-    image: '/static/shop/disney/D12.webp',
+    image:
+      'https://firebasestorage.googleapis.com/v0/b/smartbuys-88b18.appspot.com/o/disney%2FD12.webp?alt=media&token=d3f5241e-15f9-438c-8d40-08421ca6600e',
     category: 'Girls',
     type: 'Terno',
   },
@@ -357,7 +367,8 @@ export const productList = [
     name: 'Disney Minnie',
     description: 'Disney Minnie Mouse',
     price: ternoPrice,
-    image: '/static/shop/disney/D13.webp',
+    image:
+      'https://firebasestorage.googleapis.com/v0/b/smartbuys-88b18.appspot.com/o/disney%2FD13.webp?alt=media&token=ec438e4a-229b-4228-a037-e14352ef5181',
     category: 'Girls',
     type: 'Terno',
   },
@@ -366,7 +377,8 @@ export const productList = [
     name: 'Disney Minnie',
     description: 'Disney Minnie Mouse Two Hearts',
     price: ternoPrice,
-    image: '/static/shop/disney/D14.webp',
+    image:
+      'https://firebasestorage.googleapis.com/v0/b/smartbuys-88b18.appspot.com/o/disney%2FD14.webp?alt=media&token=596ab218-3136-4959-a096-06fd53709393',
     category: 'Girls',
     type: 'Terno',
   },
@@ -375,7 +387,8 @@ export const productList = [
     name: 'Disney Belle',
     description: 'Disney Belle So Magical',
     price: ternoPrice,
-    image: '/static/shop/disney/D15.webp',
+    image:
+      'https://firebasestorage.googleapis.com/v0/b/smartbuys-88b18.appspot.com/o/disney%2FD15.webp?alt=media&token=169cbea6-811a-4008-a3ab-404fb3987284',
     category: 'Girls',
     type: 'Terno',
   },
@@ -384,7 +397,8 @@ export const productList = [
     name: 'Disney Barbie',
     description: 'Disney Barbie Happiness',
     price: ternoPrice,
-    image: '/static/shop/disney/D16.webp',
+    image:
+      'https://firebasestorage.googleapis.com/v0/b/smartbuys-88b18.appspot.com/o/disney%2FD16.webp?alt=media&token=15fbfb1c-7fcc-49b6-9769-f1d9d56d7967',
     category: 'Girls',
     type: 'Terno',
   },
@@ -393,7 +407,8 @@ export const productList = [
     name: 'Hello Kittye',
     description: 'Helly Kitty Sanrio',
     price: ternoPrice,
-    image: '/static/shop/disney/D17.webp',
+    image:
+      'https://firebasestorage.googleapis.com/v0/b/smartbuys-88b18.appspot.com/o/disney%2FD17.webp?alt=media&token=154c3e00-9950-42ad-9f29-a9e8ae4433fb',
     category: 'Girls',
     type: 'Terno',
   },
@@ -402,7 +417,8 @@ export const productList = [
     name: 'Paw Patrol Sky',
     description: 'Paw Patrol Sky',
     price: ternoPrice,
-    image: '/static/shop/disney/D19.webp',
+    image:
+      'https://firebasestorage.googleapis.com/v0/b/smartbuys-88b18.appspot.com/o/disney%2FD19.webp?alt=media&token=a367cdcb-68e8-43da-ab7f-9a0493f2d098',
     category: 'Girls',
     type: 'Terno',
   },
@@ -411,7 +427,8 @@ export const productList = [
     name: 'Disney Minnie',
     description: 'Disney Minnie Mouse Pink',
     price: ternoPrice,
-    image: '/static/shop/disney/D20.webp',
+    image:
+      'https://firebasestorage.googleapis.com/v0/b/smartbuys-88b18.appspot.com/o/disney%2FD20.webp?alt=media&token=0a9728ea-5378-4636-97de-1a4097bc6da5',
     category: 'Girls',
     type: 'Terno',
   },
@@ -420,7 +437,8 @@ export const productList = [
     name: 'Disney Barbie',
     description: 'Disney Barbie Pink',
     price: ternoPrice,
-    image: '/static/shop/disney/D21.webp',
+    image:
+      'https://firebasestorage.googleapis.com/v0/b/smartbuys-88b18.appspot.com/o/disney%2FD21.webp?alt=media&token=974aa1cf-89c0-4fc2-bcfc-fa508d0a1b67',
     category: 'Girls',
     type: 'Terno',
   },
@@ -429,7 +447,8 @@ export const productList = [
     name: 'Disney Elsa',
     description: 'Disney Elsa Yellow',
     price: ternoPrice,
-    image: '/static/shop/disney/D25.webp',
+    image:
+      'https://firebasestorage.googleapis.com/v0/b/smartbuys-88b18.appspot.com/o/disney%2FD25.webp?alt=media&token=268de1b1-7ed5-4e45-a83b-b98f2bc0b018',
     category: 'Girls',
     type: 'Terno',
   },
@@ -438,7 +457,8 @@ export const productList = [
     name: 'Disney Elsa',
     description: 'Disney Elsa Frozen',
     price: ternoPrice,
-    image: '/static/shop/disney/D26.webp',
+    image:
+      'https://firebasestorage.googleapis.com/v0/b/smartbuys-88b18.appspot.com/o/disney%2FD26.webp?alt=media&token=0172179b-7553-4e1b-ada9-4247445087f2',
     category: 'Girls',
     type: 'Terno',
   },
@@ -447,7 +467,8 @@ export const productList = [
     name: 'My Little Pony',
     description: 'My Little Pony Friendships are Magical',
     price: ternoPrice,
-    image: '/static/shop/disney/D27.webp',
+    image:
+      'https://firebasestorage.googleapis.com/v0/b/smartbuys-88b18.appspot.com/o/disney%2FD27.webp?alt=media&token=81d137e0-519e-4bda-97f4-36db72c0d576',
     category: 'Girls',
     type: 'Terno',
   },
@@ -456,7 +477,8 @@ export const productList = [
     name: 'Paw Patrol Skye',
     description: 'Paw Patrol Sky High Flying Skye',
     price: ternoPrice,
-    image: '/static/shop/disney/D28.webp',
+    image:
+      'https://firebasestorage.googleapis.com/v0/b/smartbuys-88b18.appspot.com/o/disney%2FD28.webp?alt=media&token=7b54d11b-ea02-46be-a65d-27dd73c4226f',
     category: 'Girls',
     type: 'Terno',
   },
@@ -465,7 +487,8 @@ export const productList = [
     name: 'Paw Patrol Skye',
     description: 'Paw Patrol Sky Believe',
     price: ternoPrice,
-    image: '/static/shop/disney/D29.webp',
+    image:
+      'https://firebasestorage.googleapis.com/v0/b/smartbuys-88b18.appspot.com/o/disney%2FD29.webp?alt=media&token=b413b4c3-efc5-40a2-91c3-1347e912759a',
     category: 'Girls',
     type: 'Terno',
   },
@@ -474,7 +497,8 @@ export const productList = [
     name: 'Disney Minnie Mouse',
     description: 'Disney Minnie Mouse Unicorn',
     price: ternoPrice,
-    image: '/static/shop/disney/D30.webp',
+    image:
+      'https://firebasestorage.googleapis.com/v0/b/smartbuys-88b18.appspot.com/o/disney%2FD30.webp?alt=media&token=f61a4528-09f5-4b43-9f30-82fe1eb25651',
     category: 'Girls',
     type: 'Terno',
   },
@@ -483,7 +507,8 @@ export const productList = [
     name: 'Disney Minnie Mouse',
     description: 'Disney Minnie Mouse Red',
     price: ternoPrice,
-    image: '/static/shop/disney/D31.webp',
+    image:
+      'https://firebasestorage.googleapis.com/v0/b/smartbuys-88b18.appspot.com/o/disney%2FD31.webp?alt=media&token=b50c80b4-8023-4422-9230-f24e2a27c211',
     category: 'Girls',
     type: 'Terno',
   },
@@ -492,7 +517,8 @@ export const productList = [
     name: 'Disney Unicorn',
     description: 'Disney Unicorn You Are Magical',
     price: ternoPrice,
-    image: '/static/shop/disney/D34.webp',
+    image:
+      'https://firebasestorage.googleapis.com/v0/b/smartbuys-88b18.appspot.com/o/disney%2FD34.webp?alt=media&token=0c522cd9-755c-4cc2-b4ac-19f9a0f30da4',
     category: 'Girls',
     type: 'Terno',
   },
@@ -501,7 +527,8 @@ export const productList = [
     name: 'Disney Mickey Gang',
     description: 'Disney Mickey Gang Happy Together',
     price: ternoPrice,
-    image: '/static/shop/disney/D36.webp',
+    image:
+      'https://firebasestorage.googleapis.com/v0/b/smartbuys-88b18.appspot.com/o/disney%2FD36.webp?alt=media&token=22774315-effe-4a77-bd88-d1d1e91943df',
     category: 'Girls',
     type: 'Terno',
   },
@@ -510,7 +537,8 @@ export const productList = [
     name: 'Hello Kitty Red',
     description: 'Hello Kitty Red',
     price: dressPrice,
-    image: '/static/shop/dress/DS1.webp',
+    image:
+      'https://firebasestorage.googleapis.com/v0/b/smartbuys-88b18.appspot.com/o/dress%2FDS1.webp?alt=media&token=349b0d25-8a16-4983-8a58-33e007b6d92d',
     category: 'Girls',
     type: 'Dress',
   },
@@ -519,7 +547,8 @@ export const productList = [
     name: 'Disney Little Mermaid',
     description: 'Disney My Little Mermaid',
     price: dressPrice,
-    image: '/static/shop/dress/DS2.webp',
+    image:
+      'https://firebasestorage.googleapis.com/v0/b/smartbuys-88b18.appspot.com/o/dress%2FDS2.webp?alt=media&token=cb85ee9a-aaf8-432e-b054-ef085da7a1ab',
     category: 'Girls',
     type: 'Dress',
   },
@@ -528,7 +557,8 @@ export const productList = [
     name: 'Disney Barbie',
     description: 'Disney Barbie Purple',
     price: dressPrice,
-    image: '/static/shop/dress/DS3.webp',
+    image:
+      'https://firebasestorage.googleapis.com/v0/b/smartbuys-88b18.appspot.com/o/dress%2FDS3.webp?alt=media&token=db2a8e4d-3ee5-4b25-aa06-b53636e8837e',
     category: 'Girls',
     type: 'Dress',
   },
@@ -537,7 +567,8 @@ export const productList = [
     name: 'Disney Barbie',
     description: 'Disney Barbie Beauty',
     price: dressPrice,
-    image: '/static/shop/dress/DS4.webp',
+    image:
+      'https://firebasestorage.googleapis.com/v0/b/smartbuys-88b18.appspot.com/o/dress%2FDS4.webp?alt=media&token=9f316606-5795-4128-9fe5-b4cec9a24c4d',
     category: 'Girls',
     type: 'Dress',
   },
@@ -546,7 +577,8 @@ export const productList = [
     name: 'My Little Pony',
     description: 'Disney My Little Pony',
     price: dressPrice,
-    image: '/static/shop/dress/DS5.webp',
+    image:
+      'https://firebasestorage.googleapis.com/v0/b/smartbuys-88b18.appspot.com/o/dress%2FDS5.webp?alt=media&token=8a7b25e3-c2a7-4c53-b3cd-9be4722e5ee2',
     category: 'Girls',
     type: 'Dress',
   },
@@ -555,7 +587,8 @@ export const productList = [
     name: 'Disney Minnie Mouse',
     description: 'Disney Minnie Mouse Bow',
     price: dressPrice,
-    image: '/static/shop/dress/DS6.webp',
+    image:
+      'https://firebasestorage.googleapis.com/v0/b/smartbuys-88b18.appspot.com/o/dress%2FDS6.webp?alt=media&token=6d6becf7-9aff-4a51-add7-6211b264dde6',
     category: 'Girls',
     type: 'Dress',
   },
@@ -564,7 +597,8 @@ export const productList = [
     name: 'LOL',
     description: 'LOL',
     price: dressPrice,
-    image: '/static/shop/dress/DS7.webp',
+    image:
+      'https://firebasestorage.googleapis.com/v0/b/smartbuys-88b18.appspot.com/o/dress%2FDS7.webp?alt=media&token=dbecab6a-0ac7-4ce4-9207-bc2354ea5182',
     category: 'Girls',
     type: 'Dress',
   },
@@ -573,7 +607,8 @@ export const productList = [
     name: 'Disney My Little Pony',
     description: 'Disney My Little Pony Purple',
     price: dressPrice,
-    image: '/static/shop/dress/DS8.webp',
+    image:
+      'https://firebasestorage.googleapis.com/v0/b/smartbuys-88b18.appspot.com/o/dress%2FDS8.webp?alt=media&token=f7669b90-1f1c-48eb-9152-edbecc13a68b',
     category: 'Girls',
     type: 'Dress',
   },
@@ -582,7 +617,8 @@ export const productList = [
     name: 'Disney Minnie Mouse',
     description: 'Disney Minnie Mouse Red',
     price: dressPrice,
-    image: '/static/shop/dress/DS9.webp',
+    image:
+      'https://firebasestorage.googleapis.com/v0/b/smartbuys-88b18.appspot.com/o/dress%2FDS9.webp?alt=media&token=a7a1613e-ad25-4a1a-ae1f-25a6954500e4',
     category: 'Girls',
     type: 'Dress',
   },
@@ -591,7 +627,8 @@ export const productList = [
     name: 'Disney Minnie Mouse',
     description: 'Disney Minnie Mouse Blue Greem',
     price: dressPrice,
-    image: '/static/shop/dress/DS11.webp',
+    image:
+      'https://firebasestorage.googleapis.com/v0/b/smartbuys-88b18.appspot.com/o/dress%2FDS11.webp?alt=media&token=1110683f-36c9-4f96-83ac-6a119e09c613',
     category: 'Girls',
     type: 'Dress',
   },
@@ -600,7 +637,8 @@ export const productList = [
     name: 'Jordan Sando',
     description: 'Jordan Rise Above All',
     price: sandoPrice,
-    image: '/static/shop/jordan/J1.webp',
+    image:
+      'https://firebasestorage.googleapis.com/v0/b/smartbuys-88b18.appspot.com/o/jordan%2FJ1.webp?alt=media&token=4592b0d5-12f5-4d5a-9ba5-63918dd1fb66',
     category: 'Boys',
     type: 'Sando',
   },
@@ -609,7 +647,8 @@ export const productList = [
     name: 'Jordan 23 Sando',
     description: 'Jordan 23 Sando Black',
     price: sandoPrice,
-    image: '/static/shop/jordan/J2.webp',
+    image:
+      'https://firebasestorage.googleapis.com/v0/b/smartbuys-88b18.appspot.com/o/jordan%2FJ2.webp?alt=media&token=482ca27d-8313-48a0-9fb2-d0b32bd1e693',
     category: 'Boys',
     type: 'Sando',
   },
@@ -618,7 +657,8 @@ export const productList = [
     name: 'Jordan Rise Above All',
     description: 'Jordan Rise Above All Yellow',
     price: sandoPrice,
-    image: '/static/shop/jordan/J3.webp',
+    image:
+      'https://firebasestorage.googleapis.com/v0/b/smartbuys-88b18.appspot.com/o/jordan%2FJ3.webp?alt=media&token=779c4f9c-d12c-4c99-af3d-64529d44a1f6',
     category: 'Boys',
     type: 'Sando',
   },
@@ -627,7 +667,8 @@ export const productList = [
     name: 'Micheal Jordan 23',
     description: 'Michael Jordan 23 Sando',
     price: sandoPrice,
-    image: '/static/shop/jordan/J4.webp',
+    image:
+      'https://firebasestorage.googleapis.com/v0/b/smartbuys-88b18.appspot.com/o/jordan%2FJ4.webp?alt=media&token=b905021f-8110-4788-8afd-fe422109150b',
     category: 'Boys',
     type: 'Sando',
   },
@@ -636,7 +677,8 @@ export const productList = [
     name: 'Jordan Flight',
     description: 'Jordan Flight Sando Black',
     price: sandoPrice,
-    image: '/static/shop/jordan/J5.webp',
+    image:
+      'https://firebasestorage.googleapis.com/v0/b/smartbuys-88b18.appspot.com/o/jordan%2FJ5.webp?alt=media&token=36e9e4a6-5c6f-48d1-8dd4-8881168fac6f',
     category: 'Boys',
     type: 'Sando',
   },
@@ -645,7 +687,8 @@ export const productList = [
     name: 'Jordan 23',
     description: 'Jordan 23 Yellow',
     price: sandoPrice,
-    image: '/static/shop/jordan/J6.webp',
+    image:
+      'https://firebasestorage.googleapis.com/v0/b/smartbuys-88b18.appspot.com/o/jordan%2FJ6.webp?alt=media&token=f4f31dd3-894e-451c-ac32-331d4aa62c71',
     category: 'Boys',
     type: 'Sando',
   },
@@ -654,7 +697,8 @@ export const productList = [
     name: 'Nike Check',
     description: 'Nike Check Comoflouge',
     price: sandoPrice,
-    image: '/static/shop/jordan/J7.webp',
+    image:
+      'https://firebasestorage.googleapis.com/v0/b/smartbuys-88b18.appspot.com/o/jordan%2FJ7.webp?alt=media&token=a946b9f5-e5fb-4c38-a77d-82602102eb7b',
     category: 'Boys',
     type: 'Sando',
   },
@@ -663,7 +707,8 @@ export const productList = [
     name: 'Nike Athletic Department',
     description: 'Nike Athletic Department Blue Shirt',
     price: shirtPrice,
-    image: '/static/shop/jordan/J8.webp',
+    image:
+      'https://firebasestorage.googleapis.com/v0/b/smartbuys-88b18.appspot.com/o/jordan%2FJ8.webp?alt=media&token=7b871fb3-cd50-493a-b377-4e74c57e8d21',
     category: 'Boys',
     type: 'Shirt',
   },
@@ -672,7 +717,8 @@ export const productList = [
     name: 'Michael Jordan Blue',
     description: 'Michael Jordan Blue',
     price: shirtPrice,
-    image: '/static/shop/jordan/J9.webp',
+    image:
+      'https://firebasestorage.googleapis.com/v0/b/smartbuys-88b18.appspot.com/o/jordan%2FJ9.webp?alt=media&token=dcc4e4ba-d1ea-4ebb-a4c4-6e0afc91cfc1',
     category: 'Boys',
     type: 'Shirt',
   },
@@ -681,7 +727,8 @@ export const productList = [
     name: 'Jordan Hard Times',
     description: 'Jordan Hard Times Good Times',
     price: shirtPrice,
-    image: '/static/shop/jordan/J10.webp',
+    image:
+      'https://firebasestorage.googleapis.com/v0/b/smartbuys-88b18.appspot.com/o/jordan%2FJ10.webp?alt=media&token=7fd614e1-4ad6-40de-8e25-886788b794de',
     category: 'Boys',
     type: 'Shirt',
   },
@@ -690,7 +737,8 @@ export const productList = [
     name: 'Nike Check',
     description: 'Nike Check Blue',
     price: shirtPrice,
-    image: '/static/shop/jordan/J11.webp',
+    image:
+      'https://firebasestorage.googleapis.com/v0/b/smartbuys-88b18.appspot.com/o/jordan%2FJ11.webp?alt=media&token=2f6cddfc-5e9d-4f3a-8a84-883a827da83d',
     category: 'Boys',
     type: 'Shirt',
   },
@@ -699,7 +747,8 @@ export const productList = [
     name: 'Nike Check',
     description: 'Nike Check Black',
     price: shirtPrice,
-    image: '/static/shop/jordan/J12.webp',
+    image:
+      'https://firebasestorage.googleapis.com/v0/b/smartbuys-88b18.appspot.com/o/jordan%2FJ12.webp?alt=media&token=2472acb3-7d7f-4951-8c90-97f266e9c7f6',
     category: 'Boys',
     type: 'Shirt',
   },
@@ -708,7 +757,8 @@ export const productList = [
     name: 'Nike Legend',
     description: 'Nike The Legend Lives On',
     price: shirtPrice,
-    image: '/static/shop/jordan/J13.webp',
+    image:
+      'https://firebasestorage.googleapis.com/v0/b/smartbuys-88b18.appspot.com/o/jordan%2FJ13.webp?alt=media&token=244c3648-2f41-4065-9e54-2cf650540235',
     category: 'Boys',
     type: 'Shirt',
   },
@@ -717,7 +767,8 @@ export const productList = [
     name: 'Nike Bred Up',
     description: 'Nike Get Your Bred Up',
     price: shirtPrice,
-    image: '/static/shop/jordan/J14.webp',
+    image:
+      'https://firebasestorage.googleapis.com/v0/b/smartbuys-88b18.appspot.com/o/jordan%2FJ14.webp?alt=media&token=ef7974f0-1956-4494-9d63-c5f0d7eb81ed',
     category: 'Boys',
     type: 'Shirt',
   },
@@ -726,7 +777,8 @@ export const productList = [
     name: 'Nike Jordan',
     description: 'Nike Jordan',
     price: shirtPrice,
-    image: '/static/shop/jordan/J15.webp',
+    image:
+      'https://firebasestorage.googleapis.com/v0/b/smartbuys-88b18.appspot.com/o/jordan%2FJ15.webp?alt=media&token=7032b449-ebd9-4327-9853-c65e8ae863b1',
     category: 'Boys',
     type: 'Shirt',
   },
@@ -735,7 +787,8 @@ export const productList = [
     name: 'Nike Just Do It',
     description: 'Nike Just Do It',
     price: shirtPrice,
-    image: '/static/shop/jordan/J16.webp',
+    image:
+      'https://firebasestorage.googleapis.com/v0/b/smartbuys-88b18.appspot.com/o/jordan%2FJ16.webp?alt=media&token=f8ad6b7b-6db6-4bd9-ad2b-ff6e38a22b60',
     category: 'Boys',
     type: 'Shirt',
   },
@@ -744,7 +797,8 @@ export const productList = [
     name: 'Nike Just Do It',
     description: 'Nike Just Do It Check Orange',
     price: shirtPrice,
-    image: '/static/shop/jordan/J17.webp',
+    image:
+      'https://firebasestorage.googleapis.com/v0/b/smartbuys-88b18.appspot.com/o/jordan%2FJ17.webp?alt=media&token=65e537a7-6d7b-451a-bd4a-3eb307f57337',
     category: 'Boys',
     type: 'Shirt',
   },
@@ -753,7 +807,8 @@ export const productList = [
     name: 'Nike Air Jordan',
     description: 'Nike Air Jordan',
     price: shirtPrice,
-    image: '/static/shop/jordan/J19.webp',
+    image:
+      'https://firebasestorage.googleapis.com/v0/b/smartbuys-88b18.appspot.com/o/jordan%2FJ19.webp?alt=media&token=f1492278-8c96-47b7-854d-15fdc289477a',
     category: 'Boys',
     type: 'Shirt',
   },
@@ -762,7 +817,8 @@ export const productList = [
     name: 'Nike Air Jordan',
     description: 'Nike Air Michael Jordan',
     price: shirtPrice,
-    image: '/static/shop/jordan/J30.webp',
+    image:
+      'https://firebasestorage.googleapis.com/v0/b/smartbuys-88b18.appspot.com/o/jordan%2FJ30.webp?alt=media&token=e7566af4-94df-414c-b4e7-3c35a5f7a8dd',
     category: 'Boys',
     type: 'Shirt',
   },
@@ -771,7 +827,8 @@ export const productList = [
     name: 'Nike Air Jordan',
     description: 'Nike Air Michael Jordan Brand Of Flight',
     price: shirtPrice,
-    image: '/static/shop/jordan/J31.webp',
+    image:
+      'https://firebasestorage.googleapis.com/v0/b/smartbuys-88b18.appspot.com/o/jordan%2FJ31.webp?alt=media&token=e273eea8-ef39-4bf3-aa7b-053b91e77894',
     category: 'Boys',
     type: 'Shirt',
   },
@@ -789,7 +846,8 @@ export const productList = [
     name: 'Nike Michael Jordan 23',
     description: 'Nike Michael Jordan 23',
     price: shirtPrice,
-    image: '/static/shop/jordan/J39.webp',
+    image:
+      'https://firebasestorage.googleapis.com/v0/b/smartbuys-88b18.appspot.com/o/jordan%2FJ36.webp?alt=media&token=5036f1f0-61f0-4d00-9e34-43c05da0e431',
     category: 'Boys',
     type: 'Shirt',
   },
@@ -798,7 +856,8 @@ export const productList = [
     name: 'Nike One More Pair',
     description: 'Nike Just One More Pair',
     price: shirtPrice,
-    image: '/static/shop/jordan/J40.webp',
+    image:
+      'https://firebasestorage.googleapis.com/v0/b/smartbuys-88b18.appspot.com/o/jordan%2FJ40.webp?alt=media&token=2ad80d73-eb78-4466-a1b9-a7d4eac112ac',
     category: 'Boys',
     type: 'Shirt',
   },
@@ -807,7 +866,8 @@ export const productList = [
     name: 'Nike Rise',
     description: 'Nike Rise Above All',
     price: shirtPrice,
-    image: '/static/shop/jordan/J41.webp',
+    image:
+      'https://firebasestorage.googleapis.com/v0/b/smartbuys-88b18.appspot.com/o/jordan%2FJ41.webp?alt=media&token=6a17acb7-f243-41e1-a89c-2fb5b756d241',
     category: 'Boys',
     type: 'Shirt',
   },
@@ -816,7 +876,8 @@ export const productList = [
     name: 'Nike Jordan',
     description: 'Nike Jordan Shorts Yellow',
     price: shortsPrice,
-    image: '/static/shop/shorts/S1.webp',
+    image:
+      'https://firebasestorage.googleapis.com/v0/b/smartbuys-88b18.appspot.com/o/shorts%2FS1.webp?alt=media&token=9cd74236-54e9-4e49-99eb-cb5582c9e8f2',
     category: 'Boys',
     type: 'Shorts',
   },
@@ -825,7 +886,8 @@ export const productList = [
     name: 'Nike Jordan',
     description: 'Nike Jordan Shorts Green',
     price: shortsPrice,
-    image: '/static/shop/shorts/S2.webp',
+    image:
+      'https://firebasestorage.googleapis.com/v0/b/smartbuys-88b18.appspot.com/o/shorts%2FS2.webp?alt=media&token=d3070ea2-b8eb-4b27-a007-0a6e68842b65',
     category: 'Boys',
     type: 'Shorts',
   },
@@ -834,7 +896,8 @@ export const productList = [
     name: 'Just Do It',
     description: 'Just Do It Grey',
     price: shortsPrice,
-    image: '/static/shop/shorts/S3.webp',
+    image:
+      'https://firebasestorage.googleapis.com/v0/b/smartbuys-88b18.appspot.com/o/shorts%2FS3.webp?alt=media&token=749ae52d-1461-415c-82cb-85aa992ed3a4',
     category: 'Boys',
     type: 'Shorts',
   },
@@ -843,7 +906,8 @@ export const productList = [
     name: 'Nike Shorts',
     description: 'Nike Shorts White',
     price: shortsPrice,
-    image: '/static/shop/shorts/S4.webp',
+    image:
+      'https://firebasestorage.googleapis.com/v0/b/smartbuys-88b18.appspot.com/o/shorts%2FS4.webp?alt=media&token=75f3e29c-4280-4e0e-86b3-1c7cd09c2c5d',
     category: 'Boys',
     type: 'Shorts',
   },
@@ -861,7 +925,8 @@ export const productList = [
     name: 'Nike Jordan',
     description: 'Nike Jordan Blue',
     price: shortsPrice,
-    image: '/static/shop/shorts/S6.webp',
+    image:
+      'https://firebasestorage.googleapis.com/v0/b/smartbuys-88b18.appspot.com/o/shorts%2FS5.webp?alt=media&token=31feefbf-936d-4ce5-88e8-7f5a1fb6dcfa',
     category: 'Boys',
     type: 'Shorts',
   },
@@ -870,7 +935,8 @@ export const productList = [
     name: 'Nike Jump Man',
     description: 'Nike Jordan Jump Man Yellow',
     price: shortsPrice,
-    image: '/static/shop/shorts/S7.webp',
+    image:
+      'https://firebasestorage.googleapis.com/v0/b/smartbuys-88b18.appspot.com/o/shorts%2FS7.webp?alt=media&token=c5630839-f091-4421-b006-5b457c56bbdb',
     category: 'Boys',
     type: 'Shorts',
   },
@@ -888,7 +954,8 @@ export const productList = [
     name: 'Nike Jordan',
     description: 'Nike Jordan Blue',
     price: shortsPrice,
-    image: '/static/shop/shorts/S9.webp',
+    image:
+      'https://firebasestorage.googleapis.com/v0/b/smartbuys-88b18.appspot.com/o/shorts%2FS8.webp?alt=media&token=3bd98d94-8296-4457-a725-bcbe34f18264',
     category: 'Boys',
     type: 'Shorts',
   },
@@ -897,7 +964,8 @@ export const productList = [
     name: 'Nike Jordan',
     description: 'Nike Jordan Black',
     price: shortsPrice,
-    image: '/static/shop/shorts/S10.webp',
+    image:
+      'https://firebasestorage.googleapis.com/v0/b/smartbuys-88b18.appspot.com/o/shorts%2FS10.webp?alt=media&token=3d462a9a-6072-4188-9289-6ef6489fa1a1',
     category: 'Boys',
     type: 'Shorts',
   },
@@ -906,7 +974,8 @@ export const productList = [
     name: 'Jordan 23',
     description: 'Jordan 23 Yellow',
     price: shortsPrice,
-    image: '/static/shop/shorts/S11.webp',
+    image:
+      'https://firebasestorage.googleapis.com/v0/b/smartbuys-88b18.appspot.com/o/shorts%2FS11.webp?alt=media&token=32bdacb7-259d-4005-b368-f71cfbd7ea90',
     category: 'Boys',
     type: 'Shorts',
   },
@@ -915,7 +984,8 @@ export const productList = [
     name: 'Jordan Jogger',
     description: 'Jordan Jogger Grey',
     price: joggerPrice,
-    image: '/static/shop/jogger/JG1.webp',
+    image:
+      'https://firebasestorage.googleapis.com/v0/b/smartbuys-88b18.appspot.com/o/jogger%2FJG1.webp?alt=media&token=098d08be-2576-4182-8ece-d8ccf161be58',
     category: 'Boys',
     type: 'Jogger',
   },
@@ -924,7 +994,8 @@ export const productList = [
     name: 'Jordan Jogger',
     description: 'Jordan Jogger Yellow',
     price: joggerPrice,
-    image: '/static/shop/jogger/JG2.webp',
+    image:
+      'https://firebasestorage.googleapis.com/v0/b/smartbuys-88b18.appspot.com/o/jogger%2FJG2.webp?alt=media&token=d98bb5c8-828d-4d12-8462-aa6c8910de8b',
     category: 'Boys',
     type: 'Jogger',
   },
@@ -933,7 +1004,8 @@ export const productList = [
     name: 'Jordan Jogger',
     description: 'Jordan Jogger Black',
     price: joggerPrice,
-    image: '/static/shop/jogger/JG3.webp',
+    image:
+      'https://firebasestorage.googleapis.com/v0/b/smartbuys-88b18.appspot.com/o/jogger%2FJG3.webp?alt=media&token=b828f77a-8783-43ea-ad3f-7a6a56ffa124',
     category: 'Boys',
     type: 'Jogger',
   },
@@ -942,7 +1014,8 @@ export const productList = [
     name: 'Chicken Nuggets',
     description: 'Famous Original Chicken Nuggets',
     price: 180,
-    image: '/static/shop/food/nuggets.webp',
+    image:
+      'https://firebasestorage.googleapis.com/v0/b/smartbuys-88b18.appspot.com/o/food%2Fnuggets.webp?alt=media&token=c1bea4f2-b63f-4237-9315-2669d3201273',
     category: 'Food',
     type: 'Food',
   },
@@ -951,7 +1024,8 @@ export const productList = [
     name: 'Potato Fries',
     description: 'Original Potato Fries',
     price: 110,
-    image: '/static/shop/food/fries.webp',
+    image:
+      'https://firebasestorage.googleapis.com/v0/b/smartbuys-88b18.appspot.com/o/food%2Ffries.webp?alt=media&token=15cc0466-ae40-4d62-a53e-b2777ad8d9fe',
     category: 'Food',
     type: 'Food',
   },
@@ -960,7 +1034,8 @@ export const productList = [
     name: 'Famous Crispy Bacon',
     description: 'Famous Original Crispy Bacon',
     price: 210,
-    image: '/static/shop/food/bacon.webp',
+    image:
+      'https://firebasestorage.googleapis.com/v0/b/smartbuys-88b18.appspot.com/o/food%2Fbacon.webp?alt=media&token=daa77442-6ab1-43c4-b9c3-d37932b37c91',
     category: 'Food',
     type: 'Food',
   },
@@ -969,7 +1044,8 @@ export const productList = [
     name: 'Famous Siomai',
     description: 'Famous Authentic Siomai',
     price: 190,
-    image: '/static/shop/food/siomai.webp',
+    image:
+      'https://firebasestorage.googleapis.com/v0/b/smartbuys-88b18.appspot.com/o/food%2Fsiomai.webp?alt=media&token=164cb7d9-6694-4507-887e-a4bf645cf326',
     category: 'Food',
     type: 'Food',
   },
@@ -978,7 +1054,8 @@ export const productList = [
     name: 'Famous Longganisa',
     description: 'Famous Authentic Skinless Longganisa',
     price: 100,
-    image: '/static/shop/food/longganisa.webp',
+    image:
+      'https://firebasestorage.googleapis.com/v0/b/smartbuys-88b18.appspot.com/o/food%2Flongganisa.webp?alt=media&token=1e45d907-b28b-40f9-968a-84459729aeff',
     category: 'Food',
     type: 'Food',
   },
