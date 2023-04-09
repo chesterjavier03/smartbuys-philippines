@@ -168,7 +168,7 @@ const Shop = ({ products }) => {
                         h: '380px',
                         borderColor: 'red',
                         borderWidth: 'thin',
-                        borderRadius: '$sm',
+                        borderRadius: '$xs',
                       }}
                       isHoverable
                       isPressable
@@ -185,7 +185,12 @@ const Shop = ({ products }) => {
                           </Text>
                         </Col>
                       </Card.Header>
-                      <Card.Body css={{ p: 0, backgroundColor: 'transparent' }}>
+                      <Card.Body
+                        css={{
+                          p: 0,
+                          backgroundColor: 'transparent',
+                        }}
+                      >
                         <Card.Image
                           maxDelay="1000"
                           src={`data:image/webp;base64, ` + product.image}
@@ -193,7 +198,9 @@ const Shop = ({ products }) => {
                           height="100%"
                           objectFit="cover"
                           alt={product.name}
-                          css={{ backgroundColor: 'transparent' }}
+                          css={{
+                            backgroundColor: 'transparent',
+                          }}
                           onClick={() => {
                             handleItemDetails(product);
                           }}
@@ -203,10 +210,12 @@ const Shop = ({ products }) => {
                         isBlurred
                         css={{
                           position: 'absolute',
-                          bgBlur: 'rgba(0,0,0,0.3)',
+                          bgBlur: 'rgba(0,0,0,0.5)',
                           borderTop:
-                            '$borderWeights$light solid rgba(255, 255, 255, 0.2)',
+                            '$borderWeights$light solid rgba(255, 255, 255, 0.5)',
                           bottom: 0,
+                          borderBottomLeftRadius: '0',
+                          borderBottomRightRadius: '0',
                           zIndex: 1,
                         }}
                       >
