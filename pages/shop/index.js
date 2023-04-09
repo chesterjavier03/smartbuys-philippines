@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { cartAddItem } from 'store/reducers/user.reducer';
 import { moneyFormat } from 'utils/functions';
 
-const Shop = () => {
+const Shop = ({ products }) => {
   const router = useRouter();
   const dispatch = useDispatch();
   const darkMode = useSelector((state) => state.user.darkMode);
@@ -22,9 +22,8 @@ const Shop = () => {
   const { enqueueSnackbar } = useSnackbar();
 
   useEffect(() => {
-    // setProductList(products);
-    fetchAll();
-  }, []);
+    setProductList(products);
+  }, [products]);
 
   const handleItemDetails = (product) => {
     router.push(
