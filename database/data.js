@@ -308,7 +308,8 @@ export const productList = [
     name: 'Barbie Unicorn',
     description: 'Disney Princess Barbie Unicorn',
     price: ternoPrice,
-    image: '/static/shop/disney/D7.webp',
+    image:
+      'https://firebasestorage.googleapis.com/v0/b/smartbuys-88b18.appspot.com/o/disney%2FD7.webp?alt=media&token=d443ee93-3274-46e8-9f80-5ed27da64ebd',
     category: 'Girls',
     type: 'Terno',
   },
@@ -837,7 +838,8 @@ export const productList = [
     name: 'Nike Check',
     description: 'Nike Check',
     price: shirtPrice,
-    image: '/static/shop/jordan/J36.webp',
+    image:
+      'https://firebasestorage.googleapis.com/v0/b/smartbuys-88b18.appspot.com/o/jordan%2FJ36.webp?alt=media&token=5036f1f0-61f0-4d00-9e34-43c05da0e431',
     category: 'Boys',
     type: 'Shirt',
   },
@@ -916,7 +918,8 @@ export const productList = [
     name: 'Nike Shorts',
     description: 'Nike Shorts Orange',
     price: shortsPrice,
-    image: '/static/shop/shorts/S5.webp',
+    image:
+      'https://firebasestorage.googleapis.com/v0/b/smartbuys-88b18.appspot.com/o/shorts%2FS5.webp?alt=media&token=31feefbf-936d-4ce5-88e8-7f5a1fb6dcfa',
     category: 'Boys',
     type: 'Shorts',
   },
@@ -945,7 +948,8 @@ export const productList = [
     name: 'Nike Air Jordan',
     description: 'Nike Air Jordan Blue',
     price: shortsPrice,
-    image: '/static/shop/shorts/S8.webp',
+    image:
+      'https://firebasestorage.googleapis.com/v0/b/smartbuys-88b18.appspot.com/o/shorts%2FS8.webp?alt=media&token=3bd98d94-8296-4457-a725-bcbe34f18264',
     category: 'Boys',
     type: 'Shorts',
   },
