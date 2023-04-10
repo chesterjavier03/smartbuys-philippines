@@ -25,8 +25,7 @@ const Shop = () => {
 
   useEffect(() => {
     dispatch(setProductDataList(products));
-    // setProductList(productDataList);
-    // fetchAll();
+    setProductList(productDataList);
   }, [dispatch, productDataList]);
 
   const handleItemDetails = (product) => {
