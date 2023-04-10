@@ -69,11 +69,11 @@ export const adminSlice = createSlice({
     adminAddProduct: (state, action) => {
       const newProduct = action.payload;
       const existProduct = state.products.find((product) =>
-        product._id === newProduct._id ? true : false
+        product.name === newProduct.name ? true : false
       );
       const productList = existProduct
         ? state.products.map((product) =>
-            product._id === existProduct._id ? newProduct : product
+            product.name === existProduct.name ? newProduct : product
           )
         : [...state.products, newProduct];
       state.products = productList;

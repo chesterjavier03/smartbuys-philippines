@@ -374,7 +374,8 @@ export default ProductList;
 
 export const getServerSideProps = async () => {
   await db.connect();
-  const productList = await Product.find({}).lean();
+  // const productList = await Product.find({}).lean();
+  const productList = await Product.aggregate([{ $sample: { size: 2000 } }]);
   await db.disconnect();
 
   return { props: { products: toJson(productList) } };

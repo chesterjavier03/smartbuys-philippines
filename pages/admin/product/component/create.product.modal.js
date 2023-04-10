@@ -46,12 +46,12 @@ const CreateProductModal = ({
 
   const uploadHandler = async (e) => {
     const file = e.target.files[0];
-    const bodyFormData = new FormData();
-    bodyFormData.append('file', file);
+    // const bodyFormData = new FormData();
+    // bodyFormData.append('file', file);
     const result = await convertToBase64(file);
     setImageFile(file);
     setImageSet(result.split(',')[1]);
-    bodyFormData.append('base64', result.split(',')[1]);
+    // bodyFormData.append('base64', result.split(',')[1]);
     try {
       closeSnackbar();
       // const values = {

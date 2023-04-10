@@ -121,7 +121,8 @@ const EditProductModal = ({
                         {imageSet && (
                           <>
                             <Image
-                              src={`data:image/webp;base64, ` + imageSet}
+                              // src={`data:image/webp;base64, ` + imageSet}
+                              src={imageSet}
                               style={{
                                 // border: '1.5px solid red',
                                 borderRadius: '.5rem',

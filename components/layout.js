@@ -121,7 +121,7 @@ const Layout = ({ children }) => {
         dispatch(signOutAdminUser());
         dispatch(signOutUserProduct());
         enqueueSnackbar('Logout successful', { variant: 'success' });
-        router.push('/');
+        router.push('/', undefined, { shallow: true });
         return;
       case 'profile':
         router.push('/user/profile', undefined, { shallow: 'true' });

@@ -8,7 +8,8 @@ const handler = nextConnect();
 handler.get('/api/products/getAll', async (req, res) => {
   try {
     await db.connect();
-    const productList = await Product.find({}).lean();
+    // const productList = await Product.find({}).lean();
+    const productList = await Product.aggregate([{ $sample: { size: 2000 } }]);
     await db.disconnect();
     res.status(200).json(productList);
   } catch (error) {

@@ -7,14 +7,13 @@ import {
 
 export const createNewProduct = createAsyncThunk(
   'product/createNewProduct',
-  async ({ formData, userToken }, { dispatch }) => {
+  async ({ newProduct, userToken }, { dispatch }) => {
     try {
       const { data } = await axios.post(
         '/api/admin/product/create-product',
-        formData,
+        newProduct,
         {
           headers: {
-            'Content-Type': 'multipart/form-data',
             authorization: `Bearer ${userToken}`,
           },
         }
@@ -30,14 +29,13 @@ export const createNewProduct = createAsyncThunk(
 
 export const updateProduct = createAsyncThunk(
   'product/updateProduct',
-  async ({ formData, userToken }, { dispatch }) => {
+  async ({ updateProductData, userToken }, { dispatch }) => {
     try {
       const { data } = await axios.put(
         '/api/admin/product/update-product',
-        formData,
+        updateProductData,
         {
           headers: {
-            'Content-Type': 'multipart/form-data',
             authorization: `Bearer ${userToken}`,
           },
         }

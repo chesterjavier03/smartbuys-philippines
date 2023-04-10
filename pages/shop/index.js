@@ -7,16 +7,14 @@ import Filter from 'components/filter';
 import { useDispatch, useSelector } from 'react-redux';
 import { cartAddItem } from 'store/reducers/user.reducer';
 import { moneyFormat } from 'utils/functions';
-import { productList as products } from 'database/data';
-import { setProductDataList } from 'store/reducers/product.reducer';
+// import { productList as products } from 'database/data';
 
-const Shop = () => {
+const Shop = ({ products }) => {
   const router = useRouter();
   const dispatch = useDispatch();
   const darkMode = useSelector((state) => state.user.darkMode);
   const loading = useSelector((state) => state.user.loading);
-  const productDataList = useSelector((state) => state.product.products);
-  const [productList, setProductList] = useState(productDataList);
+  const [productList, setProductList] = useState(products);
   const [isLoading, setIsLoading] = useState(loading);
   const [isPressed, setIsPressed] = useState(false);
   const categoryList = ['Girls', 'Boys', 'Food'];
@@ -24,9 +22,9 @@ const Shop = () => {
   const { enqueueSnackbar } = useSnackbar();
 
   useEffect(() => {
-    dispatch(setProductDataList(products));
-    setProductList(productDataList);
-  }, [dispatch, productDataList]);
+    // dispatch(setproducts(products));
+    setProductList(products);
+  }, [dispatch, products]);
 
   const handleItemDetails = (product) => {
     router.push(
@@ -43,14 +41,14 @@ const Shop = () => {
     await fetchAll();
     setIsLoading(true);
     setTimeout(function () {
-      setProductList(productDataList);
-      let filtered = productDataList;
+      setProductList(products);
+      let filtered = products;
       const result = filtered.filter((item) =>
         item.type === type ? true : false
       );
       setIsLoading(false);
       setProductList(result);
-    }, 1000);
+    }, 10);
     // axios
     //   .get(`/api/products/filter/byType?type=${type}`)
     //   .then((response) => {
@@ -71,14 +69,14 @@ const Shop = () => {
     await fetchAll();
     setIsLoading(true);
     setTimeout(function () {
-      setProductList(productDataList);
-      let filtered = productDataList;
+      setProductList(products);
+      let filtered = products;
       const result = filtered.filter((item) =>
         item.category === category ? true : false
       );
       setIsLoading(false);
       setProductList(result);
-    }, 1000);
+    }, 10);
     // axios
     //   .get(`/api/products/filter/byCategory?category=${category}`)
     //   .then((response) => {
@@ -96,8 +94,8 @@ const Shop = () => {
     setIsLoading(true);
     setTimeout(function () {
       setIsLoading(false);
-      setProductList(productDataList);
-    }, 1000);
+      setProductList(products);
+    }, 10);
     // axios
     //   .get('/api/products')
     //   .then((response) => {

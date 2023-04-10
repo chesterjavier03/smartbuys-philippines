@@ -30,12 +30,14 @@ import {
 import AdminLeftPanelMenu from '../component/admin.left.panel.menu';
 import CreateProductModal from './component/create.product.modal';
 import EditProductModal from './component/edit.product.modal';
+import { storage } from '/utils/firebase';
+import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
 
 const ProductList = () => {
   const router = useRouter();
   const dispatch = useDispatch();
   const userInfo = useSelector((state) => state.user.userInfo);
-  const userToken = userInfo.token;
+  const userToken = userInfo?.token;
   const adminLoading = useSelector((state) => state.admin.loading);
   const productList = useSelector((state) => state.admin.products);
   const [visible, setVisible] = useState(false);
@@ -56,7 +58,7 @@ const ProductList = () => {
   const [isPressed, setIsPressed] = useState(false);
 
   useEffect(() => {
-    if (!userInfo) {
+    if (!userInfo || userInfo == null) {
       router.push('/', undefined, { shallow: 'true' });
     }
     dispatch(adminFetchProductList(userToken));
@@ -90,16 +92,25 @@ const ProductList = () => {
   const submitCreateNewProductHandler = async () => {
     closeSnackbar();
     try {
-      const formData = new FormData();
-      formData.append('file', imageFile);
-      formData.append('name', getValues('newProductName'));
-      formData.append('category', getValues('newProductCategory'));
-      formData.append('type', getValues('newProductType'));
-      formData.append('price', getValues('newProductPrice'));
-      formData.append('description', getValues('newProductDescription'));
-      const userToken = userInfo.token;
-      dispatch(createNewProduct({ formData, userToken }));
-      dispatch(adminAddProduct(formData));
+      const imageRef = ref(
+        storage,
+        `${getValues('newProductType')}/${imageFile.name}`
+      );
+
+      const uploadTask = await uploadBytesResumable(imageRef, imageFile);
+
+      const downloadUrl = await getDownloadURL(uploadTask.ref);
+
+      const newProduct = {
+        image: downloadUrl,
+        name: getValues('newProductName'),
+        category: getValues('newProductCategory'),
+        type: getValues('newProductType'),
+        price: getValues('newProductPrice'),
+        description: getValues('newProductDescription'),
+      };
+      dispatch(createNewProduct({ newProduct, userToken }));
+      dispatch(adminAddProduct(newProduct));
       setVisible(false);
       closeNewProductHandler();
       reset();
@@ -112,18 +123,16 @@ const ProductList = () => {
   const submitEditProductHandler = async () => {
     closeSnackbar();
     try {
-      const formData = new FormData();
-      formData.append('_id', getValues('productId'));
-      if (imageFile.trim().length !== 0 || imageFile.trim() !== '') {
-        formData.append('file', imageFile);
-      }
-      formData.append('name', getValues('productName'));
-      formData.append('category', getValues('productCategory'));
-      formData.append('type', getValues('productType'));
-      formData.append('price', getValues('productPrice'));
-      formData.append('description', getValues('productDescription'));
-      const userToken = userInfo.token;
-      dispatch(updateProduct({ formData, userToken }));
+      const updateProductData = {
+        _id: getValues('productId'),
+        name: getValues('productName'),
+        category: getValues('productCategory'),
+        type: getValues('productType'),
+        price: getValues('productPrice'),
+        description: getValues('productDescription'),
+      };
+
+      dispatch(updateProduct({ updateProductData, userToken }));
       setVisible(false);
       closeNewProductHandler();
       reset();
@@ -298,7 +307,8 @@ const ProductList = () => {
                         >
                           <Image
                             maxDelay="1000"
-                            src={`data:image/webp;base64, ` + product.image}
+                            // src={`data:image/webp;base64, ` + product.image}
+                            src={product.image}
                             width="100%"
                             height="100%"
                             objectFit="cover"
