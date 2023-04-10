@@ -222,7 +222,8 @@ const Shop = () => {
                         }}
                       >
                         <Card.Image
-                          maxDelay="1000"
+                          showSkeleton
+                          maxDelay
                           // src={`data:image/webp;base64, ` + product.image}
                           src={product.image}
                           // src={
