@@ -8,13 +8,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import { cartAddItem } from 'store/reducers/user.reducer';
 import { moneyFormat } from 'utils/functions';
 import { productList as products } from 'database/data';
+import { setProductDataList } from 'store/reducers/product.reducer';
 
 const Shop = () => {
   const router = useRouter();
   const dispatch = useDispatch();
   const darkMode = useSelector((state) => state.user.darkMode);
   const loading = useSelector((state) => state.user.loading);
-  const [productList, setProductList] = useState(products);
+  const productDataList = useSelector((state) => state.product.products);
+  const [productList, setProductList] = useState(productDataList);
   const [isLoading, setIsLoading] = useState(loading);
   const [isPressed, setIsPressed] = useState(false);
   const categoryList = ['Girls', 'Boys', 'Food'];
@@ -22,8 +24,10 @@ const Shop = () => {
   const { enqueueSnackbar } = useSnackbar();
 
   useEffect(() => {
-    fetchAll();
-  }, []);
+    dispatch(setProductDataList(products));
+    // setProductList(productDataList);
+    // fetchAll();
+  }, [dispatch, productDataList]);
 
   const handleItemDetails = (product) => {
     router.push(
@@ -40,8 +44,8 @@ const Shop = () => {
     await fetchAll();
     setIsLoading(true);
     setTimeout(function () {
-      setProductList(products);
-      let filtered = products;
+      setProductList(productDataList);
+      let filtered = productDataList;
       const result = filtered.filter((item) =>
         item.type === type ? true : false
       );
@@ -68,8 +72,8 @@ const Shop = () => {
     await fetchAll();
     setIsLoading(true);
     setTimeout(function () {
-      setProductList(products);
-      let filtered = products;
+      setProductList(productDataList);
+      let filtered = productDataList;
       const result = filtered.filter((item) =>
         item.category === category ? true : false
       );
@@ -93,7 +97,7 @@ const Shop = () => {
     setIsLoading(true);
     setTimeout(function () {
       setIsLoading(false);
-      setProductList(products);
+      setProductList(productDataList);
     }, 1000);
     // axios
     //   .get('/api/products')

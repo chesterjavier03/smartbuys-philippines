@@ -101,7 +101,7 @@ const ProductDetails = () => {
           auto
           size={'md'}
           color={'error'}
-          onPress={() => router.back()}
+          onPress={() => router.push('/', undefined, { shallow: true })}
           icon={
             <ArrowBackIosIcon
               style={{

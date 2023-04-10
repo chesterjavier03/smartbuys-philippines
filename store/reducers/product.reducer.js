@@ -35,6 +35,9 @@ export const productSlice = createSlice({
         : [...state.products, newItem];
       state.products = productList;
     },
+    setProductDataList: (state, action) => {
+      state.products = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -77,11 +80,7 @@ export const {
   // updateProduct
   deleteProduct,
   createProduct,
-  cartClear,
-  cartRemoveItem,
-  savePaymentMethod,
-  saveShippingAddress,
-  updateDarkMode,
   signOutUserProduct,
+  setProductDataList,
 } = productSlice.actions;
 export default productSlice.reducer;

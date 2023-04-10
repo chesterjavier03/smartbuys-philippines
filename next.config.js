@@ -7,7 +7,7 @@ const nextConfig = {
     disableStaticImages: true,
     formats: ['image/webp'],
     minimumCacheTTL: 60,
-    domains: ['maps.google.com'],
+    domains: ['maps.google.com', 'firebasestorage.googleapis.com'],
   },
   experimental: {
     largePageDataBytes: 128 * 100000,
