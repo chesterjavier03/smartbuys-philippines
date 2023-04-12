@@ -97,6 +97,7 @@ const PlaceOrder = () => {
       shippingPrice: moneyFormat(shippingPrice),
       taxPrice: moneyFormat(taxPrice),
       totalPrice: moneyFormat(totalPrice),
+      shippingAddress: shippingAddress,
     };
     axios({
       method: 'POST',

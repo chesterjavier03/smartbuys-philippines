@@ -42,12 +42,11 @@ async function sendEmails(req, res) {
 
 const constructEjsData = (req) => {
   return {
-    fullName: req.body.orders.shippingAddress.fullName,
+    fullName: req.body.name,
     email: req.body.email,
-    address: `${req.body.orders.shippingAddress.address}
-        ${req.body.orders.shippingAddress.city}
-        ${req.body.orders.shippingAddress.postalCode}
-        ${req.body.orders.shippingAddress.country}`,
+    address: `${req.body.shippingAddress.address}
+        ${req.body.shippingAddress.city}`,
+    mobile: req.body.shippingAddress.mobile,
     items: req.body.items,
     itemsPrice: req.body.itemsPrice,
     shippingPrice: req.body.shippingPrice,

@@ -295,12 +295,13 @@ const OrderHistory = () => {
                                       >
                                         <Image
                                           priority
-                                          src={
-                                            `data:image/webp;base64, ` +
-                                            convertBufferToImage(
-                                              item.product.image
-                                            )
-                                          }
+                                          // src={
+                                          //   `data:image/webp;base64, ` +
+                                          //   convertBufferToImage(
+                                          //     item.product.image
+                                          //   )
+                                          // }
+                                          src={item.product.image}
                                           autoResize
                                           width={120}
                                           height={180}
