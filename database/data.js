@@ -110,6 +110,7 @@ export const weAreProductList = [
     width: '70%',
     height: '100%',
     image: '/static/foody.webp',
+    url: '',
   },
   {
     name: 'kingbites',
@@ -117,6 +118,7 @@ export const weAreProductList = [
     width: '100%',
     height: '100%',
     image: '/static/kb.webp',
+    url: 'https://king-bites.vercel.app/',
   },
   {
     name: 'horus',
@@ -124,6 +126,7 @@ export const weAreProductList = [
     width: '90%',
     height: '100%',
     image: '/static/horus_tech.webp',
+    url: 'https://horustech.ml/#/',
   },
   {
     name: 'casey_lucas',
@@ -131,6 +134,7 @@ export const weAreProductList = [
     width: '90%',
     height: '100%',
     image: '/static/casey_lucas.webp',
+    url: '',
   },
   {
     name: 'happy_app',
@@ -138,6 +142,7 @@ export const weAreProductList = [
     width: '45%',
     height: '100%',
     image: '/static/happy_app.webp',
+    url: '',
   },
 ];
 

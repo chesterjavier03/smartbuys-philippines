@@ -50,7 +50,10 @@ const WeAre = () => {
             xl={2}
             align="center"
           >
-            <Link href={''} target="_blank">
+            <Link
+              href={productData.url !== '' ? productData.url : null}
+              target="_blank"
+            >
               <Card
                 css={{ backgroundColor: 'transparent', cursor: 'pointer' }}
                 variant="flat"
