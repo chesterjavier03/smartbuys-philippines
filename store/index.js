@@ -28,16 +28,12 @@ const rootReducer = combineReducers({
 });
 
 const persistConfig = {
-  key: 'smartbuys_root',
+  key: 'smartbuys',
   storage,
 };
 
 export const store = configureStore({
   reducer: persistReducer(persistConfig, rootReducer),
-  // middleware: (getDefaultMiddleware) =>
-  //   getDefaultMiddleware({
-  //     serializableCheck: true,
-  //   }),
   middleware: [thunk],
 });
 
