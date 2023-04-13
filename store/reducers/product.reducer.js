@@ -6,6 +6,7 @@ import { createNewProduct, updateProduct } from 'store/actions/product.actions';
 const DEFAULT_STATE = {
   loading: false,
   products: [],
+  product: '',
 };
 
 export const productSlice = createSlice({
@@ -37,6 +38,9 @@ export const productSlice = createSlice({
     },
     setProductDataList: (state, action) => {
       state.products = action.payload;
+    },
+    setSingleProduct: (state, action) => {
+      state.product = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -82,5 +86,6 @@ export const {
   createProduct,
   signOutUserProduct,
   setProductDataList,
+  setSingleProduct,
 } = productSlice.actions;
 export default productSlice.reducer;
