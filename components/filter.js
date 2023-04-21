@@ -8,8 +8,6 @@ import {
   Text,
 } from '@nextui-org/react';
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
-import MobileFilterView from './mobile-filterview';
-import { isMobile } from 'react-device-detect';
 
 const Filter = ({
   darkMode,
@@ -21,20 +19,6 @@ const Filter = ({
   fetchAll,
   isPressed,
 }) => {
-  // if (isMobile) {
-  //   return (
-  //     <MobileFilterView
-  //       filterByCategory={filterByCategory}
-  //       categoryList={categoryList}
-  //       typeList={typeList}
-  //       filterByType={filterByType}
-  //       setIsPressed={setIsPressed}
-  //       fetchAll={fetchAll}
-  //       isPressed={isPressed}
-  //     />
-  //   );
-  // }
-
   return (
     <Grid.Container
       gap={1}
@@ -139,7 +123,7 @@ const Filter = ({
         <Row justify="center">
           <Grid.Container gap={1} justify="flex-start" align="center">
             {typeList.map((type) => (
-              <Grid xs={3} sm={2} md={3} xl={5} lg={5} key={type}>
+              <Grid xs={4} sm={2} md={3} xl={5} lg={5} key={type}>
                 <Col>
                   <Button
                     color={'error'}
