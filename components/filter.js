@@ -21,19 +21,19 @@ const Filter = ({
   fetchAll,
   isPressed,
 }) => {
-  if (isMobile) {
-    return (
-      <MobileFilterView
-        filterByCategory={filterByCategory}
-        categoryList={categoryList}
-        typeList={typeList}
-        filterByType={filterByType}
-        setIsPressed={setIsPressed}
-        fetchAll={fetchAll}
-        isPressed={isPressed}
-      />
-    );
-  }
+  // if (isMobile) {
+  //   return (
+  //     <MobileFilterView
+  //       filterByCategory={filterByCategory}
+  //       categoryList={categoryList}
+  //       typeList={typeList}
+  //       filterByType={filterByType}
+  //       setIsPressed={setIsPressed}
+  //       fetchAll={fetchAll}
+  //       isPressed={isPressed}
+  //     />
+  //   );
+  // }
 
   return (
     <Grid.Container
