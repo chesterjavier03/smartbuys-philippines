@@ -1,8 +1,0 @@
-New Message From SmartBuys Philippines Website
-
-The following information was submitted:
-
-Name: %NAME%
-Email: %EMAIL%
-Message:
-%MESSAGE%

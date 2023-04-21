@@ -16,8 +16,7 @@ export default Home;
 export const getServerSideProps = async () => {
   await db.connect();
   try {
-    // const products = await Product.find({}).lean();
-    const products = await Product.aggregate([{ $sample: { size: 2000 } }]);
+    const products = await Product.aggregate([{ $sample: { size: 100 } }]);
 
     const items = products.map((item) => ({
       ...item,
