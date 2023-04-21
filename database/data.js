@@ -255,3 +255,14 @@ export const sizeDataList = [
   { display: 'M (4-6 yrs old)', name: 'medium' },
   { display: 'L (6-8 yrs old)', name: 'large' },
 ];
+
+export const categoryDataList = ['Girls', 'Boys', 'Food'];
+
+export const typeDataList = [
+  'Shirt',
+  'Dress',
+  'Sando',
+  'Terno',
+  'Shorts',
+  'Jogger',
+];

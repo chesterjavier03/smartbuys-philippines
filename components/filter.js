@@ -12,7 +12,6 @@ import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import { FilterAlt } from '@mui/icons-material';
 
 const Filter = ({
-  darkMode,
   filterByCategory,
   categoryList,
   typeList,
@@ -32,32 +31,22 @@ const Filter = ({
         <Row css={{ width: 'inherit' }}>
           <FilterAltIcon
             style={{
-              color: darkMode ? 'white' : 'gray',
+              color: 'gray',
               fontSize: '2rem',
             }}
           />
           <Spacer y={1} />
-          <Text
-            h4
-            color={darkMode ? 'white' : '$gray800'}
-            weight="medium"
-            size="$xl"
-          >
+          <Text h4 color={'$gray800'} weight="medium" size="$xl">
             SEARCH FILTER
           </Text>
         </Row>
       </Grid>
       <Grid xs={0} lg={12} xl={12} align="center" justify="center">
-        <Divider css={{ backgroundColor: darkMode ? 'yellow' : 'red' }} />
+        <Divider css={{ backgroundColor: 'red' }} />
       </Grid>
       <Grid xs={0} lg={12} align="center" justify="center">
         <Row>
-          <Text
-            h5
-            color={darkMode ? 'white' : '$gray800'}
-            weight="semibold"
-            size="$md"
-          >
+          <Text h5 color={'$gray800'} weight="semibold" size="$md">
             Filter By Category:
           </Text>
         </Row>
@@ -107,16 +96,11 @@ const Filter = ({
         </Row>
       </Grid>
       <Grid xs={0} lg={12} align="center" justify="center">
-        <Divider css={{ backgroundColor: darkMode ? 'yellow' : 'red' }} />
+        <Divider css={{ backgroundColor: 'red' }} />
       </Grid>
       <Grid xs={0} lg={12} align="center" justify="flex-start">
         <Row>
-          <Text
-            h5
-            color={darkMode ? 'white' : '$gray800'}
-            weight="semibold"
-            size="$md"
-          >
+          <Text h5 color={'$gray800'} weight="semibold" size="$md">
             Filter By Type:
           </Text>
         </Row>
@@ -159,18 +143,14 @@ const Filter = ({
         </Row>
       </Grid>
       <Grid xs={0} lg={12} align="center" justify="center">
-        <Divider css={{ backgroundColor: darkMode ? 'yellow' : 'red' }} />
+        <Divider css={{ backgroundColor: 'red' }} />
       </Grid>
       <Grid xs={12} lg={0}>
         <Col align="start" justify="flex-start">
           <Collapse
             bordered
             shadow
-            title={
-              <Text h4 color="Gray" css={{ textTransform: 'uppercase' }}>
-                Search Filter
-              </Text>
-            }
+            title="Search Filter"
             css={{
               w: 'auto',
               margin: '.4rem',
@@ -178,23 +158,16 @@ const Filter = ({
               borderRadius: '$xs',
               color: '$accents9',
               '.nextui-collapse-title': {
-                color: '$accents6',
-              },
-              '.nextui-collapse-subtitle': {
                 color: '$gray800',
               },
+              backgroundColor: 'transparent',
             }}
             arrowIcon={<FilterAlt style={{ color: 'Red' }} />}
           >
             <Grid align="center" justify="center">
               <Divider css={{ backgroundColor: 'red' }} />
             </Grid>
-            <Grid
-              align="center"
-              justify="center"
-              alignContent="center"
-              alignItems="center"
-            >
+            <Grid align="center" justify="center">
               <Row justify="center" align="center" alignContent="center">
                 <Grid.Container gap={1} justify="flex-start" align="center">
                   {[...categoryList, ...typeList].map((data) => (

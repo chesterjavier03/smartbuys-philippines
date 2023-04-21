@@ -10,15 +10,13 @@ const QuantityButton = ({ itemCount, incrementItem, decrementItem }) => {
       align="center"
       alignContent="center"
       alignItems="center"
-      css={{
-        marginLeft: '3rem',
-        '@xs': {
-          marginLeft: '22rem',
-        },
-      }}
     >
-      <Grid css={{ cursor: 'pointer' }}>
-        <Row align="center">
+      <Grid
+        css={{
+          cursor: 'pointer',
+        }}
+      >
+        <Row>
           <Container
             align="center"
             justify="center"

@@ -236,37 +236,29 @@ const ProductDetails = () => {
               <Spacer x={1} />
             </Grid>
             <Grid xs={12} sm={12} lg={12} md={12} xl={12}>
-              <Row
+              <Text
+                h4
                 css={{
-                  justifyContent: 'space-between',
-                  justifyItems: 'center',
+                  fontFamily: 'Ubuntu',
+                  fontWeight: '$normal',
+                  color: '$gray600',
+                  textAlign: 'center',
                 }}
+                color="gray"
               >
-                <Text
-                  h4
-                  css={{
-                    fontFamily: 'Ubuntu',
-                    fontWeight: '$normal',
-                    color: '$gray600',
-                    textAlign: 'center',
-                  }}
-                  color="gray"
-                >
-                  Type:
-                </Text>
-                <Text
-                  h3
-                  css={{
-                    fontFamily: 'Ubuntu',
-                    fontWeight: '$medium',
-                    color: _colorSetByCategoryType(product.category),
-                  }}
-                  color="gray"
-                >
-                  {product.type}
-                </Text>
-              </Row>
-              <Spacer x={1} />
+                Type:
+              </Text>
+              <Text
+                h3
+                css={{
+                  fontFamily: 'Ubuntu',
+                  fontWeight: '$medium',
+                  color: _colorSetByCategoryType(product.category),
+                }}
+                color="gray"
+              >
+                {product.type}
+              </Text>
             </Grid>
             {product.category !== 'Food' && (
               <SizeSection
@@ -278,52 +270,46 @@ const ProductDetails = () => {
                 setSelectedSize={setSelectedSize}
               />
             )}
-            <Grid
-              xs={12}
-              lg={12}
-              alignItems="center"
-              justify="center"
-              alignContent="center"
-            >
-              <Text
-                h4
-                css={{
-                  fontFamily: 'Ubuntu',
-                  fontWeight: '$normal',
-                  color: '$gray600',
-                }}
+            <Grid xs={12} lg={12}>
+              <Row
+                css={{ w: '100vw' }}
+                align="center"
+                justify="space-between"
+                alignContent="space-between"
               >
-                Quantity:
-              </Text>
-              <QuantityButton
-                product={product}
-                itemCount={itemCount}
-                incrementItem={() => {
-                  product.category == 'Food'
-                    ? setItemCount(itemCount + 1)
-                    : selectedSize
-                    ? setItemCount(itemCount + 1)
-                    : enqueueSnackbar('Please select size', {
-                        variant: 'error',
-                      });
-                }}
-                decrementItem={() => {
-                  product.category == 'Food'
-                    ? setItemCount(itemCount > 1 ? itemCount - 1 : 1)
-                    : selectedSize
-                    ? setItemCount(itemCount > 1 ? itemCount - 1 : 1)
-                    : enqueueSnackbar('Please select size', {
-                        variant: 'error',
-                      });
-                }}
-              />
-              <Spacer
-                x={4}
-                css={{
-                  marginLeft: '0',
-                  '@xs': { marginLeft: 'calc(84.3333px) !important' },
-                }}
-              />
+                <Text
+                  h4
+                  css={{
+                    fontFamily: 'Ubuntu',
+                    fontWeight: '$normal',
+                    color: '$gray600',
+                  }}
+                >
+                  Quantity:
+                </Text>
+                <QuantityButton
+                  product={product}
+                  itemCount={itemCount}
+                  incrementItem={() => {
+                    product.category == 'Food'
+                      ? setItemCount(itemCount + 1)
+                      : selectedSize
+                      ? setItemCount(itemCount + 1)
+                      : enqueueSnackbar('Please select size', {
+                          variant: 'error',
+                        });
+                  }}
+                  decrementItem={() => {
+                    product.category == 'Food'
+                      ? setItemCount(itemCount > 1 ? itemCount - 1 : 1)
+                      : selectedSize
+                      ? setItemCount(itemCount > 1 ? itemCount - 1 : 1)
+                      : enqueueSnackbar('Please select size', {
+                          variant: 'error',
+                        });
+                  }}
+                />
+              </Row>
             </Grid>
             <Spacer y={4} />
             <Grid xs={12} lg={12}>

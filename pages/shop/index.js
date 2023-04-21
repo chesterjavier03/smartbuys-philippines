@@ -7,22 +7,22 @@ import Filter from 'components/filter';
 import { useDispatch, useSelector } from 'react-redux';
 import { cartAddItem } from 'store/reducers/user.reducer';
 import { moneyFormat } from 'utils/functions';
+import { categoryDataList, typeDataList } from 'database/data';
 
 const Shop = ({ products }) => {
   const router = useRouter();
   const dispatch = useDispatch();
-  const darkMode = useSelector((state) => state.user.darkMode);
   const loading = useSelector((state) => state.user.loading);
   const [productList, setProductList] = useState(products);
   const [isLoading, setIsLoading] = useState(loading);
   const [isPressed, setIsPressed] = useState(false);
-  const categoryList = ['Girls', 'Boys', 'Food'];
-  const typeList = ['Shirt', 'Dress', 'Sando', 'Terno', 'Shorts', 'Jogger'];
+  const categoryList = categoryDataList;
+  const typeList = typeDataList;
   const { enqueueSnackbar } = useSnackbar();
 
   useEffect(() => {
-    setProductList(products);
-  }, [dispatch, products]);
+    fetchAll();
+  }, []);
 
   const handleItemDetails = (product) => {
     router.push(
@@ -99,7 +99,6 @@ const Shop = ({ products }) => {
       >
         <Grid lg={2} md={2} xl={2} sm={12} xs={12}>
           <Filter
-            darkMode={darkMode}
             filterByCategory={filterByCategory}
             categoryList={categoryList}
             typeList={typeList}
@@ -123,11 +122,7 @@ const Shop = ({ products }) => {
               }}
             >
               <Grid>
-                <Loading
-                  type="default"
-                  size="xl"
-                  color={darkMode ? 'primary' : 'error'}
-                />
+                <Loading type="default" size="xl" color={'error'} />
               </Grid>
             </Grid.Container>
           ) : (
@@ -144,119 +139,118 @@ const Shop = ({ products }) => {
                 },
               }}
             >
-              {productList &&
-                productList.map((product) => (
-                  <Grid
-                    xs={6}
-                    lg={3}
-                    xl={3}
-                    md={3}
-                    sm={3}
-                    key={product._id}
-                    css={{ cursor: 'pointer' }}
+              {productList.map((product) => (
+                <Grid
+                  xs={6}
+                  lg={3}
+                  xl={3}
+                  md={3}
+                  sm={3}
+                  key={product._id}
+                  css={{ cursor: 'pointer' }}
+                >
+                  <Card
+                    css={{
+                      w: '100%',
+                      h: '380px',
+                      borderColor: 'red',
+                      borderWidth: 'thin',
+                      borderRadius: '$xs',
+                    }}
+                    isHoverable
+                    isPressable
+                    variant="bordered"
                   >
-                    <Card
-                      css={{
-                        w: '100%',
-                        h: '380px',
-                        borderColor: 'red',
-                        borderWidth: 'thin',
-                        borderRadius: '$xs',
-                      }}
-                      isHoverable
-                      isPressable
-                      variant="bordered"
+                    <Card.Header
+                      css={{ position: 'absolute', zIndex: 1, top: 5 }}
                     >
-                      <Card.Header
-                        css={{ position: 'absolute', zIndex: 1, top: 5 }}
-                      >
-                        <Col>
-                          <Text css={{ fontWeight: '$medium', color: 'white' }}>
-                            {product.name}
-                          </Text>
-                        </Col>
-                      </Card.Header>
-                      <Card.Body
+                      <Col>
+                        <Text css={{ fontWeight: '$medium', color: 'white' }}>
+                          {product.name}
+                        </Text>
+                      </Col>
+                    </Card.Header>
+                    <Card.Body
+                      css={{
+                        p: 0,
+                        backgroundColor: 'transparent',
+                      }}
+                    >
+                      <Card.Image
+                        maxDelay={1000}
+                        src={product.image}
+                        width="100%"
+                        height="100%"
+                        objectFit="cover"
+                        alt={product.name}
                         css={{
-                          p: 0,
                           backgroundColor: 'transparent',
                         }}
-                      >
-                        <Card.Image
-                          maxDelay={1000}
-                          src={product.image}
-                          width="100%"
-                          height="100%"
-                          objectFit="cover"
-                          alt={product.name}
-                          css={{
-                            backgroundColor: 'transparent',
-                          }}
-                          onClick={() => {
-                            handleItemDetails(product);
-                          }}
-                        />
-                      </Card.Body>
-                      <Card.Footer
-                        isBlurred
-                        css={{
-                          position: 'absolute',
-                          bgBlur: 'rgba(0,0,0,0.5)',
-                          borderTop:
-                            '$borderWeights$light solid rgba(255, 255, 255, 0.5)',
-                          bottom: 0,
-                          borderBottomLeftRadius: '0',
-                          borderBottomRightRadius: '0',
-                          zIndex: 1,
+                        onClick={() => {
+                          handleItemDetails(product);
                         }}
-                      >
-                        <Row align="center" wrap="nowrap">
-                          <Col>
-                            <Text
-                              css={{
-                                color: '$white',
-                                whiteSpace: 'nowrap',
-                                w: '150px',
-                                '@xs': { w: '190px' },
-                                overflow: 'hidden',
-                                textOverflow: 'ellipsis',
-                              }}
-                            >
-                              {product.description}
-                            </Text>
-                            <Text
-                              css={{
-                                color: 'rgba(255,255,0,0.9)',
-                                fontWeight: '$semibold',
-                                fontSize: '$xl',
-                              }}
-                            >
-                              {moneyFormat(product.price)}
-                            </Text>
-                          </Col>
-                          <Col span={1} css={{ cursor: 'pointer' }}>
-                            <Row justify="flex-end" css={{ marginTop: '$5' }}>
-                              <ShoppingCartIcon
-                                style={{
-                                  color: 'Orange',
+                      />
+                    </Card.Body>
+                    <Card.Footer
+                      isBlurred
+                      css={{
+                        position: 'absolute',
+                        bgBlur: 'rgba(0,0,0,0.5)',
+                        borderTop:
+                          '$borderWeights$light solid rgba(255, 255, 255, 0.5)',
+                        bottom: 0,
+                        borderBottomLeftRadius: '0',
+                        borderBottomRightRadius: '0',
+                        zIndex: 1,
+                      }}
+                    >
+                      <Row align="center" wrap="nowrap">
+                        <Col>
+                          <Text
+                            css={{
+                              color: '$white',
+                              whiteSpace: 'nowrap',
+                              w: '150px',
+                              '@xs': { w: '190px' },
+                              overflow: 'hidden',
+                              textOverflow: 'ellipsis',
+                            }}
+                          >
+                            {product.description}
+                          </Text>
+                          <Text
+                            css={{
+                              color: 'rgba(255,255,0,0.9)',
+                              fontWeight: '$semibold',
+                              fontSize: '$xl',
+                            }}
+                          >
+                            {moneyFormat(product.price)}
+                          </Text>
+                        </Col>
+                        <Col span={1} css={{ cursor: 'pointer' }}>
+                          <Row justify="flex-end" css={{ marginTop: '$5' }}>
+                            <ShoppingCartIcon
+                              style={{
+                                color: 'Orange',
+                                fontSize: '2.5rem',
+                                '@xs': {
                                   fontSize: '2.5rem',
-                                  '@xs': {
-                                    fontSize: '2.5rem',
-                                  },
-                                }}
-                                onClick={() => {
-                                  product.category === 'Food'
-                                    ? _addToCart(product)
-                                    : handleItemDetails(product);
-                                }}
-                              />
-                            </Row>
-                          </Col>
-                        </Row>
-                      </Card.Footer>
-                    </Card>
-                  </Grid>
-                ))}
+                                },
+                              }}
+                              onClick={() => {
+                                product.category === 'Food'
+                                  ? _addToCart(product)
+                                  : handleItemDetails(product);
+                              }}
+                            />
+                          </Row>
+                        </Col>
+                      </Row>
+                    </Card.Footer>
+                  </Card>
+                </Grid>
+              ))}
             </Grid.Container>
           )}
         </Grid>
