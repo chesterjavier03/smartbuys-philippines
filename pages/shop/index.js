@@ -17,7 +17,7 @@ const Shop = ({ products }) => {
   const [isLoading, setIsLoading] = useState(loading);
   const [isPressed, setIsPressed] = useState(false);
   const categoryList = ['Girls', 'Boys', 'Food'];
-  const typeList = ['Shirt', 'Jogger', 'Dress', 'Sando', 'Terno', 'Shorts'];
+  const typeList = ['Shirt', 'Dress', 'Sando', 'Terno', 'Shorts', 'Jogger'];
   const { enqueueSnackbar } = useSnackbar();
 
   useEffect(() => {
