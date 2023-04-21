@@ -332,7 +332,7 @@ const Shop = ({ products }) => {
                         css={{ position: 'absolute', zIndex: 1, top: 5 }}
                       >
                         <Col>
-                          <Text css={{ fontWeight: '$medium', color: 'gold' }}>
+                          <Text css={{ fontWeight: '$medium', color: 'white' }}>
                             {product.name}
                           </Text>
                         </Col>
