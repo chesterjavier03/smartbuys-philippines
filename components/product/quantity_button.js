@@ -5,13 +5,20 @@ import AddIcon from '@mui/icons-material/Add';
 const QuantityButton = ({ itemCount, incrementItem, decrementItem }) => {
   return (
     <Grid.Container
+      wrap="wrap"
       justify="flex-end"
       align="center"
       alignContent="center"
       alignItems="center"
+      css={{
+        marginLeft: '3rem',
+        '@xs': {
+          marginLeft: '22rem',
+        },
+      }}
     >
-      <Grid xs={6.5} lg={4} xl={4} md={8} sm={8} css={{ cursor: 'pointer' }}>
-        <Row>
+      <Grid css={{ cursor: 'pointer' }}>
+        <Row align="center">
           <Container
             align="center"
             justify="center"

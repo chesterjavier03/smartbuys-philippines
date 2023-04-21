@@ -8,6 +8,7 @@ import {
   Text,
 } from '@nextui-org/react';
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
+import MobileFilterView from './mobile-filterview';
 
 const Filter = ({
   darkMode,
@@ -26,7 +27,7 @@ const Filter = ({
       justify="flex-start"
       alignContent="flex-start"
     >
-      <Grid xs={12} align="center" justify="center">
+      <Grid xs={0} lg={12} xl={12} align="center" justify="center">
         <Row css={{ width: 'inherit' }}>
           <FilterAltIcon
             style={{
@@ -45,7 +46,7 @@ const Filter = ({
           </Text>
         </Row>
       </Grid>
-      <Grid xs={12} lg={12} align="center" justify="center">
+      <Grid lg={12} align="center" justify="center">
         <Divider css={{ backgroundColor: darkMode ? 'yellow' : 'red' }} />
       </Grid>
       <Grid xs={0} lg={12} align="center" justify="center">
@@ -163,52 +164,23 @@ const Filter = ({
       <Grid
         xs={12}
         lg={0}
+        xl={0}
         align="center"
         justify="center"
         alignContent="center"
         alignItems="center"
       >
-        <Row justify="center" align="center" alignContent="center">
-          <Grid.Container gap={1} justify="flex-start" align="center">
-            {[...typeList, ...categoryList].map((data) => (
-              <Grid xs={3} sm={2} md={3} xl={5} lg={5} key={data}>
-                <Col>
-                  <Button
-                    css={{
-                      zIndex: 0,
-                      '&:hover': {
-                        transform: 'translateY(-5px)',
-                        '&:after': {
-                          transform: 'scaleX(1.5) scaleY(1.6)',
-                          opacity: 0,
-                        },
-                      },
-                    }}
-                    auto
-                    color={'error'}
-                    onPress={() => {
-                      data == 'Food' || data == 'Boys' || data == 'Girls'
-                        ? filterByCategory(data)
-                        : filterByType(data);
-                    }}
-                  >
-                    <Text
-                      h5
-                      color={'white'}
-                      weight="semibold"
-                      css={{ letterSpacing: '$wider', margin: '0 auto' }}
-                      size="$md"
-                    >
-                      {data}
-                    </Text>
-                  </Button>
-                </Col>
-              </Grid>
-            ))}
-          </Grid.Container>
-        </Row>
+        <MobileFilterView
+          filterByCategory={filterByCategory}
+          categoryList={categoryList}
+          typeList={typeList}
+          filterByType={filterByType}
+          setIsPressed={setIsPressed}
+          fetchAll={fetchAll}
+          isPressed={isPressed}
+        />
       </Grid>
-      <Grid xs={12} lg={12} align="center" justify="center">
+      <Grid xs={0} lg={12} align="center" justify="center">
         <Col>
           <Button
             size={'md'}
@@ -242,7 +214,7 @@ const Filter = ({
           </Button>
         </Col>
       </Grid>
-      <Grid xs={12} lg={0} align="center" justify="center">
+      <Grid lg={0} align="center" justify="center">
         <Divider css={{ backgroundColor: 'red' }} />
       </Grid>
     </Grid.Container>

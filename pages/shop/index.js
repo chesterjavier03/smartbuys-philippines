@@ -94,7 +94,7 @@ const Shop = ({ products }) => {
           display: 'flex',
           flexDirection: 'row',
           w: 'auto',
-          height: '89vh',
+          height: '90vh',
         }}
       >
         <Grid lg={2} md={2} xl={2} sm={12} xs={12}>
