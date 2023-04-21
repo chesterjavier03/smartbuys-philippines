@@ -20,6 +20,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { cartAddItem } from 'store/reducers/user.reducer';
 import ModalProductImage from './component/modal.product.image';
 import { setSingleProduct } from 'store/reducers/product.reducer';
+import { sizeDataList } from 'database/data';
 
 const ProductDetails = () => {
   const router = useRouter();
@@ -28,11 +29,7 @@ const ProductDetails = () => {
   const product = useSelector((state) => state.product.product);
   const [selectedSize, setSelectedSize] = useState();
   const [isPressed, setIsPressed] = useState(false);
-  const [sizeList] = useState([
-    { display: 'S (2-3 yrs old)', name: 'small' },
-    { display: 'M (4-6 yrs old)', name: 'medium' },
-    { display: 'L (6-8 yrs old)', name: 'large' },
-  ]);
+  const [sizeList] = useState(sizeDataList);
   const { enqueueSnackbar } = useSnackbar();
   const [visible, setVisible] = useState(false);
 
@@ -78,7 +75,6 @@ const ProductDetails = () => {
       enqueueSnackbar(`${product.name} added to cart!`, {
         variant: 'success',
       });
-      // router.push('/cart', undefined, { shallow: true });
     } else {
       const item = {
         product,
@@ -89,15 +85,10 @@ const ProductDetails = () => {
       enqueueSnackbar(`${product.name} added to cart!`, {
         variant: 'success',
       });
-      // router.push('/cart', undefined, { shallow: true });
     }
     setItemCount(1);
     setSelectedSize(null);
   };
-
-  if (!product) {
-    return <Text h1>Product not found</Text>;
-  }
 
   return (
     <>
@@ -162,12 +153,7 @@ const ProductDetails = () => {
             <Card.Body css={{ p: 0 }}>
               <Image
                 priority
-                // src={`data:image/webp;base64, ` + product.image}
                 src={product.image}
-                // src={
-                //   `data:image/webp;base64, ` +
-                //   Buffer.from(product.image.Data, 'base64').toString('base64')
-                // }
                 height="100%"
                 width="100%"
                 objectFit="cover"
@@ -398,27 +384,6 @@ const ProductDetails = () => {
                 >
                   Add to Cart
                 </Button>
-                {/* <Spacer x={0.5} /> */}
-                {/* <Button
-                  auto
-                  size="lg"
-                  type="button"
-                  onPress={() => {
-                    _addToCart(product);
-                  }}
-                  css={{
-                    backgroundColor: 'Red',
-                    '&:hover': {
-                      transform: 'translateY(-5px)',
-                      '&:after': {
-                        transform: 'scaleX(1.5) scaleY(1.6)',
-                        opacity: 0,
-                      },
-                    },
-                  }}
-                >
-                  Buy Now
-                </Button> */}
               </Row>
             </Grid>
           </Grid.Container>
@@ -437,16 +402,3 @@ const ProductDetails = () => {
 };
 
 export default ProductDetails;
-
-// export const getServerSideProps = async ({ params }) => {
-//   const product = await Product.findById(params.id).lean();
-//   if (!product) {
-//     return {
-//       notFound: true,
-//     };
-//   }
-
-//   return {
-//     props: { product: toJson(product) },
-//   };
-// };

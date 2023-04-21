@@ -249,3 +249,9 @@ export const appCostCalculator = [
     ),
   },
 ];
+
+export const sizeDataList = [
+  { display: 'S (2-3 yrs old)', name: 'small' },
+  { display: 'M (4-6 yrs old)', name: 'medium' },
+  { display: 'L (6-8 yrs old)', name: 'large' },
+];

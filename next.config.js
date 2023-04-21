@@ -9,9 +9,6 @@ const nextConfig = {
     minimumCacheTTL: 60,
     domains: ['maps.google.com', 'firebasestorage.googleapis.com'],
   },
-  experimental: {
-    largePageDataBytes: 128 * 100000,
-  },
 };
 
 module.exports = nextConfig;

@@ -8,7 +8,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { cartAddItem } from 'store/reducers/user.reducer';
 import { moneyFormat } from 'utils/functions';
 import MobileFilterView from 'components/mobile-filterview';
-// import { productList as products } from 'database/data';
 
 const Shop = ({ products }) => {
   const router = useRouter();
@@ -23,7 +22,6 @@ const Shop = ({ products }) => {
   const { enqueueSnackbar } = useSnackbar();
 
   useEffect(() => {
-    // dispatch(setproducts(products));
     setProductList(products);
   }, [dispatch, products]);
 
@@ -50,23 +48,9 @@ const Shop = ({ products }) => {
       setIsLoading(false);
       setProductList(result);
     }, 10);
-    // axios
-    //   .get(`/api/products/filter/byType?type=${type}`)
-    //   .then((response) => {
-    //     setIsLoading(false);
-    //     setProductList(response.data);
-    //   })
-    //   .catch((error) => {
-    //     setIsLoading(false);
-    //     console.log(error);
-    //     setProductList([]);
-    //   });
   };
 
   const filterByCategory = async (category) => {
-    // setTimeout(function () {
-    // setProductList(products);
-    // }, 2000);
     await fetchAll();
     setIsLoading(true);
     setTimeout(function () {
@@ -78,17 +62,6 @@ const Shop = ({ products }) => {
       setIsLoading(false);
       setProductList(result);
     }, 10);
-    // axios
-    //   .get(`/api/products/filter/byCategory?category=${category}`)
-    //   .then((response) => {
-    //     setIsLoading(false);
-    //     setProductList(response.data);
-    //   })
-    //   .catch((error) => {
-    //     setIsLoading(false);
-    //     console.log(error);
-    //     setProductList([]);
-    //   });
   };
 
   const fetchAll = async () => {
@@ -97,15 +70,6 @@ const Shop = ({ products }) => {
       setIsLoading(false);
       setProductList(products);
     }, 10);
-    // axios
-    //   .get('/api/products')
-    //   .then((response) => {
-    //     setIsLoading(false);
-    //     setProductList(products);
-    //   })
-    //   .catch(function (error) {
-    //     console.log(error);
-    //   });
   };
 
   const _addToCart = async (product) => {
@@ -232,14 +196,7 @@ const Shop = ({ products }) => {
                       >
                         <Card.Image
                           maxDelay={1000}
-                          // src={`data:image/webp;base64, ` + product.image}
                           src={product.image}
-                          // src={
-                          //   `data:image/webp;base64, ` +
-                          //   Buffer.from(product.image.Data, 'base64').toString(
-                          //     'base64'
-                          //   )
-                          // }
                           width="100%"
                           height="100%"
                           objectFit="cover"
