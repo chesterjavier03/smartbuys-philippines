@@ -9,7 +9,6 @@ import {
   Text,
 } from '@nextui-org/react';
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
-import { FilterAlt } from '@mui/icons-material';
 
 const Filter = ({
   filterByCategory,
@@ -162,7 +161,14 @@ const Filter = ({
               },
               backgroundColor: 'transparent',
             }}
-            arrowIcon={<FilterAlt style={{ color: 'Red' }} />}
+            arrowIcon={
+              <FilterAltIcon
+                style={{
+                  color: 'gray',
+                  fontSize: '2rem',
+                }}
+              />
+            }
           >
             <Grid align="center" justify="center">
               <Divider css={{ backgroundColor: 'red' }} />
