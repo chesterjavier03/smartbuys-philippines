@@ -7,7 +7,6 @@ import Filter from 'components/filter';
 import { useDispatch, useSelector } from 'react-redux';
 import { cartAddItem } from 'store/reducers/user.reducer';
 import { moneyFormat } from 'utils/functions';
-import MobileFilterView from 'components/mobile-filterview';
 
 const Shop = ({ products }) => {
   const router = useRouter();
@@ -98,20 +97,9 @@ const Shop = ({ products }) => {
           height: '89vh',
         }}
       >
-        <Grid lg={2} md={2} xl={2} sm={0} xs={0}>
+        <Grid lg={2} md={2} xl={2} sm={12} xs={12}>
           <Filter
             darkMode={darkMode}
-            filterByCategory={filterByCategory}
-            categoryList={categoryList}
-            typeList={typeList}
-            filterByType={filterByType}
-            setIsPressed={setIsPressed}
-            fetchAll={fetchAll}
-            isPressed={isPressed}
-          />
-        </Grid>
-        <Grid lg={0} md={0} xl={0} sm={12} xs={12}>
-          <MobileFilterView
             filterByCategory={filterByCategory}
             categoryList={categoryList}
             typeList={typeList}
