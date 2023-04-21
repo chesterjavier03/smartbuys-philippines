@@ -18,12 +18,7 @@ import User from 'models/user';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  convertBufferToImage,
-  formatDate,
-  moneyFormat,
-  toJson,
-} from 'utils/functions';
+import { formatDate, moneyFormat, toJson } from 'utils/functions';
 import AdminLeftPanelMenu from '../component/admin.left.panel.menu';
 import { adminFetchOrderList } from 'store/actions/admin.actions';
 
