@@ -433,7 +433,6 @@ const MobileViewNav = ({ isAuth, handleSelected, userInfo, cartItems }) => {
           />
         </Badge>
       </Link>
-      <Link />
     </Navbar.Content>
   );
 };

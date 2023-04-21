@@ -1,4 +1,13 @@
-import { Card, Col, Grid, Loading, Row, Text } from '@nextui-org/react';
+import {
+  Button,
+  Card,
+  Col,
+  Collapse,
+  Grid,
+  Loading,
+  Row,
+  Text,
+} from '@nextui-org/react';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
@@ -7,6 +16,8 @@ import Filter from 'components/filter';
 import { useDispatch, useSelector } from 'react-redux';
 import { cartAddItem } from 'store/reducers/user.reducer';
 import { moneyFormat } from 'utils/functions';
+import { FilterAlt } from '@mui/icons-material';
+import { Divider } from '@mui/material';
 // import { productList as products } from 'database/data';
 
 const Shop = ({ products }) => {
@@ -129,10 +140,11 @@ const Shop = ({ products }) => {
           overflow: 'hidden',
           display: 'flex',
           flexDirection: 'row',
-          height: '90.5vh',
+          w: 'auto',
+          height: '89vh',
         }}
       >
-        <Grid lg={2} md={2} xl={2} sm={12} xs={12}>
+        <Grid lg={2} md={2} xl={2} sm={0} xs={0}>
           <Filter
             darkMode={darkMode}
             filterByCategory={filterByCategory}
@@ -143,6 +155,120 @@ const Shop = ({ products }) => {
             fetchAll={fetchAll}
             isPressed={isPressed}
           />
+        </Grid>
+        <Grid lg={0} md={0} xl={0} sm={12} xs={12}>
+          <Col align="start" justify="flex-start">
+            <Collapse
+              bordered
+              shadow
+              title={
+                <Text h4 color="Gray" css={{ textTransform: 'uppercase' }}>
+                  Search Filter
+                </Text>
+              }
+              css={{
+                w: 'auto',
+                margin: '.4rem',
+                borderColor: 'Red',
+                borderRadius: '$xs',
+                color: '$accents9',
+                '.nextui-collapse-title': {
+                  color: '$accents6',
+                },
+                '.nextui-collapse-subtitle': {
+                  color: '$gray800',
+                },
+              }}
+              arrowIcon={<FilterAlt style={{ color: 'Red' }} />}
+            >
+              <Grid align="center" justify="center">
+                <Divider css={{ backgroundColor: 'red' }} />
+              </Grid>
+              <Grid
+                align="center"
+                justify="center"
+                alignContent="center"
+                alignItems="center"
+              >
+                <Row justify="center" align="center" alignContent="center">
+                  <Grid.Container gap={1} justify="flex-start" align="center">
+                    {[...typeList, ...categoryList].map((data) => (
+                      <Grid xs={4} key={data}>
+                        <Col>
+                          <Button
+                            css={{
+                              zIndex: 0,
+                              '&:hover': {
+                                transform: 'translateY(-5px)',
+                                '&:after': {
+                                  transform: 'scaleX(1.5) scaleY(1.6)',
+                                  opacity: 0,
+                                },
+                              },
+                            }}
+                            auto
+                            color={'error'}
+                            onPress={() => {
+                              data == 'Food' ||
+                              data == 'Boys' ||
+                              data == 'Girls'
+                                ? filterByCategory(data)
+                                : filterByType(data);
+                            }}
+                          >
+                            <Text
+                              h5
+                              color={'white'}
+                              weight="semibold"
+                              css={{
+                                letterSpacing: '$normal',
+                                margin: '0 auto',
+                              }}
+                              size="$md"
+                            >
+                              {data}
+                            </Text>
+                          </Button>
+                        </Col>
+                      </Grid>
+                    ))}
+                  </Grid.Container>
+                </Row>
+              </Grid>
+              <Grid align="center" justify="center">
+                <Button
+                  size={'lg'}
+                  css={{
+                    zIndex: 0,
+                    boxShadow: '$md',
+                    margin: '0 auto',
+                    '&:hover': {
+                      transform: 'translateY(-5px)',
+                      '&:after': {
+                        transform: 'scaleX(1.5) scaleY(1.6)',
+                        opacity: 0,
+                      },
+                    },
+                  }}
+                  color={'error'}
+                  onPress={() => {
+                    setIsPressed(!isPressed);
+                    fetchAll();
+                  }}
+                >
+                  <Text
+                    h5
+                    color={'white'}
+                    weight="semibold"
+                    size="$md"
+                    css={{ margin: '0 auto' }}
+                  >
+                    Reset
+                  </Text>
+                </Button>
+              </Grid>
+            </Collapse>
+          </Col>
         </Grid>
         <Grid xl={10} lg={10} md={10} xs={12} sm={12}>
           {isLoading || loading ? (
@@ -206,9 +332,7 @@ const Shop = ({ products }) => {
                         css={{ position: 'absolute', zIndex: 1, top: 5 }}
                       >
                         <Col>
-                          <Text
-                            css={{ fontWeight: '$medium', color: '$gray100' }}
-                          >
+                          <Text css={{ fontWeight: '$medium', color: 'gold' }}>
                             {product.name}
                           </Text>
                         </Col>
@@ -254,12 +378,11 @@ const Shop = ({ products }) => {
                           zIndex: 1,
                         }}
                       >
-                        <Row>
+                        <Row align="center" wrap="nowrap">
                           <Col>
                             <Text
                               css={{
                                 color: '$white',
-                                fontSize: '$lg',
                                 whiteSpace: 'nowrap',
                                 w: '150px',
                                 '@xs': { w: '190px' },
@@ -279,12 +402,15 @@ const Shop = ({ products }) => {
                               {moneyFormat(product.price)}
                             </Text>
                           </Col>
-                          <Col span={2} css={{ cursor: 'pointer' }}>
+                          <Col span={1} css={{ cursor: 'pointer' }}>
                             <Row justify="flex-end" css={{ marginTop: '$5' }}>
                               <ShoppingCartIcon
                                 style={{
                                   color: 'Orange',
                                   fontSize: '2.5rem',
+                                  '@xs': {
+                                    fontSize: '2.5rem',
+                                  },
                                 }}
                                 onClick={() => {
                                   product.category === 'Food'
