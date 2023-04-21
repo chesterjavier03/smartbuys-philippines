@@ -4,9 +4,9 @@ import userReducer from './reducers/user.reducer';
 import { persistReducer, persistStore } from 'redux-persist';
 import thunk from 'redux-thunk';
 import orderReducer from './reducers/order.reducer';
+import storage from 'redux-persist/lib/storage';
 import productReducer from './reducers/product.reducer';
 import adminReducer from './reducers/admin.reducer';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 
 // export const store = configureStore({
 //   reducer: {
@@ -28,8 +28,8 @@ const rootReducer = combineReducers({
 });
 
 const persistConfig = {
-  key: 'smartbuys_storage',
-  storage: AsyncStorage,
+  key: 'smartbuys',
+  storage,
 };
 
 export const store = configureStore({
