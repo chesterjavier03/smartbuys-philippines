@@ -204,13 +204,8 @@ const ProductDetails = () => {
                 {moneyFormat(product.price)}
               </Text>
             </Grid>
-            <Grid xs={12} sm={12} lg={12} md={12} xl={12}>
-              <Row
-                css={{
-                  justifyContent: 'space-between',
-                  justifyItems: 'center',
-                }}
-              >
+            <Grid css={{ w: '100%' }}>
+              <Row justify="space-between" align="center">
                 <Text
                   h4
                   css={{
@@ -235,30 +230,32 @@ const ProductDetails = () => {
               </Row>
               <Spacer x={1} />
             </Grid>
-            <Grid xs={12} sm={12} lg={12} md={12} xl={12}>
-              <Text
-                h4
-                css={{
-                  fontFamily: 'Ubuntu',
-                  fontWeight: '$normal',
-                  color: '$gray600',
-                  textAlign: 'center',
-                }}
-                color="gray"
-              >
-                Type:
-              </Text>
-              <Text
-                h3
-                css={{
-                  fontFamily: 'Ubuntu',
-                  fontWeight: '$medium',
-                  color: _colorSetByCategoryType(product.category),
-                }}
-                color="gray"
-              >
-                {product.type}
-              </Text>
+            <Grid css={{ w: '100%' }}>
+              <Row justify="space-between" align="center">
+                <Text
+                  h4
+                  css={{
+                    fontFamily: 'Ubuntu',
+                    fontWeight: '$normal',
+                    color: '$gray600',
+                    textAlign: 'center',
+                  }}
+                  color="gray"
+                >
+                  Type:
+                </Text>
+                <Text
+                  h3
+                  css={{
+                    fontFamily: 'Ubuntu',
+                    fontWeight: '$medium',
+                    color: _colorSetByCategoryType(product.category),
+                  }}
+                  color="gray"
+                >
+                  {product.type}
+                </Text>
+              </Row>
             </Grid>
             {product.category !== 'Food' && (
               <SizeSection
@@ -270,9 +267,8 @@ const ProductDetails = () => {
                 setSelectedSize={setSelectedSize}
               />
             )}
-            <Grid xs={12} lg={12}>
+            <Grid css={{ w: '100%' }}>
               <Row
-                css={{ w: '100vw' }}
                 align="center"
                 justify="space-between"
                 alignContent="space-between"

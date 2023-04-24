@@ -12,6 +12,9 @@ const SizeSection = ({
     <Grid
       xs={12}
       lg={12}
+      sm={12}
+      xl={12}
+      md={12}
       css={{ cursor: 'pointer' }}
       alignItems="center"
       justify="center"
@@ -30,7 +33,7 @@ const SizeSection = ({
       </Text>
       <Grid.Container
         gap={1}
-        justify="center"
+        justify="space-around"
         alignContent="center"
         alignItems="center"
       >
