@@ -48,7 +48,6 @@ const CartListDesktop = ({
                 borderColor: 'red',
                 borderWidth: 'thin',
                 borderRadius: '$xs',
-                w: 'fit-content',
               }}
               isPressable
               variant="bordered"

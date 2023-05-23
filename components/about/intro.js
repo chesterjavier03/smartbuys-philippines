@@ -25,8 +25,7 @@ const Intro = () => {
           }}
           color={'$gray700'}
         >
-          {`"SmartBuys Philippines is committed to provide Filipino Entrepreneurs like you with the best prices in wholesale clothing,
-          home decor, and frozen food items for your own boutique or store. Every day is a bazaar, all year long!"`}
+          {`"Discover a world of smart shopping at SmartBuys Philippines. Experience the perfect blend of quality, affordability, and convenience as you explore our curated selection of premium products. Elevate your lifestyle with our wide range of offerings, ensuring a seamless online shopping experience for the discerning Filipino shopper."`}
         </Text>
       </Grid>
       <Spacer y={5} />
