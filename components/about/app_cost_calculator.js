@@ -103,7 +103,7 @@ const AppCostCalculator = () => {
       </Grid.Container>
       <Spacer y={6.5} />
       <Grid xs={12} sm={12} lg={12} md={12} xl={12} justify="center">
-        <Link href="https://horustech.ml/ " target="_blank">
+        <Link href="https://sofos-factory.vercel.app/ " target="_blank">
           <Button size="xl" css={{ backgroundColor: '#3694FF' }}>
             <Text
               h4

@@ -24,7 +24,7 @@ const collapseItems = [
     url: '/about',
   },
   {
-    name: 'Horus',
+    name: 'Sofos',
     url: '/',
   },
   {
@@ -150,7 +150,7 @@ const Layout = ({ children }) => {
       case 'about':
         router.push('/about', undefined, { shallow: 'true' });
         return;
-      case 'horus':
+      case 'sofos':
         router.push('/about', undefined, { shallow: 'true' });
         return;
       case 'contact':

@@ -121,12 +121,12 @@ export const weAreProductList = [
     url: 'https://king-bites.vercel.app/',
   },
   {
-    name: 'horus',
-    description: 'Horus Tech',
-    width: '90%',
+    name: 'sofos',
+    description: 'Sofos Factory',
+    width: '63%',
     height: '100%',
-    image: '/static/horus_tech.webp',
-    url: 'https://horustech.ml/#/',
+    image: '/static/sofos_logo.png',
+    url: 'https://sofos-factory.vercel.app/',
   },
   {
     name: 'casey_lucas',

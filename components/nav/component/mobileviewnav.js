@@ -79,7 +79,7 @@ const MobileViewNav = ({ isAuth, handleSelected, userInfo, cartItems }) => {
                 About
               </Dropdown.Item>
               <Dropdown.Item
-                key="horus"
+                key="sofos"
                 css={{
                   color: 'Gray',
                   fontWeight: '$semibold',
@@ -91,7 +91,7 @@ const MobileViewNav = ({ isAuth, handleSelected, userInfo, cartItems }) => {
                   },
                 }}
               >
-                Horus
+                Sofos
               </Dropdown.Item>
               <Dropdown.Item
                 key="contact"
@@ -280,7 +280,7 @@ const MobileViewNav = ({ isAuth, handleSelected, userInfo, cartItems }) => {
                 About
               </Dropdown.Item>
               <Dropdown.Item
-                key="horus"
+                key="sofos"
                 css={{
                   color: 'Gray',
                   fontWeight: '$semibold',
@@ -292,7 +292,7 @@ const MobileViewNav = ({ isAuth, handleSelected, userInfo, cartItems }) => {
                   },
                 }}
               >
-                Horus
+                Sofos
               </Dropdown.Item>
               <Dropdown.Item
                 key="contact"
