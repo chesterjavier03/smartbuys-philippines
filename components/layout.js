@@ -10,7 +10,7 @@ import { useEffect } from 'react';
 import { signOutUser } from 'store/reducers/user.reducer';
 import { useSnackbar } from 'notistack';
 import { clearNotifications } from 'store/reducers/notifications.reducer';
-import NavBar from './nav/navbar';
+import CustomNav from './nav/navbar';
 import { signOutAdminUser } from 'store/reducers/admin.reducer';
 import { signOutUserProduct } from 'store/reducers/product.reducer';
 
@@ -173,7 +173,7 @@ const Layout = ({ children }) => {
   return (
     <>
       <NextUIProvider theme={theme}>
-        <NavBar
+        <CustomNav
           handleSelected={handleSelected}
           userInfo={userInfo}
           router={router}

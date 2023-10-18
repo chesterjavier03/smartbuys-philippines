@@ -5,7 +5,7 @@ import { Divider } from '@mui/material';
 import MobileViewNav from './component/mobileviewnav';
 import LoggedInNav from './component/loggedinNav';
 
-const NavBar = ({
+const CustomNav = ({
   handleSelected,
   userInfo,
   router,
@@ -183,4 +183,4 @@ const NavBar = ({
   );
 };
 
-export default NavBar;
+export default CustomNav;
