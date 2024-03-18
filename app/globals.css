@@ -10,24 +10,37 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    --foreground-rgb: ##fff;
   }
 }
 
 body {
   color: rgb(var(--foreground-rgb));
+  font-family: Ubuntu !important;
+  overflow-x: hidden;
   background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+      180deg,
+      hsla(0, 0%, 100%, 0.7) 0,
+      hsla(0, 0%, 100%, 0.7)
+    ),
+    url('/images/world_map.webp');
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  -webkit-font-smoothing: antialiased;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: left;
+  height: fit-content;
+  display: block;
+  position: relative;
+  content: '';
 }
 
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
+  .nav-link {
+    @apply text-zinc-500 hover:text-zinc-800 transition-colors;
   }
 }
