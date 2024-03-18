@@ -7,7 +7,6 @@ import EmailProvider from "next-auth/providers/email";
 
 export const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(prisma),
-  secret: process.env.NEXT_AUTH_SECRET,
   session: {
     strategy: "jwt",
     maxAge: 24 * 60 * 60,
@@ -88,6 +87,7 @@ export const authOptions: NextAuthOptions = {
       },
     })
   ],
+  secret: process.env.NEXT_AUTH_SECRET,
 }
 
 // export default authOptions;
