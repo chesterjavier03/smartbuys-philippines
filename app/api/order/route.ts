@@ -15,11 +15,17 @@ const mailConfig = {
 };
 
 const sendEmails = async (body: any) => {
-  const { imageUrl, productName, productDescription, productSize, productQuantity, productPrice, orderTotal, customerName, customerAddress, customerEmail, customerMobile } = body;
+  const { imageUrl, productName, productDescription, productSize, productQuantity, productPrice,
+    orderTotal, customerName, customerAddress, customerEmail, customerMobile } = body;
   
   let transporter = nodemailer.createTransport(mailConfig);
-  const jsonDirectory = path.join(process.cwd(), 'public/email-templates');
-  let template = await ejs.renderFile(jsonDirectory + '/order-summary.ejs', {imageUrl, productName, productDescription, productSize, productQuantity, productPrice, orderTotal, customerName, customerAddress, customerEmail, customerMobile});
+  const jsonDirectory = path.join(process.cwd(), process.env.NODE_ENV === 'production' ? 'static' : 'public' + '/email-templates');
+  
+  let template = await ejs.renderFile(jsonDirectory + '/order-summary.ejs',
+    {
+      imageUrl, productName, productDescription, productSize, productQuantity, productPrice,
+      orderTotal, customerName, customerAddress, customerEmail, customerMobile
+    });
   return await transporter.sendMail({
     from: process.env.EMAIL_FROM,
     bcc: 'smartbuysphil@duck.com',
