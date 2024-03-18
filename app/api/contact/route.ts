@@ -20,8 +20,8 @@ const adminEmail = 'SmartBuys Philippines <smartbuysphil@gmail.com>';
 const sendEmails = async (body: any) => {
   const {name, email, message} = body;
   let transporter = nodemailer.createTransport(mailConfig);
-  const jsonDirectory = path.join(process.cwd(), process.env.EMAIL_TEMPLATE_DIR!);
-  let template = await ejs.renderFile(`${jsonDirectory}${process.env.EMAIL_TEMPLATE_CONTACT!}`, {fullName: name, email, message});
+  const jsonDirectory = path.join(process.cwd(), 'public/email-templates');
+  let template = await ejs.renderFile(jsonDirectory + '/message.ejs', {fullName: name, email, message});
   return await transporter.sendMail({
     from: process.env.EMAIL_FROM,
     to: 'chesterjavier03@gmail.com',
