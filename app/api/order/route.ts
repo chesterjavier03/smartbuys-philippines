@@ -19,7 +19,7 @@ const sendEmails = async (body: any) => {
     orderTotal, customerName, customerAddress, customerEmail, customerMobile } = body;
   
   let transporter = nodemailer.createTransport(mailConfig);
-  const jsonDirectory = path.join(process.cwd(), process.env.NODE_ENV === 'production' ? 'static' : 'public' + '/email-templates');
+  const jsonDirectory = path.join(process.cwd(), 'public/email-templates');
   
   let template = await ejs.renderFile(jsonDirectory + '/order-summary.ejs',
     {

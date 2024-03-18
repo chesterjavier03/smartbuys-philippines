@@ -6,7 +6,7 @@ export const CustomsendVerificationRequest = async(params: any) => {
   const { identifier, url, provider } = params
   const { host } = new URL(url)
   const transport = createTransport(provider.server)
-  const jsonDirectory = path.join(process.cwd(), process.env.NODE_ENV === 'production' ? 'static' : 'public' + '/email-templates');
+  const jsonDirectory = path.join(process.cwd(), 'public/email-templates');
   
   let template = await ejs.renderFile(jsonDirectory + '/login.ejs', {url, host});
   const result = await transport.sendMail({
