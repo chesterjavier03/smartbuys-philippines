@@ -8,11 +8,12 @@ import {
   Input,
   Modal,
   ModalContent,
+  Spinner,
   useDisclosure,
 } from '@nextui-org/react';
-import { signIn } from 'next-auth/react';
+import { signIn, useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import * as Yup from 'yup';
 
@@ -25,8 +26,18 @@ const validationSchema = Yup.object().shape({
 
 const LoginPage = () => {
   const router = useRouter();
+  const { data: session } = useSession();
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isVisible, setIsVisible] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    setIsLoading(true);
+    if (session) {
+      router.push('/');
+    } else {
+      setIsLoading(false);
+    }
+  }, [session]);
 
   const {
     register,
@@ -56,6 +67,19 @@ const LoginPage = () => {
     reset();
     setIsSubmitting(false);
   };
+
+  if (isLoading) {
+    return (
+      <div className="h-full">
+        <Spinner
+          color="success"
+          size="lg"
+          className="flex h-[calc(100vh-4rem)] align-middle justify-center justify-items-center content-center overflow-hidde"
+        />
+      </div>
+    );
+  }
+
   return (
     <>
       <div className="grid grid-cols-1 w-screen justify-items-center mt-[15vh] place-items-start h-auto md:px-0 px-5">
