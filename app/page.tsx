@@ -3,19 +3,25 @@
 import { Product } from '@prisma/client';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import FilterNav from './_component/FilterNav';
 import ShopProductList from './_component/ShopProductList';
-import { MdOutlineFilterList, MdOutlineFilterListOff } from 'react-icons/md';
+import {
+  MdOutlineFilterList,
+  MdOutlineFilterListOff,
+  MdRefresh,
+} from 'react-icons/md';
 import {
   Accordion,
   AccordionItem,
+  Button,
   Card,
   Checkbox,
   ScrollShadow,
   Spinner,
 } from '@nextui-org/react';
 import classNames from 'classnames';
+import { PageContext } from './Main';
 
 const categoryList = [{ label: 'Girls' }, { label: 'Boys' }, { label: 'Food' }];
 const typeList = [
@@ -35,6 +41,7 @@ const Home = () => {
   const [productList, setProductList] = useState<Product[]>(result);
   const [category, setCategory] = useState('');
   const [type, setType] = useState('');
+  const isNavMenuOpen = useContext(PageContext);
 
   const handleSelectCategory = (category: string) => {
     setCategory(category);
@@ -82,74 +89,77 @@ const Home = () => {
               className="flex h-[calc(100vh-4rem)] align-middle justify-center justify-items-center content-center overflow-hidden"
             />
           )}
-          <Accordion className="md:hidden fixed z-50 top-14 !px-0 !py-0 !mt-0 text-white container w-full justify-center align-middle flex-wrap">
-            <AccordionItem
-              className="flex flex-col align-middle justify-center w-full"
-              classNames={{
-                base: 'text-xl text-white bg-[#ff0000] w-full !m-0',
-                heading: 'text-xl text-white !px-2',
-                trigger: 'trigger-classes !px-5',
-                titleWrapper: '!px-0 !text-white !text-xl !pl-2',
-                title: '!text-white !text-xl tracking-widest',
-              }}
-              aria-label="Filter"
-              indicator={<MdOutlineFilterList color="#fff" size={30} />}
-              title="Filter"
-            >
-              <div className="md:hidden flex justify-center align-middle gap-x-5">
-                <Card
-                  shadow="none"
-                  radius="none"
-                  className="flex flex-row w-full overflow-x-scroll bg-[#ff0000] justify-start align-middle gap-x-5 px-3 pt-1"
-                >
-                  {categoryList.map((data, index) => (
-                    <Checkbox
-                      key={index}
-                      className="inline-flex my-0.5"
-                      size="md"
+          <aside
+            className={classNames({
+              'md:hidden fixed top-[4rem] overflow-y-scroll left-0 z-40 w-[200px] transition-transform h-[calc(100vh-8rem)]':
+                true,
+              '-translate-x-full': !isNavMenuOpen,
+              'sm:translate-x-0': isNavMenuOpen,
+            })}
+            aria-label="Sidebar"
+          >
+            <div className="h-full px-3 py-4 overflow-y-auto !text-white bg-[#ff0000]">
+              <nav className="flex flex-col justify-between inset-0 w-full">
+                <ul className="flex flex-col gap-2 items-stretch">
+                  <li className="flex flex-col cursor-pointer transition-colors duration-300 rounded-md mx-3">
+                    {categoryList.map((data, index) => (
+                      <Checkbox
+                        key={index}
+                        className="inline-flex my-0.5"
+                        size="md"
+                        radius="sm"
+                        color="success"
+                        value={category}
+                        isSelected={categoryList[index].label == category}
+                        onChange={() => {
+                          handleSelectCategory(data.label);
+                        }}
+                      >
+                        <span className="text-white text-medium font-bold">
+                          {data.label}
+                        </span>
+                      </Checkbox>
+                    ))}
+                  </li>
+                  <li className="flex flex-col cursor-pointer transition-colors duration-300 rounded-md mx-3">
+                    {typeList.map((data, index) => (
+                      <Checkbox
+                        key={index}
+                        className="inline-flex my-0.5"
+                        size="md"
+                        color="success"
+                        radius="sm"
+                        value={type}
+                        isSelected={typeList[index].label == type}
+                        onChange={() => {
+                          handleSelectType(data.label);
+                        }}
+                      >
+                        <span className="text-white text-medium font-bold">
+                          {data.label}
+                        </span>
+                      </Checkbox>
+                    ))}
+                  </li>
+                  <li className="flex flex-col  cursor-pointer transition-colors duration-300 rounded-md p-2 mx-3 gap-4 ">
+                    <Button
+                      size="sm"
+                      fullWidth
+                      // color="default"
+                      className="bg-[#1a3d57] text-white text-sm tracking-widest"
+                      variant="solid"
+                      onClick={reset}
                       radius="sm"
-                      color="success"
-                      value={category}
-                      isSelected={categoryList[index].label == category}
-                      onChange={() => {
-                        handleSelectCategory(data.label);
-                      }}
+                      disableRipple
+                      endContent={<MdRefresh size={20} color="white" />}
                     >
-                      <span className="text-white text-medium font-bold">
-                        {data.label}
-                      </span>
-                    </Checkbox>
-                  ))}
-                </Card>
-              </div>
-              <div className="md:hidden flex justify-center align-middle gap-x-5">
-                <Card
-                  shadow="none"
-                  radius="none"
-                  className="flex flex-row w-full overflow-x-scroll bg-[#ff0000] justify-start align-middle gap-x-3 px-3 pb-1"
-                >
-                  {typeList.map((data, index) => (
-                    <Checkbox
-                      key={index}
-                      className="inline-flex my-0.5"
-                      size="md"
-                      color="success"
-                      radius="sm"
-                      value={type}
-                      isSelected={typeList[index].label == type}
-                      onChange={() => {
-                        handleSelectType(data.label);
-                      }}
-                    >
-                      <span className="text-white text-medium font-bold">
-                        {data.label}
-                      </span>
-                    </Checkbox>
-                  ))}
-                </Card>
-              </div>
-            </AccordionItem>
-          </Accordion>
+                      Reset
+                    </Button>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </aside>
           <ShopProductList
             products={productList ?? result}
             isLoading={isLoading}

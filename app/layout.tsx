@@ -16,15 +16,19 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+  params,
+}: {
   children: React.ReactNode;
-}>) {
+  params: {
+    isMenuOpen: boolean;
+  };
+}) {
   return (
     <html lang="en" className="light">
       <body className={inter.variable} suppressHydrationWarning={true}>
         <QueryClientProvider>
           <AuthProvider>
-            <Main>{children}</Main>
+            <Main params={params}>{children}</Main>
           </AuthProvider>
         </QueryClientProvider>
       </body>

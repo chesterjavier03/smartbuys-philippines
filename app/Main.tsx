@@ -1,7 +1,7 @@
 'use client';
 
 import { Avatar, Image, NextUIProvider } from '@nextui-org/react';
-import React from 'react';
+import React, { createContext } from 'react';
 import NavBar from './NavBar';
 import {
   HiMiniChatBubbleBottomCenterText,
@@ -15,21 +15,35 @@ import Link from 'next/link';
 import classNames from 'classnames';
 import { usePathname } from 'next/navigation';
 import { useSession } from 'next-auth/react';
+import { useState } from 'react';
+
+export const PageContext = createContext(false);
 
 const Main = ({
   children,
-}: Readonly<{
+  params,
+}: {
   children: React.ReactNode;
-}>) => {
+  params: {
+    isMenuOpen: boolean;
+  };
+}) => {
   const currentPath = usePathname();
   const { status, data: session } = useSession();
+  const [isNavMenuOpen, setIsNavMenuOpen] = useState(params.isMenuOpen);
+  params.isMenuOpen = isNavMenuOpen;
 
   return (
     <NextUIProvider>
-      <NavBar />
-      <main className="static md:h-[calc(100vh-4rem)] md:pb-0 h-[calc(100vh-7rem)] pb-4 overflow-y-auto">
-        {children}
-      </main>
+      <PageContext.Provider value={isNavMenuOpen}>
+        <NavBar
+          setIsNavMenuOpen={setIsNavMenuOpen}
+          isNavMenuOpen={params.isMenuOpen}
+        />
+        <main className="static md:h-[calc(100vh-4rem)] md:pb-0 h-[calc(100vh-7rem)] pb-4 overflow-y-auto">
+          {children}
+        </main>
+      </PageContext.Provider>
       <footer className="static md:hidden pt-5">
         <div className="fixed bottom-0 left-0 z-50 w-full h-16 bg-[#ff0000]">
           <div className="grid h-full max-w-lg grid-cols-5 mx-auto font-medium">

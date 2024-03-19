@@ -11,7 +11,7 @@ interface Props {
 const ShopProductList = ({ products, isLoading }: Props) => {
   return (
     <>
-      <div className="overflow-y-auto w-full md:pt-0 md:pb-0 pt-14 pb-5">
+      <div className="overflow-y-auto w-full md:pt-0 md:pb-0 pt-0 pb-5">
         <div className="grid grid-cols-2 mx-1 gap-2 justify-around content-start my-2 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6 md:mx-5 md:my-5 md:gap-5 align-middle justify-items-start ">
           {products?.map((product, index) => {
             return (

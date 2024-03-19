@@ -12,6 +12,7 @@ import {
   NavbarBrand,
   NavbarContent,
   NavbarItem,
+  NavbarMenuToggle,
 } from '@nextui-org/react';
 import classNames from 'classnames';
 import { signOut, useSession } from 'next-auth/react';
@@ -26,9 +27,14 @@ import {
   HiUserCircle,
 } from 'react-icons/hi2';
 
-const NavBar = () => {
+const NavBar = ({
+  setIsNavMenuOpen,
+  isNavMenuOpen,
+}: {
+  setIsNavMenuOpen: (value: boolean) => void;
+  isNavMenuOpen: boolean;
+}) => {
   const { status, data: session } = useSession();
-  const [isMenuOpen, setIsMenuOpen] = useReducer((current) => !current, false);
   const currentPath = usePathname();
   const router = useRouter();
 
@@ -36,14 +42,25 @@ const NavBar = () => {
     <Navbar
       maxWidth="full"
       className="bg-[#ff0000] text-white -mb-0 px-2"
-      isMenuOpen={isMenuOpen}
-      onMenuOpenChange={setIsMenuOpen}
+      isMenuOpen={isNavMenuOpen ?? false}
+      onMenuOpenChange={setIsNavMenuOpen}
     >
+      <NavbarMenuToggle
+        aria-label={isNavMenuOpen ? 'Close menu' : 'Open menu'}
+        className={classNames({
+          'sm:hidden': true,
+          'sm:hidden hidden': currentPath !== '/' && (session || !session),
+        })}
+      />
       <NavbarBrand
         className={classNames({
           'md:justify-start md:align-middle justify-center align-middle cursor-pointer':
             true,
-          'ml-12 md:ml-0': session,
+          'md:justify-start justify-end md:pl-0 md:mr-0 mr-[24.9%] md:ml-0':
+            session,
+          'justify-end align-middle mr-[39.9%] md:ml-0 md:mr-0': !session,
+          'md:justify-start justify-end md:mr-0 mr-[24.9%] md:ml-0':
+            currentPath !== '/' && session,
         })}
         as={Link}
         href={'/'}
@@ -171,13 +188,13 @@ const NavBar = () => {
               >
                 <DropdownSection>
                   <DropdownItem
-                    onClick={() => router.push('/settings')}
+                    onClick={() => router.push('/')}
                     textValue={session.user.email ?? ''}
                   >
                     <div>{session!.user!.email}</div>
                   </DropdownItem>
                   <DropdownItem
-                    onClick={() => router.push('/settings')}
+                    onClick={() => router.push('/')}
                     textValue="Settings"
                   >
                     <div>Settings</div>
@@ -261,13 +278,22 @@ const NavBar = () => {
               selectionMode="single"
             >
               <DropdownSection>
-                <DropdownItem onClick={() => router.push('/settings')}>
+                <DropdownItem
+                  onClick={() => router.push('/')}
+                  textValue={session!.user!.email ?? ''}
+                >
                   <div>{session!.user!.email}</div>
                 </DropdownItem>
-                <DropdownItem onClick={() => router.push('/settings')}>
+                <DropdownItem
+                  onClick={() => router.push('/')}
+                  textValue="Settings"
+                >
                   <div>Settings</div>
                 </DropdownItem>
-                <DropdownItem onClick={() => signOut({ callbackUrl: '/' })}>
+                <DropdownItem
+                  onClick={() => signOut({ callbackUrl: '/' })}
+                  textValue="Log out"
+                >
                   Log out
                 </DropdownItem>
               </DropdownSection>
