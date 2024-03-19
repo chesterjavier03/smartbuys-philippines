@@ -1,21 +1,19 @@
 'use client';
 
-import { Avatar, Image, NextUIProvider } from '@nextui-org/react';
-import React, { createContext } from 'react';
-import NavBar from './NavBar';
+import { Image, NextUIProvider } from '@nextui-org/react';
+import classNames from 'classnames';
+import { useSession } from 'next-auth/react';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import React, { createContext, useState } from 'react';
 import {
   HiMiniChatBubbleBottomCenterText,
-  HiMiniInformationCircle,
   HiMiniVideoCamera,
   HiShoppingBag,
   HiUserCircle,
 } from 'react-icons/hi2';
 import { VscSettings } from 'react-icons/vsc';
-import Link from 'next/link';
-import classNames from 'classnames';
-import { usePathname } from 'next/navigation';
-import { useSession } from 'next-auth/react';
-import { useState } from 'react';
+import NavBar from './NavBar';
 
 export const PageContext = createContext(false);
 
@@ -38,7 +36,7 @@ const Main = ({
       <PageContext.Provider value={isNavMenuOpen}>
         <NavBar
           setIsNavMenuOpen={setIsNavMenuOpen}
-          isNavMenuOpen={params.isMenuOpen}
+          isNavMenuOpen={isNavMenuOpen}
         />
         <main className="static md:h-[calc(100vh-4rem)] md:pb-0 h-[calc(100vh-7rem)] pb-4 overflow-y-auto">
           {children}

@@ -2,9 +2,9 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import * as React from 'react';
 import Main from './Main';
-import './globals.css';
 import QueryClientProvider from './QueryClientProvider';
 import AuthProvider from './auth/Provider';
+import './globals.css';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 

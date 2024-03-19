@@ -1,27 +1,15 @@
 'use client';
 
+import { Button, Checkbox, Spinner } from '@nextui-org/react';
 import { Product } from '@prisma/client';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
-import { useContext, useEffect, useState } from 'react';
+import classNames from 'classnames';
+import { useContext, useState } from 'react';
+import { MdRefresh } from 'react-icons/md';
+import { PageContext } from './Main';
 import FilterNav from './_component/FilterNav';
 import ShopProductList from './_component/ShopProductList';
-import {
-  MdOutlineFilterList,
-  MdOutlineFilterListOff,
-  MdRefresh,
-} from 'react-icons/md';
-import {
-  Accordion,
-  AccordionItem,
-  Button,
-  Card,
-  Checkbox,
-  ScrollShadow,
-  Spinner,
-} from '@nextui-org/react';
-import classNames from 'classnames';
-import { PageContext } from './Main';
 
 const categoryList = [{ label: 'Girls' }, { label: 'Boys' }, { label: 'Food' }];
 const typeList = [

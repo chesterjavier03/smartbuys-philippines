@@ -18,7 +18,6 @@ import classNames from 'classnames';
 import { signOut, useSession } from 'next-auth/react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
-import { useReducer } from 'react';
 import {
   HiMiniChatBubbleBottomCenterText,
   HiMiniInformationCircle,
