@@ -32,11 +32,8 @@ const typeList = [
   { label: 'Jogger' },
   { label: 'Shorts' },
 ];
-const sizeList = [{ label: 'Small' }, { label: 'Medium' }, { label: 'Large' }];
-
 const Home = () => {
-  const [size, setSize] = useState('');
-  const { data: products, error, isLoading } = useProducts();
+  const { data: products, isLoading } = useProducts();
   let result: Product[] = products as Product[];
   const [productList, setProductList] = useState<Product[]>(result);
   const [category, setCategory] = useState('');
@@ -100,7 +97,7 @@ const Home = () => {
           >
             <div className="h-full px-3 py-4 overflow-y-auto !text-white bg-[#ff0000]">
               <nav className="flex flex-col justify-between inset-0 w-full">
-                <ul className="flex flex-col gap-2 items-stretch">
+                <ul className="flex flex-col gap-0 items-stretch">
                   <li className="flex flex-col cursor-pointer transition-colors duration-300 rounded-md mx-3">
                     {categoryList.map((data, index) => (
                       <Checkbox
@@ -141,7 +138,7 @@ const Home = () => {
                       </Checkbox>
                     ))}
                   </li>
-                  <li className="flex flex-col  cursor-pointer transition-colors duration-300 rounded-md p-2 mx-3 gap-4 ">
+                  <li className="flex flex-col  cursor-pointer transition-colors duration-300 rounded-md pl-3 pr-5 ">
                     <Button
                       size="sm"
                       fullWidth
