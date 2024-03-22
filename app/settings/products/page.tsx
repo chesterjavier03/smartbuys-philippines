@@ -20,15 +20,20 @@ import {
 import { Product } from '@prisma/client';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
-import { list } from 'postcss';
-import React, { useState } from 'react';
-import { convertMoney } from '../_utility/MoneyFormatter';
+import React, { useEffect, useState } from 'react';
+import { convertMoney } from '../../_utility/MoneyFormatter';
+import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 const ProductManagerPage = () => {
+  const router = useRouter();
   const { data: products, error, isLoading } = useProducts();
+  let result: Product[] = products as Product[];
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
-  const [productData, setProductData] = useState<Product[]>(products ?? []);
+  const [productData, setProductData] = useState<Product[]>(
+    result ?? products ?? []
+  );
   const [page, setPage] = React.useState(1);
   const pages = Math.ceil(productData.length / rowsPerPage);
   const [filterValue, setFilterValue] = React.useState('');
@@ -97,7 +102,19 @@ const ProductManagerPage = () => {
     <>
       <div className="p-10 justify-between align-middle grid grid-cols-1 gap-5">
         <Card radius="md" shadow="lg" className="p-5">
-          <div className="text-xl font-semibold">Product List</div>
+          <div className="flex flex-row flex-wrap justify-between align-middle">
+            <div className="text-xl font-semibold">Product List</div>
+            <div className="text-xl font-semibold">
+              <Button
+                size="md"
+                radius="sm"
+                color="primary"
+                onClick={() => router.push('/settings/products/new')}
+              >
+                Create New Product
+              </Button>
+            </div>
+          </div>
           <Table
             isCompact
             aria-label="Example static collection table"
@@ -164,7 +181,8 @@ const ProductManagerPage = () => {
                         color="primary"
                         onClick={() => {
                           setSelectedItem(data);
-                          onOpen();
+                          router.push(`/settings/products/edit/${data.id}`);
+                          // onOpen();
                         }}
                       >
                         Edit

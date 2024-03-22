@@ -41,7 +41,7 @@ const NavBar = ({
     <Navbar
       maxWidth="full"
       className="bg-[#ff0000] text-white -mb-0 px-2"
-      isMenuOpen={isNavMenuOpen ?? false}
+      isMenuOpen={isNavMenuOpen}
       onMenuOpenChange={setIsNavMenuOpen}
     >
       <NavbarMenuToggle
@@ -65,7 +65,10 @@ const NavBar = ({
         href={'/'}
       >
         <Image
-          className="object-contain hover:scale-110"
+          className={classNames({
+            'object-contain hover:scale-110': true,
+            'pointer-events-none': process.env.NODE_ENV === 'production',
+          })}
           radius="none"
           width={75}
           alt="SmartBuys Philippines"
@@ -188,7 +191,7 @@ const NavBar = ({
                 <DropdownSection>
                   <DropdownItem
                     onClick={() => router.push('/')}
-                    textValue={session.user.email ?? ''}
+                    textValue={session!.user!.email ?? ''}
                   >
                     <div>{session!.user!.email}</div>
                   </DropdownItem>
@@ -199,14 +202,14 @@ const NavBar = ({
                     <div>Settings</div>
                   </DropdownItem>
                   <DropdownItem
-                    onClick={() => router.push('/products')}
-                    textValue="Products Manager"
+                    onClick={() => router.push('/settings/products')}
+                    textValue="ProductsManager"
                   >
                     <div>Products Manager</div>
                   </DropdownItem>
                   <DropdownItem
                     onClick={() => signOut({ callbackUrl: '/' })}
-                    textValue="Log out"
+                    textValue="Logout"
                   >
                     Log out
                   </DropdownItem>

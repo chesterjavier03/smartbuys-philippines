@@ -11,18 +11,17 @@ import {
   Spinner,
   useDisclosure,
 } from '@nextui-org/react';
+import classNames from 'classnames';
 import { signIn, useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import * as Yup from 'yup';
+import { z } from 'zod';
+import { loginSchema } from '../_utility/validationSchema';
+import { zodResolver } from '@hookform/resolvers/zod';
 
-const validationSchema = Yup.object().shape({
-  email: Yup.string().required('Email is required').email('Email is invalid'),
-  // password: Yup.string()
-  //   .min(2, 'Password must be at least 6 characters')
-  //   .required('Password is required'),
-});
+type LoginSchema = z.infer<typeof loginSchema>;
 
 const LoginPage = () => {
   const router = useRouter();
@@ -44,7 +43,7 @@ const LoginPage = () => {
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm({ resolver: yupResolver(validationSchema) });
+  } = useForm<LoginSchema>({ resolver: zodResolver(loginSchema) });
 
   const onSubmit = handleSubmit(async (data) => {
     try {
@@ -93,7 +92,10 @@ const LoginPage = () => {
             <Image
               radius="sm"
               alt={'SmartBuys Philippines'}
-              className="w-full h-full object-contain z-0 pb-10"
+              className={classNames({
+                'w-full h-full object-contain z-0 pb-10': true,
+                'pointer-events-none': process.env.NODE_ENV === 'production',
+              })}
               width={'50%'}
               height={'50%'}
               src={'/images/smartbuys_wings.webp'}

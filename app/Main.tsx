@@ -103,7 +103,10 @@ const Main = ({
             >
               <Image
                 src={'/images/smartbuys_logo.png'}
-                className="w-16 bottom-5"
+                className={classNames({
+                  'w-16 bottom-5': true,
+                  'pointer-events-none': process.env.NODE_ENV === 'production',
+                })}
               />
             </Link>
             <Link

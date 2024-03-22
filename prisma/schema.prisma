@@ -42,7 +42,7 @@ model Product {
   description String
   reviews     Review[]
   createdAt   String
-  itemCount   Int
+  itemCount   Int      @default(1)
 }
 
 model Review {

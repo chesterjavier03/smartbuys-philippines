@@ -1,4 +1,5 @@
 import { Image, Modal, ModalContent } from '@nextui-org/react';
+import classNames from 'classnames';
 import React from 'react';
 
 interface Props {
@@ -34,7 +35,10 @@ const ShowImageModal = ({
               shadow="sm"
               radius="sm"
               alt={productName}
-              className="w-[100vw] h-[80vh] object-cover z-0"
+              className={classNames({
+                'w-[100vw] h-[80vh] object-cover z-0': true,
+                'pointer-events-none': process.env.NODE_ENV === 'production',
+              })}
               src={productImage}
             />
           </>

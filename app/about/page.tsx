@@ -107,7 +107,12 @@ const AboutPage = () => {
       <div className="grid grid-cols-1 place-items-center">
         <section>
           <div className="flex mt-2 p-10 object-contain lg:mt-5">
-            <Image src="/images/smartbuys_wings.webp" />
+            <Image
+              src="/images/smartbuys_wings.webp"
+              className={classNames({
+                'pointer-events-none': process.env.NODE_ENV === 'production',
+              })}
+            />
           </div>
         </section>
         <section className="md:mt-0 mt-5">
@@ -146,7 +151,13 @@ const AboutPage = () => {
                   shadow="none"
                   radius="sm"
                   alt={weAreItem.alt}
-                  className={`${weAreItem.width} h-full object-cover z-0 cursor-pointer`}
+                  className={`${
+                    weAreItem.width
+                  } h-full object-cover z-0 cursor-pointer ${
+                    process.env.NODE_ENV === 'production'
+                      ? 'pointer-events-none'
+                      : ''
+                  }`}
                   src={weAreItem.source}
                 />
               </Link>
@@ -241,7 +252,12 @@ const AboutPage = () => {
                       shadow="lg"
                       radius="sm"
                       alt={item.alt}
-                      className={`w-unit-6xl h-full object-contain z-0 cursor-pointer `}
+                      className={classNames({
+                        'w-unit-6xl h-full object-contain z-0 cursor-pointer':
+                          true,
+                        'pointer-events-none':
+                          process.env.NODE_ENV === 'production',
+                      })}
                       src={item.image}
                     />
                   </Card>
@@ -281,7 +297,11 @@ const AboutPage = () => {
                   shadow="lg"
                   radius="sm"
                   alt={item.alt}
-                  className={`object-contain z-0 cursor-pointer `}
+                  className={classNames({
+                    'object-contain z-0 cursor-pointer': true,
+                    'pointer-events-none':
+                      process.env.NODE_ENV === 'production',
+                  })}
                   src={item.image}
                 />
               </Card>
@@ -323,7 +343,11 @@ const AboutPage = () => {
                     shadow="none"
                     radius="sm"
                     alt={item.alt}
-                    className={`w-auto h-full object-contain z-0 cursor-pointer`}
+                    className={classNames({
+                      'w-auto h-full object-contain z-0 cursor-pointer': true,
+                      'pointer-events-none':
+                        process.env.NODE_ENV === 'production',
+                    })}
                     src={item.image}
                   />
                 </div>

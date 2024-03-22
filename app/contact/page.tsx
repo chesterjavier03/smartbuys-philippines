@@ -113,7 +113,13 @@ const ContactPage = () => {
                     shadow="none"
                     radius="sm"
                     alt={socialLink.alt}
-                    className={`${socialLink.width} h-36 object-cover z-0 cursor-pointer`}
+                    className={`${
+                      socialLink.width
+                    } h-36 object-cover z-0 cursor-pointer ${
+                      process.env.NODE_ENV === 'production'
+                        ? 'pointer-events-none'
+                        : ''
+                    }`}
                     src={socialLink.source}
                   />
                 </div>

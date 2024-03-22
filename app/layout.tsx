@@ -14,15 +14,14 @@ export const metadata: Metadata = {
     'Discover a world of smart shopping at SmartBuys Philippines. Experience the perfect blend of quality, affordability, and convenience as you explore our curated selection of premium products. Elevate your lifestyle with our wide range of offerings, ensuring a seamless online shopping experience for the discerning Filipino shopper.',
 };
 
-export default function RootLayout({
-  children,
-  params,
-}: {
+interface Props {
   children: React.ReactNode;
   params: {
     isMenuOpen: boolean;
   };
-}) {
+}
+
+export default function RootLayout({ children, params }: Readonly<Props>) {
   return (
     <html lang="en" className="light">
       <body className={inter.variable} suppressHydrationWarning={true}>

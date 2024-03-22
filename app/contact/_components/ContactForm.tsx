@@ -15,16 +15,11 @@ import { useForm } from 'react-hook-form';
 import SubmittedFormMessage from './SubmittedFormMessage';
 import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { contactUsSchema } from '@/app/_utility/validationSchema';
+import { z } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
 
-const validationSchema = Yup.object().shape({
-  name: Yup.string()
-    .min(6, 'Name must be at least 6 characters')
-    .required('Name is required'),
-  email: Yup.string().required('Email is required').email('Email is invalid'),
-  message: Yup.string()
-    .min(10, 'Message must be at least 10 characters')
-    .required('Message is required'),
-});
+type ContactUsSchema = z.infer<typeof contactUsSchema>;
 
 const ContactForm = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -34,7 +29,7 @@ const ContactForm = () => {
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm({ resolver: yupResolver(validationSchema) });
+  } = useForm<ContactUsSchema>({ resolver: zodResolver(contactUsSchema) });
 
   const onSubmit = handleSubmit(async (data) => {
     try {

@@ -24,22 +24,11 @@ import OrderFormSubmitted from './OrderFormSubmitted';
 import TextTitle from './TextTitle';
 import TextValue from './TextValue';
 import { useRouter } from 'next/navigation';
+import { z } from 'zod';
+import { orderSummarySchema } from '@/app/_utility/validationSchema';
+import { zodResolver } from '@hookform/resolvers/zod';
 
-const phoneRegExp =
-  /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
-
-const validationSchema = Yup.object().shape({
-  fullName: Yup.string()
-    .min(6, 'Name must be at least 6 characters')
-    .required('Name is required'),
-  address: Yup.string()
-    .min(6, 'Address must be at least 6 characters')
-    .required('Address is required'),
-  email: Yup.string(),
-  mobile: Yup.string()
-    .matches(phoneRegExp, 'Phone number is not valid')
-    .required('Phone number is required'),
-});
+type OrderSummarySchema = z.infer<typeof orderSummarySchema>;
 
 interface Props {
   product: Product;
@@ -69,7 +58,9 @@ const OrderSummary = ({
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm({ resolver: yupResolver(validationSchema) });
+  } = useForm<OrderSummarySchema>({
+    resolver: zodResolver(orderSummarySchema),
+  });
 
   const onSubmit = handleSubmit(async (data) => {
     let newData = {

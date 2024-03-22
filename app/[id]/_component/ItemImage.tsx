@@ -1,4 +1,5 @@
 import { Card, Image } from '@nextui-org/react';
+import classNames from 'classnames';
 import React from 'react';
 
 interface Props {
@@ -26,7 +27,10 @@ const ItemImage = ({ onOpen, productName, productImage }: Props) => {
           shadow="sm"
           radius="sm"
           alt={productName}
-          className="w-[100vw] h-full object-cover z-0"
+          className={classNames({
+            'w-[100vw] h-full object-cover z-0': true,
+            'pointer-events-none': process.env.NODE_ENV === 'production',
+          })}
           src={productImage}
           srcSet={productImage}
         />

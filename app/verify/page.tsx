@@ -1,4 +1,5 @@
 import { Card, Button, Image } from '@nextui-org/react';
+import classNames from 'classnames';
 import { register } from 'module';
 import { Input } from 'postcss';
 import React from 'react';
@@ -17,7 +18,10 @@ const VerifyPage = () => {
             <Image
               radius="sm"
               alt={'SmartBuys Philippines'}
-              className="w-full h-full object-contain z-0 pb-10"
+              className={classNames({
+                'w-full h-full object-contain z-0 pb-10': true,
+                'pointer-events-none': process.env.NODE_ENV === 'production',
+              })}
               width={'50%'}
               height={'50%'}
               src={'/images/smartbuys_wings.webp'}

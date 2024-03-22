@@ -2,6 +2,7 @@ import { Card, CardFooter, Checkbox, Image, Spinner } from '@nextui-org/react';
 import { Product } from '@prisma/client';
 import Link from 'next/link';
 import { convertMoney } from '../_utility/MoneyFormatter';
+import classNames from 'classnames';
 
 interface Props {
   products: Product[];
@@ -29,7 +30,11 @@ const ShopProductList = ({ products, isLoading }: Props) => {
                     shadow="sm"
                     radius="sm"
                     alt={product.name}
-                    className="w-80 h-96 object-cover z-0"
+                    className={classNames({
+                      'w-80 h-96 object-cover z-0 pointer-events-none': true,
+                      'pointer-events-none':
+                        process.env.NODE_ENV === 'production',
+                    })}
                     src={product.image}
                     srcSet={product.image}
                     loading={'lazy'}
@@ -37,16 +42,12 @@ const ShopProductList = ({ products, isLoading }: Props) => {
                 </Link>
                 <CardFooter className="absolute bg-black/55 bottom-0 z-10 border-t-1 border-default-600 dark:border-default-100 ">
                   <div className="flex flex-row justify-between align-middle content-center w-full h-unit-xl place-items-center">
-                    <div className="flex flex-col justify-start align-middle place-content-start content-start">
-                      <span className="truncate w-20 md:w-36 text-neutral-200 text-start">
-                        {product.name}
-                      </span>
-                    </div>
-                    <div className="cursor-pointer hover:scale-125 !duration-300">
-                      <span className="text-[#fff000] md:text-lg text-start">
-                        {convertMoney(product.price)}
-                      </span>
-                    </div>
+                    <span className="truncate w-20 md:w-36 text-neutral-200 text-start">
+                      {product.name}
+                    </span>
+                    <span className="text-[#fff000] md:text-md text-start">
+                      {convertMoney(product.price)}
+                    </span>
                   </div>
                 </CardFooter>
               </Card>
