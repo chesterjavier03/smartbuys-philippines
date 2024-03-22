@@ -7,9 +7,5 @@ export const GET = async (request: NextRequest) => {
 }
 
 const fetchProduct = cache(() =>
-  prisma.product.aggregateRaw({
-    pipeline: [
-      { $sample: { size: 2000 } },
-    ],
-  })
+  prisma.product.findMany({})
 );
