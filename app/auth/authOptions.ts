@@ -40,10 +40,16 @@ export const authOptions: NextAuthOptions = {
     //   }
     //   return token;
     // },
-    // async session({ session, token }) {
-    //   if(session) {
+    // async session({ session, user, token }) {
+    //   if (session) {
+    //     session.user = {
+    //     name: session.user?.name,
+    //     email: session.user?.email,
+    //     role: session.user?.email === process.env.SMARTBUYS_SUPER ? 'super' : '',
+    //     accessToken: token.accessToken,
+    //   };
     //     session = Object.assign({}, session, { access_token: token })
-    //     session.user.token = Object.assign({}, session.user.token, token )
+    //     session.user = Object.assign({}, token, token )
     //   }
     //   return session
     // }
@@ -87,6 +93,7 @@ export const authOptions: NextAuthOptions = {
       },
     })
   ],
+  debug: process.env.NODE_ENV === 'development',
   secret: process.env.NEXT_AUTH_SECRET,
 }
 

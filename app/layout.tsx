@@ -25,11 +25,11 @@ export default function RootLayout({ children, params }: Readonly<Props>) {
   return (
     <html lang="en" className="light">
       <body className={inter.variable} suppressHydrationWarning={true}>
-        <QueryClientProvider>
-          <AuthProvider>
+        <AuthProvider>
+          <QueryClientProvider>
             <Main params={params}>{children}</Main>
-          </AuthProvider>
-        </QueryClientProvider>
+          </QueryClientProvider>
+        </AuthProvider>
       </body>
     </html>
   );
