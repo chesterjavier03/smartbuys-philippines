@@ -53,7 +53,7 @@ export const POST = async (request: NextRequest) => {
         price: Number(data.get('price')),
         type: type,
         description: data.get('description') as string,
-        createdAt: Date.now().toString(),
+        createdAt: new Date().toISOString(),
         itemCount: 10,
       }
   });

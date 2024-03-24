@@ -18,6 +18,7 @@ model User {
   name          String?
   email         String?   @unique
   emailVerified DateTime?
+  createdAt     DateTime  @default(now())
   image         String?
   Account       Account[]
   Session       Session[]
@@ -41,7 +42,7 @@ model Product {
   price       Int
   description String
   reviews     Review[]
-  createdAt   String
+  createdAt   DateTime @default(now())
   itemCount   Int      @default(1)
 }
 

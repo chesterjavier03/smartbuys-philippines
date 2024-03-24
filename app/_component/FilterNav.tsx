@@ -6,8 +6,8 @@ import { HiSparkles, HiSquares2X2 } from 'react-icons/hi2';
 import { MdRefresh } from 'react-icons/md';
 
 interface Props {
-  categoryList: { label: string }[];
-  typeList: { label: string }[];
+  categoryList: string[];
+  typeList: string[];
   setCategory: Dispatch<SetStateAction<string>>;
   setType: Dispatch<SetStateAction<string>>;
   category: string;
@@ -45,13 +45,13 @@ const FilterNav = ({
                     radius="sm"
                     color="success"
                     value={category}
-                    isSelected={categoryList[index].label == category}
+                    isSelected={categoryList[index] === category}
                     onChange={() => {
-                      handleSelectCategory(data.label);
+                      handleSelectCategory(data);
                     }}
                   >
                     <span className="text-white text-medium font-bold">
-                      {data.label}
+                      {data}
                     </span>
                   </Checkbox>
                 ))}
@@ -73,13 +73,13 @@ const FilterNav = ({
                     color="success"
                     radius="sm"
                     value={type}
-                    isSelected={typeList[index].label == type}
+                    isSelected={typeList[index] === type}
                     onChange={() => {
-                      handleSelectType(data.label);
+                      handleSelectType(data);
                     }}
                   >
                     <span className="text-white text-medium font-bold">
-                      {data.label}
+                      {data}
                     </span>
                   </Checkbox>
                 ))}

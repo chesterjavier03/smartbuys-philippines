@@ -1,14 +1,13 @@
-import { NextRequest, NextResponse } from "next/server";
-import prisma from '@/prisma/client'
+import prisma from '@/prisma/client';
+import { NextResponse } from "next/server";
 import { cache } from "react";
-import { Product } from "@prisma/client";
 
 export const GET = async () => {
   return NextResponse.json(await fetchProduct());
 }
 
 const fetchProduct = cache(() =>
-  prisma.product.findMany({})
+  prisma.product.findMany({ orderBy: {createdAt: "desc"}})
 );
 // const fetchProduct = async () => {
 //   return shuffleProducts(await prisma.product.findMany({}));
