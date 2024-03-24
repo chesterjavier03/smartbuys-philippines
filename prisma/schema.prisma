@@ -42,7 +42,7 @@ model Product {
   price       Int
   description String
   reviews     Review[]
-  createdAt   DateTime @default(now())
+  createdAt   String
   itemCount   Int      @default(1)
 }
 
