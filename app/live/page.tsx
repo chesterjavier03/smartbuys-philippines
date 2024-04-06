@@ -1,7 +1,21 @@
 'use client';
 
 import animationData from '@/public/animations/under_development.json';
-import Lottie from 'lottie-react';
+import { Spinner } from '@nextui-org/react';
+import dynamic from 'next/dynamic';
+
+const Lottie = dynamic(() => import('lottie-react'), {
+  ssr: false,
+  loading: () => (
+    <div className="h-full">
+      <Spinner
+        color="success"
+        size="lg"
+        className="flex h-[calc(100vh-4rem)] align-middle justify-center justify-items-center content-center overflow-hidde"
+      />
+    </div>
+  ),
+});
 
 const LivePage = () => {
   return (
