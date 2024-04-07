@@ -242,25 +242,7 @@ const NavBar = ({
             )}
           </Dropdown>
         )}
-        <NavbarItem
-          as={Link}
-          href={'/android/smartbuys_philippines.apk'}
-          rel="noopener noreferrer"
-          target="_blank"
-        >
-          <Image
-            className={classNames({
-              'object-contain hover:scale-110': true,
-              'pointer-events-none': process.env.NODE_ENV === 'production',
-            })}
-            radius="none"
-            width={100}
-            height={100}
-            alt="SmartBuys Philippines"
-            src="/images/GooglePlay.webp"
-            fetchPriority="high"
-          />
-        </NavbarItem>
+        
       </NavbarContent>
       {session && (
         <>

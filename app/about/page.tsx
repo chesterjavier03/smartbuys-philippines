@@ -127,6 +127,23 @@ const AboutPage = () => {
             </p>
           </div>
         </section>
+        <section className="flex w-screen justify-center mt-28 align-middle">
+          <Link
+            href={'/android/SmartBuysPhilippinesApk.apk'}
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            <Image
+              className={classNames({
+                'object-contain hover:scale-110 w-44': true,
+                'pointer-events-none': process.env.NODE_ENV === 'production',
+              })}
+              radius="none"
+              alt="SmartBuys Philippines"
+              src="/images/GooglePlay.webp"
+            />
+          </Link>
+        </section>
         <section className="flex flex-col mt-16 w-screen content-center items-center justify-center align-middle">
           <div className="mt-10 mb-5">
             <p className="text-[#1a3d57] md:text-6xl text-3xl transform-none font-normal text-center leading-tight tracking-widest">
