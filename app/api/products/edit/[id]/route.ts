@@ -2,6 +2,7 @@ import { editProductSchema } from '@/app/_utility/validationSchema';
 import { getApp, getApps, initializeApp } from 'firebase/app';
 import { getDownloadURL, getStorage, ref, uploadBytes } from 'firebase/storage';
 import { NextRequest, NextResponse } from 'next/server';
+import prisma from '@/prisma/client';
 
 const clientCredentials = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
