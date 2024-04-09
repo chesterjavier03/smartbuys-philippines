@@ -1,25 +1,14 @@
 'use client';
 
-import { yupResolver } from '@hookform/resolvers/yup';
-import {
-  Button,
-  Card,
-  Image,
-  Input,
-  Modal,
-  ModalContent,
-  Spinner,
-  useDisclosure,
-} from '@nextui-org/react';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { Button, Card, Image, Input, Spinner } from '@nextui-org/react';
 import classNames from 'classnames';
 import { signIn, useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import * as Yup from 'yup';
 import { z } from 'zod';
 import { loginSchema } from '../_utility/validationSchema';
-import { zodResolver } from '@hookform/resolvers/zod';
 
 type LoginSchema = z.infer<typeof loginSchema>;
 

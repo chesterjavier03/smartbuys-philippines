@@ -2,11 +2,15 @@
 
 import { Button, Card, Divider, Image } from '@nextui-org/react';
 import classNames from 'classnames';
-import Link from 'next/link';
+import dynamic from 'next/dynamic';
 import { useRouter } from 'next/navigation';
 import { FaExternalLinkAlt, FaLaptopCode } from 'react-icons/fa';
 import { MdFastfood } from 'react-icons/md';
 import { PiShoppingCartFill } from 'react-icons/pi';
+
+const Link = dynamic(() => import('next/link'), {
+  ssr: false,
+});
 
 const weAreImageList = [
   {

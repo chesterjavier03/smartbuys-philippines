@@ -1,9 +1,5 @@
-import { Card, Button, Image } from '@nextui-org/react';
+import { Card, Image } from '@nextui-org/react';
 import classNames from 'classnames';
-import { register } from 'module';
-import { Input } from 'postcss';
-import React from 'react';
-import { BsFillEyeFill, BsFillEyeSlashFill } from 'react-icons/bs';
 
 const VerifyPage = () => {
   return (

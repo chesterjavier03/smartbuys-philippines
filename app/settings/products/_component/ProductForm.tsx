@@ -4,19 +4,20 @@ import { convertMoney } from '@/app/_utility/MoneyFormatter';
 import { editProductSchema } from '@/app/_utility/validationSchema';
 import { zodResolver } from '@hookform/resolvers/zod';
 import {
+  Button,
   Card,
   Checkbox,
-  Button,
+  Input,
   Modal,
   ModalContent,
-  Input,
   useDisclosure,
 } from '@nextui-org/react';
 import { Product } from '@prisma/client';
 import axios from 'axios';
+import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 

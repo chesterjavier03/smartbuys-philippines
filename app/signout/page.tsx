@@ -1,8 +1,7 @@
 'use client';
 
-import React from 'react';
-import { signOut } from 'next-auth/react';
 import { Button } from '@nextui-org/react';
+import { signOut } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 
 const SignOutPage = () => {

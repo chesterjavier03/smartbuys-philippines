@@ -1,29 +1,26 @@
 'use client';
 
 import {
-  Table,
-  TableHeader,
-  TableColumn,
-  TableBody,
-  TableRow,
-  TableCell,
-  Skeleton,
-  Spinner,
   Button,
-  Pagination,
   Card,
   Modal,
   ModalContent,
+  Pagination,
+  Spinner,
+  Table,
+  TableBody,
+  TableCell,
+  TableColumn,
+  TableHeader,
+  TableRow,
   useDisclosure,
-  Image,
 } from '@nextui-org/react';
 import { Product } from '@prisma/client';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
-import { convertMoney } from '../../_utility/MoneyFormatter';
 import { useRouter } from 'next/navigation';
-import Link from 'next/link';
+import React, { useState } from 'react';
+import { convertMoney } from '../../_utility/MoneyFormatter';
 
 const ProductManagerPage = () => {
   const router = useRouter();

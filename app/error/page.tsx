@@ -1,7 +1,13 @@
+'use client';
+
 import { Button, Card, Image } from '@nextui-org/react';
 import classNames from 'classnames';
-import Link from 'next/link';
+import dynamic from 'next/dynamic';
 import React from 'react';
+
+const Link = dynamic(() => import('next/link'), {
+  ssr: false,
+});
 
 const ErrorPage = () => {
   return (

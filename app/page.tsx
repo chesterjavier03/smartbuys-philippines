@@ -5,19 +5,47 @@ import { Product } from '@prisma/client';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import classNames from 'classnames';
-import { useContext, useState } from 'react';
+import { useContext, useMemo, useState } from 'react';
 import { MdRefresh } from 'react-icons/md';
 import { PageContext } from './Main';
-import FilterNav from './_component/FilterNav';
-import ShopProductList from './_component/ShopProductList';
+import dynamic from 'next/dynamic';
+
+const FilterNav = dynamic(() => import('./_component/FilterNav'), {
+  ssr: false,
+});
+
+const ShopProductList = dynamic(() => import('./_component/ShopProductList'), {
+  ssr: false,
+});
+
+const categoryList = [
+  { label: 'Food' },
+  { label: 'Boys' },
+  { label: 'Girls' },
+  { label: 'Home' },
+];
+
+const typeList = [
+  { label: 'Shirt' },
+  { label: 'Terno' },
+  { label: 'Sando' },
+  { label: 'Dress' },
+  { label: 'Shorts' },
+  { label: 'Jogger' },
+];
 
 const Home = () => {
   const { data: products, isLoading } = useProducts();
   let result: Product[] = products as Product[];
-  const [productList, setProductList] = useState<Product[]>(result);
+  const [productList, setProductList] = useState<Product[]>([]);
   const [category, setCategory] = useState('');
   const [type, setType] = useState('');
   const isNavMenuOpen = useContext(PageContext);
+
+  useMemo(() => {
+    setProductList(result);
+  }, [products]);
+
   const uniqueCategories = Array.from(
     new Set(result?.map((data) => data.category))
   );
@@ -62,8 +90,8 @@ const Home = () => {
             handleSelectType={handleSelectType}
             handleSelectCategory={handleSelectCategory}
             reset={reset}
-            categoryList={uniqueCategories}
-            typeList={uniqueTypes}
+            categoryList={categoryList}
+            typeList={typeList}
             category={category}
             type={type}
             setCategory={setCategory}
@@ -83,7 +111,7 @@ const Home = () => {
                 <nav className="flex flex-col justify-between inset-0 w-full">
                   <ul className="flex flex-col gap-0 items-stretch">
                     <li className="flex flex-col cursor-pointer transition-colors duration-300 rounded-md mx-3">
-                      {uniqueCategories.map((data, index) => (
+                      {categoryList.map((data, index) => (
                         <Checkbox
                           key={index}
                           className="inline-flex my-0.5"
@@ -91,19 +119,19 @@ const Home = () => {
                           radius="sm"
                           color="success"
                           value={category}
-                          isSelected={uniqueCategories[index] === category}
+                          isSelected={categoryList[index].label === category}
                           onChange={() => {
-                            handleSelectCategory(data);
+                            handleSelectCategory(data.label);
                           }}
                         >
                           <span className="text-white text-medium font-bold">
-                            {data}
+                            {data.label}
                           </span>
                         </Checkbox>
                       ))}
                     </li>
                     <li className="flex flex-col cursor-pointer transition-colors duration-300 rounded-md mx-3">
-                      {uniqueTypes.map((data, index) => (
+                      {typeList.map((data, index) => (
                         <Checkbox
                           key={index}
                           className="inline-flex my-0.5"
@@ -111,13 +139,13 @@ const Home = () => {
                           color="success"
                           radius="sm"
                           value={type}
-                          isSelected={uniqueTypes[index] === type}
+                          isSelected={typeList[index].label === type}
                           onChange={() => {
-                            handleSelectType(data);
+                            handleSelectType(data.label);
                           }}
                         >
                           <span className="text-white text-medium font-bold">
-                            {data}
+                            {data.label}
                           </span>
                         </Checkbox>
                       ))}
@@ -141,10 +169,7 @@ const Home = () => {
                 </nav>
               </div>
             </aside>
-            <ShopProductList
-              products={productList ?? result}
-              isLoading={isLoading}
-            />
+            <ShopProductList products={productList} isLoading={isLoading} />
           </div>
         </div>
       </div>

@@ -1,5 +1,7 @@
 'use client';
 
+import { contactUsSchema } from '@/app/_utility/validationSchema';
+import { zodResolver } from '@hookform/resolvers/zod';
 import {
   Button,
   Card,
@@ -10,14 +12,14 @@ import {
   useDisclosure,
 } from '@nextui-org/react';
 import axios from 'axios';
+import dynamic from 'next/dynamic';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import SubmittedFormMessage from './SubmittedFormMessage';
-import * as Yup from 'yup';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { contactUsSchema } from '@/app/_utility/validationSchema';
 import { z } from 'zod';
-import { zodResolver } from '@hookform/resolvers/zod';
+
+const SubmittedFormMessage = dynamic(() => import('./SubmittedFormMessage'), {
+  ssr: false,
+});
 
 type ContactUsSchema = z.infer<typeof contactUsSchema>;
 

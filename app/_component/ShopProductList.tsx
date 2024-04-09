@@ -1,8 +1,14 @@
-import { Card, CardFooter, Checkbox, Image, Spinner } from '@nextui-org/react';
+'use client';
+
+import { Card, CardFooter, Image } from '@nextui-org/react';
 import { Product } from '@prisma/client';
-import Link from 'next/link';
 import { convertMoney } from '../_utility/MoneyFormatter';
 import classNames from 'classnames';
+import dynamic from 'next/dynamic';
+
+const Link = dynamic(() => import('next/link'), {
+  ssr: false,
+});
 
 interface Props {
   products: Product[];
@@ -31,21 +37,23 @@ const ShopProductList = ({ products, isLoading }: Props) => {
                     radius="sm"
                     alt={product.name}
                     className={classNames({
-                      'w-80 h-96 object-cover z-0 pointer-events-none': true,
+                      'w-80 h-96 object-cover z-0 pointer-events-none shadow-xl shadow-black':
+                        true,
                       'pointer-events-none':
                         process.env.NODE_ENV === 'production',
                     })}
+                    fetchPriority="high"
+                    disableAnimation
                     src={product.image}
-                    srcSet={product.image}
-                    loading={'lazy'}
+                    loading={'eager'}
                   />
                 </Link>
                 <CardFooter className="absolute bg-black/55 bottom-0 z-10 border-t-1 border-default-600 dark:border-default-100 ">
-                  <div className="flex flex-row justify-between align-middle content-center w-full h-unit-xl place-items-center">
-                    <span className="truncate w-20 md:w-36 text-neutral-200 text-start">
+                  <div className="text-start flex flex-col justify-start align-middle content-start w-full h-auto place-items-start">
+                    <span className="truncate w-full text-neutral-200 text-start">
                       {product.name}
                     </span>
-                    <span className="text-[#fff000] md:text-md text-start">
+                    <span className="text-[#fff000] text-xl text-start">
                       {convertMoney(product.price)}
                     </span>
                   </div>

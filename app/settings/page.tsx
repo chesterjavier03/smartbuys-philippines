@@ -2,9 +2,7 @@
 
 import animationData from '@/public/animations/under_development.json';
 import { Spinner } from '@nextui-org/react';
-// import Lottie from 'lottie-react';
 import dynamic from 'next/dynamic';
-import { lazy } from 'react';
 
 const Lottie = dynamic(() => import('lottie-react'), {
   ssr: false,

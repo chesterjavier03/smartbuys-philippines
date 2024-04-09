@@ -3,7 +3,6 @@
 import { Image, NextUIProvider } from '@nextui-org/react';
 import classNames from 'classnames';
 import { useSession } from 'next-auth/react';
-import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import React, { createContext, useState } from 'react';
 import {
@@ -13,7 +12,15 @@ import {
   HiUserCircle,
 } from 'react-icons/hi2';
 import { VscSettings } from 'react-icons/vsc';
-import NavBar from './NavBar';
+import dynamic from 'next/dynamic';
+
+const Link = dynamic(() => import('next/link'), {
+  ssr: false,
+});
+
+const NavBar = dynamic(() => import('./NavBar'), {
+  ssr: false,
+});
 
 export const PageContext = createContext(false);
 

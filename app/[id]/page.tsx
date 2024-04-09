@@ -11,14 +11,24 @@ import {
 import { Product } from '@prisma/client';
 import axios from 'axios';
 import classNames from 'classnames';
-import { useSession } from 'next-auth/react';
-import { useEffect, useState } from 'react';
+import { cache, useEffect, useMemo, useState } from 'react';
 import { FaMinus, FaPlus } from 'react-icons/fa';
 import { convertMoney } from '../_utility/MoneyFormatter';
-import ItemImage from './_component/ItemImage';
-import OrderSummary from './_component/OrderSummary';
-import ShowImageModal from './_component/ShowImageModal';
 import { MdFace, MdFace3, MdFastfood, MdHome } from 'react-icons/md';
+import { useQuery } from '@tanstack/react-query';
+import dynamic from 'next/dynamic';
+
+const ItemImage = dynamic(() => import('./_component/ItemImage'), {
+  ssr: false,
+});
+
+const OrderSummary = dynamic(() => import('./_component/OrderSummary'), {
+  ssr: false,
+});
+
+const ShowImageModal = dynamic(() => import('./_component/ShowImageModal'), {
+  ssr: false,
+});
 
 const sizeList = [{ label: 'Small' }, { label: 'Medium' }, { label: 'Large' }];
 
@@ -27,8 +37,6 @@ interface Props {
 }
 
 const ProductDetailsPage = ({ params }: Props) => {
-  // const { data: product, error, isLoading } = fetchProcutById(params.id);
-  const { status, data: session } = useSession();
   const [size, setSize] = useState('');
   const [showErrorQuantity, setShowErrorQuantity] = useState(false);
   const [count, setCount] = useState<number>(1);
@@ -38,12 +46,12 @@ const ProductDetailsPage = ({ params }: Props) => {
 
   const [isLoading, setIsLoading] = useState(false);
 
-  const fetchProductData = async () => {
+  const fetchProductData = cache(async () => {
     setIsLoading(true);
     const { data } = await axios.get<Product>(`/api/products/${params.id}`);
     setIsLoading(false);
     setProduct(data);
-  };
+  });
 
   useEffect(() => {
     fetchProductData();
@@ -249,5 +257,14 @@ const ProductDetailsPage = ({ params }: Props) => {
     </>
   );
 };
+
+const searchProduct = (productId: string) =>
+  useQuery<Product>({
+    queryKey: ['product'],
+    queryFn: () =>
+      axios.get<Product>(`/api/products/${productId}`).then(({ data }) => data),
+    staleTime: 60 * 1000,
+    retry: 3,
+  });
 
 export default ProductDetailsPage;

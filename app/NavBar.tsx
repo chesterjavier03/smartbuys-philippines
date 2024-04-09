@@ -9,14 +9,13 @@ import {
   DropdownTrigger,
   Image,
   Navbar,
-  NavbarBrand,
   NavbarContent,
   NavbarItem,
   NavbarMenuToggle,
 } from '@nextui-org/react';
 import classNames from 'classnames';
 import { signOut, useSession } from 'next-auth/react';
-import Link from 'next/link';
+import dynamic from 'next/dynamic';
 import { usePathname, useRouter } from 'next/navigation';
 import {
   HiMiniChatBubbleBottomCenterText,
@@ -25,6 +24,10 @@ import {
   HiShoppingBag,
   HiUserCircle,
 } from 'react-icons/hi2';
+
+const Link = dynamic(() => import('next/link'), {
+  ssr: false,
+});
 
 const NavBar = ({
   setIsNavMenuOpen,
@@ -51,9 +54,9 @@ const NavBar = ({
           'sm:hidden hidden': currentPath !== '/' && (session || !session),
         })}
       />
-      <NavbarBrand
+      <Link
         className={classNames({
-          'md:justify-start md:align-middle justify-center align-middle cursor-pointer':
+          'md:justify-between md:align-middle justify-between align-middle':
             true,
           'md:justify-start justify-end md:pl-0 md:mr-0 mr-[24.9%] md:ml-0':
             session,
@@ -61,7 +64,7 @@ const NavBar = ({
           'md:justify-start justify-end md:mr-0 mr-[24.9%] md:ml-0':
             currentPath !== '/' && session,
         })}
-        as={Link}
+        // as={Link}
         href={'/'}
       >
         <Image
@@ -74,8 +77,10 @@ const NavBar = ({
           alt="SmartBuys Philippines"
           src="/images/smartbuys.webp"
           fetchPriority="high"
+          disableAnimation
+          loading={'eager'}
         />
-      </NavbarBrand>
+      </Link>
       <NavbarContent
         className="hidden sm:flex gap-2 text-white my-2 flex-row justify-center align-middle content-center"
         justify="end"
@@ -242,7 +247,6 @@ const NavBar = ({
             )}
           </Dropdown>
         )}
-        
       </NavbarContent>
       {session && (
         <>

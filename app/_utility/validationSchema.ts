@@ -46,7 +46,7 @@ export const orderSummarySchema = z.object({
     .string()
     .min(6, 'Address must be at least 6 characters')
     .max(255),
-  email: z.string().email().min(1, 'Email is required').max(50),
+  email: z.string().email().optional(),
   mobile: z.string()
     .regex(/^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/)
     .min(1, 'Mobile number is required.').max(11),

@@ -1,25 +1,19 @@
-import {
-  Button,
-  Card,
-  Divider,
-  Image,
-  Input,
-  Spinner,
-  Textarea,
-} from '@nextui-org/react';
-import classNames from 'classnames';
-import React, { useState } from 'react';
-import { MdEmail } from 'react-icons/md';
-import { HiMiniChatBubbleBottomCenterText } from 'react-icons/hi2';
-import { RiMapPinFill } from 'react-icons/ri';
-import Link from 'next/link';
-// import dynamic from 'next/dynamic';
-import ContactForm from './_components/ContactForm';
+'use client';
 
-// const ContactForm = dynamic(() => import('./_components/ContactForm'), {
-//   ssr: false,
-//   // loading: () => <IssueFormSkeleton />,
-// });
+import { Card, Divider, Image } from '@nextui-org/react';
+import classNames from 'classnames';
+import dynamic from 'next/dynamic';
+import { HiMiniChatBubbleBottomCenterText } from 'react-icons/hi2';
+import { MdEmail } from 'react-icons/md';
+import { RiMapPinFill } from 'react-icons/ri';
+
+const Link = dynamic(() => import('next/link'), {
+  ssr: false,
+});
+
+const ContactForm = dynamic(() => import('./_components/ContactForm'), {
+  ssr: false,
+});
 
 const followUsImageList = [
   {

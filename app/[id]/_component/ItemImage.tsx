@@ -21,9 +21,10 @@ const ItemImage = ({ onOpen, productName, productImage }: Props) => {
       >
         <Image
           isZoomed
+          disableAnimation
           removeWrapper
           fallbackSrc={'/images/smartbuys_logo.png'}
-          loading="lazy"
+          loading="eager"
           shadow="sm"
           radius="sm"
           alt={productName}

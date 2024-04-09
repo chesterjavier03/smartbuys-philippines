@@ -1,6 +1,7 @@
 'use client';
 
-import { yupResolver } from '@hookform/resolvers/yup';
+import { orderSummarySchema } from '@/app/_utility/validationSchema';
+import { zodResolver } from '@hookform/resolvers/zod';
 import {
   Button,
   Card,
@@ -16,17 +17,24 @@ import { Product } from '@prisma/client';
 import axios from 'axios';
 import classNames from 'classnames';
 import { useSession } from 'next-auth/react';
+import dynamic from 'next/dynamic';
+import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { MdArrowForward } from 'react-icons/md';
-import * as Yup from 'yup';
-import OrderFormSubmitted from './OrderFormSubmitted';
-import TextTitle from './TextTitle';
-import TextValue from './TextValue';
-import { useRouter } from 'next/navigation';
 import { z } from 'zod';
-import { orderSummarySchema } from '@/app/_utility/validationSchema';
-import { zodResolver } from '@hookform/resolvers/zod';
+
+const OrderFormSubmitted = dynamic(() => import('./OrderFormSubmitted'), {
+  ssr: false,
+});
+
+const TextTitle = dynamic(() => import('./TextTitle'), {
+  ssr: false,
+});
+
+const TextValue = dynamic(() => import('./TextValue'), {
+  ssr: false,
+});
 
 type OrderSummarySchema = z.infer<typeof orderSummarySchema>;
 
