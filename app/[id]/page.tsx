@@ -4,6 +4,7 @@ import {
   Button,
   Card,
   Checkbox,
+  Divider,
   Spinner,
   useDisclosure,
 } from '@nextui-org/react';
@@ -17,6 +18,7 @@ import { convertMoney } from '../_utility/MoneyFormatter';
 import ItemImage from './_component/ItemImage';
 import OrderSummary from './_component/OrderSummary';
 import ShowImageModal from './_component/ShowImageModal';
+import { MdFace, MdFace3, MdFastfood, MdHome } from 'react-icons/md';
 
 const sizeList = [{ label: 'Small' }, { label: 'Medium' }, { label: 'Large' }];
 
@@ -84,48 +86,77 @@ const ProductDetailsPage = ({ params }: Props) => {
           productImage={product?.image!}
         />
         <div className="grid grid-cols-1 h-auto justify-self-start mt-10 px-5 md:mx-0 w-full items-start place-content-start">
-          <div className="text-5xl font-bold tracking-widest text-[#1a3d57] w-auto text-start mb-10">
+          <div className="text-3xl font-bold tracking-widest text-[#1a3d57] w-auto text-start my-10">
             {product?.name}
           </div>
-          <div className="text-2xl font-semibold tracking-widest text-[#1a3d57] w-auto text-start mb-10">
+          <div className="flex cursor-pointer justify-between text-amber-500 text-6xl font-medium tracking-normal mb-10">
+            {convertMoney(product?.price!)}
+          </div>
+          <div className="text-xl font-semibold tracking-widest text-[#1a3d57] w-auto text-start mb-10">
             {product?.description}
           </div>
-          <div className="grid grid-cols-2 justify-between text-2xl font-semibold tracking-widest text-[#1a3d57] mb-10">
-            <div>Price:</div>
-            <div className="cursor-pointer text-amber-500 text-end">
-              {convertMoney(product?.price!)}
+          <div className="flex flex-row flex-wrap w-auto justify-between align-middle content-center items-center mb-10">
+            <Divider className="mb-2 bg-[#ff0000]" />
+            <div className="grid grid-cols-2 w-[45%] justify-center align-middle items-center content-center text-2xl font-semibold tracking-widest text-[#1a3d57]">
+              <div className="flex justify-start align-middle">Category:</div>
+              <div
+                className={classNames({
+                  'flex justify-end align-middle content-end items-end': true,
+                })}
+              >
+                {product?.category === 'Boys' ? (
+                  <MdFace
+                    color="rgb(59 130 246)"
+                    size={44}
+                    className="justify-end align-middle"
+                  />
+                ) : product?.category === 'Girls' ? (
+                  <MdFace3
+                    color="rgb(236 72 153)"
+                    size={44}
+                    className="justify-end align-middle"
+                  />
+                ) : product?.category === 'Home' ? (
+                  <MdHome
+                    color="rgb(34 197 94)"
+                    size={44}
+                    className="justify-end align-middle"
+                  />
+                ) : product?.category === 'Food' ? (
+                  <MdFastfood
+                    color="#ff0000"
+                    size={44}
+                    className="justify-end align-middle"
+                  />
+                ) : (
+                  ''
+                )}
+              </div>
             </div>
-          </div>
-
-          <div className="grid grid-cols-2 justify-between text-2xl font-semibold tracking-widest text-[#1a3d57] mb-10">
-            <div>Category:</div>
-            <div
-              className={classNames({
-                'text-end text-blue-500': true,
-                'text-pink-500': product?.category === 'Girls',
-                'text-blue-500': product?.category === 'Boys',
-                'text-green-500': product?.category === 'Food',
-              })}
-            >
-              {product?.category}
+            <Divider
+              orientation="vertical"
+              className="w-[1px] h-10 bg-[#ff0000]"
+            />
+            <div className="grid grid-cols-2 w-[45%] justify-around text-2xl font-medium tracking-widest">
+              <div className="text-[#1a3d57]">Type:</div>
+              <div
+                className={classNames({
+                  'text-end': true,
+                  'text-blue-500':
+                    product?.type === 'Shirt' ||
+                    product?.type === 'Sando' ||
+                    product?.type === 'Jogger' ||
+                    product?.type === 'Shorts',
+                  'text-pink-500':
+                    product?.type === 'Dress' || product?.type === 'Terno',
+                  'text-green-500': product?.category === 'Home',
+                  'text-[#ff0000]': product?.category === 'Food',
+                })}
+              >
+                {product?.type}
+              </div>
             </div>
-          </div>
-          <div className="grid grid-cols-2 justify-around text-2xl font-semibold tracking-widest text-[#1a3d57] mb-10">
-            <div>Type:</div>
-            <div
-              className={classNames({
-                'text-end': true,
-                'text-blue-500':
-                  product?.type === 'Shirts' || product?.type === 'Sando',
-                'text-violet-500':
-                  product?.type === 'Jogger' || product?.type === 'Shorts',
-                'text-pink-500':
-                  product?.type === 'Dress' || product?.type === 'Terno',
-                'text-green-500': product?.category === 'Food',
-              })}
-            >
-              {product?.type}
-            </div>
+            <Divider className="mt-2 bg-[#ff0000]" />
           </div>
           {product?.category !== 'Food' && (
             <div className="flex flex-row justify-between text-xl font-semibold tracking-widest text-[#1a3d57] mb-10">
