@@ -108,20 +108,20 @@ const AboutPage = () => {
   const router = useRouter();
   return (
     <>
-      <div className="grid grid-cols-1 place-items-center">
+      <div className='grid grid-cols-1 place-items-center'>
         <section>
-          <div className="flex mt-2 p-10 object-contain lg:mt-5">
+          <div className='flex mt-2 p-10 object-contain lg:mt-5'>
             <Image
-              src="/images/smartbuys_wings.webp"
+              src='/images/smartbuys_wings.webp'
               className={classNames({
                 'pointer-events-none': process.env.NODE_ENV === 'production',
               })}
             />
           </div>
         </section>
-        <section className="md:mt-0 mt-5">
-          <div className="flex-grow-0 basis-full max-w-sm md:max-w-screen-2xl">
-            <p className="md:text-3xl text-xl text-[#1a3d57] transform-none font-normal text-center leading-tight tracking-widest">
+        <section className='md:mt-0 mt-5'>
+          <div className='flex-grow-0 basis-full max-w-sm md:max-w-screen-2xl'>
+            <p className='md:text-3xl text-xl text-[#1a3d57] transform-none font-normal text-center leading-tight tracking-widest'>
               "Discover a world of smart shopping at SmartBuys Philippines.
               Experience the perfect blend of quality, affordability, and
               convenience as you explore our curated selection of premium
@@ -131,35 +131,37 @@ const AboutPage = () => {
             </p>
           </div>
         </section>
-        <section className="flex w-screen justify-center mt-28 align-middle">
+        <section className='flex w-screen justify-center mt-28 align-middle'>
           <Link
-            href={'/android/SmartBuysPhilippinesApk.apk'}
-            rel="noopener noreferrer"
-            target="_blank"
+            href={
+              'https://play.google.com/store/apps/details?id=com.chesterjavier03.smartbuysphilippines'
+            }
+            rel='noopener noreferrer'
+            target='_blank'
           >
             <Image
               className={classNames({
                 'object-contain hover:scale-110 w-44': true,
                 'pointer-events-none': process.env.NODE_ENV === 'production',
               })}
-              radius="none"
-              alt="SmartBuys Philippines"
-              src="/images/GooglePlay.webp"
+              radius='none'
+              alt='SmartBuys Philippines'
+              src='/images/GooglePlay.webp'
             />
           </Link>
         </section>
-        <section className="flex flex-col mt-16 w-screen content-center items-center justify-center align-middle">
-          <div className="mt-10 mb-5">
-            <p className="text-[#1a3d57] md:text-6xl text-3xl transform-none font-normal text-center leading-tight tracking-widest">
+        <section className='flex flex-col mt-16 w-screen content-center items-center justify-center align-middle'>
+          <div className='mt-10 mb-5'>
+            <p className='text-[#1a3d57] md:text-6xl text-3xl transform-none font-normal text-center leading-tight tracking-widest'>
               We Are
             </p>
           </div>
-          <Divider className="my-4 bg-red-500 w-5/12 justify-center align-middle" />
-          <div className="grid md:grid-cols-3 grid-cols-1 w-screen mt-10 place-items-center container ">
+          <Divider className='my-4 bg-red-500 w-5/12 justify-center align-middle' />
+          <div className='grid md:grid-cols-3 grid-cols-1 w-screen mt-10 place-items-center container '>
             {weAreImageList.map((weAreItem, index) => (
               <Link
                 key={weAreItem.alt}
-                className="md:py-0 py-16"
+                className='md:py-0 py-16'
                 href={weAreItem.href}
                 rel={'noopener noreferrer'}
                 target={'_blank'}
@@ -168,9 +170,9 @@ const AboutPage = () => {
                   isZoomed
                   removeWrapper
                   fallbackSrc={'/images/smartbuys_logo.png'}
-                  loading="lazy"
-                  shadow="none"
-                  radius="sm"
+                  loading='lazy'
+                  shadow='none'
+                  radius='sm'
                   alt={weAreItem.alt}
                   className={`${
                     weAreItem.width
@@ -185,15 +187,15 @@ const AboutPage = () => {
             ))}
           </div>
         </section>
-        <section className="flex flex-col mt-16 w-screen content-center items-center justify-center align-middle">
-          <div className="mt-10 mb-5">
-            <p className="text-[#1a3d57] md:text-6xl text-3xl transform-none font-normal text-center leading-tight tracking-widest">
+        <section className='flex flex-col mt-16 w-screen content-center items-center justify-center align-middle'>
+          <div className='mt-10 mb-5'>
+            <p className='text-[#1a3d57] md:text-6xl text-3xl transform-none font-normal text-center leading-tight tracking-widest'>
               Our Mission
             </p>
           </div>
-          <Divider className="my-4 bg-red-500 w-5/12 justify-center align-middle" />
-          <div className="basis-full max-w-sm md:max-w-screen-2xl mt-20">
-            <p className="md:text-3xl text-xl text-[#1a3d57] transform-none font-normal text-center leading-tight tracking-widest">
+          <Divider className='my-4 bg-red-500 w-5/12 justify-center align-middle' />
+          <div className='basis-full max-w-sm md:max-w-screen-2xl mt-20'>
+            <p className='md:text-3xl text-xl text-[#1a3d57] transform-none font-normal text-center leading-tight tracking-widest'>
               "At SmartBuys Philippines, our mission is to revolutionize the
               online shopping experience by providing our customers with a
               seamless platform to discover, explore, and purchase a wide range
@@ -207,15 +209,15 @@ const AboutPage = () => {
             </p>
           </div>
         </section>
-        <section className="flex flex-col mt-16 w-screen content-center items-center justify-center align-middle">
-          <div className="mt-10 mb-5">
-            <p className="text-[#1a3d57] md:text-6xl text-3xl transform-none font-normal text-center leading-tight tracking-widest">
+        <section className='flex flex-col mt-16 w-screen content-center items-center justify-center align-middle'>
+          <div className='mt-10 mb-5'>
+            <p className='text-[#1a3d57] md:text-6xl text-3xl transform-none font-normal text-center leading-tight tracking-widest'>
               Our Vision
             </p>
           </div>
-          <Divider className="my-4 bg-red-500 w-5/12 justify-center align-middle" />
-          <div className="basis-full max-w-sm md:max-w-screen-2xl mt-20">
-            <p className="md:text-3xl text-xl text-[#1a3d57] transform-none font-normal text-center leading-tight tracking-widest">
+          <Divider className='my-4 bg-red-500 w-5/12 justify-center align-middle' />
+          <div className='basis-full max-w-sm md:max-w-screen-2xl mt-20'>
+            <p className='md:text-3xl text-xl text-[#1a3d57] transform-none font-normal text-center leading-tight tracking-widest'>
               "Our vision at SmartBuys Philippines is to empower Filipinos with
               convenient access to a world of affordable and reliable products,
               enabling them to make informed purchasing decisions and elevate
@@ -230,18 +232,18 @@ const AboutPage = () => {
             </p>
           </div>
         </section>
-        <section className="flex flex-col mt-16 w-screen content-center items-center justify-center align-middle basis-28 ">
-          <div className="mt-10 mb-5">
-            <p className="text-[#1a3d57] md:text-6xl text-3xl transform-none font-normal text-center leading-tight tracking-widest">
+        <section className='flex flex-col mt-16 w-screen content-center items-center justify-center align-middle basis-28 '>
+          <div className='mt-10 mb-5'>
+            <p className='text-[#1a3d57] md:text-6xl text-3xl transform-none font-normal text-center leading-tight tracking-widest'>
               We Do
             </p>
           </div>
-          <Divider className="my-4 bg-red-500 w-5/12 justify-center align-middle" />
-          <div className="grid lg:grid-cols-3 grid-cols-1 justify-around w-auto h-auto mt-10 text-center container">
+          <Divider className='my-4 bg-red-500 w-5/12 justify-center align-middle' />
+          <div className='grid lg:grid-cols-3 grid-cols-1 justify-around w-auto h-auto mt-10 text-center container'>
             {weDoItemList.map((item) => (
               <div
                 key={item.description}
-                className="flex flex-col h-auto place-items-center"
+                className='flex flex-col h-auto place-items-center'
               >
                 <div
                   className={classNames({
@@ -261,17 +263,17 @@ const AboutPage = () => {
                 <div className={`justify-center align-middle `}>
                   <Card
                     key={item.title}
-                    shadow="lg"
+                    shadow='lg'
                     disableRipple
-                    radius="sm"
+                    radius='sm'
                     isHoverable
-                    className="hover:scale-110"
+                    className='hover:scale-110'
                   >
                     <Image
                       fallbackSrc={'/images/smartbuys_logo.png'}
-                      loading="lazy"
-                      shadow="lg"
-                      radius="sm"
+                      loading='lazy'
+                      shadow='lg'
+                      radius='sm'
                       alt={item.alt}
                       className={classNames({
                         'w-unit-6xl h-full object-contain z-0 cursor-pointer':
@@ -283,11 +285,11 @@ const AboutPage = () => {
                     />
                   </Card>
                 </div>
-                <div className="justify-end align-baseline text-center px-20">
-                  <p className="my-10 text-xl text-[#1a3d57] font-medium tracking-widest text-center">
+                <div className='justify-end align-baseline text-center px-20'>
+                  <p className='my-10 text-xl text-[#1a3d57] font-medium tracking-widest text-center'>
                     {item.title}
                   </p>
-                  <p className="my-10 text-md text-[#1a3d57] font-medium tracking-widest text-center">
+                  <p className='my-10 text-md text-[#1a3d57] font-medium tracking-widest text-center'>
                     {item.description}
                   </p>
                 </div>
@@ -295,28 +297,28 @@ const AboutPage = () => {
             ))}
           </div>
         </section>
-        <section className="flex flex-col mt-16 w-screen place-items-center basis-28 h-full">
-          <div className="mt-10 mb-5">
-            <p className="text-[#1a3d57] md:text-6xl text-3xl transform-none font-normal text-center leading-tight tracking-widest">
+        <section className='flex flex-col mt-16 w-screen place-items-center basis-28 h-full'>
+          <div className='mt-10 mb-5'>
+            <p className='text-[#1a3d57] md:text-6xl text-3xl transform-none font-normal text-center leading-tight tracking-widest'>
               Reveiws
             </p>
           </div>
-          <Divider className="my-4 bg-red-500 w-5/12 justify-center align-middle" />
-          <div className="grid lg:grid-cols-4 grid-cols-1 gap-20 px-20 justify-around w-auto h-auto my-10 text-center container">
+          <Divider className='my-4 bg-red-500 w-5/12 justify-center align-middle' />
+          <div className='grid lg:grid-cols-4 grid-cols-1 gap-20 px-20 justify-around w-auto h-auto my-10 text-center container'>
             {reviewList.map((item) => (
               <Card
                 key={item.alt}
-                shadow="lg"
+                shadow='lg'
                 disableRipple
-                radius="sm"
+                radius='sm'
                 isHoverable
-                className="hover:scale-110 justify-center align-middle w-auto border-2 border-solid border-[#ffd700]"
+                className='hover:scale-110 justify-center align-middle w-auto border-2 border-solid border-[#ffd700]'
               >
                 <Image
                   fallbackSrc={'/images/smartbuys_logo.png'}
-                  loading="lazy"
-                  shadow="lg"
-                  radius="sm"
+                  loading='lazy'
+                  shadow='lg'
+                  radius='sm'
                   alt={item.alt}
                   className={classNames({
                     'object-contain z-0 cursor-pointer': true,
@@ -329,40 +331,40 @@ const AboutPage = () => {
             ))}
           </div>
         </section>
-        <section className="flex flex-col mt-16 w-screen place-items-center basis-28 h-full">
-          <div className="mt-10 mb-5">
-            <p className="text-[#1a3d57] md:text-6xl text-3xl transform-none font-normal text-center leading-tight tracking-widest">
+        <section className='flex flex-col mt-16 w-screen place-items-center basis-28 h-full'>
+          <div className='mt-10 mb-5'>
+            <p className='text-[#1a3d57] md:text-6xl text-3xl transform-none font-normal text-center leading-tight tracking-widest'>
               App Cost Calculator
             </p>
           </div>
-          <Divider className="my-4 bg-red-500 w-7/12 justify-center align-middle" />
-          <div className="grid grid-cols-1 my-5 text-center container">
-            <div className="justify-center align-middle mb-10 text-xl my-5 text-[#1a3d57] font-medium tracking-widest text-center">
-              <p className="pb-5">
+          <Divider className='my-4 bg-red-500 w-7/12 justify-center align-middle' />
+          <div className='grid grid-cols-1 my-5 text-center container'>
+            <div className='justify-center align-middle mb-10 text-xl my-5 text-[#1a3d57] font-medium tracking-widest text-center'>
+              <p className='pb-5'>
                 Thinking of building a website or an app for your brand of
                 business?
               </p>
-              <p className="py-2">
+              <p className='py-2'>
                 Use our app cost calculator to find out how much it will cost to
                 build an app and how long it will take to launch it.
               </p>
-              <p className="pt-5">
+              <p className='pt-5'>
                 It is important to keep in mind that the technology you use to
                 communicate with your customers will have a direct impact on
                 their experience with your brand.
               </p>
             </div>
-            <div className="grid lg:grid-cols-3 grid-cols-1 gap-20 px-20 justify-around w-auto h-auto mt-10 text-center container">
+            <div className='grid lg:grid-cols-3 grid-cols-1 gap-20 px-20 justify-around w-auto h-auto mt-10 text-center container'>
               {appList.map((item) => (
                 <div
                   key={item.alt}
-                  className="flex align-middle justify-center md:py-0 py-16"
+                  className='flex align-middle justify-center md:py-0 py-16'
                 >
                   <Image
                     fallbackSrc={'/images/smartbuys_logo.png'}
-                    loading="lazy"
-                    shadow="none"
-                    radius="sm"
+                    loading='lazy'
+                    shadow='none'
+                    radius='sm'
                     alt={item.alt}
                     className={classNames({
                       'w-auto h-full object-contain z-0 cursor-pointer': true,
@@ -374,19 +376,19 @@ const AboutPage = () => {
                 </div>
               ))}
             </div>
-            <div className="justify-end align-bottom text-xl my-5 font-medium tracking-widest text-center mt-24">
+            <div className='justify-end align-bottom text-xl my-5 font-medium tracking-widest text-center mt-24'>
               <Button
                 as={Link}
-                rel="noopener noreferrer"
-                target="_blank"
-                href="https://sofos-factory.vercel.app/"
-                variant="solid"
-                color="primary"
+                rel='noopener noreferrer'
+                target='_blank'
+                href='https://sofos-factory.vercel.app/'
+                variant='solid'
+                color='primary'
                 disableRipple
                 fullWidth
-                size="lg"
-                className="md:w-3/12 w-auto text-xl"
-                radius="md"
+                size='lg'
+                className='md:w-3/12 w-auto text-xl'
+                radius='md'
                 endContent={<FaExternalLinkAlt />}
               >
                 Estimate My App
