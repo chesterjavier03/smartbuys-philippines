@@ -5,7 +5,7 @@ import { Product } from '@prisma/client';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import classNames from 'classnames';
-import { useContext, useEffect, useMemo, useState } from 'react';
+import { useContext, useMemo, useState } from 'react';
 import { MdRefresh } from 'react-icons/md';
 import { PageContext } from './Main';
 import FilterNav from './_component/FilterNav';
@@ -29,16 +29,12 @@ const typeList = [
 ];
 
 const Home = () => {
-  const { data: products, isLoading, status, refetch } = useProducts();
+  const { data: products, isLoading } = useProducts();
   let result: Product[] = products as Product[];
   const [productList, setProductList] = useState<Product[]>([]);
   const [category, setCategory] = useState('');
   const [type, setType] = useState('');
   const isNavMenuOpen = useContext(PageContext);
-
-  useEffect(() => {
-    refetch();
-  }, [status]);
 
   useMemo(() => {
     setProductList(result);
