@@ -150,13 +150,13 @@ const ProductForm = ({ product }: { product?: Product }) => {
   return (
     <>
       <Card
-        className="flex m-auto container mt-5 w-8/12 justify-start align-middle bg-white/60 border-2 border-solid"
-        radius="sm"
-        shadow="lg"
+        className='flex m-auto container mt-5 w-8/12 justify-start align-middle bg-white/60 border-2 border-solid'
+        radius='sm'
+        shadow='lg'
       >
         <div
-          className="flex ml-6 tracking-widest container mt-5 w-8/12 flex-row justify-start align-middle text-2xl font-semibold
-      text-[#1a3d57]"
+          className='flex ml-6 tracking-widest container mt-5 w-8/12 flex-row justify-start align-middle text-2xl font-semibold
+      text-[#1a3d57]'
         >
           {path === '/settings/products/new'
             ? 'Create Product'
@@ -164,15 +164,15 @@ const ProductForm = ({ product }: { product?: Product }) => {
         </div>
         <form
           onSubmit={onSubmit}
-          className="flex flex-col gap-5 justify-center align-middle object-contain md:py-2 py-5 md:mb-2 mb-10"
+          className='flex flex-col gap-5 justify-center align-middle object-contain md:py-2 py-5 md:mb-2 mb-10'
         >
-          <div className="flex m-1 w-full flex-row">
-            <div className="flex justify-start align-middle ml-5">
+          <div className='flex m-1 w-full flex-row'>
+            <div className='flex justify-start align-middle ml-5'>
               <Card
-                className="flex justify-start align-middle my-5 w-[20vw] h-[60vh] border-1 bg-white/60 border-[#ff0000] aspect-auto border-solid"
-                radius="sm"
+                className='flex justify-start align-middle my-5 w-[20vw] h-[60vh] border-1 bg-white/60 border-[#ff0000] aspect-auto border-solid'
+                radius='sm'
                 disableRipple
-                shadow="lg"
+                shadow='lg'
                 isPressable
                 isDisabled={isSubmitting}
                 onPress={() => hiddenFileInput.current?.click()}
@@ -181,20 +181,20 @@ const ProductForm = ({ product }: { product?: Product }) => {
                   alt={'Image'}
                   fill={true}
                   priority={true}
-                  sizes="(max-width: 768px) 100vw, 33vw"
+                  sizes='(max-width: 768px) 100vw, 33vw'
                   style={{
                     objectFit: !product ? 'contain' : 'cover',
                   }}
                   quality={100}
-                  className="w-[100vw] h-[100vh] object-cover z-0"
+                  className='w-[100vw] h-[100vh] object-cover z-0'
                   src={toBase64 ? toBase64 : '/images/smartbuys_logo.png'}
                 />
                 <input
                   disabled={isSubmitting}
                   hidden
-                  accept="image/*"
-                  className="hidden"
-                  type="file"
+                  accept='image/*'
+                  className='hidden'
+                  type='file'
                   {...register('image', {
                     onChange: handleChange,
                   })}
@@ -202,22 +202,22 @@ const ProductForm = ({ product }: { product?: Product }) => {
                 />
               </Card>
             </div>
-            <div className="grid grid-cols-1 content-start m-5 align-top h-full w-full">
+            <div className='grid grid-cols-1 content-start m-5 align-top h-full w-full'>
               <Card
-                className="align-top justify-center place-content-start p-5 gap-y-[25.5px] border-1 border-solid border-[#1a3d57]"
-                radius="sm"
+                className='align-top justify-center place-content-start p-5 gap-y-[25.5px] border-1 border-solid border-[#1a3d57]'
+                radius='sm'
                 fullWidth
               >
-                <div className="flex">
+                <div className='flex'>
                   <Input
                     isDisabled={isSubmitting}
                     label={product ? '' : 'Product Name'}
                     defaultValue={product ? product.name : ''}
-                    variant="flat"
-                    type="text"
+                    variant='flat'
+                    type='text'
                     size={'lg'}
                     fullWidth
-                    radius="sm"
+                    radius='sm'
                     isInvalid={errors.name !== undefined}
                     errorMessage={errors.name?.message}
                     labelPlacement={'inside'}
@@ -245,16 +245,16 @@ const ProductForm = ({ product }: { product?: Product }) => {
                     {...register('name')}
                   />
                 </div>
-                <div className="flex">
+                <div className='flex'>
                   <Input
                     isDisabled={isSubmitting}
-                    variant="flat"
+                    variant='flat'
                     label={product ? '' : 'Product Description'}
                     defaultValue={product ? product.description : ''}
-                    type="text"
+                    type='text'
                     size={'lg'}
                     fullWidth
-                    radius="sm"
+                    radius='sm'
                     isInvalid={errors.description !== undefined}
                     errorMessage={errors.description?.message}
                     labelPlacement={'inside'}
@@ -282,18 +282,18 @@ const ProductForm = ({ product }: { product?: Product }) => {
                     {...register('description')}
                   />
                 </div>
-                <div className="flex">
+                <div className='flex'>
                   <Input
                     isDisabled={isSubmitting}
                     label={product ? '' : 'Product Price'}
                     defaultValue={product ? convertMoney(product.price) : ''}
-                    variant="flat"
-                    type="text"
-                    pattern="\d*"
+                    variant='flat'
+                    type='text'
+                    pattern='\d*'
                     maxLength={4}
                     size={'lg'}
                     fullWidth
-                    radius="sm"
+                    radius='sm'
                     isInvalid={errors.price !== undefined}
                     errorMessage={errors.price?.message}
                     labelPlacement={'inside'}
@@ -321,19 +321,19 @@ const ProductForm = ({ product }: { product?: Product }) => {
                     {...register('price')}
                   />
                 </div>
-                <div className="flex justify-start align-middle gap-x-5">
-                  <div className="text-xl self-center font-medium tracking-widest">
+                <div className='flex justify-start align-middle gap-x-5'>
+                  <div className='text-xl self-center font-medium tracking-widest'>
                     Category:
                   </div>
-                  <div className="flex flex-row gap-5">
+                  <div className='flex flex-row gap-5'>
                     {categoryList.map((data, index) => (
                       <Checkbox
                         isDisabled={isSubmitting}
                         key={index}
-                        className="inline-flex my-0.5"
-                        size="md"
-                        radius="sm"
-                        color="success"
+                        className='inline-flex my-0.5'
+                        size='md'
+                        radius='sm'
+                        color='success'
                         defaultValue={
                           product ? product.category : category ?? ''
                         }
@@ -342,18 +342,18 @@ const ProductForm = ({ product }: { product?: Product }) => {
                           onChange: () => setCategory(data.label),
                         })}
                       >
-                        <span className="text-[#1a3d57] text-medium font-bold">
+                        <span className='text-[#1a3d57] text-medium font-bold'>
                           {data.label}
                         </span>
                       </Checkbox>
                     ))}
                   </div>
                 </div>
-                <div className="flex justify-start align-middle gap-x-5">
-                  <div className="text-xl self-center font-medium tracking-widest">
+                <div className='flex justify-start align-middle gap-x-5'>
+                  <div className='text-xl self-center font-medium tracking-widest'>
                     Type:
                   </div>
-                  <div className="flex flex-row gap-5">
+                  <div className='flex flex-row gap-5'>
                     {typeList.map((data, index) => (
                       <Checkbox
                         isDisabled={
@@ -362,10 +362,10 @@ const ProductForm = ({ product }: { product?: Product }) => {
                           category === 'Home'
                         }
                         key={index}
-                        className="inline-flex my-0.5"
-                        size="md"
-                        radius="sm"
-                        color="success"
+                        className='inline-flex my-0.5'
+                        size='md'
+                        radius='sm'
+                        color='success'
                         defaultValue={product ? product.type : type ?? ''}
                         isSelected={typeList[index].label == type}
                         {...register('type', {
@@ -377,23 +377,23 @@ const ProductForm = ({ product }: { product?: Product }) => {
                               : setType(data.label),
                         })}
                       >
-                        <span className="text-[#1a3d57] text-medium font-bold">
+                        <span className='text-[#1a3d57] text-medium font-bold'>
                           {data.label}
                         </span>
                       </Checkbox>
                     ))}
                   </div>
                 </div>
-                <div className="flex justify-end align-middle mt-10">
+                <div className='flex justify-end align-middle mt-10'>
                   <Button
-                    type="submit"
+                    type='submit'
                     isLoading={isSubmitting}
-                    variant="solid"
-                    color="primary"
+                    variant='solid'
+                    color='primary'
                     disableRipple
-                    size="md"
-                    className="justify-end align-middle text-lg"
-                    radius="sm"
+                    size='md'
+                    className='justify-end align-middle text-lg'
+                    radius='sm'
                   >
                     {isSubmitting
                       ? product
@@ -413,19 +413,19 @@ const ProductForm = ({ product }: { product?: Product }) => {
         backdrop={'blur'}
         isOpen={isOpen}
         onClose={resetForm}
-        size="5xl"
+        size='5xl'
         isDismissable
-        shadow="sm"
-        placement="center"
-        className="bg-[#1a3d57]/90 md:h-1/2 h-52 md:mx-0 mx-10 md:px-0 px-5"
+        shadow='sm'
+        placement='center'
+        className='bg-[#1a3d57]/90 md:h-1/2 h-52 md:mx-0 mx-10 md:px-0 px-5'
       >
-        <ModalContent className="justify-center place-items-center align-middle">
+        <ModalContent className='justify-center place-items-center align-middle'>
           {(onClose) => (
-            <div className="flex flex-col place-items-center gap-10 md:mt-10 md:mb-20">
-              <div className="md:text-6xl text-xl text-orange-500 tracking-widest">
+            <div className='flex flex-col place-items-center gap-10 md:mt-10 md:mb-20'>
+              <div className='md:text-6xl text-xl text-orange-500 tracking-widest'>
                 {message}
               </div>
-              <div className="md:text-2xl text-md text-white tracking-widest text-center">
+              <div className='md:text-2xl text-md text-white tracking-widest text-center'>
                 Create more products or return to dashboard.
               </div>
             </div>

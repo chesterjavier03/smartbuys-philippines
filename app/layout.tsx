@@ -1,12 +1,27 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Ubuntu } from 'next/font/google';
 import * as React from 'react';
 import Main from './Main';
 import QueryClientProvider from './QueryClientProvider';
 import AuthProvider from './auth/Provider';
 import './globals.css';
+export const dynamic = 'force-dynamic';
 
-const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
+const ubuntu = Ubuntu({
+  variable: '--font-inter',
+  subsets: [
+    'cyrillic',
+    'cyrillic-ext',
+    'greek',
+    'greek-ext',
+    'latin',
+    'latin-ext',
+  ],
+  weight: '500',
+  style: 'normal',
+  display: 'auto',
+  preload: true,
+});
 
 export const metadata: Metadata = {
   title: 'SmartBuys Philippines | Unlocking Smarter Shopping Experiences!',
@@ -23,13 +38,13 @@ interface Props {
 
 export default function RootLayout({ children, params }: Readonly<Props>) {
   return (
-    <html lang="en" className="light">
-      <body className={inter.variable} suppressHydrationWarning={true}>
-        <AuthProvider>
-          <QueryClientProvider>
+    <html lang='en' className='light'>
+      <body className={ubuntu.variable} suppressHydrationWarning={true}>
+        <QueryClientProvider>
+          <AuthProvider>
             <Main params={params}>{children}</Main>
-          </QueryClientProvider>
-        </AuthProvider>
+          </AuthProvider>
+        </QueryClientProvider>
       </body>
     </html>
   );

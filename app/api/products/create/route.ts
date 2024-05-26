@@ -10,19 +10,21 @@ const clientCredentials = {
   storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
   messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
   appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
-  measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID
+  measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
 };
 
 export const POST = async (request: NextRequest) => {
-  
   const app = !getApps().length ? initializeApp(clientCredentials) : getApp();
-  const storage = getStorage(app)
+  const storage = getStorage(app);
 
-  const data = await request.formData()
-  const file: File | null = data.get('file') as unknown as File
+  const data = await request.formData();
+  const file: File | null = data.get('file') as unknown as File;
 
   if (!file) {
-    return NextResponse.json({ success: false, message: 'Please add a file to upload' }, {status: 400})
+    return NextResponse.json(
+      { success: false, message: 'Please add a file to upload' },
+      { status: 400 }
+    );
   }
 
   let type: string | null = data.get('type') as string;
@@ -37,13 +39,16 @@ export const POST = async (request: NextRequest) => {
     default:
       break;
   }
-  
+
   try {
-    const storageRef = ref(storage, `${category}/${type}/${file.name}`)
-    const uploadTask = await uploadBytes(storageRef, file)
-    const downloadUrl = await getDownloadURL(uploadTask.ref)
+    const storageRef = ref(storage, `${category}/${type}/${file.name}`);
+    const uploadTask = await uploadBytes(storageRef, file);
+    const downloadUrl = await getDownloadURL(uploadTask.ref);
     if (!downloadUrl) {
-      return NextResponse.json({error: 'There was some error while uploading the file.'}, {status: 404})
+      return NextResponse.json(
+        { error: 'There was some error while uploading the file.' },
+        { status: 404 }
+      );
     }
 
     await prisma?.product.create({
@@ -56,13 +61,16 @@ export const POST = async (request: NextRequest) => {
         description: data.get('description') as string,
         createdAt: new Date().toISOString(),
         itemCount: 10,
-      }
-  });
+      },
+    });
 
-    return NextResponse.json({ message: 'Product Created Successfully' }, {status: 200});
+    return NextResponse.json(
+      { message: 'Product Created Successfully' },
+      { status: 200 }
+    );
   } catch (e: any) {
-    const tmp = e.message || e.toString()
-    console.log(tmp)
-    return NextResponse.json(tmp, {status: 500});
+    const tmp = e.message || e.toString();
+    console.log(tmp);
+    return NextResponse.json(tmp, { status: 500 });
   }
-}
+};
