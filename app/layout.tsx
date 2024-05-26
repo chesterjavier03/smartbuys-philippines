@@ -5,7 +5,6 @@ import Main from './Main';
 import QueryClientProvider from './QueryClientProvider';
 import AuthProvider from './auth/Provider';
 import './globals.css';
-export const dynamic = 'force-dynamic';
 
 const ubuntu = Ubuntu({
   variable: '--font-inter',
