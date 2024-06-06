@@ -87,9 +87,7 @@ function PrivacyPolicy() {
               providers used by the Application:
             </p>
             <Link
-              href={
-                'https://play.google.com/store/apps/details?id=com.chesterjavier03.smartbuysphilippines'
-              }
+              href={'https://policies.google.com/privacy'}
               rel='noopener noreferrer'
               target='_blank'
             >
