@@ -45,22 +45,44 @@ const Home = () => {
   );
   const uniqueTypes = Array.from(new Set(result?.map((data) => data.type)));
 
+  const categoryMonitoringData = useMemo(() => {
+    let categoryCopy = category;
+    return categoryCopy;
+  }, [category]);
+
+  const typeMonitoringData = useMemo(() => {
+    let typeCopy = type;
+    return typeCopy;
+  }, [type]);
+
   const handleSelectCategory = (category: string) => {
-    setCategory(category);
-    setType('');
-    let res = result?.filter((product) => {
-      return category === product.category;
-    });
-    setProductList(res);
+    if ('' === category) {
+      setType('');
+      setCategory('');
+      setProductList(result);
+    } else {
+      setCategory(category);
+      setType('');
+      let res = result?.filter((product) => {
+        return category === product.category;
+      });
+      setProductList(res);
+    }
   };
 
   const handleSelectType = (type: string) => {
-    setType(type);
-    setCategory('');
-    let res = result?.filter((product) => {
-      return type === product.type;
-    });
-    setProductList(res);
+    if ('' === type) {
+      setType('');
+      setCategory('');
+      setProductList(result);
+    } else {
+      setType(type);
+      setCategory('');
+      let res = result?.filter((product) => {
+        return type === product.type;
+      });
+      setProductList(res);
+    }
   };
 
   const reset = () => {
@@ -86,8 +108,8 @@ const Home = () => {
             reset={reset}
             categoryList={categoryList}
             typeList={typeList}
-            category={category}
-            type={type}
+            category={categoryMonitoringData}
+            type={typeMonitoringData}
             setCategory={setCategory}
             setType={setType}
           />
