@@ -16,10 +16,11 @@ import { Product } from '@prisma/client';
 import axios from 'axios';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
+import { IoArrowBackSharp } from 'react-icons/io5';
 
 type ProductSchema = z.infer<typeof editProductSchema>;
 
@@ -40,6 +41,7 @@ const typeList = [
 
 const ProductForm = ({ product }: { product?: Product }) => {
   const path = usePathname();
+  const router = useRouter();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const {
@@ -154,6 +156,17 @@ const ProductForm = ({ product }: { product?: Product }) => {
         radius='sm'
         shadow='lg'
       >
+        <div className='justify-start w-full ml-2 items-start flex flex-col'>
+          <Button
+            size='md'
+            variant='shadow'
+            startContent={<IoArrowBackSharp size={20} />}
+            className='my-3 bg-blue-500 text-white'
+            onClick={() => router.back()}
+          >
+            Back
+          </Button>
+        </div>
         <div
           className='flex ml-6 tracking-widest container mt-5 w-8/12 flex-row justify-start align-middle text-2xl font-semibold
       text-[#1a3d57]'
