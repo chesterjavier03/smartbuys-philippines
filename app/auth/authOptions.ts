@@ -1,24 +1,27 @@
-import { CustomsendVerificationRequest } from "@/app/api/auth/signinemail";
+export const maxDuration = 60;
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
+import { CustomsendVerificationRequest } from '@/app/api/auth/signinemail';
 import prisma from '@/prisma/client';
 import { PrismaAdapter } from '@next-auth/prisma-adapter';
-import { randomBytes, randomUUID } from "crypto";
-import { NextAuthOptions, getServerSession } from "next-auth";
-import EmailProvider from "next-auth/providers/email";
+import { randomBytes, randomUUID } from 'crypto';
+import { NextAuthOptions, getServerSession } from 'next-auth';
+import EmailProvider from 'next-auth/providers/email';
 
 export const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(prisma),
   session: {
-    strategy: "jwt",
+    strategy: 'jwt',
     maxAge: 24 * 60 * 60,
     updateAge: 24 * 60 * 60,
     generateSessionToken: () => {
-      return randomUUID?.() ?? randomBytes(32).toString("hex")
-    }
+      return randomUUID?.() ?? randomBytes(32).toString('hex');
+    },
   },
   callbacks: {
     async jwt({ token, user, account, profile }) {
       if (user && user.idToken) {
-        
         token.idToken = user.idToken;
         token.accessToken = user.accessToken;
       }
@@ -60,20 +63,20 @@ export const authOptions: NextAuthOptions = {
   },
   logger: {
     error(code, metadata) {
-      console.log(code, metadata)
+      console.log(code, metadata);
     },
     warn(code) {
-      console.log(code)
+      console.log(code);
     },
     debug(code, metadata) {
-      console.log(code, metadata)
-    }
+      console.log(code, metadata);
+    },
   },
   theme: {
-    colorScheme: "dark",
-    brandColor: "#ff0000",
-    logo: "/images/smartbuys_logo.png",
-    buttonText: "#ffffff"
+    colorScheme: 'dark',
+    brandColor: '#ff0000',
+    logo: '/images/smartbuys_logo.png',
+    buttonText: '#ffffff',
   },
   providers: [
     EmailProvider({
@@ -82,20 +85,20 @@ export const authOptions: NextAuthOptions = {
         port: Number(process.env.EMAIL_SERVER_PORT),
         auth: {
           user: process.env.EMAIL_SERVER_USER,
-          pass: process.env.EMAIL_SERVER_PASSWORD
-        }
+          pass: process.env.EMAIL_SERVER_PASSWORD,
+        },
       },
-      type:'email',
+      type: 'email',
       from: process.env.EMAIL_FROM,
       maxAge: 60 * 60 * 24 * 30,
       sendVerificationRequest({ identifier, url, provider }) {
-        CustomsendVerificationRequest({ identifier, url, provider })
+        CustomsendVerificationRequest({ identifier, url, provider });
       },
-    })
+    }),
   ],
   debug: process.env.NODE_ENV === 'development',
   secret: process.env.NEXT_AUTH_SECRET,
-}
+};
 
 // export default authOptions;
 export const getServerAuthSession = () => getServerSession(authOptions);
