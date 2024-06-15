@@ -7,9 +7,7 @@ export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 
 export const GET = async () => {
-  const result = await prisma.product.findMany({
-    orderBy: { createdAt: 'desc' },
-  });
+  const result = await fetchProduct();
   return NextResponse.json(shuffleProducts(result));
 };
 

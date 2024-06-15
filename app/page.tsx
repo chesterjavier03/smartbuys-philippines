@@ -11,6 +11,7 @@ import { PageContext } from './Main';
 import FilterNav from './_component/FilterNav';
 import ShopProductList from './_component/ShopProductList';
 export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 const categoryList = [
   { label: 'Food' },
@@ -198,6 +199,8 @@ const useProducts = () =>
     queryKey: ['products'],
     queryFn: () =>
       axios.get<Product[]>('/api/products').then(({ data }) => data),
+    staleTime: 60 * 1000,
+    retry: 3,
   });
 
 export default Home;
