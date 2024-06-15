@@ -5,7 +5,7 @@ import { Product } from '@prisma/client';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import classNames from 'classnames';
-import { useContext, useMemo, useState } from 'react';
+import { useContext, useEffect, useMemo, useState } from 'react';
 import { MdRefresh } from 'react-icons/md';
 import { PageContext } from './Main';
 import FilterNav from './_component/FilterNav';
@@ -198,8 +198,6 @@ const useProducts = () =>
     queryKey: ['products'],
     queryFn: () =>
       axios.get<Product[]>('/api/products').then(({ data }) => data),
-    staleTime: 60 * 1000,
-    retry: 3,
   });
 
 export default Home;

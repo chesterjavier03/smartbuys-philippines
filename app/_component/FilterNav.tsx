@@ -30,7 +30,6 @@ const FilterNav = ({
   handleSelectType,
   reset,
 }: Props) => {
-  console.log('here ' + category);
   return (
     <div className='bg-[#ff0000] h-[calc(100vh-4rem)] transparent text-white relative w-[200px] transition-all duration-300 ease-in-out hidden md:flex overflow-y-auto'>
       <nav className='flex flex-col justify-between inset-0 w-full'>
