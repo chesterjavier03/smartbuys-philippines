@@ -60,7 +60,8 @@ const ProductManagerPage = () => {
           product.description
             .toLowerCase()
             .includes(filterValue.toLowerCase()) ||
-          product.category.toLowerCase().includes(filterValue.toLowerCase())
+          product.category.toLowerCase().includes(filterValue.toLowerCase()) ||
+          product.price.toString().includes(filterValue.toLowerCase())
       );
     }
 
