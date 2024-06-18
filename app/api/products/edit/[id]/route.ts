@@ -10,10 +10,23 @@ import {
 import { NextRequest, NextResponse } from 'next/server';
 import prisma from '@/prisma/client';
 
+const clientCredentials = {
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+  measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
+};
+
 export const PATCH = async (
   request: NextRequest,
   { params }: { params: { id: string } }
 ) => {
+  const app = !getApps().length ? initializeApp(clientCredentials) : getApp();
+  const storage = getStorage(app);
+
   const data = await request.formData();
   const validation = editProductSchema.safeParse(data);
 
@@ -34,21 +47,29 @@ export const PATCH = async (
     if (!product)
       return NextResponse.json({ error: 'Invalid Issue' }, { status: 404 });
 
-    if (data.get('file')) {
+    if (data.get('file') !== product.image) {
       const file: File = data.get('file') as File;
-      const buff = await file.arrayBuffer();
-      let fileData = Buffer.from(buff);
-      if (!fileData) {
+      if (!file) {
         return NextResponse.json(
           { success: false, message: 'Please add a file to upload' },
           { status: 400 }
         );
       }
 
+      const storageRef = ref(storage, `${category}/${type}/${file.name}`);
+      const uploadTask = await uploadBytes(storageRef, file);
+      const downloadUrl = await getDownloadURL(uploadTask.ref);
+      if (!downloadUrl) {
+        return NextResponse.json(
+          { error: 'There was some error while uploading the file.' },
+          { status: 404 }
+        );
+      }
+
       await prisma?.product.update({
         where: { id: product.id },
         data: {
-          image: fileData,
+          image: downloadUrl,
           name,
           description,
           price: parseInt(price),

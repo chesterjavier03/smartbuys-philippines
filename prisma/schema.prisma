@@ -38,7 +38,7 @@ model Product {
   name        String
   category    String
   type        String
-  image       Bytes
+  image       String
   price       Int
   description String
   reviews     Review[]

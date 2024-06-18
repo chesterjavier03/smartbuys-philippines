@@ -5,7 +5,6 @@ import { Product } from '@prisma/client';
 import { convertMoney } from '../_utility/MoneyFormatter';
 import classNames from 'classnames';
 import Link from 'next/link';
-import { constructDataImage } from '../_utility/constructDataImage';
 export const dynamic = 'force-dynamic';
 
 interface Props {
@@ -42,7 +41,7 @@ const ShopProductList = ({ products, isLoading }: Props) => {
                     })}
                     fetchPriority='high'
                     disableAnimation
-                    src={constructDataImage(product.image)}
+                    src={product.image}
                     loading={'eager'}
                   />
                 </Link>

@@ -21,7 +21,6 @@ import { useEffect, useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { IoArrowBackSharp } from 'react-icons/io5';
-import { constructDataImage } from '@/app/_utility/constructDataImage';
 
 type ProductSchema = z.infer<typeof editProductSchema>;
 
@@ -72,7 +71,7 @@ const ProductForm = ({ product }: { product?: Product }) => {
       setValue('category', category);
       setValue('type', type);
       setValue('price', product.price.toString());
-      setToBase64(constructDataImage(product.image));
+      setToBase64(product.image);
     }
   }, []);
 
@@ -202,7 +201,6 @@ const ProductForm = ({ product }: { product?: Product }) => {
                   quality={100}
                   className='w-[100vw] h-[100vh] object-cover z-0'
                   src={toBase64 ? toBase64 : '/images/smartbuys_logo.png'}
-                  // src={constructDataImage(product?.image)}
                 />
                 <input
                   disabled={isSubmitting}

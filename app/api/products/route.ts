@@ -2,9 +2,9 @@ import prisma from '@/prisma/client';
 import { Product } from '@prisma/client';
 import { NextResponse } from 'next/server';
 import { cache } from 'react';
-export const maxDuration = 60;
-export const dynamic = 'force-dynamic';
-export const revalidate = 0;
+// export const maxDuration = 60;
+// export const dynamic = 'force-dynamic';
+// export const revalidate = 0;
 
 export const GET = async () => {
   const result = await fetchProduct();

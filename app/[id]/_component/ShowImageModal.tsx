@@ -1,4 +1,3 @@
-import { constructDataImage } from '@/app/_utility/constructDataImage';
 import { Image, Modal, ModalContent } from '@nextui-org/react';
 import classNames from 'classnames';
 import React from 'react';
@@ -40,7 +39,7 @@ const ShowImageModal = ({
                 'w-[100vw] h-[80vh] object-cover z-0': true,
                 'pointer-events-none': process.env.NODE_ENV === 'production',
               })}
-              src={constructDataImage(productImage)}
+              src={productImage}
             />
           </>
         )}

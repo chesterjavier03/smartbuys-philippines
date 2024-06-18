@@ -1,4 +1,3 @@
-import { constructDataImage } from '@/app/_utility/constructDataImage';
 import { Card, Image } from '@nextui-org/react';
 import classNames from 'classnames';
 import React from 'react';
@@ -33,8 +32,8 @@ const ItemImage = ({ onOpen, productName, productImage }: Props) => {
             'w-[100vw] h-full object-cover z-0': true,
             'pointer-events-none': process.env.NODE_ENV === 'production',
           })}
-          src={constructDataImage(productImage)}
-          srcSet={constructDataImage(productImage)}
+          src={productImage}
+          srcSet={productImage}
         />
       </Card>
     </div>

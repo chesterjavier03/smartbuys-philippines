@@ -31,7 +31,6 @@ import { FaSearch } from 'react-icons/fa';
 import { GrEdit } from 'react-icons/gr';
 import Swal from 'sweetalert2';
 import { convertMoney } from '../../_utility/MoneyFormatter';
-import { constructDataImage } from '@/app/_utility/constructDataImage';
 export const dynamic = 'force-dynamic';
 
 const ProductManagerPage = () => {
@@ -239,7 +238,7 @@ const ProductManagerPage = () => {
                         objectFit: 'cover',
                       }}
                       quality={100}
-                      src={constructDataImage(data.image)}
+                      src={data.image}
                     />
                   </Card>
                 </TableCell>
@@ -332,7 +331,7 @@ const ProductManagerPage = () => {
                     'pointer-events-none':
                       process.env.NODE_ENV === 'production',
                   })}
-                  src={constructDataImage(singleProduct?.image)}
+                  src={singleProduct?.image}
                 />
               </Card>
             </div>
