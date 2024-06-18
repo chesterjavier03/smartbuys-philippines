@@ -11,7 +11,6 @@ import { PageContext } from './Main';
 import FilterNav from './_component/FilterNav';
 import ShopProductList from './_component/ShopProductList';
 export const dynamic = 'force-dynamic';
-export const revalidate = 0;
 
 const categoryList = [
   { label: 'Food' },

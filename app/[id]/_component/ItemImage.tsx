@@ -1,3 +1,4 @@
+import { constructDataImage } from '@/app/_utility/constructDataImage';
 import { Card, Image } from '@nextui-org/react';
 import classNames from 'classnames';
 import React from 'react';
@@ -5,15 +6,15 @@ import React from 'react';
 interface Props {
   onOpen: () => void;
   productName: string;
-  productImage: string;
+  productImage: any;
 }
 
 const ItemImage = ({ onOpen, productName, productImage }: Props) => {
   return (
-    <div className="grid grid-cols-1 md:justify-self-end justify-self-center w-auto">
+    <div className='grid grid-cols-1 md:justify-self-end justify-self-center w-auto'>
       <Card
-        className="mx-5 mt-10 h-[calc(80vh)] border-2 aspect-auto border-solid border-[#ff0000]"
-        radius="sm"
+        className='mx-5 mt-10 h-[calc(80vh)] border-2 aspect-auto border-solid border-[#ff0000]'
+        radius='sm'
         disableRipple
         isHoverable
         isPressable
@@ -24,16 +25,16 @@ const ItemImage = ({ onOpen, productName, productImage }: Props) => {
           disableAnimation
           removeWrapper
           fallbackSrc={'/images/smartbuys_logo.png'}
-          loading="eager"
-          shadow="sm"
-          radius="sm"
+          loading='eager'
+          shadow='sm'
+          radius='sm'
           alt={productName}
           className={classNames({
             'w-[100vw] h-full object-cover z-0': true,
             'pointer-events-none': process.env.NODE_ENV === 'production',
           })}
-          src={productImage}
-          srcSet={productImage}
+          src={constructDataImage(productImage)}
+          srcSet={constructDataImage(productImage)}
         />
       </Card>
     </div>

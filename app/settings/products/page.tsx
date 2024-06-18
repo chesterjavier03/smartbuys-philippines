@@ -31,6 +31,7 @@ import { FaSearch } from 'react-icons/fa';
 import { GrEdit } from 'react-icons/gr';
 import Swal from 'sweetalert2';
 import { convertMoney } from '../../_utility/MoneyFormatter';
+import { constructDataImage } from '@/app/_utility/constructDataImage';
 export const dynamic = 'force-dynamic';
 
 const ProductManagerPage = () => {
@@ -170,9 +171,9 @@ const ProductManagerPage = () => {
                   color='primary'
                   size='md'
                   className='sm:tracking-widest tracking-normal'
-                  onClick={() => router.push('/products/create')}
+                  onClick={() => router.push('/settings/products/new')}
                 >
-                  Create New Student
+                  Create New Product
                 </Button>
               </div>
             </div>
@@ -238,7 +239,7 @@ const ProductManagerPage = () => {
                         objectFit: 'cover',
                       }}
                       quality={100}
-                      src={data.image}
+                      src={constructDataImage(data.image)}
                     />
                   </Card>
                 </TableCell>
@@ -331,7 +332,7 @@ const ProductManagerPage = () => {
                     'pointer-events-none':
                       process.env.NODE_ENV === 'production',
                   })}
-                  src={singleProduct!.image}
+                  src={constructDataImage(singleProduct?.image)}
                 />
               </Card>
             </div>

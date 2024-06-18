@@ -1,3 +1,4 @@
+import { constructDataImage } from '@/app/_utility/constructDataImage';
 import { Image, Modal, ModalContent } from '@nextui-org/react';
 import classNames from 'classnames';
 import React from 'react';
@@ -6,7 +7,7 @@ interface Props {
   isOpen: boolean;
   onClose: () => void;
   productName: string;
-  productImage: string;
+  productImage: any;
 }
 
 const ShowImageModal = ({
@@ -21,9 +22,9 @@ const ShowImageModal = ({
       isOpen={isOpen}
       onClose={onClose}
       isDismissable
-      shadow="sm"
-      placement="top-center"
-      className="md:h-auto h-3/4 md:mx-0 mx-10 object-contain"
+      shadow='sm'
+      placement='top-center'
+      className='md:h-auto h-3/4 md:mx-0 mx-10 object-contain'
     >
       <ModalContent>
         {(onClose) => (
@@ -31,15 +32,15 @@ const ShowImageModal = ({
             <Image
               removeWrapper
               fallbackSrc={'/images/smartbuys_logo.png'}
-              loading="eager"
-              shadow="sm"
-              radius="sm"
+              loading='eager'
+              shadow='sm'
+              radius='sm'
               alt={productName}
               className={classNames({
                 'w-[100vw] h-[80vh] object-cover z-0': true,
                 'pointer-events-none': process.env.NODE_ENV === 'production',
               })}
-              src={productImage}
+              src={constructDataImage(productImage)}
             />
           </>
         )}

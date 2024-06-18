@@ -44,8 +44,8 @@ export const DELETE = async (
     if (!product)
       return NextResponse.json({ error: 'Invalid Product' }, { status: 404 });
 
-    const imageRef = ref(storage, product.image);
-    deleteObject(imageRef);
+    // const imageRef = ref(storage, product.image);
+    // deleteObject(imageRef);
 
     await prisma?.product.delete({
       where: { id: product.id },
