@@ -14,21 +14,21 @@ const Link = dynamic(() => import('next/link'), {
 
 const weAreImageList = [
   {
+    source: '/images/SmartBuys_Tech.png',
+    alt: 'SmartBuys Philippines | Crafting Digital Excellence',
+    width: 'w-32',
+    href: 'https://smartbuysph.com/',
+  },
+  {
     source: '/images/kb.webp',
-    alt: 'King Bites',
+    alt: 'KingBites | Bite into Flavorful Delights Fit for Royalty!',
     width: 'w-48',
     href: 'https://king-bites.vercel.app/',
   },
   {
     source: '/images/sofos_logo.png',
-    alt: 'Sofos',
+    alt: 'Sofos Factory | Crafting Quality Apps',
     width: 'w-32',
-    href: 'https://sofos-factory.vercel.app/',
-  },
-  {
-    source: '/images/casey_lucas.webp',
-    alt: 'Casey & Lucas',
-    width: 'w-44',
     href: 'https://sofos-factory.vercel.app/',
   },
 ];
@@ -196,7 +196,7 @@ const AboutPage = () => {
           <Divider className='my-4 bg-red-500 w-5/12 justify-center align-middle' />
           <div className='basis-full max-w-sm md:max-w-screen-2xl mt-20'>
             <p className='md:text-3xl text-xl text-[#1a3d57] transform-none font-normal text-center leading-tight tracking-widest'>
-              "At SmartBuys Philippines, our mission is to revolutionize the
+              At SmartBuys Philippines, our mission is to revolutionize the
               online shopping experience by providing our customers with a
               seamless platform to discover, explore, and purchase a wide range
               of high-quality products at the best prices. We strive to be the
@@ -205,7 +205,7 @@ const AboutPage = () => {
               essentials, and more. With our commitment to exceptional customer
               service, secure transactions, and timely delivery, we aim to
               exceed expectations and delight our customers at every step of
-              their shopping journey."
+              their shopping journey.
             </p>
           </div>
         </section>
@@ -218,7 +218,7 @@ const AboutPage = () => {
           <Divider className='my-4 bg-red-500 w-5/12 justify-center align-middle' />
           <div className='basis-full max-w-sm md:max-w-screen-2xl mt-20'>
             <p className='md:text-3xl text-xl text-[#1a3d57] transform-none font-normal text-center leading-tight tracking-widest'>
-              "Our vision at SmartBuys Philippines is to empower Filipinos with
+              Our vision at SmartBuys Philippines is to empower Filipinos with
               convenient access to a world of affordable and reliable products,
               enabling them to make informed purchasing decisions and elevate
               their lifestyles. We envision a future where every customer can
@@ -228,107 +228,45 @@ const AboutPage = () => {
               customer-centric approach, we aspire to be the trusted online
               shopping destination that brings joy and satisfaction to every
               Filipino shopper. Together, we are shaping the future of online
-              retail in the Philippines."
+              retail in the Philippines.
             </p>
           </div>
         </section>
         <section className='flex flex-col mt-16 w-screen content-center items-center justify-center align-middle basis-28 '>
           <div className='mt-10 mb-5'>
             <p className='text-[#1a3d57] md:text-6xl text-3xl transform-none font-normal text-center leading-tight tracking-widest'>
-              We Do
+              Our Authenticity
             </p>
           </div>
           <Divider className='my-4 bg-red-500 w-5/12 justify-center align-middle' />
-          <div className='grid lg:grid-cols-3 grid-cols-1 justify-around w-auto h-auto mt-10 text-center container'>
-            {weDoItemList.map((item) => (
-              <div
-                key={item.description}
-                className='flex flex-col h-auto place-items-center'
-              >
-                <div
-                  className={classNames({
-                    'flex place-items-center rounded-full border-2 border-solid w-36 h-36 justify-center ':
-                      true,
-                    'hover:scale-125 relative shadow-black/5 data-[loaded=true]:opacity-100 shadow-none transform transition-transform-opacity ':
-                      true,
-                    'motion-reduce:transition-none !duration-300  object-cover z-0 cursor-pointer mb-10':
-                      true,
-                    'border-[#1de9a3]': item.alt === 'Clothes',
-                    'border-[#ff0000]': item.alt === 'Food',
-                    'border-[#1a3d57]': item.alt === 'Tech',
-                  })}
-                >
-                  {item.icon}
-                </div>
-                <div className={`justify-center align-middle `}>
-                  <Card
-                    key={item.title}
-                    shadow='lg'
-                    disableRipple
-                    radius='sm'
-                    isHoverable
-                    className='hover:scale-110'
-                  >
-                    <Image
-                      fallbackSrc={'/images/smartbuys_logo.png'}
-                      loading='lazy'
-                      shadow='lg'
-                      radius='sm'
-                      alt={item.alt}
-                      className={classNames({
-                        'w-unit-6xl h-full object-contain z-0 cursor-pointer':
-                          true,
-                        'pointer-events-none':
-                          process.env.NODE_ENV === 'production',
-                      })}
-                      src={item.image}
-                    />
-                  </Card>
-                </div>
-                <div className='justify-end align-baseline text-center px-20'>
-                  <p className='my-10 text-xl text-[#1a3d57] font-medium tracking-widest text-center'>
-                    {item.title}
-                  </p>
-                  <p className='my-10 text-md text-[#1a3d57] font-medium tracking-widest text-center'>
-                    {item.description}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-        <section className='flex flex-col mt-16 w-screen place-items-center basis-28 h-full'>
-          <div className='mt-10 mb-5'>
-            <p className='text-[#1a3d57] md:text-6xl text-3xl transform-none font-normal text-center leading-tight tracking-widest'>
-              Reveiws
+          <div className='grid lg:grid-cols-1 grid-cols-1 justify-around w-full h-auto mt-10 text-center container'>
+            <p className='md:text-3xl text-xl text-[#1a3d57] transform-none font-normal text-center leading-tight tracking-widest'>
+              At SmartBuys Philippines, we pride ourselves on our authenticity
+              and commitment to compliance. As a registered entity with the
+              Securities and Exchange Commission (SEC) in the Philippines,
+              SmartBuys Philippines stands as a trusted name you can rely on.
+              Our SEC registration ensures that we operate within the legal
+              framework of the country, reflecting our dedication to
+              transparency and integrity. Shop with confidence, knowing that
+              SmartBuys Philippines is a genuine and fully registered enterprise
+              in the Philippines.
             </p>
-          </div>
-          <Divider className='my-4 bg-red-500 w-5/12 justify-center align-middle' />
-          <div className='grid lg:grid-cols-4 grid-cols-1 gap-20 px-20 justify-around w-auto h-auto my-10 text-center container'>
-            {reviewList.map((item) => (
-              <Card
-                key={item.alt}
-                shadow='lg'
-                disableRipple
+            <div className='flex w-full my-12 content-center items-center text-center container justify-around'>
+              <Image
+                removeWrapper
+                fallbackSrc={'/images/smartbuys_logo.png'}
+                loading='lazy'
+                shadow='none'
                 radius='sm'
-                isHoverable
-                className='hover:scale-110 justify-center align-middle w-auto border-2 border-solid border-[#ffd700]'
-              >
-                <Image
-                  fallbackSrc={'/images/smartbuys_logo.png'}
-                  loading='lazy'
-                  shadow='lg'
-                  radius='sm'
-                  alt={item.alt}
-                  className={classNames({
-                    'object-contain z-0 cursor-pointer': true,
-                    'pointer-events-none':
-                      process.env.NODE_ENV === 'production',
-                  })}
-                  src={item.image}
-                />
-              </Card>
-            ))}
+                alt='SMARTBUYS PHILIPPINES ENTERPRISES OPC'
+                className={`w-1/4 h-full object-cover z-0 cursor-pointer ${
+                  process.env.NODE_ENV === 'production'
+                    ? 'pointer-events-none'
+                    : ''
+                }`}
+                src={'/images/SmartBuysPhilippines_OPC.png'}
+              />
+            </div>
           </div>
         </section>
         <section className='flex flex-col mt-16 w-screen place-items-center basis-28 h-full'>
