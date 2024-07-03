@@ -259,7 +259,7 @@ const AboutPage = () => {
                 shadow='none'
                 radius='sm'
                 alt='SMARTBUYS PHILIPPINES ENTERPRISES OPC'
-                className={`w-1/4 h-full object-cover z-0 cursor-pointer ${
+                className={`sm:w-1/4 w-[75%] h-full object-cover z-0 cursor-pointer ${
                   process.env.NODE_ENV === 'production'
                     ? 'pointer-events-none'
                     : ''
