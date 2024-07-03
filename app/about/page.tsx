@@ -121,13 +121,13 @@ const AboutPage = () => {
         </section>
         <section className='md:mt-0 mt-5'>
           <div className='flex-grow-0 basis-full max-w-sm md:max-w-screen-2xl'>
-            <p className='md:text-3xl text-xl text-[#1a3d57] transform-none font-normal text-center leading-tight tracking-widest'>
-              "Discover a world of smart shopping at SmartBuys Philippines.
+            <p className='md:text-3xl text-xl text-[#1a3d57] transform-none font-normal sm:text-center text-justify leading-tight tracking-widest'>
+              Discover a world of smart shopping at SmartBuys Philippines.
               Experience the perfect blend of quality, affordability, and
               convenience as you explore our curated selection of premium
               products. Elevate your lifestyle with our wide range of offerings,
               ensuring a seamless online shopping experience for the discerning
-              Filipino shopper."
+              Filipino shopper.
             </p>
           </div>
         </section>
@@ -195,7 +195,7 @@ const AboutPage = () => {
           </div>
           <Divider className='my-4 bg-red-500 w-5/12 justify-center align-middle' />
           <div className='basis-full max-w-sm md:max-w-screen-2xl mt-20'>
-            <p className='md:text-3xl text-xl text-[#1a3d57] transform-none font-normal text-center leading-tight tracking-widest'>
+            <p className='md:text-3xl text-xl text-[#1a3d57] transform-none font-normal sm:text-center text-justify leading-tight tracking-widest'>
               At SmartBuys Philippines, our mission is to revolutionize the
               online shopping experience by providing our customers with a
               seamless platform to discover, explore, and purchase a wide range
@@ -217,7 +217,7 @@ const AboutPage = () => {
           </div>
           <Divider className='my-4 bg-red-500 w-5/12 justify-center align-middle' />
           <div className='basis-full max-w-sm md:max-w-screen-2xl mt-20'>
-            <p className='md:text-3xl text-xl text-[#1a3d57] transform-none font-normal text-center leading-tight tracking-widest'>
+            <p className='md:text-3xl text-xl text-[#1a3d57] transform-none font-normal sm:text-center text-justify leading-tight tracking-widest'>
               Our vision at SmartBuys Philippines is to empower Filipinos with
               convenient access to a world of affordable and reliable products,
               enabling them to make informed purchasing decisions and elevate
@@ -239,8 +239,8 @@ const AboutPage = () => {
             </p>
           </div>
           <Divider className='my-4 bg-red-500 w-5/12 justify-center align-middle' />
-          <div className='grid lg:grid-cols-1 grid-cols-1 justify-around w-full h-auto mt-10 text-center container'>
-            <p className='md:text-3xl text-xl text-[#1a3d57] transform-none font-normal text-center leading-tight tracking-widest'>
+          <div className='basis-full max-w-sm md:max-w-screen-2xl mt-20'>
+            <p className='md:text-3xl text-xl text-[#1a3d57] transform-none font-normal sm:text-center text-justify leading-tight tracking-widest'>
               At SmartBuys Philippines, we pride ourselves on our authenticity
               and commitment to compliance. As a registered entity with the
               Securities and Exchange Commission (SEC) in the Philippines,
@@ -276,8 +276,8 @@ const AboutPage = () => {
             </p>
           </div>
           <Divider className='my-4 bg-red-500 w-7/12 justify-center align-middle' />
-          <div className='grid grid-cols-1 my-5 text-center container'>
-            <div className='justify-center align-middle mb-10 text-xl my-5 text-[#1a3d57] font-medium tracking-widest text-center'>
+          <div className='basis-full max-w-sm md:max-w-screen-2xl mt-20'>
+            <div className='justify-center align-middle mb-10 text-xl my-5 text-[#1a3d57] font-medium tracking-widest sm:text-center text-justify'>
               <p className='pb-5'>
                 Thinking of building a website or an app for your brand of
                 business?
