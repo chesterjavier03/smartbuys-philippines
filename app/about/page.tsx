@@ -23,7 +23,7 @@ const weAreImageList = [
     source: '/images/kb.webp',
     alt: 'KingBites | Bite into Flavorful Delights Fit for Royalty!',
     width: 'w-48',
-    href: 'https://king-bites.vercel.app/',
+    href: 'https://kingbites.vercel.app/',
   },
   {
     source: '/images/sofos_logo.png',
