@@ -161,8 +161,8 @@ const About = () => {
             convenient access to a world of affordable and reliable products,
             enabling them to make informed purchasing decisions and elevate
             their lifestyles. We envision a future where every customer can find
-            the perfect item, whether it's the latest gadget, stylish fashion
-            piece, or essential home product, all in one place. Through
+            the perfect item, whether it&apos;s the latest gadget, stylish
+            fashion piece, or essential home product, all in one place. Through
             continuous innovation, strategic partnerships, and a
             customer-centric approach, we aspire to be the trusted online
             shopping destination that brings joy and satisfaction to every

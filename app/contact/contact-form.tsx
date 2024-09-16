@@ -62,17 +62,13 @@ const ContactForm = () => {
           Say hello to us!
         </CardTitle>
         <CardDescription className='text-SBP_BLUE"'>
-          Let's talk business or just have a coffee. <br />
+          Let&apos;s talk business or just have a coffee. <br />
           We would love to hear from you!
         </CardDescription>
       </CardHeader>
       <CardContent>
         <Form {...form}>
-          <form
-            aria-disabled={status === 'executing'}
-            onSubmit={form.handleSubmit(onSubmit)}
-            className="space-y-4"
-          >
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
             <FormField
               disabled={status === 'executing'}
               control={form.control}
