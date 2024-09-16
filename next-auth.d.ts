@@ -1,4 +1,4 @@
-import NextAuth, { type DefaultSession } from "next-auth"
+import NextAuth, { type DefaultSession, type DefaultUser } from "next-auth"
 
 export type ExtendUser = DefaultSession["user"] & {
   id: string
@@ -8,8 +8,17 @@ export type ExtendUser = DefaultSession["user"] & {
   image: string
 }
 
+interface IUser extends DefaultUser {
+  role?: Role;
+}
+
 declare module "next-auth" {
+  interface User extends IUser {}
   interface Session {
     user: ExtendUser
   }
+}
+
+declare module "next-auth/jwt" {
+  interface JWT extends IUser {}
 }

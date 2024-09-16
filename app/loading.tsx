@@ -24,9 +24,7 @@ const MainLoadingPage = () => {
                     <h2>
                       <Skeleton className="h-8 rounded-md bg-black/15 w-40" />
                     </h2>
-                    <p className="text-sm text-muted-foreground py-2">
-                      <Skeleton className="h-8 rounded-md bg-black/15 w-40" />
-                    </p>
+                    <Skeleton className="h-8 rounded-md bg-black/15 w-40" />
                   </div>
                   <div>
                     <Skeleton className="h-8 rounded-md bg-SBP_RED/15 w-16" />
