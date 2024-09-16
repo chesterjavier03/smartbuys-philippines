@@ -4,6 +4,7 @@ import { ReviewsSchema } from '@/types/reviews-schema';
 import { createSafeActionClient } from 'next-safe-action'
 import { auth } from '../auth';
 import { revalidatePath } from 'next/cache';
+import prisma from '@/prisma/client';
 
 const action = createSafeActionClient();
 
