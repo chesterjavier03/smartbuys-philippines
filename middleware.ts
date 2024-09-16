@@ -1,7 +1,6 @@
 import { Role } from '@prisma/client';
 import { getToken } from 'next-auth/jwt';
 import { NextRequest, NextResponse } from 'next/server';
-import {auth} from '@/server/auth'
 
 
 const roleBasedPaths: Record<string, string[]> = {
@@ -35,6 +34,12 @@ export async function middleware(req: NextRequest) {
 
 export const config = {
   matcher: [
+    '/',
+    '/about',
+    '/contact',
+    '/403',
+    '/dashboard/settings',
+    '/dashboard/orders',
     '/dashboard/add-product',
     '/dashboard/products',
     '/dashboard/analytics',

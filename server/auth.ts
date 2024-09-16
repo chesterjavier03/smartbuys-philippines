@@ -6,6 +6,7 @@ import { LoginSchema } from '@/types/login-schema';
 import bcrypt from 'bcrypt';
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
+  trustHost:true,
   adapter: PrismaAdapter(prisma),
   secret: process.env.NEXTAUTH_SECRET,
   session: { strategy: 'jwt', maxAge: 30 * 24 * 60 * 60 },
