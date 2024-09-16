@@ -1,7 +1,6 @@
 'use client';
 
 import { convertMoney } from '@/lib/money-formatter';
-import { Product } from '@prisma/client';
 import Link from 'next/link';
 import { Badge } from '../ui/badge';
 import { Card, CardContent } from '../ui/card';
