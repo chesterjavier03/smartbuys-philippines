@@ -5,7 +5,6 @@ import { createSafeActionClient } from 'next-safe-action'
 import prisma from '@/prisma/client';
 import { revalidatePath } from 'next/cache';
 import { uploadToFirestore } from './upload';
-import { auth } from '../auth';
 
 const action = createSafeActionClient();
 

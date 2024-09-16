@@ -5,6 +5,7 @@ import { createSafeActionClient } from 'next-safe-action'
 import bcrpyt from "bcrypt"
 import { generateEmailVerificationToken } from './tokens';
 import { sendVerificationEmail } from './email';
+import prisma from '@/prisma/client';
 
 const action = createSafeActionClient();
 

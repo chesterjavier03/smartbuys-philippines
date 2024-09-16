@@ -4,6 +4,7 @@ import { ResetPasswordSchema } from '@/types/reset-schema';
 import { createSafeActionClient } from 'next-safe-action';
 import { generatePasswordResetToken } from './tokens';
 import { sendPasswordResetEmail } from './email';
+import prisma from '@/prisma/client';
 
 const action = createSafeActionClient();
 

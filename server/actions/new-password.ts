@@ -5,6 +5,7 @@ import { getPasswordResetTokenByToken } from './tokens';
 import dayjs from 'dayjs';
 import { NewPasswordSchema } from '@/types/new-password-schema';
 import bcrypt from 'bcrypt';
+import prisma from '@/prisma/client';
 
 const action = createSafeActionClient()
 

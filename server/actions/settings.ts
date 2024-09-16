@@ -6,6 +6,7 @@ import { auth } from '../auth';
 import bcrypt from 'bcrypt';
 import { revalidatePath } from 'next/cache';
 import { uploadToFirestore } from './upload';
+import prisma from '@/prisma/client';
 
 const action = createSafeActionClient();
 
