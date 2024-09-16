@@ -1,10 +1,9 @@
-import ProductShowcase from '@/components/products/product-showcase';
+import prisma from '@/prisma/client';
 import Reviews from '@/components/reviews/reviews';
 import { convertMoney } from '@/lib/money-formatter';
 import { Separator } from '@radix-ui/react-dropdown-menu';
 import Stars from '@/components/reviews/stars';
 import Image from 'next/image';
-import ProductLoadingPage from './loading';
 import AddCart from '@/components/cart/add-cart';
 import { getReviewAverage } from '@/lib/review-average';
 
