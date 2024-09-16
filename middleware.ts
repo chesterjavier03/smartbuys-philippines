@@ -7,12 +7,6 @@ const roleBasedPaths: Record<string, string[]> = {
   '/dashboard/products': [Role.ADMIN],
   '/dashboard/add-product': [Role.ADMIN],
   '/dashboard/analytics': [Role.ADMIN],
-  '/dashboard/settings': [Role.ADMIN, Role.CUSTOMER],
-  '/dashboard/orders': [Role.ADMIN, Role.CUSTOMER],
-  '/': [Role.ADMIN, Role.CUSTOMER],
-  '/about': [Role.ADMIN, Role.CUSTOMER],
-  '/contact': [Role.ADMIN, Role.CUSTOMER],
-  '/products': [Role.ADMIN, Role.CUSTOMER],
 };
 
 export async function middleware(req: NextRequest) {
@@ -33,15 +27,10 @@ export async function middleware(req: NextRequest) {
 };
 
 export const config = {
-  matcher: [
-    '/',
-    '/about',
-    '/contact',
-    '/403',
-    '/dashboard/settings',
-    '/dashboard/orders',
-    '/dashboard/add-product',
-    '/dashboard/products',
-    '/dashboard/analytics',
-  ],
+  // matcher: [
+  //   '/dashboard/add-product',
+  //   '/dashboard/products',
+  //   '/dashboard/analytics',
+  // ],
+  matcher: ['/((?!api|_next/static|_next/image|favicon.ico).*)'],
 };
