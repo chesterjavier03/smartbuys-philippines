@@ -58,25 +58,6 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
           <div className="flex-grow sm:px-6 md:px-12 mx-auto max-w-8xl">
             <Nav />
-            <Toaster
-              icons={{
-                error: <Ban color="white" />,
-                info: <Info color="white" />,
-                warning: <TriangleAlert color="#1a3e58" />,
-                success: <CheckCircle color="white" className="animate-ping" />,
-                loading: <Loader2Icon color="white" className="animate-spin" />,
-              }}
-              toastOptions={{
-                classNames: {
-                  title: 'px-2',
-                  loading: 'bg-[#1DE9A3] text-white',
-                  error: 'bg-[#ff0000] text-white',
-                  success: 'bg-[#1DE9A3] text-white',
-                  warning: 'bg-[#fff300] text-[#1a3e58]',
-                  info: 'bg-blue-400 text-white',
-                },
-              }}
-            />
             <div className="px-1 sm:px-2">{children}</div>
           </div>
           <footer
@@ -89,6 +70,25 @@ export default function RootLayout({
               </div>
             </div>
           </footer>
+          <Toaster
+            icons={{
+              error: <Ban color="white" />,
+              info: <Info color="white" />,
+              warning: <TriangleAlert color="#1a3e58" />,
+              success: <CheckCircle color="white" className="animate-ping" />,
+              loading: <Loader2Icon color="white" className="animate-spin" />,
+            }}
+            toastOptions={{
+              classNames: {
+                title: 'px-2',
+                loading: 'bg-[#1DE9A3] text-white',
+                error: 'bg-[#ff0000] text-white',
+                success: 'bg-[#1DE9A3] text-white',
+                warning: 'bg-[#fff300] text-[#1a3e58]',
+                info: 'bg-blue-400 text-white',
+              },
+            }}
+          />
         </ThemeProvider>
       </body>
     </html>

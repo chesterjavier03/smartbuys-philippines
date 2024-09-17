@@ -10,14 +10,14 @@ import UserNav from './user-nav';
 const Nav = async () => {
   const session = await auth();
   return (
-    <header className="sticky w-auto py-3 sm:top-5 top-0 bg-SBP_RED px-5 sm:rounded-xl sm:my-5 mb-5 duration-400 z-30 ">
+    <header className="sticky w-auto py-3 sm:top-5 top-0 bg-SBP_RED px-5 sm:rounded-xl sm:my-3 mb-5 duration-400 z-30 ">
       <nav className="">
         <ul className="flex justify-between items-center gap-5">
           <li className="flex flex-1">
             <Link href="/" aria-label="SmartBuys Philippines">
               <Image
                 className={cn({
-                  'object-contain hover:scale-110 duration-200 w-[70px] h-auto':
+                  'object-contain hover:scale-110 duration-200 ease-in-out w-[70px] h-auto':
                     true,
                   'pointer-events-none': process.env.NODE_ENV === 'production',
                 })}

@@ -7,8 +7,30 @@ import { Card, CardContent } from '../ui/card';
 import Image from 'next/image';
 import Stars from '../reviews/stars';
 import { getReviewAverage } from '@/lib/review-average';
+import { motion } from 'framer-motion';
+import Lottie from 'lottie-react';
+import accessDenied from '@/public/animations/access-denied.json';
 
 const Products = ({ products }: { products: any[] }) => {
+  if (products.length < 1)
+    return (
+      <main className="">
+        <motion.div
+          className="items-center sm:h-[80vh] h-[80vh] max-h-[80vh] m-3 flex justify-center flex-col"
+          animate={{ opacity: 1, scale: 1 }}
+          initial={{ opacity: 0, scale: 0 }}
+          transition={{ delay: 0.1 }}
+        >
+          <Lottie
+            className="h-80"
+            preload="true"
+            animationData={accessDenied}
+          />
+          <h1 className="text-2xl tracking-widest">No Products Found</h1>
+        </motion.div>
+      </main>
+    );
+
   return (
     <main className="grid grid-cols-2 gap-2 sm:grid-cols-2 sm:gap-5 lg:grid-cols-5 mb-20 sm:px-1 px-1.5">
       {products?.map((product) => (

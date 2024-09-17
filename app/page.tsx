@@ -1,10 +1,6 @@
-import Products from '@/components/products/products';
+import ProductList from '@/components/products/product-list';
 import prisma from '@/prisma/client';
-import { Product } from '@prisma/client';
 import { unstable_cache } from 'next/cache';
-import { cache } from 'react';
-import ProductLoadingPage from './products/[id]/loading';
-import MainLoadingPage from './loading';
 
 export default async function Home() {
   const fetchCachedProductList = unstable_cache(
@@ -32,8 +28,7 @@ export default async function Home() {
 
   return (
     <main className="">
-      {/* <Algolia /> */}
-      <Products products={shuffleProductList} />
+      <ProductList products={shuffleProductList} />
     </main>
   );
 }
