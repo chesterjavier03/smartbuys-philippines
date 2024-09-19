@@ -27,10 +27,10 @@ const PrivacyPolicyPage = () => {
         </span>
         <div className="flex flex-col my-3 gap-y-3">
           <span className="md:text-xl font-medium tracking-wider">
-            This privacy policy applies to the&nbsp;
-            <b>Don Carlo Cavina School (DCCS)</b>&nbsp; mobile application
-            (referred to as the &nbsp;<b>&quot;Application&quot;</b>&nbsp;)
-            developed by&nbsp;
+            This privacy policy applies to&nbsp;<b>ALL</b>&nbsp;mobile
+            application/s (referred to as the &nbsp;
+            <b>&quot;Application&quot;</b>
+            &nbsp;) developed by&nbsp;
             <b>Chester Javier, Managing Technical Director</b>&nbsp; of&nbsp;
             <b>SMARTBUYS PHILIPPINES ENTERPRISES OPC</b>&nbsp; (referred to as
             the &nbsp;<b>&quot;Developer&quot;</b>&nbsp;). This policy is
