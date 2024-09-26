@@ -45,6 +45,8 @@ export const metadata: Metadata = {
   title: 'SmartBuys Philippines | Unlocking Smarter Shopping Experiences!',
   description:
     'Discover a world of smart shopping at SmartBuys Philippines. Experience the perfect blend of quality, affordability, and convenience as you explore our curated selection of premium products. Elevate your lifestyle with our wide range of offerings, ensuring a seamless online shopping experience for the discerning Filipino shopper.',
+  keywords:
+    'Live Selling, Flash Sale Live Limited Time Offers Live, Buy Now Live Stream, Best Deals Live, Shop With Me Live, Exclusive Live Sale, Special Offer Live Stream, Hot Deals Live Now, 2024, Philippines, OFW, SmartBuys Philippines, How to earn money at home, LIFE QUOTES, SHOWTIME, BOSSING, MALUPITON, NINONG RY, TEAM PAYAMAN, CONG TV, NENENG LAMIG, YOH, YOW, JOEL, LIVE, vertical:entertainment, source:etc, vertical:kids, vertical:e-commerce, vertical:retail, vertical:fashion, vertical:lifestyle, SHOPEE, ONLINE SELLING, LIFE QUOTES, SMARTBUYS PHILIPPINES',
 };
 
 export default function RootLayout({
