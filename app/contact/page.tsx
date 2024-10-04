@@ -21,6 +21,12 @@ const followUsImageList = [
     href: 'https://www.tiktok.com/@smartbuysphilippines',
   },
   {
+    source: '/images/youtube.webp',
+    alt: 'YouTube - SmartBuys Philippines',
+    width: 108,
+    href: 'https://www.youtube.com/@smartbuysphilippines',
+  },
+  {
     source: '/images/instagram.webp',
     alt: 'Instagram - SmartBuys Philippines',
     width: 65,
@@ -75,7 +81,7 @@ const Contact = () => {
           </h1>
         </div>
         <Separator className="my-4 bg-SBP_RED w-1/2 justify-center align-middle" />
-        <div className="grid grid-cols-4 sm:mt-10 gap-5 place-items-center container ">
+        <div className="grid grid-cols-5 sm:mt-10 gap-5 place-items-center container ">
           {followUsImageList.map((social) => (
             <Link
               key={social.alt}
