@@ -7,7 +7,12 @@ import clsx from 'clsx';
 import { Separator } from '@/components/ui/separator';
 import AboutLoadingPage from './loading';
 import { Button, buttonVariants } from '@/components/ui/button';
-import { SquareArrowOutUpLeft, SquareArrowOutUpRight } from 'lucide-react';
+import {
+  Check,
+  CheckSquareIcon,
+  SquareArrowOutUpLeft,
+  SquareArrowOutUpRight,
+} from 'lucide-react';
 
 const weAreImageList = [
   {
@@ -55,7 +60,17 @@ const About = () => {
           />
         </div>
         <div className="mt-12">
-          <p className="sm:text-2xl font-normal text-SBP_BLUE tracking-widest text-center leading-relaxed ">
+          <h1 className="sm:text-2xl font-normal text-SBP_BLUE tracking-widest text-center leading-relaxed">
+            Welcome to SmartBuys Philippines - Your Smart Shopping Destination
+          </h1>
+        </div>
+        <div className="mt-5">
+          <h2 className="sm:text-lg text-sm text-SBP_BLUE tracking-widest text-center leading-relaxed">
+            Explore Our Curated Selection of Premium Products
+          </h2>
+        </div>
+        <div className="mt-12">
+          <p className="sm:text-2xl font-normal text-SBP_BLUE tracking-widest text-center leading-relaxed">
             Discover a world of smart shopping at SmartBuys Philippines.
             Experience the perfect blend of quality, affordability, and
             convenience as you explore our curated selection of premium

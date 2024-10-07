@@ -1,14 +1,15 @@
 import { auth } from '@/server/auth';
-import Link from 'next/link';
 import React from 'react';
-import CartDrawer from '../cart/cart-drawer';
-import Image from 'next/image';
-import { cn } from '@/lib/utils';
-import MainNav from './main-nav';
 import UserNav from './user-nav';
+import CartDrawer from '../cart/cart-drawer';
+import MainNav from './main-nav';
+import Image from 'next/image';
+import Link from 'next/link';
+import { cn } from '@/lib/utils';
 
 const Nav = async () => {
   const session = await auth();
+
   return (
     <header className="sticky w-auto py-3 sm:top-5 top-0 bg-SBP_RED px-5 sm:rounded-xl sm:my-3 mb-5 duration-400 z-30 ">
       <nav className="">

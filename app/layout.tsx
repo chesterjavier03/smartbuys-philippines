@@ -7,23 +7,12 @@ import Nav from '@/components/navigation/nav';
 import {
   Ban,
   CheckCircle,
-  CheckCircle2,
-  CircleAlert,
-  CircleAlertIcon,
-  Home,
   Info,
-  Loader,
-  Loader2,
   Loader2Icon,
-  StopCircleIcon,
-  Store,
   TriangleAlert,
 } from 'lucide-react';
-import Loadable from 'next/dist/shared/lib/loadable.shared-runtime';
-import Link from 'next/link';
-import clsx from 'clsx';
-import Image from 'next/image';
 import FooterNav from '@/components/navigation/footer-nav';
+import { Analytics } from '@vercel/analytics/react';
 
 const ubuntu = Ubuntu({
   variable: '--font-inter',
@@ -44,9 +33,9 @@ const ubuntu = Ubuntu({
 export const metadata: Metadata = {
   title: 'SmartBuys Philippines | Unlocking Smarter Shopping Experiences!',
   description:
-    'Discover a world of smart shopping at SmartBuys Philippines. Experience the perfect blend of quality, affordability, and convenience as you explore our curated selection of premium products. Elevate your lifestyle with our wide range of offerings, ensuring a seamless online shopping experience for the discerning Filipino shopper.',
+    'Discover a world of smart shopping at SmartBuys Philippines, your ultimate destination for quality, affordability, and convenience. Explore our expertly curated selection of premium products, designed to elevate your lifestyle. Whether you’re looking for home essentials, fashion, or tech gadgets, our wide range of offerings ensures a seamless online shopping experience tailored for the discerning Filipino shopper. Enjoy exclusive deals, fast shipping, and exceptional customer service as you shop smarter with SmartBuys Philippines.',
   keywords:
-    'Live Selling, Flash Sale Live Limited Time Offers Live, Buy Now Live Stream, Best Deals Live, Shop With Me Live, Exclusive Live Sale, Special Offer Live Stream, Hot Deals Live Now, 2024, Philippines, OFW, SmartBuys Philippines, How to earn money at home, LIFE QUOTES, SHOWTIME, BOSSING, MALUPITON, NINONG RY, TEAM PAYAMAN, CONG TV, NENENG LAMIG, YOH, YOW, JOEL, LIVE, vertical:entertainment, source:etc, vertical:kids, vertical:e-commerce, vertical:retail, vertical:fashion, vertical:lifestyle, SHOPEE, ONLINE SELLING, LIFE QUOTES, SMARTBUYS PHILIPPINES',
+    'Smart shopping, Premium products, Affordable quality, Online shopping Philippines, Filipino lifestyle products, Home essentials, fashion, tech gadgets',
 };
 
 export default function RootLayout({
@@ -92,6 +81,7 @@ export default function RootLayout({
             }}
           />
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   );
